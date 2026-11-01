@@ -1,0 +1,411 @@
+{
+  "dataset_version": "7D-1.0.0",
+  "security_governance_records": [
+    {
+      "id": "NEX-SEC-001",
+      "source_id": "NEX-SRC-SECURITY_GOVERNANCE",
+      "source_authority": "ADMIN_CONTROL_REVIEW_AND_EXCEPTION_DECISION",
+      "author_or_responsible_employee_id": "NEX-EMP-002",
+      "created_at": "2026-09-18T09:00:00Z",
+      "revised_at": "2026-09-18T11:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-002",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-PAYMENT_API",
+          "NEX-SVC-GATEWAY_ROUTER"
+        ],
+        "project_ids": [
+          "NEX-PRJ-PAY"
+        ]
+      },
+      "record_content_class": "SECURITY_GOVERNANCE",
+      "security_record_id": "NEX-SEC-001",
+      "title": "Payment trace minimization boundary",
+      "record_type": "CONTROL_REVIEW",
+      "relevant_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-GATEWAY_ROUTER"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY"
+      ],
+      "control_or_risk_category": "TELEMETRY_DATA_MINIMIZATION",
+      "description": "Reject payment tokens and client payloads from routine trace attributes.",
+      "risk_classification": "LOW",
+      "responsible_employee_id": "NEX-EMP-002",
+      "administrative_reviewer_employee_id": "NEX-EMP-001",
+      "decision": "ACCEPTED",
+      "mitigation_or_compensating_controls": [
+        "Structured logging allowlist and sampling regression check required each release."
+      ],
+      "effective_at": "2026-09-18T09:00:00Z",
+      "expiration_or_review_at": "2026-12-18T09:00:00Z",
+      "current_status": "ACTIVE",
+      "related_source_references": [
+        "NEX-SRC-SECURITY_GOVERNANCE",
+        "NEX-SRC-PAY-REPO"
+      ],
+      "is_incident_or_confirmed_vulnerability": false
+    },
+    {
+      "id": "NEX-SEC-002",
+      "source_id": "NEX-SRC-SECURITY_GOVERNANCE",
+      "source_authority": "ADMIN_CONTROL_REVIEW_AND_EXCEPTION_DECISION",
+      "author_or_responsible_employee_id": "NEX-EMP-006",
+      "created_at": "2026-09-26T09:00:00Z",
+      "revised_at": "2026-09-26T11:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-006",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-IDENTITY_API",
+          "NEX-SVC-TOKEN_VALIDATOR"
+        ],
+        "project_ids": [
+          "NEX-PRJ-ID"
+        ]
+      },
+      "record_content_class": "SECURITY_GOVERNANCE",
+      "security_record_id": "NEX-SEC-002",
+      "title": "JWT public-key validation review",
+      "record_type": "CONTROL_REVIEW",
+      "relevant_service_ids": [
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-TOKEN_VALIDATOR"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-ID"
+      ],
+      "control_or_risk_category": "CRYPTOGRAPHIC_KEY_HANDLING",
+      "description": "Validate issuer and key id; rejected unknown keys never produce successful authentication.",
+      "risk_classification": "LOW",
+      "responsible_employee_id": "NEX-EMP-006",
+      "administrative_reviewer_employee_id": "NEX-EMP-001",
+      "decision": "ACCEPTED",
+      "mitigation_or_compensating_controls": [
+        "Bounded key-refresh behavior and negative signature assertions included in tests."
+      ],
+      "effective_at": "2026-09-26T09:00:00Z",
+      "expiration_or_review_at": "2026-12-26T09:00:00Z",
+      "current_status": "ACTIVE",
+      "related_source_references": [
+        "NEX-SRC-SECURITY_GOVERNANCE",
+        "NEX-SRC-ID-REPO"
+      ],
+      "is_incident_or_confirmed_vulnerability": false
+    },
+    {
+      "id": "NEX-SEC-003",
+      "source_id": "NEX-SRC-SECURITY_GOVERNANCE",
+      "source_authority": "ADMIN_CONTROL_REVIEW_AND_EXCEPTION_DECISION",
+      "author_or_responsible_employee_id": "NEX-EMP-004",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T11:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-004",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-ORDER_API",
+          "NEX-SVC-WEBHOOK_CONSUMER"
+        ],
+        "project_ids": [
+          "NEX-PRJ-COM"
+        ]
+      },
+      "record_content_class": "SECURITY_GOVERNANCE",
+      "security_record_id": "NEX-SEC-003",
+      "title": "Order notification callback boundary",
+      "record_type": "CONTROL_REVIEW",
+      "relevant_service_ids": [
+        "NEX-SVC-ORDER_API",
+        "NEX-SVC-WEBHOOK_CONSUMER"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-COM"
+      ],
+      "control_or_risk_category": "OUTBOUND_REQUEST_CONTROL",
+      "description": "Require allowlisted callback destination rules and bounded retry counts.",
+      "risk_classification": "MODERATE",
+      "responsible_employee_id": "NEX-EMP-004",
+      "administrative_reviewer_employee_id": "NEX-EMP-001",
+      "decision": "ACCEPTED_WITH_MONITORING",
+      "mitigation_or_compensating_controls": [
+        "Merchant callback destinations are not included in shared docs or audit text."
+      ],
+      "effective_at": "2026-10-02T09:00:00Z",
+      "expiration_or_review_at": "2026-12-02T09:00:00Z",
+      "current_status": "ACTIVE",
+      "related_source_references": [
+        "NEX-SRC-SECURITY_GOVERNANCE",
+        "NEX-SRC-COM-REPO"
+      ],
+      "is_incident_or_confirmed_vulnerability": false
+    },
+    {
+      "id": "NEX-SEC-004",
+      "source_id": "NEX-SRC-SECURITY_GOVERNANCE",
+      "source_authority": "ADMIN_CONTROL_REVIEW_AND_EXCEPTION_DECISION",
+      "author_or_responsible_employee_id": "NEX-EMP-009",
+      "created_at": "2026-10-08T09:00:00Z",
+      "revised_at": "2026-10-08T11:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-009",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-REPORTING_API",
+          "NEX-SVC-POLICY_SERVICE"
+        ],
+        "project_ids": [
+          "NEX-PRJ-DATA",
+          "NEX-PRJ-ID"
+        ]
+      },
+      "record_content_class": "SECURITY_GOVERNANCE",
+      "security_record_id": "NEX-SEC-004",
+      "title": "Reporting authorization scope review",
+      "record_type": "CONTROL_REVIEW",
+      "relevant_service_ids": [
+        "NEX-SVC-REPORTING_API",
+        "NEX-SVC-POLICY_SERVICE"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-DATA",
+        "NEX-PRJ-ID"
+      ],
+      "control_or_risk_category": "TENANT_DATA_ISOLATION",
+      "description": "Ensure policy-derived tenant scope constrains SQL queries before pagination.",
+      "risk_classification": "LOW",
+      "responsible_employee_id": "NEX-EMP-009",
+      "administrative_reviewer_employee_id": "NEX-EMP-001",
+      "decision": "ACCEPTED",
+      "mitigation_or_compensating_controls": [
+        "Cross-tenant deny probes and report export pagination tests required."
+      ],
+      "effective_at": "2026-10-08T09:00:00Z",
+      "expiration_or_review_at": "2026-12-08T09:00:00Z",
+      "current_status": "ACTIVE",
+      "related_source_references": [
+        "NEX-SRC-SECURITY_GOVERNANCE",
+        "NEX-SRC-DATA-REPO"
+      ],
+      "is_incident_or_confirmed_vulnerability": false
+    },
+    {
+      "id": "NEX-SEC-005",
+      "source_id": "NEX-SRC-SECURITY_GOVERNANCE",
+      "source_authority": "ADMIN_CONTROL_REVIEW_AND_EXCEPTION_DECISION",
+      "author_or_responsible_employee_id": "NEX-EMP-008",
+      "created_at": "2026-10-10T09:00:00Z",
+      "revised_at": "2026-10-10T11:00:00Z",
+      "status": "TRACKING",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-008",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-EVENT_INGESTOR",
+          "NEX-SVC-METRICS_PIPELINE"
+        ],
+        "project_ids": [
+          "NEX-PRJ-DATA"
+        ]
+      },
+      "record_content_class": "SECURITY_GOVERNANCE",
+      "security_record_id": "NEX-SEC-005",
+      "title": "Staging message retention review",
+      "record_type": "CONTROL_REVIEW",
+      "relevant_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-METRICS_PIPELINE"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-DATA"
+      ],
+      "control_or_risk_category": "EVENT_RETENTION",
+      "description": "Confirm staging replay watermarks and deletion policy do not retain personal payloads indefinitely.",
+      "risk_classification": "MODERATE",
+      "responsible_employee_id": "NEX-EMP-008",
+      "administrative_reviewer_employee_id": "NEX-EMP-001",
+      "decision": "FOLLOW_UP_REQUIRED",
+      "mitigation_or_compensating_controls": [
+        "Owner to provide a retention verification sample during the next regular release review."
+      ],
+      "effective_at": "2026-10-10T09:00:00Z",
+      "expiration_or_review_at": "2026-11-10T09:00:00Z",
+      "current_status": "TRACKING",
+      "related_source_references": [
+        "NEX-SRC-SECURITY_GOVERNANCE",
+        "NEX-SRC-DATA-REPO"
+      ],
+      "is_incident_or_confirmed_vulnerability": false
+    },
+    {
+      "id": "NEX-SEC-006",
+      "source_id": "NEX-SRC-SECURITY_GOVERNANCE",
+      "source_authority": "ADMIN_CONTROL_REVIEW_AND_EXCEPTION_DECISION",
+      "author_or_responsible_employee_id": "NEX-EMP-007",
+      "created_at": "2026-10-17T09:00:00Z",
+      "revised_at": "2026-10-17T11:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-007",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-DEPLOYMENT_PLATFORM"
+        ],
+        "project_ids": []
+      },
+      "record_content_class": "SECURITY_GOVERNANCE",
+      "security_record_id": "NEX-SEC-006",
+      "title": "Immutable artifact provenance review",
+      "record_type": "CONTROL_REVIEW",
+      "relevant_service_ids": [
+        "NEX-SVC-DEPLOYMENT_PLATFORM"
+      ],
+      "relevant_project_ids": [],
+      "control_or_risk_category": "SOFTWARE_DELIVERY_INTEGRITY",
+      "description": "Confirm rollout policies name digest-pinned images and prevent mutable-tag promotion.",
+      "risk_classification": "LOW",
+      "responsible_employee_id": "NEX-EMP-007",
+      "administrative_reviewer_employee_id": "NEX-EMP-001",
+      "decision": "ACCEPTED",
+      "mitigation_or_compensating_controls": [
+        "Artifact digest and source commit evidence must be linked before production promotion."
+      ],
+      "effective_at": "2026-10-17T09:00:00Z",
+      "expiration_or_review_at": "2027-01-17T09:00:00Z",
+      "current_status": "ACTIVE",
+      "related_source_references": [
+        "NEX-SRC-SECURITY_GOVERNANCE",
+        "NEX-SRC-PLAT-REPO"
+      ],
+      "is_incident_or_confirmed_vulnerability": false
+    },
+    {
+      "id": "NEX-SEC-007",
+      "source_id": "NEX-SRC-SECURITY_GOVERNANCE",
+      "source_authority": "ADMIN_CONTROL_REVIEW_AND_EXCEPTION_DECISION",
+      "author_or_responsible_employee_id": "NEX-EMP-009",
+      "created_at": "2026-10-05T09:00:00Z",
+      "revised_at": "2026-10-05T11:00:00Z",
+      "status": "ACTIVE_EXCEPTION",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-009",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-OBSERVABILITY_PLATFORM"
+        ],
+        "project_ids": []
+      },
+      "record_content_class": "SECURITY_GOVERNANCE",
+      "security_record_id": "NEX-SEC-007",
+      "title": "Temporary observability label-review interval",
+      "record_type": "TIME_BOUND_EXCEPTION",
+      "relevant_service_ids": [
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "relevant_project_ids": [],
+      "control_or_risk_category": "METRICS_LABEL_GOVERNANCE",
+      "description": "Permit one longer manual label review interval while automated chart linting is introduced.",
+      "risk_classification": "LOW",
+      "responsible_employee_id": "NEX-EMP-009",
+      "administrative_reviewer_employee_id": "NEX-EMP-001",
+      "decision": "APPROVED_TIME_BOUND",
+      "mitigation_or_compensating_controls": [
+        "Cap label cardinality at collector ingress; alert on sudden time-series growth; review weekly."
+      ],
+      "effective_at": "2026-10-05T09:00:00Z",
+      "expiration_or_review_at": "2026-11-15T09:00:00Z",
+      "current_status": "ACTIVE_EXCEPTION",
+      "related_source_references": [
+        "NEX-SRC-SECURITY_GOVERNANCE",
+        "NEX-SRC-PLAT-REPO"
+      ],
+      "is_incident_or_confirmed_vulnerability": false
+    },
+    {
+      "id": "NEX-SEC-008",
+      "source_id": "NEX-SRC-SECURITY_GOVERNANCE",
+      "source_authority": "ADMIN_CONTROL_REVIEW_AND_EXCEPTION_DECISION",
+      "author_or_responsible_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-20T09:00:00Z",
+      "revised_at": "2026-10-29T11:00:00Z",
+      "status": "EXPIRED_EXCEPTION",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-009",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-METRICS_PIPELINE",
+          "NEX-SVC-REPORTING_API"
+        ],
+        "project_ids": [
+          "NEX-PRJ-DATA"
+        ]
+      },
+      "record_content_class": "SECURITY_GOVERNANCE",
+      "security_record_id": "NEX-SEC-008",
+      "title": "Temporary legacy metrics export sampling interval",
+      "record_type": "TIME_BOUND_EXCEPTION",
+      "relevant_service_ids": [
+        "NEX-SVC-METRICS_PIPELINE",
+        "NEX-SVC-REPORTING_API"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-DATA"
+      ],
+      "control_or_risk_category": "METRICS_EXPORT_SAMPLING",
+      "description": "Allow a limited legacy export sampling frequency until governed models migrate.",
+      "risk_classification": "LOW",
+      "responsible_employee_id": "NEX-EMP-009",
+      "administrative_reviewer_employee_id": "NEX-EMP-001",
+      "decision": "APPROVED_TIME_BOUND",
+      "mitigation_or_compensating_controls": [
+        "Restrict export to predefined aggregates; track cutover completion in data engineering queue."
+      ],
+      "effective_at": "2026-09-20T09:00:00Z",
+      "expiration_or_review_at": "2026-10-29T09:00:00Z",
+      "current_status": "EXPIRED_EXCEPTION",
+      "related_source_references": [
+        "NEX-SRC-SECURITY_GOVERNANCE",
+        "NEX-SRC-DATA-REPO"
+      ],
+      "is_incident_or_confirmed_vulnerability": false
+    }
+  ]
+}

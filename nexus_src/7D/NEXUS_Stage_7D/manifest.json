@@ -1,0 +1,184 @@
+{
+  "dataset_name": "NEXUS Technologies — Stage 7D Administrative Sources and Permission Governance",
+  "dataset_version": "7D-1.0.0",
+  "company_key": "nexus",
+  "reference_date": "2026-10-31",
+  "snapshot_cutoff_at": "2026-10-31T23:59:59Z",
+  "parent_datasets": [
+    {
+      "dataset_version": "7A-1.0.0",
+      "archive_name": "NEXUS_Stage_7A_7A-1.0.0.zip",
+      "zip_sha256": "2a4d476b98f583ae0fa386d2d350a8ab71548f3f2694305446668c973d63576a"
+    },
+    {
+      "dataset_version": "7B-1.0.0",
+      "archive_name": "NEXUS_Stage_7B_7B-1.0.0.zip",
+      "zip_sha256": "54e63c3b7a893290974879f132f568f120328410c6e47a026656f411491a1a6f"
+    },
+    {
+      "dataset_version": "7C-1.0.0",
+      "archive_name": "NEXUS_Stage_7C_7C-1.0.0.zip",
+      "zip_sha256": "ff572fe56970cdcaa0e6cc3350405bc41ef0cb3d6a03a3926e55da18e9cbbab5"
+    }
+  ],
+  "administrative_sources": [
+    "NEX-SRC-ACCESS_GOVERNANCE",
+    "NEX-SRC-PRIVILEGED_CHANGES",
+    "NEX-SRC-SECURITY_GOVERNANCE",
+    "NEX-SRC-VENDOR_GOVERNANCE"
+  ],
+  "source_classifications": {
+    "Stage 7B": "COMPANY_SHARED",
+    "Stage 7C project": "PROJECT_DEVELOPER",
+    "Stage 7C platform": "CROSS_PROJECT_CONFIDENTIAL",
+    "Stage 7D": "ADMINISTRATIVE_RECORDS"
+  },
+  "file_inventory": [
+    {
+      "filename": "administrative_source_registry.json",
+      "top_level_collection": "administrative_source_registry",
+      "record_count": 4,
+      "sha256": "ac50594d9ba99d680cd37034a037fe931c0bcc131d648b767b54ee364ce48094",
+      "size_bytes": 4271
+    },
+    {
+      "filename": "resource_access_catalog.json",
+      "top_level_collection": "resource_access_catalog",
+      "record_count": 28,
+      "sha256": "73564b535280357969a2d705953cf6efa7592c6efcb9be6c0c25c583a4ef8e2c",
+      "size_bytes": 42177
+    },
+    {
+      "filename": "resource_grants.json",
+      "top_level_collection": "resource_grants",
+      "record_count": 42,
+      "sha256": "f38c81eb8e4e89aedd55d71284b3062d5f78fc42115af37b7968abf66f561f1b",
+      "size_bytes": 64436
+    },
+    {
+      "filename": "access_requests.json",
+      "top_level_collection": "access_requests",
+      "record_count": 11,
+      "sha256": "e0d7b399940666d344c44eac379ded81b1e1712c1ecac5b64a505d99f36a7d4f",
+      "size_bytes": 14817
+    },
+    {
+      "filename": "access_decisions.json",
+      "top_level_collection": "access_decisions",
+      "record_count": 49,
+      "sha256": "0b9aa45e0971322ed328f465e4e05aac1cb111fcbc81edc81da1e1e70bdd4801",
+      "size_bytes": 72408
+    },
+    {
+      "filename": "restricted_disclosure_rules.json",
+      "top_level_collection": "restricted_disclosure_rules",
+      "record_count": 1,
+      "sha256": "9ef03f789412fab6827c98893dd94b1e245bcaad419d619d5b7cba07cd313c76",
+      "size_bytes": 15895
+    },
+    {
+      "filename": "privileged_change_records.json",
+      "top_level_collection": "privileged_change_records",
+      "record_count": 12,
+      "sha256": "01cecf1564def8c7c97597c9be2e7656e7013d456bb57f06e6156eb1e6968bd8",
+      "size_bytes": 31959
+    },
+    {
+      "filename": "vendor_governance_records.json",
+      "top_level_collection": "vendor_governance_records",
+      "record_count": 6,
+      "sha256": "89d6098b7651ae0bc4fddccd3e8f155c3d6037aa8098a6216fdfd6142b5914b8",
+      "size_bytes": 13003
+    },
+    {
+      "filename": "security_governance_records.json",
+      "top_level_collection": "security_governance_records",
+      "record_count": 8,
+      "sha256": "0e67f7c7de4b394fe15572ad00cc6485592b1548fa756d748b052fd121f3d208",
+      "size_bytes": 15050
+    },
+    {
+      "filename": "administrative_audit_events.json",
+      "top_level_collection": "administrative_audit_events",
+      "record_count": 171,
+      "sha256": "572b66bc370a1de27afdccd35240ebeb90686ce43afc1aacff48614feff17131",
+      "size_bytes": 207005
+    },
+    {
+      "filename": "governance_policies.json",
+      "top_level_collection": "governance_policies",
+      "record_count": 5,
+      "sha256": "ecbd2da610da2da63068730a13949a39d00e742df879b5a0a14e77c7294bc222",
+      "size_bytes": 8622
+    }
+  ],
+  "collection_counts": {
+    "administrative_source_registry": 4,
+    "resource_access_catalog": 28,
+    "resource_grants": 42,
+    "access_requests": 11,
+    "access_decisions": 49,
+    "restricted_disclosure_rules": 1,
+    "privileged_change_records": 12,
+    "vendor_governance_records": 6,
+    "security_governance_records": 8,
+    "administrative_audit_events": 171,
+    "governance_policies": 5
+  },
+  "nested_disclosure_counts": {
+    "disclosure_rules": 3,
+    "issued_disclosures": 3
+  },
+  "identifier_conventions": "NEX-prefixed IDs; existing source identifiers are referenced unchanged.",
+  "required_parent_reference_counts": {
+    "employees": 12,
+    "projects": 4,
+    "teams": 5,
+    "services": 14,
+    "shared_sources": 4,
+    "engineering_sources": 20,
+    "stage_7c_deployments": 17
+  },
+  "resource_grant_conventions": {
+    "admin_company_entitlement": "NEX-ENT-001",
+    "developer_project_entitlement": "NEX-ENT-003",
+    "cross_project_entitlement": "NEX-ENT-004",
+    "intern_code_access": "DENIED_BY_DEFAULT",
+    "project_membership_is_not_grant": true,
+    "shared_resources_use_baseline_entitlements_not_personal_grants": true,
+    "effective_access_requires_active_scope_action_time_and_admin_basis": true
+  },
+  "decision_event_conventions": {
+    "request_is_not_grant": true,
+    "approval_is_not_execution": true,
+    "audit_actions_link_to_actual_stage_7d_records": true,
+    "future_expiration_review_and_contract_end_dates_are_planned_bounds_not_observed_events": true,
+    "disclosure_does_not_grant_underlying_source": true,
+    "formal_handoff_issuer_role": "NEX-ROLE-ADMIN"
+  },
+  "known_parent_semantic_inconsistencies": [
+    "NEX-DEP-003",
+    "NEX-DEP-008"
+  ],
+  "validation": {
+    "executed": [
+      "Parent archive SHA256 verification",
+      "Unique new record and parent-reference IDs",
+      "28-source classification and ADMIN-only restrictions",
+      "Project membership/explicit grants and time validity",
+      "Denied, pending, expired and revoked access lifecycles",
+      "Admin decision actor and matching audit evidence",
+      "Deployed change authorization versus Stage 7C execution reference",
+      "Vendor and security source references",
+      "Field allowlist/redaction and disclosure-only recipient access",
+      "Formal handoff admin-only authority",
+      "Actual record timestamps within October 31 2026"
+    ],
+    "not_executed": [
+      "PostgreSQL import",
+      "Neo4j import",
+      "Runtime permission enforcement",
+      "Actual production change, vendor verification or remote security scan"
+    ]
+  }
+}

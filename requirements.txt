@@ -1,0 +1,12 @@
+neo4j>=5.26,<6
+psycopg[binary]>=3.1,<4
+fastapi>=0.128,<0.129
+uvicorn[standard]>=0.37,<0.39
+pydantic>=2.10,<3
+python-dotenv>=1,<2
+google-genai>=1.2,<2
+PyYAML>=6,<7
+# google-adk pulls google-genai>=1.72,<2 and fastapi>=0.124.1,<1 at this pin (verified against the
+# versions above on 2026-10-31); 1.36+ raises its google-genai floor to >=2.9,<3, which would break
+# the google-genai<2 pin above, so stay below that.
+google-adk>=1.30,<1.36

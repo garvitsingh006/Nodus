@@ -1,0 +1,22 @@
+{
+  "companies": [
+    {
+      "id": "nexus",
+      "company_key": "nexus",
+      "official_name": "NEXUS Technologies",
+      "industry": "Enterprise commerce and financial technology",
+      "business_description": "NEXUS Technologies builds and operates B2B software for payment routing, commerce transactions, business identity, and privacy-conscious operational analytics. Its customers are online merchants and enterprise platform operators.",
+      "primary_products": [
+        "NEXUS Pay",
+        "NEXUS Commerce",
+        "NEXUS Identity",
+        "NEXUS Insights"
+      ],
+      "organizational_description": "Four product-aligned engineering teams own business services. A cross-project Platform Operations team manages deployment and observability infrastructure. A central technology governance administrator supervises access decisions and formal handoffs.",
+      "founded_on": "2018-04-16",
+      "operational_status": "ACTIVE",
+      "time_zone": "Asia/Kolkata",
+      "reference_date": "2026-10-31"
+    }
+  ]
+}

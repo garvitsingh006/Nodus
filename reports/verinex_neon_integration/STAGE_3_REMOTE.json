@@ -1,0 +1,187 @@
+{
+  "status": "PASS",
+  "graph": "verinex_neon_stage3_7bf1ada9",
+  "tenant": "neon-stage3",
+  "source_repository": "neondatabase/postgres-sample-dbs",
+  "source_path": "dvdrental.sql",
+  "source_commit_sha": "b54cb67534bf20775803b181b7a1c6f573422161",
+  "source_blob_sha": "5fe9c6fee0ba073362952964edd04a6527c24aee",
+  "source_file_hash": "fa73f75e117e7f2af010ba7542b224d76897a17ac4972be257513c86ad4da12a",
+  "artifact_root": "C:\\Users\\Aditya\\AppData\\Local\\Temp\\verinex-neon-stage3-artifacts\\verinex_neon_stage3_7bf1ada9",
+  "parsed": {
+    "tables": 15,
+    "columns": 86,
+    "primary_keys": 15,
+    "foreign_keys": 18,
+    "warnings": []
+  },
+  "ingestion_runs": [
+    {
+      "status": "SUCCEEDED",
+      "fetched": 2,
+      "normalized": 2,
+      "written": 2,
+      "quarantined": 0,
+      "failed": 0,
+      "artifacts": 1,
+      "warnings": [],
+      "run_id": "INGRUN-3302792B3137618D9DD8"
+    },
+    {
+      "status": "SUCCEEDED",
+      "fetched": 2,
+      "normalized": 2,
+      "written": 2,
+      "quarantined": 0,
+      "failed": 0,
+      "artifacts": 1,
+      "warnings": [],
+      "run_id": "INGRUN-E917D246E7E4C201E2EF"
+    }
+  ],
+  "counts_after_each_run": [
+    {
+      "SqlTable": 15,
+      "SqlColumn": 86,
+      "SqlConstraint": 33,
+      "SourceRecord": 2,
+      "Artifact": 1,
+      "IngestionRun": 1,
+      "FOREIGN_KEY_TO": 18,
+      "DEFINES": 15,
+      "HAS_COLUMN": 86,
+      "HAS_CONSTRAINT": 33
+    },
+    {
+      "SqlTable": 15,
+      "SqlColumn": 86,
+      "SqlConstraint": 33,
+      "SourceRecord": 2,
+      "Artifact": 1,
+      "IngestionRun": 2,
+      "FOREIGN_KEY_TO": 18,
+      "DEFINES": 15,
+      "HAS_COLUMN": 86,
+      "HAS_CONSTRAINT": 33
+    }
+  ],
+  "tables": [
+    "public.actor",
+    "public.address",
+    "public.category",
+    "public.city",
+    "public.country",
+    "public.customer",
+    "public.film",
+    "public.film_actor",
+    "public.film_category",
+    "public.inventory",
+    "public.language",
+    "public.payment",
+    "public.rental",
+    "public.staff",
+    "public.store"
+  ],
+  "foreign_keys": [
+    {
+      "from": "public.address",
+      "constraint": "fk_address_city",
+      "to": "public.city"
+    },
+    {
+      "from": "public.city",
+      "constraint": "fk_city",
+      "to": "public.country"
+    },
+    {
+      "from": "public.customer",
+      "constraint": "customer_address_id_fkey",
+      "to": "public.address"
+    },
+    {
+      "from": "public.film",
+      "constraint": "film_language_id_fkey",
+      "to": "public.language"
+    },
+    {
+      "from": "public.film_actor",
+      "constraint": "film_actor_actor_id_fkey",
+      "to": "public.actor"
+    },
+    {
+      "from": "public.film_actor",
+      "constraint": "film_actor_film_id_fkey",
+      "to": "public.film"
+    },
+    {
+      "from": "public.film_category",
+      "constraint": "film_category_category_id_fkey",
+      "to": "public.category"
+    },
+    {
+      "from": "public.film_category",
+      "constraint": "film_category_film_id_fkey",
+      "to": "public.film"
+    },
+    {
+      "from": "public.inventory",
+      "constraint": "inventory_film_id_fkey",
+      "to": "public.film"
+    },
+    {
+      "from": "public.payment",
+      "constraint": "payment_customer_id_fkey",
+      "to": "public.customer"
+    },
+    {
+      "from": "public.payment",
+      "constraint": "payment_rental_id_fkey",
+      "to": "public.rental"
+    },
+    {
+      "from": "public.payment",
+      "constraint": "payment_staff_id_fkey",
+      "to": "public.staff"
+    },
+    {
+      "from": "public.rental",
+      "constraint": "rental_customer_id_fkey",
+      "to": "public.customer"
+    },
+    {
+      "from": "public.rental",
+      "constraint": "rental_inventory_id_fkey",
+      "to": "public.inventory"
+    },
+    {
+      "from": "public.rental",
+      "constraint": "rental_staff_id_key",
+      "to": "public.staff"
+    },
+    {
+      "from": "public.staff",
+      "constraint": "staff_address_id_fkey",
+      "to": "public.address"
+    },
+    {
+      "from": "public.store",
+      "constraint": "store_address_id_fkey",
+      "to": "public.address"
+    },
+    {
+      "from": "public.store",
+      "constraint": "store_manager_staff_id_fkey",
+      "to": "public.staff"
+    }
+  ],
+  "path_cypher": "MATCH (p:SqlTable {tenant_id:$tenant_id, name:'public.payment'})-[fk1:FOREIGN_KEY_TO]->(r:SqlTable {tenant_id:$tenant_id, name:'public.rental'})-[fk2:FOREIGN_KEY_TO]->(i:SqlTable {tenant_id:$tenant_id, name:'public.inventory'})-[fk3:FOREIGN_KEY_TO]->(f:SqlTable {tenant_id:$tenant_id, name:'public.film'}) RETURN p.name, fk1.constraint_name, r.name, fk2.constraint_name, i.name, fk3.constraint_name, f.name",
+  "path_result": [
+    "public.payment",
+    "payment_rental_id_fkey",
+    "public.rental",
+    "rental_inventory_id_fkey",
+    "public.inventory",
+    "inventory_film_id_fkey",
+    "public.film"
+  ]
+}

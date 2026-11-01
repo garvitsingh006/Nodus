@@ -1,0 +1,6 @@
+
+Running 2 tests using 1 worker
+
+[1/2] e2e\agent-workspace.spec.ts:59:1 › UI_CONTRACT: command form requires explicit model consent and scenario selection only fills fields
+[2/2] e2e\agent-workspace.spec.ts:75:1 › UI_CONTRACT: task dependencies, replay, memory, changes, and governance are inspectable
+  2 passed (5.0s)

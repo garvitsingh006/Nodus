@@ -1,0 +1,181 @@
+{
+  "dataset_name": "NEXUS Technologies — NODUS Stage 7C Developer Engineering Sources",
+  "dataset_version": "7C-1.0.0",
+  "company_key": "nexus",
+  "reference_date": "2026-10-31",
+  "parent_datasets": [
+    {
+      "dataset_version": "7A-1.0.0",
+      "archive_filename": "NEXUS_Stage_7A_7A-1.0.0.zip",
+      "zip_sha256": "2a4d476b98f583ae0fa386d2d350a8ab71548f3f2694305446668c973d63576a"
+    },
+    {
+      "dataset_version": "7B-1.0.0",
+      "archive_filename": "NEXUS_Stage_7B_7B-1.0.0.zip",
+      "zip_sha256": "54e63c3b7a893290974879f132f568f120328410c6e47a026656f411491a1a6f"
+    }
+  ],
+  "description": "Fictional, operationally ordinary, developer-restricted source facts for pre-deployment impact analysis; no agent conclusions or incident fixture catalog.",
+  "file_inventory": [
+    {
+      "filename": "engineering_source_registry.json",
+      "collection": "engineering_source_registry",
+      "record_count": 20,
+      "sha256": "d3084602168e25a104488636ffdf6f5d2ed633f78722c892fe42962921caa480",
+      "bytes": 20897
+    },
+    {
+      "filename": "repositories.json",
+      "collection": "repositories",
+      "record_count": 5,
+      "sha256": "5a2d074bc195a0ee062b5400ddb1f61569dfeeb28cd340ddb604abce8ef989b7",
+      "bytes": 14885
+    },
+    {
+      "filename": "repository_commits.json",
+      "collection": "repository_commits",
+      "record_count": 45,
+      "sha256": "b667f5d753137b68a180bedf2e9de769c6e53c2188449860508edd8d7398a26d",
+      "bytes": 113861
+    },
+    {
+      "filename": "pull_requests.json",
+      "collection": "pull_requests",
+      "record_count": 20,
+      "sha256": "bca5f3ad34a4b9d28d31386df6a0b0022ca19557de53447bae926d98eeea0b0d",
+      "bytes": 50286
+    },
+    {
+      "filename": "engineering_issues.json",
+      "collection": "engineering_issues",
+      "record_count": 30,
+      "sha256": "30a1197d98a42196c4dbc399886192cadf9ec5b45b0c47d294279a413581d5e0",
+      "bytes": 67003
+    },
+    {
+      "filename": "build_executions.json",
+      "collection": "build_executions",
+      "record_count": 22,
+      "sha256": "f71aacc4c6baa56896d58a93b4b1799c4b460ddf73f4232d073cdd90e226174d",
+      "bytes": 31339
+    },
+    {
+      "filename": "test_executions.json",
+      "collection": "test_executions",
+      "record_count": 51,
+      "sha256": "ae2c2c8a124cdaf1dfa8d41842403871cd756f3d8f189f48fc8d7e8c576055a7",
+      "bytes": 62522
+    },
+    {
+      "filename": "release_artifacts.json",
+      "collection": "release_artifacts",
+      "record_count": 17,
+      "sha256": "27e5febea3ea71231b970f7c971c42f89982990d072f9c623341e1de96570c15",
+      "bytes": 20080
+    },
+    {
+      "filename": "deployments.json",
+      "collection": "deployments",
+      "record_count": 17,
+      "sha256": "a5ce9491f917fc99fd4f72da5bbd9c1f64018cec57184b10fb22c2eb2abdeb3d",
+      "bytes": 16480
+    },
+    {
+      "filename": "dependency_inventories.json",
+      "collection": "dependency_inventories",
+      "record_count": 14,
+      "sha256": "9fca1c13d2086b037366cd850f3f065beb5aa4e20c51c0abd45f1410ec428b8e",
+      "bytes": 144810
+    },
+    {
+      "filename": "engineering_discussions.json",
+      "collection": "engineering_discussions",
+      "record_count": 15,
+      "sha256": "7b15ff460421a14c644c42823d7663b6cef186bd33489309ed84f871b39f2838",
+      "bytes": 40913
+    }
+  ],
+  "collection_counts": {
+    "engineering_source_registry": 20,
+    "repositories": 5,
+    "repository_commits": 45,
+    "pull_requests": 20,
+    "engineering_issues": 30,
+    "build_executions": 22,
+    "test_executions": 51,
+    "release_artifacts": 17,
+    "deployments": 17,
+    "dependency_inventories": 14,
+    "engineering_discussions": 15
+  },
+  "identifier_policy": "NEX-prefixed stable synthetic IDs; SHA256 commit and OCI digests are deterministic synthetic values.",
+  "access_policy": {
+    "PROJECT_DEVELOPER": {
+      "entitlement_id": "NEX-ENT-003",
+      "requires_assigned_project": true,
+      "requires_explicit_resource_grant": true
+    },
+    "CROSS_PROJECT_CONFIDENTIAL": {
+      "entitlement_id": "NEX-ENT-004",
+      "requires_admin_approved_specific_resource_grant": true
+    },
+    "ADMIN": "NEX-ENT-001 has company-wide scope; no intern code grants are created.",
+    "grant_records_included": false
+  },
+  "canonical_event_direction_notes": [
+    {
+      "declared_dependency_id": "NEX-DEP-003",
+      "issue": "Original Stage 7A edge is unmodified; its source-to-target semantics disagree with the general consumer-to-provider dependency convention for this event flow.",
+      "event_delivery": {
+        "event_name": "refund-requests-v1",
+        "publisher_service_id": "NEX-SVC-PAYMENT_API",
+        "subscriber_service_id": "NEX-SVC-REFUND_WORKER",
+        "transport": "NATS",
+        "delivery_direction": "PAYMENT_API_TO_REFUND_WORKER",
+        "canonical_dependency_id": "NEX-DEP-003",
+        "canonical_dependency_edge_direction": "PAYMENT_API_TO_REFUND_WORKER",
+        "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+      }
+    },
+    {
+      "declared_dependency_id": "NEX-DEP-008",
+      "issue": "Original Stage 7A edge is unmodified; its source-to-target semantics disagree with the general consumer-to-provider dependency convention for this event flow.",
+      "event_delivery": {
+        "event_name": "commerce-notification-jobs",
+        "publisher_service_id": "NEX-SVC-ORDER_API",
+        "subscriber_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+        "transport": "RabbitMQ",
+        "delivery_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+        "canonical_dependency_id": "NEX-DEP-008",
+        "canonical_dependency_edge_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+        "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+      }
+    }
+  ],
+  "test_and_evidence_limits": [
+    "Representative dependency inventories, not exhaustive installed OS SBOMs.",
+    "No actual remote CI, registry, PostgreSQL or Neo4j import has been executed.",
+    "No invented security advisories or CVE exposure findings.",
+    "Post-deployment smoke probes are chronologically after the actual deployment; pre-artifact tests precede the build artifact."
+  ],
+  "validation": {
+    "programmatic_checks_executed": [
+      "Exact parent archive SHA256 equality",
+      "Record counts and globally unique IDs",
+      "Parent IDs and cross-record reference integrity",
+      "Commit/PR/build/test/artifact/deployment chronology",
+      "Four-project grant boundaries and exclusion of interns",
+      "14 current deployed versions identical to Stage 7A",
+      "Proposed branches absent from release artifacts and deployments",
+      "Per-package inventory path and exact version consistency",
+      "Event delivery direction separated from canonical dependency edges"
+    ],
+    "checks_not_executed": [
+      "Live PostgreSQL import",
+      "Live Neo4j import",
+      "Remote CI execution",
+      "Real registry digest verification",
+      "Live security-advisory scan"
+    ]
+  }
+}

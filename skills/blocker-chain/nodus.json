@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "required_capabilities": ["graph.read", "evidence.read"],
+  "compatible_tools": [
+    {"tool_id": "work.blocker_chain", "version": "1.0.0"},
+    {"tool_id": "graph.entity_lookup", "version": "1.0.0"},
+    {"tool_id": "graph.revision", "version": "1.0.0"},
+    {"tool_id": "evidence.lookup", "version": "1.0.0"}
+  ],
+  "effect": "READ_ONLY",
+  "input_expectations": "An engineering issue/work-item entity_id (issue_id), and optionally a bounded max_depth/limit/include_history.",
+  "output_expectations": "Direct and transitive BLOCKS predecessors labeled unresolved/resolved/historical, cross-team involvement only when evidence-backed, evidence references and source revisions, and explicit uncertainty -- never a fabricated delay estimate or runtime-dependency claim."
+}

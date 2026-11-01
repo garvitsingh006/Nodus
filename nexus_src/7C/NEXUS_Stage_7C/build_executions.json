@@ -1,0 +1,854 @@
+{
+  "dataset_version": "7C-1.0.0",
+  "build_executions": [
+    {
+      "id": "NEX-BLD-PAY-001",
+      "source_id": "NEX-SRC-PAY-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-PAY",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-09-22T09:00:00Z",
+      "revised_at": "2026-09-22T09:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-PAY",
+      "commit_id": "NEX-CMT-PAY-002",
+      "pipeline_definition_id": "NEX-PIPE-PAY",
+      "triggering_branch": "main",
+      "triggering_pr_id": null,
+      "trigger_type": "RELEASE_WORKFLOW",
+      "started_at": "2026-09-22T09:00:00Z",
+      "completed_at": "2026-09-22T09:45:00Z",
+      "execution_status": "SUCCESS",
+      "failure_category": null,
+      "relevant_service_ids": [
+        "NEX-SVC-PAYMENT_API"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "Go 1.24.6",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": "NEX-ART-PAYMENT_API-PREVIOUS",
+      "ci_output_reference": "ci://NEX-BLD-PAY-001/image-layer-archive",
+      "validation_summary": "Static analysis, selected tests and artifact digest checks passed.",
+      "duration_seconds": 2700,
+      "source_manifest_paths": [
+        "go.mod",
+        "go.sum"
+      ]
+    },
+    {
+      "id": "NEX-BLD-PAY-002",
+      "source_id": "NEX-SRC-PAY-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-PAY",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-13T09:00:00Z",
+      "revised_at": "2026-10-13T09:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-PAY",
+      "commit_id": "NEX-CMT-PAY-005",
+      "pipeline_definition_id": "NEX-PIPE-PAY",
+      "triggering_branch": "main",
+      "triggering_pr_id": "NEX-PR-PAY-002",
+      "trigger_type": "PULL_REQUEST",
+      "started_at": "2026-10-13T09:00:00Z",
+      "completed_at": "2026-10-13T09:45:00Z",
+      "execution_status": "SUCCESS",
+      "failure_category": null,
+      "relevant_service_ids": [
+        "NEX-SVC-PAYMENT_API"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "Go 1.24.6",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": "NEX-ART-PAYMENT_API-CURRENT",
+      "ci_output_reference": "ci://NEX-BLD-PAY-002/image-layer-archive",
+      "validation_summary": "Static analysis, selected tests and artifact digest checks passed.",
+      "duration_seconds": 2700,
+      "source_manifest_paths": [
+        "go.mod",
+        "go.sum"
+      ]
+    },
+    {
+      "id": "NEX-BLD-PAY-003",
+      "source_id": "NEX-SRC-PAY-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-PAY",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-09-21T09:00:00Z",
+      "revised_at": "2026-09-21T09:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-PAY",
+      "commit_id": "NEX-CMT-PAY-003",
+      "pipeline_definition_id": "NEX-PIPE-PAY",
+      "triggering_branch": "main",
+      "triggering_pr_id": "NEX-PR-PAY-001",
+      "trigger_type": "PULL_REQUEST",
+      "started_at": "2026-09-21T09:00:00Z",
+      "completed_at": "2026-09-21T09:45:00Z",
+      "execution_status": "SUCCESS",
+      "failure_category": null,
+      "relevant_service_ids": [
+        "NEX-SVC-GATEWAY_ROUTER"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "Go 1.24.6",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": "NEX-ART-GATEWAY_ROUTER-CURRENT",
+      "ci_output_reference": "ci://NEX-BLD-PAY-003/image-layer-archive",
+      "validation_summary": "Static analysis, selected tests and artifact digest checks passed.",
+      "duration_seconds": 2700,
+      "source_manifest_paths": [
+        "go.mod",
+        "go.sum"
+      ]
+    },
+    {
+      "id": "NEX-BLD-PAY-004",
+      "source_id": "NEX-SRC-PAY-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-PAY",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-07T09:00:00Z",
+      "revised_at": "2026-10-07T09:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-PAY",
+      "commit_id": "NEX-CMT-PAY-004",
+      "pipeline_definition_id": "NEX-PIPE-PAY",
+      "triggering_branch": "main",
+      "triggering_pr_id": null,
+      "trigger_type": "RELEASE_WORKFLOW",
+      "started_at": "2026-10-07T09:00:00Z",
+      "completed_at": "2026-10-07T09:45:00Z",
+      "execution_status": "SUCCESS",
+      "failure_category": null,
+      "relevant_service_ids": [
+        "NEX-SVC-REFUND_WORKER"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "Go 1.24.6",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": "NEX-ART-REFUND_WORKER-CURRENT",
+      "ci_output_reference": "ci://NEX-BLD-PAY-004/image-layer-archive",
+      "validation_summary": "Static analysis, selected tests and artifact digest checks passed.",
+      "duration_seconds": 2700,
+      "source_manifest_paths": [
+        "go.mod",
+        "go.sum"
+      ]
+    },
+    {
+      "id": "NEX-BLD-PAY-005",
+      "source_id": "NEX-SRC-PAY-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-PAY",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-28T11:00:00Z",
+      "revised_at": "2026-10-28T11:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-PAY",
+      "commit_id": "NEX-CMT-PAY-008",
+      "pipeline_definition_id": "NEX-PIPE-PAY",
+      "triggering_branch": "feature/pay-change-review",
+      "triggering_pr_id": "NEX-PR-PAY-003",
+      "trigger_type": "PULL_REQUEST",
+      "started_at": "2026-10-28T11:00:00Z",
+      "completed_at": "2026-10-28T11:45:00Z",
+      "execution_status": "FAILED_LINT",
+      "failure_category": "LINT",
+      "relevant_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-GATEWAY_ROUTER"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "Go 1.24.6",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": null,
+      "ci_output_reference": null,
+      "validation_summary": "Job failed before artifact promotion; consult test runs and failure_category.",
+      "duration_seconds": 710,
+      "source_manifest_paths": [
+        "go.mod",
+        "go.sum"
+      ]
+    },
+    {
+      "id": "NEX-BLD-COM-001",
+      "source_id": "NEX-SRC-COM-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-COM",
+      "owner_project_id": "NEX-PRJ-COM",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-09-30T09:00:00Z",
+      "revised_at": "2026-09-30T09:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-COM",
+      "commit_id": "NEX-CMT-COM-002",
+      "pipeline_definition_id": "NEX-PIPE-COM",
+      "triggering_branch": "main",
+      "triggering_pr_id": null,
+      "trigger_type": "RELEASE_WORKFLOW",
+      "started_at": "2026-09-30T09:00:00Z",
+      "completed_at": "2026-09-30T09:45:00Z",
+      "execution_status": "SUCCESS",
+      "failure_category": null,
+      "relevant_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "PHP 8.3.25 / Composer 2.8.11",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": "NEX-ART-CHECKOUT_SERVICE-PREVIOUS",
+      "ci_output_reference": "ci://NEX-BLD-COM-001/image-layer-archive",
+      "validation_summary": "Static analysis, selected tests and artifact digest checks passed.",
+      "duration_seconds": 2700,
+      "source_manifest_paths": [
+        "composer.json",
+        "composer.lock"
+      ]
+    },
+    {
+      "id": "NEX-BLD-COM-002",
+      "source_id": "NEX-SRC-COM-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-COM",
+      "owner_project_id": "NEX-PRJ-COM",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-21T09:00:00Z",
+      "revised_at": "2026-10-21T09:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-COM",
+      "commit_id": "NEX-CMT-COM-005",
+      "pipeline_definition_id": "NEX-PIPE-COM",
+      "triggering_branch": "main",
+      "triggering_pr_id": "NEX-PR-COM-002",
+      "trigger_type": "PULL_REQUEST",
+      "started_at": "2026-10-21T09:00:00Z",
+      "completed_at": "2026-10-21T09:45:00Z",
+      "execution_status": "SUCCESS",
+      "failure_category": null,
+      "relevant_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "PHP 8.3.25 / Composer 2.8.11",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": "NEX-ART-CHECKOUT_SERVICE-CURRENT",
+      "ci_output_reference": "ci://NEX-BLD-COM-002/image-layer-archive",
+      "validation_summary": "Static analysis, selected tests and artifact digest checks passed.",
+      "duration_seconds": 2700,
+      "source_manifest_paths": [
+        "composer.json",
+        "composer.lock"
+      ]
+    },
+    {
+      "id": "NEX-BLD-COM-003",
+      "source_id": "NEX-SRC-COM-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-COM",
+      "owner_project_id": "NEX-PRJ-COM",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-18T09:00:00Z",
+      "revised_at": "2026-10-18T09:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-COM",
+      "commit_id": "NEX-CMT-COM-004",
+      "pipeline_definition_id": "NEX-PIPE-COM",
+      "triggering_branch": "main",
+      "triggering_pr_id": null,
+      "trigger_type": "RELEASE_WORKFLOW",
+      "started_at": "2026-10-18T09:00:00Z",
+      "completed_at": "2026-10-18T09:45:00Z",
+      "execution_status": "SUCCESS",
+      "failure_category": null,
+      "relevant_service_ids": [
+        "NEX-SVC-ORDER_API"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "PHP 8.3.25 / Composer 2.8.11",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": "NEX-ART-ORDER_API-CURRENT",
+      "ci_output_reference": "ci://NEX-BLD-COM-003/image-layer-archive",
+      "validation_summary": "Static analysis, selected tests and artifact digest checks passed.",
+      "duration_seconds": 2700,
+      "source_manifest_paths": [
+        "composer.json",
+        "composer.lock"
+      ]
+    },
+    {
+      "id": "NEX-BLD-COM-004",
+      "source_id": "NEX-SRC-COM-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-COM",
+      "owner_project_id": "NEX-PRJ-COM",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-09-29T09:00:00Z",
+      "revised_at": "2026-09-29T09:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-COM",
+      "commit_id": "NEX-CMT-COM-003",
+      "pipeline_definition_id": "NEX-PIPE-COM",
+      "triggering_branch": "main",
+      "triggering_pr_id": "NEX-PR-COM-001",
+      "trigger_type": "PULL_REQUEST",
+      "started_at": "2026-09-29T09:00:00Z",
+      "completed_at": "2026-09-29T09:45:00Z",
+      "execution_status": "SUCCESS",
+      "failure_category": null,
+      "relevant_service_ids": [
+        "NEX-SVC-WEBHOOK_CONSUMER"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "PHP 8.3.25 / Composer 2.8.11",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": "NEX-ART-WEBHOOK_CONSUMER-CURRENT",
+      "ci_output_reference": "ci://NEX-BLD-COM-004/image-layer-archive",
+      "validation_summary": "Static analysis, selected tests and artifact digest checks passed.",
+      "duration_seconds": 2700,
+      "source_manifest_paths": [
+        "composer.json",
+        "composer.lock"
+      ]
+    },
+    {
+      "id": "NEX-BLD-COM-005",
+      "source_id": "NEX-SRC-COM-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-COM",
+      "owner_project_id": "NEX-PRJ-COM",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-28T11:00:00Z",
+      "revised_at": "2026-10-28T11:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-COM",
+      "commit_id": "NEX-CMT-COM-008",
+      "pipeline_definition_id": "NEX-PIPE-COM",
+      "triggering_branch": "feature/com-change-review",
+      "triggering_pr_id": "NEX-PR-COM-003",
+      "trigger_type": "PULL_REQUEST",
+      "started_at": "2026-10-28T11:00:00Z",
+      "completed_at": "2026-10-28T11:45:00Z",
+      "execution_status": "FAILED_TESTS",
+      "failure_category": "UNIT_TEST",
+      "relevant_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-ORDER_API"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "PHP 8.3.25 / Composer 2.8.11",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": null,
+      "ci_output_reference": null,
+      "validation_summary": "Job failed before artifact promotion; consult test runs and failure_category.",
+      "duration_seconds": 710,
+      "source_manifest_paths": [
+        "composer.json",
+        "composer.lock"
+      ]
+    },
+    {
+      "id": "NEX-BLD-ID-001",
+      "source_id": "NEX-SRC-ID-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-ID",
+      "owner_project_id": "NEX-PRJ-ID",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-09-21T09:00:00Z",
+      "revised_at": "2026-09-21T09:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-ID",
+      "commit_id": "NEX-CMT-ID-002",
+      "pipeline_definition_id": "NEX-PIPE-ID",
+      "triggering_branch": "main",
+      "triggering_pr_id": null,
+      "trigger_type": "RELEASE_WORKFLOW",
+      "started_at": "2026-09-21T09:00:00Z",
+      "completed_at": "2026-09-21T09:45:00Z",
+      "execution_status": "SUCCESS",
+      "failure_category": null,
+      "relevant_service_ids": [
+        "NEX-SVC-IDENTITY_API"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "Temurin 21.0.8 / Gradle 8.14",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": "NEX-ART-IDENTITY_API-PREVIOUS",
+      "ci_output_reference": "ci://NEX-BLD-ID-001/image-layer-archive",
+      "validation_summary": "Static analysis, selected tests and artifact digest checks passed.",
+      "duration_seconds": 2700,
+      "source_manifest_paths": [
+        "settings.gradle.kts",
+        "build.gradle.kts",
+        "gradle/libs.versions.toml"
+      ]
+    },
+    {
+      "id": "NEX-BLD-ID-002",
+      "source_id": "NEX-SRC-ID-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-ID",
+      "owner_project_id": "NEX-PRJ-ID",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-12T09:00:00Z",
+      "revised_at": "2026-10-12T09:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-ID",
+      "commit_id": "NEX-CMT-ID-005",
+      "pipeline_definition_id": "NEX-PIPE-ID",
+      "triggering_branch": "main",
+      "triggering_pr_id": "NEX-PR-ID-002",
+      "trigger_type": "PULL_REQUEST",
+      "started_at": "2026-10-12T09:00:00Z",
+      "completed_at": "2026-10-12T09:45:00Z",
+      "execution_status": "SUCCESS",
+      "failure_category": null,
+      "relevant_service_ids": [
+        "NEX-SVC-IDENTITY_API"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "Temurin 21.0.8 / Gradle 8.14",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": "NEX-ART-IDENTITY_API-CURRENT",
+      "ci_output_reference": "ci://NEX-BLD-ID-002/image-layer-archive",
+      "validation_summary": "Static analysis, selected tests and artifact digest checks passed.",
+      "duration_seconds": 2700,
+      "source_manifest_paths": [
+        "settings.gradle.kts",
+        "build.gradle.kts",
+        "gradle/libs.versions.toml"
+      ]
+    },
+    {
+      "id": "NEX-BLD-ID-003",
+      "source_id": "NEX-SRC-ID-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-ID",
+      "owner_project_id": "NEX-PRJ-ID",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-06T09:00:00Z",
+      "revised_at": "2026-10-06T09:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-ID",
+      "commit_id": "NEX-CMT-ID-003",
+      "pipeline_definition_id": "NEX-PIPE-ID",
+      "triggering_branch": "main",
+      "triggering_pr_id": "NEX-PR-ID-001",
+      "trigger_type": "PULL_REQUEST",
+      "started_at": "2026-10-06T09:00:00Z",
+      "completed_at": "2026-10-06T09:45:00Z",
+      "execution_status": "SUCCESS",
+      "failure_category": null,
+      "relevant_service_ids": [
+        "NEX-SVC-TOKEN_VALIDATOR"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "Temurin 21.0.8 / Gradle 8.14",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": "NEX-ART-TOKEN_VALIDATOR-CURRENT",
+      "ci_output_reference": "ci://NEX-BLD-ID-003/image-layer-archive",
+      "validation_summary": "Static analysis, selected tests and artifact digest checks passed.",
+      "duration_seconds": 2700,
+      "source_manifest_paths": [
+        "settings.gradle.kts",
+        "build.gradle.kts",
+        "gradle/libs.versions.toml"
+      ]
+    },
+    {
+      "id": "NEX-BLD-ID-004",
+      "source_id": "NEX-SRC-ID-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-ID",
+      "owner_project_id": "NEX-PRJ-ID",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-10T09:00:00Z",
+      "revised_at": "2026-10-10T09:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-ID",
+      "commit_id": "NEX-CMT-ID-004",
+      "pipeline_definition_id": "NEX-PIPE-ID",
+      "triggering_branch": "main",
+      "triggering_pr_id": null,
+      "trigger_type": "RELEASE_WORKFLOW",
+      "started_at": "2026-10-10T09:00:00Z",
+      "completed_at": "2026-10-10T09:45:00Z",
+      "execution_status": "SUCCESS",
+      "failure_category": null,
+      "relevant_service_ids": [
+        "NEX-SVC-POLICY_SERVICE"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "Temurin 21.0.8 / Gradle 8.14",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": "NEX-ART-POLICY_SERVICE-CURRENT",
+      "ci_output_reference": "ci://NEX-BLD-ID-004/image-layer-archive",
+      "validation_summary": "Static analysis, selected tests and artifact digest checks passed.",
+      "duration_seconds": 2700,
+      "source_manifest_paths": [
+        "settings.gradle.kts",
+        "build.gradle.kts",
+        "gradle/libs.versions.toml"
+      ]
+    },
+    {
+      "id": "NEX-BLD-ID-005",
+      "source_id": "NEX-SRC-ID-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-ID",
+      "owner_project_id": "NEX-PRJ-ID",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-28T11:00:00Z",
+      "revised_at": "2026-10-28T11:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-ID",
+      "commit_id": "NEX-CMT-ID-008",
+      "pipeline_definition_id": "NEX-PIPE-ID",
+      "triggering_branch": "feature/id-change-review",
+      "triggering_pr_id": "NEX-PR-ID-003",
+      "trigger_type": "PULL_REQUEST",
+      "started_at": "2026-10-28T11:00:00Z",
+      "completed_at": "2026-10-28T11:45:00Z",
+      "execution_status": "FAILED_COMPATIBILITY",
+      "failure_category": "CONTRACT_COMPATIBILITY",
+      "relevant_service_ids": [
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-TOKEN_VALIDATOR"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "Temurin 21.0.8 / Gradle 8.14",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": null,
+      "ci_output_reference": null,
+      "validation_summary": "Job failed before artifact promotion; consult test runs and failure_category.",
+      "duration_seconds": 710,
+      "source_manifest_paths": [
+        "settings.gradle.kts",
+        "build.gradle.kts",
+        "gradle/libs.versions.toml"
+      ]
+    },
+    {
+      "id": "NEX-BLD-DATA-001",
+      "source_id": "NEX-SRC-DATA-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-DATA",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-03T09:00:00Z",
+      "revised_at": "2026-10-03T09:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-DATA",
+      "commit_id": "NEX-CMT-DATA-004",
+      "pipeline_definition_id": "NEX-PIPE-DATA",
+      "triggering_branch": "main",
+      "triggering_pr_id": null,
+      "trigger_type": "RELEASE_WORKFLOW",
+      "started_at": "2026-10-03T09:00:00Z",
+      "completed_at": "2026-10-03T09:45:00Z",
+      "execution_status": "SUCCESS",
+      "failure_category": null,
+      "relevant_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "CPython 3.12.11 / uv 0.8.12",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": "NEX-ART-EVENT_INGESTOR-CURRENT",
+      "ci_output_reference": "ci://NEX-BLD-DATA-001/image-layer-archive",
+      "validation_summary": "Static analysis, selected tests and artifact digest checks passed.",
+      "duration_seconds": 2700,
+      "source_manifest_paths": [
+        "pyproject.toml",
+        "uv.lock"
+      ]
+    },
+    {
+      "id": "NEX-BLD-DATA-002",
+      "source_id": "NEX-SRC-DATA-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-DATA",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-15T09:00:00Z",
+      "revised_at": "2026-10-15T09:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-DATA",
+      "commit_id": "NEX-CMT-DATA-005",
+      "pipeline_definition_id": "NEX-PIPE-DATA",
+      "triggering_branch": "main",
+      "triggering_pr_id": "NEX-PR-DATA-002",
+      "trigger_type": "PULL_REQUEST",
+      "started_at": "2026-10-15T09:00:00Z",
+      "completed_at": "2026-10-15T09:45:00Z",
+      "execution_status": "SUCCESS",
+      "failure_category": null,
+      "relevant_service_ids": [
+        "NEX-SVC-METRICS_PIPELINE"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "CPython 3.12.11 / uv 0.8.12",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": "NEX-ART-METRICS_PIPELINE-CURRENT",
+      "ci_output_reference": "ci://NEX-BLD-DATA-002/image-layer-archive",
+      "validation_summary": "Static analysis, selected tests and artifact digest checks passed.",
+      "duration_seconds": 2700,
+      "source_manifest_paths": [
+        "pyproject.toml",
+        "uv.lock"
+      ]
+    },
+    {
+      "id": "NEX-BLD-DATA-003",
+      "source_id": "NEX-SRC-DATA-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-DATA",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-09-27T09:00:00Z",
+      "revised_at": "2026-09-27T09:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-DATA",
+      "commit_id": "NEX-CMT-DATA-003",
+      "pipeline_definition_id": "NEX-PIPE-DATA",
+      "triggering_branch": "main",
+      "triggering_pr_id": "NEX-PR-DATA-001",
+      "trigger_type": "PULL_REQUEST",
+      "started_at": "2026-09-27T09:00:00Z",
+      "completed_at": "2026-09-27T09:45:00Z",
+      "execution_status": "SUCCESS",
+      "failure_category": null,
+      "relevant_service_ids": [
+        "NEX-SVC-REPORTING_API"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "CPython 3.12.11 / uv 0.8.12",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": "NEX-ART-REPORTING_API-CURRENT",
+      "ci_output_reference": "ci://NEX-BLD-DATA-003/image-layer-archive",
+      "validation_summary": "Static analysis, selected tests and artifact digest checks passed.",
+      "duration_seconds": 2700,
+      "source_manifest_paths": [
+        "pyproject.toml",
+        "uv.lock"
+      ]
+    },
+    {
+      "id": "NEX-BLD-DATA-004",
+      "source_id": "NEX-SRC-DATA-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-DATA",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-28T11:00:00Z",
+      "revised_at": "2026-10-28T11:45:00Z",
+      "status": "CANCELLED",
+      "repository_id": "NEX-REPO-DATA",
+      "commit_id": "NEX-CMT-DATA-008",
+      "pipeline_definition_id": "NEX-PIPE-DATA",
+      "triggering_branch": "feature/data-change-review",
+      "triggering_pr_id": "NEX-PR-DATA-003",
+      "trigger_type": "PULL_REQUEST",
+      "started_at": "2026-10-28T11:00:00Z",
+      "completed_at": "2026-10-28T11:45:00Z",
+      "execution_status": "CANCELLED",
+      "failure_category": "SUPERSEDED",
+      "relevant_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-METRICS_PIPELINE"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "CPython 3.12.11 / uv 0.8.12",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": null,
+      "ci_output_reference": null,
+      "validation_summary": "Build job was superseded before all checks ran.",
+      "duration_seconds": 710,
+      "source_manifest_paths": [
+        "pyproject.toml",
+        "uv.lock"
+      ]
+    },
+    {
+      "id": "NEX-BLD-PLAT-001",
+      "source_id": "NEX-SRC-PLAT-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-22T09:00:00Z",
+      "revised_at": "2026-10-22T09:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-PLAT",
+      "commit_id": "NEX-CMT-PLAT-004",
+      "pipeline_definition_id": "NEX-PIPE-PLAT",
+      "triggering_branch": "main",
+      "triggering_pr_id": "NEX-PR-PLAT-002",
+      "trigger_type": "PULL_REQUEST",
+      "started_at": "2026-10-22T09:00:00Z",
+      "completed_at": "2026-10-22T09:45:00Z",
+      "execution_status": "SUCCESS",
+      "failure_category": null,
+      "relevant_service_ids": [
+        "NEX-SVC-DEPLOYMENT_PLATFORM"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "Helm 3.18.5 / kubectl 1.33.3",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": "NEX-ART-DEPLOYMENT_PLATFORM-CURRENT",
+      "ci_output_reference": "ci://NEX-BLD-PLAT-001/image-layer-archive",
+      "validation_summary": "Static analysis, selected tests and artifact digest checks passed.",
+      "duration_seconds": 2700,
+      "source_manifest_paths": [
+        "charts/Chart.yaml",
+        "charts/values.yaml",
+        ".github/workflows/validate.yaml"
+      ]
+    },
+    {
+      "id": "NEX-BLD-PLAT-002",
+      "source_id": "NEX-SRC-PLAT-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-19T09:00:00Z",
+      "revised_at": "2026-10-19T09:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-PLAT",
+      "commit_id": "NEX-CMT-PLAT-003",
+      "pipeline_definition_id": "NEX-PIPE-PLAT",
+      "triggering_branch": "main",
+      "triggering_pr_id": "NEX-PR-PLAT-001",
+      "trigger_type": "PULL_REQUEST",
+      "started_at": "2026-10-19T09:00:00Z",
+      "completed_at": "2026-10-19T09:45:00Z",
+      "execution_status": "SUCCESS",
+      "failure_category": null,
+      "relevant_service_ids": [
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "Helm 3.18.5 / kubectl 1.33.3",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": "NEX-ART-OBSERVABILITY_PLATFORM-CURRENT",
+      "ci_output_reference": "ci://NEX-BLD-PLAT-002/image-layer-archive",
+      "validation_summary": "Static analysis, selected tests and artifact digest checks passed.",
+      "duration_seconds": 2700,
+      "source_manifest_paths": [
+        "charts/Chart.yaml",
+        "charts/values.yaml",
+        ".github/workflows/validate.yaml"
+      ]
+    },
+    {
+      "id": "NEX-BLD-PLAT-003",
+      "source_id": "NEX-SRC-PLAT-CI",
+      "source_record_type": "CI",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-28T11:00:00Z",
+      "revised_at": "2026-10-28T11:45:00Z",
+      "status": "COMPLETED",
+      "repository_id": "NEX-REPO-PLAT",
+      "commit_id": "NEX-CMT-PLAT-008",
+      "pipeline_definition_id": "NEX-PIPE-PLAT",
+      "triggering_branch": "feature/plat-change-review",
+      "triggering_pr_id": "NEX-PR-PLAT-003",
+      "trigger_type": "PULL_REQUEST",
+      "started_at": "2026-10-28T11:00:00Z",
+      "completed_at": "2026-10-28T11:45:00Z",
+      "execution_status": "SUCCESS",
+      "failure_category": null,
+      "relevant_service_ids": [
+        "NEX-SVC-DEPLOYMENT_PLATFORM",
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "runtime_build_versions": {
+        "build_runner": "ubuntu-24.04",
+        "toolchain": "Helm 3.18.5 / kubectl 1.33.3",
+        "docker_buildx": "0.25.0"
+      },
+      "build_artifact_id": null,
+      "ci_output_reference": "ci://NEX-BLD-PLAT-003/image-layer-archive",
+      "validation_summary": "Static analysis, selected tests and artifact digest checks passed.",
+      "duration_seconds": 2700,
+      "source_manifest_paths": [
+        "charts/Chart.yaml",
+        "charts/values.yaml",
+        ".github/workflows/validate.yaml"
+      ]
+    }
+  ]
+}

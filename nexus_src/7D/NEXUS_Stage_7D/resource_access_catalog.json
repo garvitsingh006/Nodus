@@ -1,0 +1,1177 @@
+{
+  "dataset_version": "7D-1.0.0",
+  "resource_access_catalog": [
+    {
+      "id": "NEX-RPOL-001",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "resource_source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "owner_project_id": null,
+      "resource_owner_team_ids": [
+        "NEX-TEAM-ID"
+      ],
+      "resource_scope": "COMPANY",
+      "resource_access_classification": "COMPANY_SHARED",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER",
+        "NEX-ROLE-INTERN"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-002",
+        "NEX-ENT-006"
+      ],
+      "requires_explicit_grant": false,
+      "requires_admin_approval_for_grant": false,
+      "supports_narrower_disclosure": false,
+      "default_decision": "ALLOW_WITH_BASELINE_ENTITLEMENT",
+      "applicable_restrictions": [
+        "Shared read access does not imply access to linked restricted engineering sources."
+      ],
+      "resource_active_from": "2026-08-10T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-002",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-SERVICE_CATALOG",
+      "resource_source_id": "NEX-SRC-SERVICE_CATALOG",
+      "owner_project_id": null,
+      "resource_owner_team_ids": [
+        "NEX-TEAM-ID"
+      ],
+      "resource_scope": "COMPANY",
+      "resource_access_classification": "COMPANY_SHARED",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER",
+        "NEX-ROLE-INTERN"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-002",
+        "NEX-ENT-006"
+      ],
+      "requires_explicit_grant": false,
+      "requires_admin_approval_for_grant": false,
+      "supports_narrower_disclosure": false,
+      "default_decision": "ALLOW_WITH_BASELINE_ENTITLEMENT",
+      "applicable_restrictions": [
+        "Shared read access does not imply access to linked restricted engineering sources."
+      ],
+      "resource_active_from": "2026-08-10T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-003",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "resource_source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "owner_project_id": null,
+      "resource_owner_team_ids": [
+        "NEX-TEAM-ID"
+      ],
+      "resource_scope": "COMPANY",
+      "resource_access_classification": "COMPANY_SHARED",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER",
+        "NEX-ROLE-INTERN"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-002",
+        "NEX-ENT-006"
+      ],
+      "requires_explicit_grant": false,
+      "requires_admin_approval_for_grant": false,
+      "supports_narrower_disclosure": false,
+      "default_decision": "ALLOW_WITH_BASELINE_ENTITLEMENT",
+      "applicable_restrictions": [
+        "Shared read access does not imply access to linked restricted engineering sources."
+      ],
+      "resource_active_from": "2026-08-10T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-004",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-ARCHITECTURE_DECISIONS",
+      "resource_source_id": "NEX-SRC-ARCHITECTURE_DECISIONS",
+      "owner_project_id": null,
+      "resource_owner_team_ids": [
+        "NEX-TEAM-PLAT"
+      ],
+      "resource_scope": "COMPANY",
+      "resource_access_classification": "COMPANY_SHARED",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER",
+        "NEX-ROLE-INTERN"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-002",
+        "NEX-ENT-006"
+      ],
+      "requires_explicit_grant": false,
+      "requires_admin_approval_for_grant": false,
+      "supports_narrower_disclosure": false,
+      "default_decision": "ALLOW_WITH_BASELINE_ENTITLEMENT",
+      "applicable_restrictions": [
+        "Shared read access does not imply access to linked restricted engineering sources."
+      ],
+      "resource_active_from": "2026-08-10T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-005",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-PAY-REPO",
+      "resource_source_id": "NEX-SRC-PAY-REPO",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "resource_owner_team_ids": [
+        "NEX-TEAM-PAY"
+      ],
+      "resource_scope": "ASSIGNED_PROJECT",
+      "resource_access_classification": "PROJECT_DEVELOPER",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-003"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Developer must have an active assigned-project membership and explicit source grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-006",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-PAY-ISSUES",
+      "resource_source_id": "NEX-SRC-PAY-ISSUES",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "resource_owner_team_ids": [
+        "NEX-TEAM-PAY"
+      ],
+      "resource_scope": "ASSIGNED_PROJECT",
+      "resource_access_classification": "PROJECT_DEVELOPER",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-003"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Developer must have an active assigned-project membership and explicit source grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-007",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-PAY-CI",
+      "resource_source_id": "NEX-SRC-PAY-CI",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "resource_owner_team_ids": [
+        "NEX-TEAM-PAY"
+      ],
+      "resource_scope": "ASSIGNED_PROJECT",
+      "resource_access_classification": "PROJECT_DEVELOPER",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-003"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Developer must have an active assigned-project membership and explicit source grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-008",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-PAY-DISCUSS",
+      "resource_source_id": "NEX-SRC-PAY-DISCUSS",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "resource_owner_team_ids": [
+        "NEX-TEAM-PAY"
+      ],
+      "resource_scope": "ASSIGNED_PROJECT",
+      "resource_access_classification": "PROJECT_DEVELOPER",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-003"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Developer must have an active assigned-project membership and explicit source grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-009",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-COM-REPO",
+      "resource_source_id": "NEX-SRC-COM-REPO",
+      "owner_project_id": "NEX-PRJ-COM",
+      "resource_owner_team_ids": [
+        "NEX-TEAM-COM"
+      ],
+      "resource_scope": "ASSIGNED_PROJECT",
+      "resource_access_classification": "PROJECT_DEVELOPER",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-003"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Developer must have an active assigned-project membership and explicit source grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-010",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-COM-ISSUES",
+      "resource_source_id": "NEX-SRC-COM-ISSUES",
+      "owner_project_id": "NEX-PRJ-COM",
+      "resource_owner_team_ids": [
+        "NEX-TEAM-COM"
+      ],
+      "resource_scope": "ASSIGNED_PROJECT",
+      "resource_access_classification": "PROJECT_DEVELOPER",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-003"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Developer must have an active assigned-project membership and explicit source grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-011",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-COM-CI",
+      "resource_source_id": "NEX-SRC-COM-CI",
+      "owner_project_id": "NEX-PRJ-COM",
+      "resource_owner_team_ids": [
+        "NEX-TEAM-COM"
+      ],
+      "resource_scope": "ASSIGNED_PROJECT",
+      "resource_access_classification": "PROJECT_DEVELOPER",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-003"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Developer must have an active assigned-project membership and explicit source grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-012",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-COM-DISCUSS",
+      "resource_source_id": "NEX-SRC-COM-DISCUSS",
+      "owner_project_id": "NEX-PRJ-COM",
+      "resource_owner_team_ids": [
+        "NEX-TEAM-COM"
+      ],
+      "resource_scope": "ASSIGNED_PROJECT",
+      "resource_access_classification": "PROJECT_DEVELOPER",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-003"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Developer must have an active assigned-project membership and explicit source grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-013",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-ID-REPO",
+      "resource_source_id": "NEX-SRC-ID-REPO",
+      "owner_project_id": "NEX-PRJ-ID",
+      "resource_owner_team_ids": [
+        "NEX-TEAM-ID"
+      ],
+      "resource_scope": "ASSIGNED_PROJECT",
+      "resource_access_classification": "PROJECT_DEVELOPER",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-003"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Developer must have an active assigned-project membership and explicit source grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-014",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-ID-ISSUES",
+      "resource_source_id": "NEX-SRC-ID-ISSUES",
+      "owner_project_id": "NEX-PRJ-ID",
+      "resource_owner_team_ids": [
+        "NEX-TEAM-ID"
+      ],
+      "resource_scope": "ASSIGNED_PROJECT",
+      "resource_access_classification": "PROJECT_DEVELOPER",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-003"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Developer must have an active assigned-project membership and explicit source grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-015",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-ID-CI",
+      "resource_source_id": "NEX-SRC-ID-CI",
+      "owner_project_id": "NEX-PRJ-ID",
+      "resource_owner_team_ids": [
+        "NEX-TEAM-ID"
+      ],
+      "resource_scope": "ASSIGNED_PROJECT",
+      "resource_access_classification": "PROJECT_DEVELOPER",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-003"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Developer must have an active assigned-project membership and explicit source grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-016",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-ID-DISCUSS",
+      "resource_source_id": "NEX-SRC-ID-DISCUSS",
+      "owner_project_id": "NEX-PRJ-ID",
+      "resource_owner_team_ids": [
+        "NEX-TEAM-ID"
+      ],
+      "resource_scope": "ASSIGNED_PROJECT",
+      "resource_access_classification": "PROJECT_DEVELOPER",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-003"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Developer must have an active assigned-project membership and explicit source grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-017",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-DATA-REPO",
+      "resource_source_id": "NEX-SRC-DATA-REPO",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "resource_owner_team_ids": [
+        "NEX-TEAM-DATA"
+      ],
+      "resource_scope": "ASSIGNED_PROJECT",
+      "resource_access_classification": "PROJECT_DEVELOPER",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-003"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Developer must have an active assigned-project membership and explicit source grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-018",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-DATA-ISSUES",
+      "resource_source_id": "NEX-SRC-DATA-ISSUES",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "resource_owner_team_ids": [
+        "NEX-TEAM-DATA"
+      ],
+      "resource_scope": "ASSIGNED_PROJECT",
+      "resource_access_classification": "PROJECT_DEVELOPER",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-003"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Developer must have an active assigned-project membership and explicit source grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-019",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-DATA-CI",
+      "resource_source_id": "NEX-SRC-DATA-CI",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "resource_owner_team_ids": [
+        "NEX-TEAM-DATA"
+      ],
+      "resource_scope": "ASSIGNED_PROJECT",
+      "resource_access_classification": "PROJECT_DEVELOPER",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-003"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Developer must have an active assigned-project membership and explicit source grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-020",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-DATA-DISCUSS",
+      "resource_source_id": "NEX-SRC-DATA-DISCUSS",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "resource_owner_team_ids": [
+        "NEX-TEAM-DATA"
+      ],
+      "resource_scope": "ASSIGNED_PROJECT",
+      "resource_access_classification": "PROJECT_DEVELOPER",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-003"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Developer must have an active assigned-project membership and explicit source grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-021",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-PLAT-REPO",
+      "resource_source_id": "NEX-SRC-PLAT-REPO",
+      "owner_project_id": null,
+      "resource_owner_team_ids": [
+        "NEX-TEAM-PLAT"
+      ],
+      "resource_scope": "SPECIFIC_RESOURCE",
+      "resource_access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-004"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Cross-project Platform Operations source requires admin-approved resource-specific grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-022",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-PLAT-ISSUES",
+      "resource_source_id": "NEX-SRC-PLAT-ISSUES",
+      "owner_project_id": null,
+      "resource_owner_team_ids": [
+        "NEX-TEAM-PLAT"
+      ],
+      "resource_scope": "SPECIFIC_RESOURCE",
+      "resource_access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-004"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Cross-project Platform Operations source requires admin-approved resource-specific grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-023",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-PLAT-CI",
+      "resource_source_id": "NEX-SRC-PLAT-CI",
+      "owner_project_id": null,
+      "resource_owner_team_ids": [
+        "NEX-TEAM-PLAT"
+      ],
+      "resource_scope": "SPECIFIC_RESOURCE",
+      "resource_access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-004"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Cross-project Platform Operations source requires admin-approved resource-specific grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-024",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-PLAT-DISCUSS",
+      "resource_source_id": "NEX-SRC-PLAT-DISCUSS",
+      "owner_project_id": null,
+      "resource_owner_team_ids": [
+        "NEX-TEAM-PLAT"
+      ],
+      "resource_scope": "SPECIFIC_RESOURCE",
+      "resource_access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-004"
+      ],
+      "requires_explicit_grant": true,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_WITHOUT_EXPLICIT_GRANT",
+      "applicable_restrictions": [
+        "Cross-project Platform Operations source requires admin-approved resource-specific grant.",
+        "Interns are not eligible for direct developer-source access."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-025",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "resource_source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "owner_project_id": null,
+      "resource_owner_team_ids": [
+        "NEX-TEAM-PLAT"
+      ],
+      "resource_scope": "SPECIFIC_RESOURCE",
+      "resource_access_classification": "ADMINISTRATIVE_RECORDS",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001"
+      ],
+      "requires_explicit_grant": false,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_UNLESS_ADMIN",
+      "applicable_restrictions": [
+        "Only ADMIN reads raw records; an approved field-limited disclosure is not a source grant.",
+        "No developer or intern access to full administrative source."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-026",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-PRIVILEGED_CHANGES",
+      "resource_source_id": "NEX-SRC-PRIVILEGED_CHANGES",
+      "owner_project_id": null,
+      "resource_owner_team_ids": [
+        "NEX-TEAM-PLAT"
+      ],
+      "resource_scope": "SPECIFIC_RESOURCE",
+      "resource_access_classification": "ADMINISTRATIVE_RECORDS",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001"
+      ],
+      "requires_explicit_grant": false,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_UNLESS_ADMIN",
+      "applicable_restrictions": [
+        "Only ADMIN reads raw records; an approved field-limited disclosure is not a source grant.",
+        "No developer or intern access to full administrative source."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-027",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-VENDOR_GOVERNANCE",
+      "resource_source_id": "NEX-SRC-VENDOR_GOVERNANCE",
+      "owner_project_id": null,
+      "resource_owner_team_ids": [
+        "NEX-TEAM-PLAT"
+      ],
+      "resource_scope": "SPECIFIC_RESOURCE",
+      "resource_access_classification": "ADMINISTRATIVE_RECORDS",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001"
+      ],
+      "requires_explicit_grant": false,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_UNLESS_ADMIN",
+      "applicable_restrictions": [
+        "Only ADMIN reads raw records; an approved field-limited disclosure is not a source grant.",
+        "No developer or intern access to full administrative source."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-RPOL-028",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "resource_id": "NEX-SRC-SECURITY_GOVERNANCE",
+      "resource_source_id": "NEX-SRC-SECURITY_GOVERNANCE",
+      "owner_project_id": null,
+      "resource_owner_team_ids": [
+        "NEX-TEAM-PLAT"
+      ],
+      "resource_scope": "SPECIFIC_RESOURCE",
+      "resource_access_classification": "ADMINISTRATIVE_RECORDS",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN"
+      ],
+      "required_entitlement_ids": [
+        "NEX-ENT-001"
+      ],
+      "requires_explicit_grant": false,
+      "requires_admin_approval_for_grant": true,
+      "supports_narrower_disclosure": true,
+      "default_decision": "DENY_UNLESS_ADMIN",
+      "applicable_restrictions": [
+        "Only ADMIN reads raw records; an approved field-limited disclosure is not a source grant.",
+        "No developer or intern access to full administrative source."
+      ],
+      "resource_active_from": "2026-07-01T09:00:00Z"
+    }
+  ]
+}

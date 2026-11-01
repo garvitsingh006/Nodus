@@ -1,0 +1,523 @@
+{
+  "services": [
+    {
+      "id": "NEX-SVC-PAYMENT_API",
+      "name": "payment-api",
+      "description": "Merchant-facing payment-intent creation, status retrieval, and idempotent transaction handling.",
+      "business_responsibility": "Receive and track merchant payments",
+      "owning_project_id": "NEX-PRJ-PAY",
+      "owning_team_id": "NEX-TEAM-PAY",
+      "primary_engineering_owner_id": "NEX-EMP-002",
+      "secondary_engineering_owner_id": "NEX-EMP-003",
+      "technology_runtime": "Go 1.24 / PostgreSQL 16",
+      "lifecycle_status": "ACTIVE",
+      "first_released_at": "2019-07-15T09:00:00Z",
+      "initial_version": "1.0.0",
+      "current_version": "4.12.1",
+      "current_version_released_at": "2026-10-14T09:00:00Z",
+      "deployment_environment_classifications": [
+        "DEVELOPMENT",
+        "STAGING",
+        "PRODUCTION"
+      ],
+      "interfaces": [
+        {
+          "name": "merchant-payments-v1",
+          "kind": "INBOUND_REST",
+          "protocol": "HTTPS/JSON"
+        },
+        {
+          "name": "payment-lifecycle-events-v2",
+          "kind": "OUTBOUND_EVENTS",
+          "protocol": "NATS"
+        }
+      ],
+      "integration_responsibilities": [
+        "Routes gateway operations through gateway-router",
+        "Publishes payment lifecycle events for analytics"
+      ]
+    },
+    {
+      "id": "NEX-SVC-GATEWAY_ROUTER",
+      "name": "gateway-router",
+      "description": "Internal adapter service selecting contracted gateways and normalizing gateway responses.",
+      "business_responsibility": "Route payment and refund requests to configured providers",
+      "owning_project_id": "NEX-PRJ-PAY",
+      "owning_team_id": "NEX-TEAM-PAY",
+      "primary_engineering_owner_id": "NEX-EMP-002",
+      "secondary_engineering_owner_id": "NEX-EMP-003",
+      "technology_runtime": "Go 1.24 / gRPC",
+      "lifecycle_status": "ACTIVE",
+      "first_released_at": "2020-02-03T09:00:00Z",
+      "initial_version": "1.0.0",
+      "current_version": "3.9.0",
+      "current_version_released_at": "2026-09-22T09:00:00Z",
+      "deployment_environment_classifications": [
+        "DEVELOPMENT",
+        "STAGING",
+        "PRODUCTION"
+      ],
+      "interfaces": [
+        {
+          "name": "gateway-routing-v2",
+          "kind": "INBOUND_GRPC",
+          "protocol": "gRPC"
+        },
+        {
+          "name": "provider-adapters",
+          "kind": "OUTBOUND_EXTERNAL_API",
+          "protocol": "HTTPS/JSON"
+        }
+      ],
+      "integration_responsibilities": [
+        "Selects a configured provider according to routing policy",
+        "Normalizes provider response codes"
+      ]
+    },
+    {
+      "id": "NEX-SVC-REFUND_WORKER",
+      "name": "refund-worker",
+      "description": "Asynchronous refund executor consuming approved refund work and tracking provider results.",
+      "business_responsibility": "Process merchant refunds with retry safeguards",
+      "owning_project_id": "NEX-PRJ-PAY",
+      "owning_team_id": "NEX-TEAM-PAY",
+      "primary_engineering_owner_id": "NEX-EMP-003",
+      "secondary_engineering_owner_id": "NEX-EMP-002",
+      "technology_runtime": "Go 1.24 / NATS / PostgreSQL",
+      "lifecycle_status": "ACTIVE",
+      "first_released_at": "2020-08-10T09:00:00Z",
+      "initial_version": "1.0.0",
+      "current_version": "2.8.3",
+      "current_version_released_at": "2026-10-08T09:00:00Z",
+      "deployment_environment_classifications": [
+        "DEVELOPMENT",
+        "STAGING",
+        "PRODUCTION"
+      ],
+      "interfaces": [
+        {
+          "name": "refund-requests-v1",
+          "kind": "INBOUND_EVENTS",
+          "protocol": "NATS"
+        },
+        {
+          "name": "refund-outcomes-v1",
+          "kind": "OUTBOUND_EVENTS",
+          "protocol": "NATS"
+        }
+      ],
+      "integration_responsibilities": [
+        "Consumes refund jobs published by payment-api",
+        "Requests refunds through gateway-router"
+      ]
+    },
+    {
+      "id": "NEX-SVC-CHECKOUT_SERVICE",
+      "name": "checkout-service",
+      "description": "Checkout session coordinator connecting cart totals, payments, and order creation.",
+      "business_responsibility": "Create and confirm online checkout sessions",
+      "owning_project_id": "NEX-PRJ-COM",
+      "owning_team_id": "NEX-TEAM-COM",
+      "primary_engineering_owner_id": "NEX-EMP-004",
+      "secondary_engineering_owner_id": "NEX-EMP-005",
+      "technology_runtime": "PHP 8.3 / Redis 7 / REST",
+      "lifecycle_status": "ACTIVE",
+      "first_released_at": "2020-11-02T09:00:00Z",
+      "initial_version": "1.0.0",
+      "current_version": "5.6.1",
+      "current_version_released_at": "2026-10-22T09:00:00Z",
+      "deployment_environment_classifications": [
+        "DEVELOPMENT",
+        "STAGING",
+        "PRODUCTION"
+      ],
+      "interfaces": [
+        {
+          "name": "checkout-v2",
+          "kind": "INBOUND_REST",
+          "protocol": "HTTPS/JSON"
+        },
+        {
+          "name": "checkout-session-cache",
+          "kind": "STATE_STORE",
+          "protocol": "Redis"
+        }
+      ],
+      "integration_responsibilities": [
+        "Creates payment intents with payment-api",
+        "Creates confirmed orders through order-api"
+      ]
+    },
+    {
+      "id": "NEX-SVC-ORDER_API",
+      "name": "order-api",
+      "description": "Commerce order lifecycle API and source of truth for merchant order records.",
+      "business_responsibility": "Create, update, and query customer orders",
+      "owning_project_id": "NEX-PRJ-COM",
+      "owning_team_id": "NEX-TEAM-COM",
+      "primary_engineering_owner_id": "NEX-EMP-004",
+      "secondary_engineering_owner_id": "NEX-EMP-005",
+      "technology_runtime": "PHP 8.3 / MySQL 8 / RabbitMQ",
+      "lifecycle_status": "ACTIVE",
+      "first_released_at": "2021-02-15T09:00:00Z",
+      "initial_version": "1.0.0",
+      "current_version": "4.3.0",
+      "current_version_released_at": "2026-10-19T09:00:00Z",
+      "deployment_environment_classifications": [
+        "DEVELOPMENT",
+        "STAGING",
+        "PRODUCTION"
+      ],
+      "interfaces": [
+        {
+          "name": "orders-v2",
+          "kind": "INBOUND_REST",
+          "protocol": "HTTPS/JSON"
+        },
+        {
+          "name": "order-events-v1",
+          "kind": "OUTBOUND_EVENTS",
+          "protocol": "RabbitMQ"
+        }
+      ],
+      "integration_responsibilities": [
+        "Persists order state in MySQL",
+        "Emits order events for notifications and reporting"
+      ]
+    },
+    {
+      "id": "NEX-SVC-WEBHOOK_CONSUMER",
+      "name": "webhook-consumer",
+      "description": "Consumes internal commerce notification jobs and delivers signed merchant webhooks.",
+      "business_responsibility": "Notify merchant integrations of order changes",
+      "owning_project_id": "NEX-PRJ-COM",
+      "owning_team_id": "NEX-TEAM-COM",
+      "primary_engineering_owner_id": "NEX-EMP-005",
+      "secondary_engineering_owner_id": "NEX-EMP-004",
+      "technology_runtime": "PHP 8.3 / RabbitMQ / Redis",
+      "lifecycle_status": "ACTIVE",
+      "first_released_at": "2021-08-09T09:00:00Z",
+      "initial_version": "1.0.0",
+      "current_version": "3.4.2",
+      "current_version_released_at": "2026-09-30T09:00:00Z",
+      "deployment_environment_classifications": [
+        "DEVELOPMENT",
+        "STAGING",
+        "PRODUCTION"
+      ],
+      "interfaces": [
+        {
+          "name": "commerce-notification-jobs",
+          "kind": "INBOUND_EVENTS",
+          "protocol": "RabbitMQ"
+        },
+        {
+          "name": "merchant-webhooks-v1",
+          "kind": "OUTBOUND_WEBHOOK",
+          "protocol": "HTTPS/JSON"
+        }
+      ],
+      "integration_responsibilities": [
+        "Consumes internal order notification jobs",
+        "Signs outbound callbacks and tracks delivery attempts"
+      ]
+    },
+    {
+      "id": "NEX-SVC-IDENTITY_API",
+      "name": "identity-api",
+      "description": "Central identity issuer and service principal directory with public key discovery.",
+      "business_responsibility": "Authenticate clients and manage service identities",
+      "owning_project_id": "NEX-PRJ-ID",
+      "owning_team_id": "NEX-TEAM-ID",
+      "primary_engineering_owner_id": "NEX-EMP-006",
+      "secondary_engineering_owner_id": "NEX-EMP-007",
+      "technology_runtime": "Java 21 / Spring Boot / PostgreSQL 16",
+      "lifecycle_status": "ACTIVE",
+      "first_released_at": "2020-02-17T09:00:00Z",
+      "initial_version": "1.0.0",
+      "current_version": "4.7.0",
+      "current_version_released_at": "2026-10-13T09:00:00Z",
+      "deployment_environment_classifications": [
+        "DEVELOPMENT",
+        "STAGING",
+        "PRODUCTION"
+      ],
+      "interfaces": [
+        {
+          "name": "identity-v2",
+          "kind": "INBOUND_REST",
+          "protocol": "HTTPS/JSON"
+        },
+        {
+          "name": "public-jwks",
+          "kind": "OUTBOUND_PUBLIC_KEYS",
+          "protocol": "HTTPS/JWKS"
+        }
+      ],
+      "integration_responsibilities": [
+        "Issues signed service tokens",
+        "Exposes rotating public signing keys to validators"
+      ]
+    },
+    {
+      "id": "NEX-SVC-TOKEN_VALIDATOR",
+      "name": "token-validator",
+      "description": "Reusable token verification service used at internal API boundaries.",
+      "business_responsibility": "Verify identity assertions for enterprise APIs",
+      "owning_project_id": "NEX-PRJ-ID",
+      "owning_team_id": "NEX-TEAM-ID",
+      "primary_engineering_owner_id": "NEX-EMP-007",
+      "secondary_engineering_owner_id": "NEX-EMP-006",
+      "technology_runtime": "Java 21 / Spring Boot",
+      "lifecycle_status": "ACTIVE",
+      "first_released_at": "2020-05-18T09:00:00Z",
+      "initial_version": "1.0.0",
+      "current_version": "3.2.4",
+      "current_version_released_at": "2026-10-07T09:00:00Z",
+      "deployment_environment_classifications": [
+        "DEVELOPMENT",
+        "STAGING",
+        "PRODUCTION"
+      ],
+      "interfaces": [
+        {
+          "name": "token-validation-v1",
+          "kind": "INBOUND_REST",
+          "protocol": "HTTPS/JSON"
+        },
+        {
+          "name": "jwks-refresh",
+          "kind": "OUTBOUND_CONFIG_FETCH",
+          "protocol": "HTTPS/JWKS"
+        }
+      ],
+      "integration_responsibilities": [
+        "Validates signatures, audience, and expiry",
+        "Refreshes trusted keysets from identity-api"
+      ]
+    },
+    {
+      "id": "NEX-SVC-POLICY_SERVICE",
+      "name": "policy-service",
+      "description": "Central decision endpoint for application and reporting access policies.",
+      "business_responsibility": "Evaluate whether a service or user may access protected functions",
+      "owning_project_id": "NEX-PRJ-ID",
+      "owning_team_id": "NEX-TEAM-ID",
+      "primary_engineering_owner_id": "NEX-EMP-006",
+      "secondary_engineering_owner_id": "NEX-EMP-007",
+      "technology_runtime": "Java 21 / Spring Boot / PostgreSQL 16",
+      "lifecycle_status": "ACTIVE",
+      "first_released_at": "2021-01-18T09:00:00Z",
+      "initial_version": "1.0.0",
+      "current_version": "2.9.0",
+      "current_version_released_at": "2026-10-11T09:00:00Z",
+      "deployment_environment_classifications": [
+        "DEVELOPMENT",
+        "STAGING",
+        "PRODUCTION"
+      ],
+      "interfaces": [
+        {
+          "name": "authorization-decisions-v1",
+          "kind": "INBOUND_REST",
+          "protocol": "HTTPS/JSON"
+        }
+      ],
+      "integration_responsibilities": [
+        "Evaluates scoped authorization policies",
+        "Publishes versioned policy-decision contracts"
+      ]
+    },
+    {
+      "id": "NEX-SVC-EVENT_INGESTOR",
+      "name": "event-ingestor",
+      "description": "Validated ingestion of commercial and payment event feeds into governed analytics storage.",
+      "business_responsibility": "Accept operational event feeds for downstream analytics",
+      "owning_project_id": "NEX-PRJ-DATA",
+      "owning_team_id": "NEX-TEAM-DATA",
+      "primary_engineering_owner_id": "NEX-EMP-008",
+      "secondary_engineering_owner_id": "NEX-EMP-009",
+      "technology_runtime": "Python 3.12 / NATS / PostgreSQL 16",
+      "lifecycle_status": "ACTIVE",
+      "first_released_at": "2021-08-16T09:00:00Z",
+      "initial_version": "1.0.0",
+      "current_version": "3.8.1",
+      "current_version_released_at": "2026-10-04T09:00:00Z",
+      "deployment_environment_classifications": [
+        "DEVELOPMENT",
+        "STAGING",
+        "PRODUCTION"
+      ],
+      "interfaces": [
+        {
+          "name": "payment-events-v2",
+          "kind": "INBOUND_EVENTS",
+          "protocol": "NATS"
+        },
+        {
+          "name": "order-events-v1",
+          "kind": "INBOUND_EVENTS",
+          "protocol": "RabbitMQ"
+        },
+        {
+          "name": "staged-events-v1",
+          "kind": "OUTBOUND_DATASET",
+          "protocol": "PostgreSQL"
+        }
+      ],
+      "integration_responsibilities": [
+        "Consumes payment-api events",
+        "Consumes order-api events",
+        "Validates schema versions before staging"
+      ]
+    },
+    {
+      "id": "NEX-SVC-METRICS_PIPELINE",
+      "name": "metrics-pipeline",
+      "description": "Incremental SQL and Python transformations producing governed metrics tables.",
+      "business_responsibility": "Maintain consistent financial and commerce KPIs",
+      "owning_project_id": "NEX-PRJ-DATA",
+      "owning_team_id": "NEX-TEAM-DATA",
+      "primary_engineering_owner_id": "NEX-EMP-009",
+      "secondary_engineering_owner_id": "NEX-EMP-008",
+      "technology_runtime": "Python 3.12 / SQL / PostgreSQL 16",
+      "lifecycle_status": "ACTIVE",
+      "first_released_at": "2022-01-17T09:00:00Z",
+      "initial_version": "1.0.0",
+      "current_version": "3.5.0",
+      "current_version_released_at": "2026-10-16T09:00:00Z",
+      "deployment_environment_classifications": [
+        "DEVELOPMENT",
+        "STAGING",
+        "PRODUCTION"
+      ],
+      "interfaces": [
+        {
+          "name": "staged-events-v1",
+          "kind": "INBOUND_DATASET",
+          "protocol": "PostgreSQL"
+        },
+        {
+          "name": "metrics-model-v3",
+          "kind": "OUTBOUND_DATASET",
+          "protocol": "PostgreSQL"
+        }
+      ],
+      "integration_responsibilities": [
+        "Consumes staged ingestion tables",
+        "Builds versioned metrics datasets with quality checks"
+      ]
+    },
+    {
+      "id": "NEX-SVC-REPORTING_API",
+      "name": "reporting-api",
+      "description": "Read-oriented reporting API serving approved aggregates and scheduled summaries.",
+      "business_responsibility": "Expose business reporting and dashboard metrics",
+      "owning_project_id": "NEX-PRJ-DATA",
+      "owning_team_id": "NEX-TEAM-DATA",
+      "primary_engineering_owner_id": "NEX-EMP-009",
+      "secondary_engineering_owner_id": "NEX-EMP-008",
+      "technology_runtime": "Python 3.12 / FastAPI / PostgreSQL 16",
+      "lifecycle_status": "ACTIVE",
+      "first_released_at": "2022-05-16T09:00:00Z",
+      "initial_version": "1.0.0",
+      "current_version": "2.7.2",
+      "current_version_released_at": "2026-09-28T09:00:00Z",
+      "deployment_environment_classifications": [
+        "DEVELOPMENT",
+        "STAGING",
+        "PRODUCTION"
+      ],
+      "interfaces": [
+        {
+          "name": "reports-v2",
+          "kind": "INBOUND_REST",
+          "protocol": "HTTPS/JSON"
+        },
+        {
+          "name": "metrics-model-v3",
+          "kind": "INBOUND_DATASET",
+          "protocol": "PostgreSQL"
+        }
+      ],
+      "integration_responsibilities": [
+        "Reads published metrics models",
+        "Requests scoped report authorization from policy-service"
+      ]
+    },
+    {
+      "id": "NEX-SVC-DEPLOYMENT_PLATFORM",
+      "name": "deployment-platform",
+      "description": "Company-wide delivery control plane for build promotion and environment rollout.",
+      "business_responsibility": "Provide reliable, governed service deployments",
+      "owning_project_id": null,
+      "owning_team_id": "NEX-TEAM-PLAT",
+      "primary_engineering_owner_id": "NEX-EMP-007",
+      "secondary_engineering_owner_id": "NEX-EMP-003",
+      "technology_runtime": "Kubernetes / Argo CD / GitHub Actions",
+      "lifecycle_status": "ACTIVE",
+      "first_released_at": "2019-06-03T09:00:00Z",
+      "initial_version": "1.0.0",
+      "current_version": "4.10.0",
+      "current_version_released_at": "2026-10-23T09:00:00Z",
+      "deployment_environment_classifications": [
+        "DEVELOPMENT",
+        "STAGING",
+        "PRODUCTION"
+      ],
+      "interfaces": [
+        {
+          "name": "deployment-jobs-v1",
+          "kind": "INBOUND_PLATFORM_API",
+          "protocol": "HTTPS/JSON"
+        },
+        {
+          "name": "deployment-status-v1",
+          "kind": "OUTBOUND_EVENTS",
+          "protocol": "Webhook"
+        }
+      ],
+      "integration_responsibilities": [
+        "Publishes environment deployment results",
+        "Manages release promotion workflows across products"
+      ]
+    },
+    {
+      "id": "NEX-SVC-OBSERVABILITY_PLATFORM",
+      "name": "observability-platform",
+      "description": "Shared metrics, traces, alert routing, and service health visualization platform.",
+      "business_responsibility": "Expose reliable operational monitoring across business services",
+      "owning_project_id": null,
+      "owning_team_id": "NEX-TEAM-PLAT",
+      "primary_engineering_owner_id": "NEX-EMP-009",
+      "secondary_engineering_owner_id": "NEX-EMP-007",
+      "technology_runtime": "OpenTelemetry / Prometheus / Grafana",
+      "lifecycle_status": "ACTIVE",
+      "first_released_at": "2020-04-06T09:00:00Z",
+      "initial_version": "1.0.0",
+      "current_version": "4.2.1",
+      "current_version_released_at": "2026-10-20T09:00:00Z",
+      "deployment_environment_classifications": [
+        "DEVELOPMENT",
+        "STAGING",
+        "PRODUCTION"
+      ],
+      "interfaces": [
+        {
+          "name": "telemetry-otlp-v1",
+          "kind": "INBOUND_TELEMETRY",
+          "protocol": "OTLP/gRPC"
+        },
+        {
+          "name": "dashboards-v1",
+          "kind": "INBOUND_UI",
+          "protocol": "HTTPS"
+        }
+      ],
+      "integration_responsibilities": [
+        "Receives service metrics and traces",
+        "Provides owned service-level dashboards and alert routes"
+      ]
+    }
+  ]
+}

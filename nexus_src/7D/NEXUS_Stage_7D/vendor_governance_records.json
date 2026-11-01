@@ -1,0 +1,315 @@
+{
+  "dataset_version": "7D-1.0.0",
+  "vendor_governance_records": [
+    {
+      "id": "NEX-VND-001",
+      "source_id": "NEX-SRC-VENDOR_GOVERNANCE",
+      "source_authority": "ADMIN_VENDOR_REGISTER",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-09-02T09:00:00Z",
+      "revised_at": "2026-09-02T13:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-GATEWAY_ROUTER",
+          "NEX-SVC-PAYMENT_API"
+        ]
+      },
+      "record_content_class": "VENDOR_GOVERNANCE",
+      "vendor_id": "NEX-VND-001",
+      "fictional_vendor_name": "Crescent Payment Connectors",
+      "fictional_vendor": true,
+      "service_category": "PAYMENT_GATEWAY",
+      "related_service_ids": [
+        "NEX-SVC-GATEWAY_ROUTER",
+        "NEX-SVC-PAYMENT_API"
+      ],
+      "contract_reference_id": "NEX-VCON-001",
+      "contract_status": "IN_FORCE",
+      "effective_date": "2025-11-01",
+      "expiration_date": "2027-10-31",
+      "technical_obligations": [
+        "Maintain a bounded gateway authorization API and provide provider outcome categories with unique operation references.",
+        "Escalations must identify service and maintenance window, never disclose production secrets via ticket attachments."
+      ],
+      "support_arrangements": "Critical routing questions: 30-minute initial acknowledgement; reconciliation available during business support hours.",
+      "risk_classification": "MODERATE",
+      "administrative_owner_employee_id": "NEX-EMP-001",
+      "restricted_commercial_metadata": {
+        "currency": "USD",
+        "annual_commit_amount_synthetic": 72000,
+        "billing_basis": "ANNUAL_RETAINED_CAPACITY_AND_SUPPORT",
+        "renewal_review_days_before_expiry": 90,
+        "commercial_terms_are_fictional": true
+      },
+      "decision_status": "REGISTER_VERIFIED",
+      "record_review_approved_at": "2026-09-02T13:00:00Z",
+      "supplier_identity_is_not_upstream_package_maintainer": true
+    },
+    {
+      "id": "NEX-VND-002",
+      "source_id": "NEX-SRC-VENDOR_GOVERNANCE",
+      "source_authority": "ADMIN_VENDOR_REGISTER",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-09-03T09:00:00Z",
+      "revised_at": "2026-09-03T13:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-DEPLOYMENT_PLATFORM",
+          "NEX-SVC-OBSERVABILITY_PLATFORM"
+        ]
+      },
+      "record_content_class": "VENDOR_GOVERNANCE",
+      "vendor_id": "NEX-VND-002",
+      "fictional_vendor_name": "Northlight Infrastructure Cooperative",
+      "fictional_vendor": true,
+      "service_category": "INFRASTRUCTURE_HOSTING",
+      "related_service_ids": [
+        "NEX-SVC-DEPLOYMENT_PLATFORM",
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "contract_reference_id": "NEX-VCON-002",
+      "contract_status": "IN_FORCE",
+      "effective_date": "2025-07-01",
+      "expiration_date": "2027-06-30",
+      "technical_obligations": [
+        "Preserve isolated production namespaces, immutable image retention and named maintenance contacts.",
+        "Escalations must identify service and maintenance window, never disclose production secrets via ticket attachments."
+      ],
+      "support_arrangements": "Infrastructure support: 24x7 escalation for loss of cluster control-plane reachability.",
+      "risk_classification": "MODERATE",
+      "administrative_owner_employee_id": "NEX-EMP-001",
+      "restricted_commercial_metadata": {
+        "currency": "USD",
+        "annual_commit_amount_synthetic": 118000,
+        "billing_basis": "ANNUAL_RETAINED_CAPACITY_AND_SUPPORT",
+        "renewal_review_days_before_expiry": 90,
+        "commercial_terms_are_fictional": true
+      },
+      "decision_status": "REGISTER_VERIFIED",
+      "record_review_approved_at": "2026-09-03T13:00:00Z",
+      "supplier_identity_is_not_upstream_package_maintainer": true
+    },
+    {
+      "id": "NEX-VND-003",
+      "source_id": "NEX-SRC-VENDOR_GOVERNANCE",
+      "source_authority": "ADMIN_VENDOR_REGISTER",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-09-04T09:00:00Z",
+      "revised_at": "2026-09-04T13:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-REFUND_WORKER",
+          "NEX-SVC-ORDER_API",
+          "NEX-SVC-WEBHOOK_CONSUMER",
+          "NEX-SVC-EVENT_INGESTOR"
+        ]
+      },
+      "record_content_class": "VENDOR_GOVERNANCE",
+      "vendor_id": "NEX-VND-003",
+      "fictional_vendor_name": "Harborline Message Transit",
+      "fictional_vendor": true,
+      "service_category": "MANAGED_MESSAGING",
+      "related_service_ids": [
+        "NEX-SVC-REFUND_WORKER",
+        "NEX-SVC-ORDER_API",
+        "NEX-SVC-WEBHOOK_CONSUMER",
+        "NEX-SVC-EVENT_INGESTOR"
+      ],
+      "contract_reference_id": "NEX-VCON-003",
+      "contract_status": "IN_FORCE",
+      "effective_date": "2026-01-01",
+      "expiration_date": "2027-12-31",
+      "technical_obligations": [
+        "Provide NATS and RabbitMQ transport availability, delivery metrics and explicit retention limits; exactly-once delivery is not promised.",
+        "Escalations must identify service and maintenance window, never disclose production secrets via ticket attachments."
+      ],
+      "support_arrangements": "Broker service support: queue backlog triage within 60 minutes under the enterprise plan.",
+      "risk_classification": "MODERATE",
+      "administrative_owner_employee_id": "NEX-EMP-001",
+      "restricted_commercial_metadata": {
+        "currency": "USD",
+        "annual_commit_amount_synthetic": 38000,
+        "billing_basis": "ANNUAL_RETAINED_CAPACITY_AND_SUPPORT",
+        "renewal_review_days_before_expiry": 90,
+        "commercial_terms_are_fictional": true
+      },
+      "decision_status": "REGISTER_VERIFIED",
+      "record_review_approved_at": "2026-09-04T13:00:00Z",
+      "supplier_identity_is_not_upstream_package_maintainer": true
+    },
+    {
+      "id": "NEX-VND-004",
+      "source_id": "NEX-SRC-VENDOR_GOVERNANCE",
+      "source_authority": "ADMIN_VENDOR_REGISTER",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-09-05T09:00:00Z",
+      "revised_at": "2026-09-05T13:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-OBSERVABILITY_PLATFORM",
+          "NEX-SVC-METRICS_PIPELINE"
+        ]
+      },
+      "record_content_class": "VENDOR_GOVERNANCE",
+      "vendor_id": "NEX-VND-004",
+      "fictional_vendor_name": "Clearspan Telemetry Assistance",
+      "fictional_vendor": true,
+      "service_category": "OBSERVABILITY_SUPPORT",
+      "related_service_ids": [
+        "NEX-SVC-OBSERVABILITY_PLATFORM",
+        "NEX-SVC-METRICS_PIPELINE"
+      ],
+      "contract_reference_id": "NEX-VCON-004",
+      "contract_status": "IN_FORCE",
+      "effective_date": "2026-02-01",
+      "expiration_date": "2027-01-31",
+      "technical_obligations": [
+        "Assist OpenTelemetry collector and Prometheus configuration, including high-cardinality label prevention.",
+        "Escalations must identify service and maintenance window, never disclose production secrets via ticket attachments."
+      ],
+      "support_arrangements": "Advisory tickets acknowledged within one business day; escalation requires named platform contact.",
+      "risk_classification": "LOW",
+      "administrative_owner_employee_id": "NEX-EMP-001",
+      "restricted_commercial_metadata": {
+        "currency": "USD",
+        "annual_commit_amount_synthetic": 24000,
+        "billing_basis": "ANNUAL_RETAINED_CAPACITY_AND_SUPPORT",
+        "renewal_review_days_before_expiry": 90,
+        "commercial_terms_are_fictional": true
+      },
+      "decision_status": "REGISTER_VERIFIED",
+      "record_review_approved_at": "2026-09-05T13:00:00Z",
+      "supplier_identity_is_not_upstream_package_maintainer": true
+    },
+    {
+      "id": "NEX-VND-005",
+      "source_id": "NEX-SRC-VENDOR_GOVERNANCE",
+      "source_authority": "ADMIN_VENDOR_REGISTER",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-09-06T09:00:00Z",
+      "revised_at": "2026-09-06T13:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-PAYMENT_API",
+          "NEX-SVC-ORDER_API",
+          "NEX-SVC-IDENTITY_API",
+          "NEX-SVC-REPORTING_API"
+        ]
+      },
+      "record_content_class": "VENDOR_GOVERNANCE",
+      "vendor_id": "NEX-VND-005",
+      "fictional_vendor_name": "Marblewood Data Stewardship",
+      "fictional_vendor": true,
+      "service_category": "MANAGED_DATABASE_SUPPORT",
+      "related_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-ORDER_API",
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-REPORTING_API"
+      ],
+      "contract_reference_id": "NEX-VCON-005",
+      "contract_status": "IN_FORCE",
+      "effective_date": "2025-09-15",
+      "expiration_date": "2027-09-14",
+      "technical_obligations": [
+        "Support PostgreSQL and MySQL backup checks, migration rehearsal and controlled maintenance windows.",
+        "Escalations must identify service and maintenance window, never disclose production secrets via ticket attachments."
+      ],
+      "support_arrangements": "Database operations contact during approved windows; restore assistance with an agreed callback procedure.",
+      "risk_classification": "MODERATE",
+      "administrative_owner_employee_id": "NEX-EMP-001",
+      "restricted_commercial_metadata": {
+        "currency": "USD",
+        "annual_commit_amount_synthetic": 58000,
+        "billing_basis": "ANNUAL_RETAINED_CAPACITY_AND_SUPPORT",
+        "renewal_review_days_before_expiry": 90,
+        "commercial_terms_are_fictional": true
+      },
+      "decision_status": "REGISTER_VERIFIED",
+      "record_review_approved_at": "2026-09-06T13:00:00Z",
+      "supplier_identity_is_not_upstream_package_maintainer": true
+    },
+    {
+      "id": "NEX-VND-006",
+      "source_id": "NEX-SRC-VENDOR_GOVERNANCE",
+      "source_authority": "ADMIN_VENDOR_REGISTER",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-09-07T09:00:00Z",
+      "revised_at": "2026-09-07T13:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-IDENTITY_API",
+          "NEX-SVC-TOKEN_VALIDATOR",
+          "NEX-SVC-POLICY_SERVICE"
+        ]
+      },
+      "record_content_class": "VENDOR_GOVERNANCE",
+      "vendor_id": "NEX-VND-006",
+      "fictional_vendor_name": "Bluehaven Authentication Exchange",
+      "fictional_vendor": true,
+      "service_category": "IDENTITY_CONNECTIVITY",
+      "related_service_ids": [
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-TOKEN_VALIDATOR",
+        "NEX-SVC-POLICY_SERVICE"
+      ],
+      "contract_reference_id": "NEX-VCON-006",
+      "contract_status": "IN_FORCE",
+      "effective_date": "2026-03-01",
+      "expiration_date": "2027-02-28",
+      "technical_obligations": [
+        "Maintain federated authentication interface documentation and non-secret key-rotation notification channels.",
+        "Escalations must identify service and maintenance window, never disclose production secrets via ticket attachments."
+      ],
+      "support_arrangements": "Identity coordination contact during planned changes; no signing keys or token samples stored in this record.",
+      "risk_classification": "LOW",
+      "administrative_owner_employee_id": "NEX-EMP-001",
+      "restricted_commercial_metadata": {
+        "currency": "USD",
+        "annual_commit_amount_synthetic": 31000,
+        "billing_basis": "ANNUAL_RETAINED_CAPACITY_AND_SUPPORT",
+        "renewal_review_days_before_expiry": 90,
+        "commercial_terms_are_fictional": true
+      },
+      "decision_status": "REGISTER_VERIFIED",
+      "record_review_approved_at": "2026-09-07T13:00:00Z",
+      "supplier_identity_is_not_upstream_package_maintainer": true
+    }
+  ]
+}

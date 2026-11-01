@@ -1,0 +1,33 @@
+
+Running 1 test using 1 worker
+
+[1/1] e2e\agent-workspace.spec.ts:96:1 › LIVE_BACKEND: workspace read APIs and navigation work without starting agents
+  1) e2e\agent-workspace.spec.ts:96:1 › LIVE_BACKEND: workspace read APIs and navigation work without starting agents 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+      101 |   }
+      102 |   const response = await request.get('/api/v1/agent-runtime/workspace/runs', { headers })
+    > 103 |   expect(response.status()).toBe(200)
+          |                             ^
+      104 |   expect(Array.isArray((await response.json()).items)).toBe(true)
+      105 |   await page.goto('/agent-workspace')
+      106 |   await expect(page.getByRole('heading', { name: 'One objective. One workspace.' })).toBeVisible()
+        at G:\graphhacks\frontend\e2e\agent-workspace.spec.ts:103:29
+
+    Error Context: test-results\agent-workspace-LIVE-BACKE-58dc0-ork-without-starting-agents\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\agent-workspace-LIVE-BACKE-58dc0-ork-without-starting-agents\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\agent-workspace-LIVE-BACKE-58dc0-ork-without-starting-agents\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  1 failed
+    e2e\agent-workspace.spec.ts:96:1 › LIVE_BACKEND: workspace read APIs and navigation work without starting agents 

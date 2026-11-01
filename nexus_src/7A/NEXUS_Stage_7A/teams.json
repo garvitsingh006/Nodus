@@ -1,0 +1,97 @@
+{
+  "teams": [
+    {
+      "id": "NEX-TEAM-PAY",
+      "company_id": "nexus",
+      "name": "Payments Engineering",
+      "description": "Owns production payment interfaces and external gateway adapters.",
+      "responsibilities": [
+        "Payment API reliability",
+        "Gateway routing",
+        "Refund lifecycle",
+        "Payment change reviews"
+      ],
+      "associated_project_ids": [
+        "NEX-PRJ-PAY"
+      ],
+      "team_lead_employee_id": "NEX-EMP-002",
+      "status": "ACTIVE",
+      "formed_at": "2019-01-07T09:00:00Z"
+    },
+    {
+      "id": "NEX-TEAM-COM",
+      "company_id": "nexus",
+      "name": "Commerce Engineering",
+      "description": "Builds merchant checkout, order, and webhook capabilities.",
+      "responsibilities": [
+        "Commerce API delivery",
+        "Checkout consistency",
+        "Order state",
+        "Merchant webhooks"
+      ],
+      "associated_project_ids": [
+        "NEX-PRJ-COM"
+      ],
+      "team_lead_employee_id": "NEX-EMP-004",
+      "status": "ACTIVE",
+      "formed_at": "2020-06-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-TEAM-ID",
+      "company_id": "nexus",
+      "name": "Identity Engineering",
+      "description": "Maintains service authentication, token contracts, and authorization policy engines.",
+      "responsibilities": [
+        "Identity lifecycle",
+        "Token validation",
+        "Policy evaluation",
+        "Key management"
+      ],
+      "associated_project_ids": [
+        "NEX-PRJ-ID"
+      ],
+      "team_lead_employee_id": "NEX-EMP-006",
+      "status": "ACTIVE",
+      "formed_at": "2019-09-02T09:00:00Z"
+    },
+    {
+      "id": "NEX-TEAM-DATA",
+      "company_id": "nexus",
+      "name": "Data Engineering",
+      "description": "Owns event ingestion, transformation, and enterprise reporting data products.",
+      "responsibilities": [
+        "Event quality",
+        "Analytical transformations",
+        "Metrics definitions",
+        "Reporting APIs"
+      ],
+      "associated_project_ids": [
+        "NEX-PRJ-DATA"
+      ],
+      "team_lead_employee_id": "NEX-EMP-008",
+      "status": "ACTIVE",
+      "formed_at": "2021-03-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-TEAM-PLAT",
+      "company_id": "nexus",
+      "name": "Platform Operations",
+      "description": "Provides shared deployment and observability services across all products.",
+      "responsibilities": [
+        "Continuous delivery platform",
+        "Service monitoring",
+        "Non-production environment standards",
+        "Operational runbooks and access-controlled platform tooling"
+      ],
+      "associated_project_ids": [
+        "NEX-PRJ-PAY",
+        "NEX-PRJ-COM",
+        "NEX-PRJ-ID",
+        "NEX-PRJ-DATA"
+      ],
+      "team_lead_employee_id": "NEX-EMP-007",
+      "status": "ACTIVE",
+      "formed_at": "2018-10-01T09:00:00Z"
+    }
+  ]
+}

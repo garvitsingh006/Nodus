@@ -1,0 +1,372 @@
+{
+  "dataset_version": "7D-1.0.0",
+  "restricted_disclosure_rules": [
+    {
+      "id": "NEX-DISC-SET-001",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "AUTHORITATIVE_FIELD_DISCLOSURE_POLICY",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "created_at": "2026-10-01T09:00:00Z",
+      "revised_at": "2026-10-22T14:00:00Z",
+      "status": "ACTIVE",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "source_ids": [
+          "NEX-SRC-ACCESS_GOVERNANCE",
+          "NEX-SRC-PRIVILEGED_CHANGES",
+          "NEX-SRC-SECURITY_GOVERNANCE",
+          "NEX-SRC-VENDOR_GOVERNANCE"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "disclosure_rules": [
+        {
+          "id": "NEX-DISC-RULE-001",
+          "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+          "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+          "author_or_responsible_employee_id": "NEX-EMP-001",
+          "created_at": "2026-10-01T09:00:00Z",
+          "revised_at": "2026-10-01T09:00:00Z",
+          "status": "ACTIVE",
+          "access_classification": "ADMINISTRATIVE_RECORDS",
+          "owner_team_id": "NEX-TEAM-PLAT",
+          "entity_references": {
+            "employee_ids": [
+              "NEX-EMP-001"
+            ],
+            "source_ids": [
+              "NEX-SRC-PRIVILEGED_CHANGES"
+            ]
+          },
+          "record_content_class": "ACCESS_GOVERNANCE",
+          "rule_id": "NEX-DISC-RULE-001",
+          "policy_name": "CHANGE_APPROVAL_SUMMARY",
+          "underlying_restricted_source_id": "NEX-SRC-PRIVILEGED_CHANGES",
+          "eligible_request_purpose": "Verify that a particular service deployment received administrative approval in a bounded period.",
+          "permitted_fields": [
+            "change_id",
+            "title",
+            "affected_service_ids",
+            "decision_status",
+            "lifecycle_state",
+            "verified_at"
+          ],
+          "mandatory_redacted_fields": [
+            "business_justification",
+            "actual_execution",
+            "rollback_plan",
+            "requesting_employee_id",
+            "internal_notes"
+          ],
+          "approving_role_id": "NEX-ROLE-ADMIN",
+          "authorized_recipient_rule": "NAMED_EMPLOYEE_AND_ONE_OBJECTIVE_ONLY",
+          "validity_rule": "EXPLICIT_START_END_NO_AUTOMATIC_RENEWAL",
+          "source_provenance_requirement": "Retain underlying source ID, record ID and administrative decision timestamp",
+          "revocation_behavior": "Immediately invalidate issued disclosure token; preserve historical audit event",
+          "underlying_source_grant_created": false
+        },
+        {
+          "id": "NEX-DISC-RULE-002",
+          "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+          "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+          "author_or_responsible_employee_id": "NEX-EMP-001",
+          "created_at": "2026-10-01T09:00:00Z",
+          "revised_at": "2026-10-01T09:00:00Z",
+          "status": "ACTIVE",
+          "access_classification": "ADMINISTRATIVE_RECORDS",
+          "owner_team_id": "NEX-TEAM-PLAT",
+          "entity_references": {
+            "employee_ids": [
+              "NEX-EMP-001"
+            ],
+            "source_ids": [
+              "NEX-SRC-VENDOR_GOVERNANCE"
+            ]
+          },
+          "record_content_class": "ACCESS_GOVERNANCE",
+          "rule_id": "NEX-DISC-RULE-002",
+          "policy_name": "VENDOR_SUPPORT_OBLIGATION",
+          "underlying_restricted_source_id": "NEX-SRC-VENDOR_GOVERNANCE",
+          "eligible_request_purpose": "Determine support-response obligations relevant to a service while withholding commercial terms.",
+          "permitted_fields": [
+            "vendor_id",
+            "service_category",
+            "related_service_ids",
+            "contract_status",
+            "support_arrangements"
+          ],
+          "mandatory_redacted_fields": [
+            "fictional_vendor_name",
+            "restricted_commercial_metadata",
+            "contract_reference_id",
+            "administrative_owner_employee_id"
+          ],
+          "approving_role_id": "NEX-ROLE-ADMIN",
+          "authorized_recipient_rule": "NAMED_EMPLOYEE_AND_ONE_OBJECTIVE_ONLY",
+          "validity_rule": "EXPLICIT_START_END_NO_AUTOMATIC_RENEWAL",
+          "source_provenance_requirement": "Retain underlying source ID, record ID and administrative decision timestamp",
+          "revocation_behavior": "Immediately invalidate issued disclosure token; preserve historical audit event",
+          "underlying_source_grant_created": false
+        },
+        {
+          "id": "NEX-DISC-RULE-003",
+          "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+          "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+          "author_or_responsible_employee_id": "NEX-EMP-001",
+          "created_at": "2026-10-01T09:00:00Z",
+          "revised_at": "2026-10-01T09:00:00Z",
+          "status": "ACTIVE",
+          "access_classification": "ADMINISTRATIVE_RECORDS",
+          "owner_team_id": "NEX-TEAM-PLAT",
+          "entity_references": {
+            "employee_ids": [
+              "NEX-EMP-001"
+            ],
+            "source_ids": [
+              "NEX-SRC-SECURITY_GOVERNANCE"
+            ]
+          },
+          "record_content_class": "ACCESS_GOVERNANCE",
+          "rule_id": "NEX-DISC-RULE-003",
+          "policy_name": "CONTROL_REVIEW_STATUS",
+          "underlying_restricted_source_id": "NEX-SRC-SECURITY_GOVERNANCE",
+          "eligible_request_purpose": "Confirm whether a scoped operational control is reviewed without exposing restricted assessment evidence.",
+          "permitted_fields": [
+            "security_record_id",
+            "control_or_risk_category",
+            "decision",
+            "expiration_or_review_at",
+            "current_status"
+          ],
+          "mandatory_redacted_fields": [
+            "description",
+            "mitigation_or_compensating_controls",
+            "responsible_employee_id",
+            "internal_notes"
+          ],
+          "approving_role_id": "NEX-ROLE-ADMIN",
+          "authorized_recipient_rule": "NAMED_EMPLOYEE_AND_ONE_OBJECTIVE_ONLY",
+          "validity_rule": "EXPLICIT_START_END_NO_AUTOMATIC_RENEWAL",
+          "source_provenance_requirement": "Retain underlying source ID, record ID and administrative decision timestamp",
+          "revocation_behavior": "Immediately invalidate issued disclosure token; preserve historical audit event",
+          "underlying_source_grant_created": false
+        }
+      ],
+      "issued_disclosures": [
+        {
+          "id": "NEX-DISC-001",
+          "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+          "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+          "author_or_responsible_employee_id": "NEX-EMP-001",
+          "created_at": "2026-10-19T14:00:00Z",
+          "revised_at": "2026-10-19T14:00:00Z",
+          "status": "ACTIVE",
+          "access_classification": "ADMINISTRATIVE_RECORDS",
+          "owner_team_id": "NEX-TEAM-PLAT",
+          "entity_references": {
+            "employee_ids": [
+              "NEX-EMP-006",
+              "NEX-EMP-001"
+            ],
+            "source_ids": [
+              "NEX-SRC-PRIVILEGED_CHANGES"
+            ],
+            "record_ids": [
+              "NEX-PCH-006"
+            ]
+          },
+          "record_content_class": "ACCESS_GOVERNANCE",
+          "disclosure_id": "NEX-DISC-001",
+          "rule_id": "NEX-DISC-RULE-001",
+          "originating_restricted_record_id": "NEX-PCH-006",
+          "originating_restricted_source_id": "NEX-SRC-PRIVILEGED_CHANGES",
+          "eligible_purpose": "Verify that a particular service deployment received administrative approval in a bounded period.",
+          "approved_objective": "Confirm approved and verified identity-api release during token compatibility assessment.",
+          "permitted_fields": [
+            "change_id",
+            "title",
+            "affected_service_ids",
+            "decision_status",
+            "lifecycle_state",
+            "verified_at"
+          ],
+          "redacted_fields": [
+            "business_justification",
+            "actual_execution",
+            "rollback_plan",
+            "requesting_employee_id",
+            "internal_notes"
+          ],
+          "field_limited_disclosed_snapshot": {
+            "change_id": "NEX-PCH-006",
+            "title": "Identity session policy-revision rollout",
+            "affected_service_ids": [
+              "NEX-SVC-IDENTITY_API"
+            ],
+            "decision_status": "APPROVED",
+            "lifecycle_state": "VERIFIED",
+            "verified_at": "2026-10-13T09:35:00Z"
+          },
+          "approving_admin_employee_id": "NEX-EMP-001",
+          "authorized_recipient_employee_id": "NEX-EMP-006",
+          "associated_access_request_id": "NEX-ARQ-008",
+          "approved_at": "2026-10-19T14:00:00Z",
+          "valid_from": "2026-10-19T14:00:00Z",
+          "valid_until": "2026-11-02T14:00:00Z",
+          "current_status": "ACTIVE",
+          "revoked_at": null,
+          "source_provenance": {
+            "source_id": "NEX-SRC-PRIVILEGED_CHANGES",
+            "record_id": "NEX-PCH-006",
+            "original_revised_at": "2026-10-13T09:35:00Z"
+          },
+          "effective_access_classification": "RECIPIENT_ONLY_DERIVED_FROM_ADMINISTRATIVE_RECORDS",
+          "independently_grants_underlying_source_access": false,
+          "access_action": "READ_THIS_DISCLOSURE_ONLY",
+          "revocation_behavior": "Immediately invalidate issued disclosure token; preserve historical audit event"
+        },
+        {
+          "id": "NEX-DISC-002",
+          "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+          "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+          "author_or_responsible_employee_id": "NEX-EMP-001",
+          "created_at": "2026-10-22T14:00:00Z",
+          "revised_at": "2026-10-22T14:00:00Z",
+          "status": "ACTIVE",
+          "access_classification": "ADMINISTRATIVE_RECORDS",
+          "owner_team_id": "NEX-TEAM-PLAT",
+          "entity_references": {
+            "employee_ids": [
+              "NEX-EMP-002",
+              "NEX-EMP-001"
+            ],
+            "source_ids": [
+              "NEX-SRC-VENDOR_GOVERNANCE"
+            ],
+            "record_ids": [
+              "NEX-VND-001"
+            ]
+          },
+          "record_content_class": "ACCESS_GOVERNANCE",
+          "disclosure_id": "NEX-DISC-002",
+          "rule_id": "NEX-DISC-RULE-002",
+          "originating_restricted_record_id": "NEX-VND-001",
+          "originating_restricted_source_id": "NEX-SRC-VENDOR_GOVERNANCE",
+          "eligible_purpose": "Determine support-response obligations relevant to a service while withholding commercial terms.",
+          "approved_objective": "Know which gateway support-response commitment applies during a planned routing review.",
+          "permitted_fields": [
+            "vendor_id",
+            "service_category",
+            "related_service_ids",
+            "contract_status",
+            "support_arrangements"
+          ],
+          "redacted_fields": [
+            "fictional_vendor_name",
+            "restricted_commercial_metadata",
+            "contract_reference_id",
+            "administrative_owner_employee_id"
+          ],
+          "field_limited_disclosed_snapshot": {
+            "vendor_id": "NEX-VND-001",
+            "service_category": "PAYMENT_GATEWAY",
+            "related_service_ids": [
+              "NEX-SVC-GATEWAY_ROUTER",
+              "NEX-SVC-PAYMENT_API"
+            ],
+            "contract_status": "IN_FORCE",
+            "support_arrangements": "Critical routing questions: 30-minute initial acknowledgement; reconciliation available during business support hours."
+          },
+          "approving_admin_employee_id": "NEX-EMP-001",
+          "authorized_recipient_employee_id": "NEX-EMP-002",
+          "associated_access_request_id": null,
+          "approved_at": "2026-10-22T14:00:00Z",
+          "valid_from": "2026-10-22T14:00:00Z",
+          "valid_until": "2026-11-05T14:00:00Z",
+          "current_status": "ACTIVE",
+          "revoked_at": null,
+          "source_provenance": {
+            "source_id": "NEX-SRC-VENDOR_GOVERNANCE",
+            "record_id": "NEX-VND-001",
+            "original_revised_at": "2026-09-02T13:00:00Z"
+          },
+          "effective_access_classification": "RECIPIENT_ONLY_DERIVED_FROM_ADMINISTRATIVE_RECORDS",
+          "independently_grants_underlying_source_access": false,
+          "access_action": "READ_THIS_DISCLOSURE_ONLY",
+          "revocation_behavior": "Immediately invalidate issued disclosure token; preserve historical audit event"
+        },
+        {
+          "id": "NEX-DISC-003",
+          "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+          "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+          "author_or_responsible_employee_id": "NEX-EMP-001",
+          "created_at": "2026-10-21T14:00:00Z",
+          "revised_at": "2026-10-21T14:00:00Z",
+          "status": "ACTIVE",
+          "access_classification": "ADMINISTRATIVE_RECORDS",
+          "owner_team_id": "NEX-TEAM-PLAT",
+          "entity_references": {
+            "employee_ids": [
+              "NEX-EMP-008",
+              "NEX-EMP-001"
+            ],
+            "source_ids": [
+              "NEX-SRC-SECURITY_GOVERNANCE"
+            ],
+            "record_ids": [
+              "NEX-SEC-005"
+            ]
+          },
+          "record_content_class": "ACCESS_GOVERNANCE",
+          "disclosure_id": "NEX-DISC-003",
+          "rule_id": "NEX-DISC-RULE-003",
+          "originating_restricted_record_id": "NEX-SEC-005",
+          "originating_restricted_source_id": "NEX-SRC-SECURITY_GOVERNANCE",
+          "eligible_purpose": "Confirm whether a scoped operational control is reviewed without exposing restricted assessment evidence.",
+          "approved_objective": "Check reviewed state of staging-retention control without viewing restricted mitigation details.",
+          "permitted_fields": [
+            "security_record_id",
+            "control_or_risk_category",
+            "decision",
+            "expiration_or_review_at",
+            "current_status"
+          ],
+          "redacted_fields": [
+            "description",
+            "mitigation_or_compensating_controls",
+            "responsible_employee_id",
+            "internal_notes"
+          ],
+          "field_limited_disclosed_snapshot": {
+            "security_record_id": "NEX-SEC-005",
+            "control_or_risk_category": "EVENT_RETENTION",
+            "decision": "FOLLOW_UP_REQUIRED",
+            "expiration_or_review_at": "2026-11-10T09:00:00Z",
+            "current_status": "TRACKING"
+          },
+          "approving_admin_employee_id": "NEX-EMP-001",
+          "authorized_recipient_employee_id": "NEX-EMP-008",
+          "associated_access_request_id": "NEX-ARQ-009",
+          "approved_at": "2026-10-21T14:00:00Z",
+          "valid_from": "2026-10-21T14:00:00Z",
+          "valid_until": "2026-11-04T14:00:00Z",
+          "current_status": "ACTIVE",
+          "revoked_at": null,
+          "source_provenance": {
+            "source_id": "NEX-SRC-SECURITY_GOVERNANCE",
+            "record_id": "NEX-SEC-005",
+            "original_revised_at": "2026-10-10T11:00:00Z"
+          },
+          "effective_access_classification": "RECIPIENT_ONLY_DERIVED_FROM_ADMINISTRATIVE_RECORDS",
+          "independently_grants_underlying_source_access": false,
+          "access_action": "READ_THIS_DISCLOSURE_ONLY",
+          "revocation_behavior": "Immediately invalidate issued disclosure token; preserve historical audit event"
+        }
+      ]
+    }
+  ]
+}

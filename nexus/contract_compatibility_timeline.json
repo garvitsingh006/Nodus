@@ -1,0 +1,1189 @@
+{
+  "collection_name": "contract_compatibility_timeline",
+  "contract_compatibility_timeline": [
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "ADDITIVE_FOLLOWUP_PENDING",
+      "changed_fields": [
+        {
+          "field_path": "merchant_order_ref?",
+          "future_state": "OPTIONAL_IN_CURRENT_SHAPE",
+          "historical_state": "NOT_DOCUMENTED_IN_OLDER_SHAPE"
+        }
+      ],
+      "compatibility_classification": "OLDER_WIRE_SHAPE_RECONSTRUCTED",
+      "contract_id": "NEX-IFC-001",
+      "contract_revision_reference_id": "NEX-REV-IFC-001-01",
+      "contract_version": "1.3.0",
+      "current_anchor": false,
+      "documented_consumer_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE"
+      ],
+      "evidence_record_ids": [
+        "NEX-IFC-001",
+        "NEX-REV-IFC-001-01"
+      ],
+      "id": "NEX-IFC-TL-001-OLD",
+      "independent_wire_evidence": "RECONSTRUCTED_NOT_CONFIRMED",
+      "migration_or_compatibility_window": {
+        "consumer_requirement": "Tolerate absence of optional field during rolling upgrades.",
+        "end_at": "2026-09-24T09:00:00Z",
+        "start_at": "2026-09-10T09:00:00Z"
+      },
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-PAY",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-001",
+      "protocol": "HTTPS/JSON",
+      "provenance_description": "Earlier optional-field shape retrospectively reconstructed; wire deployment at that date was not independently captured.",
+      "provider_service_id": "NEX-SVC-PAYMENT_API",
+      "record_type": "HISTORIC_CONTRACT_VERSION",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-09-02T10:00:00Z",
+      "valid_to_exclusive": "2026-09-10T09:00:00Z"
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "ADDITIVE",
+      "changed_fields": [
+        {
+          "compatibility_effect": "Consumers tolerate absence and ignore unknown optional data.",
+          "current_state": "OPTIONAL",
+          "field_path": "merchant_order_ref?",
+          "historical_state": "ABSENT_OR_UNDOCUMENTED"
+        }
+      ],
+      "compatibility_classification": "ADDITIVE_OPTIONAL_FIELD_RECONSTRUCTED",
+      "compatibility_evidence_summary": "Additive optional fields only; amount units, status meanings and idempotency replay identity remain stable. Consumers ignore unknown response fields.",
+      "contract_id": "NEX-IFC-001",
+      "contract_revision_reference_id": "NEX-REV-IFC-001-02",
+      "contract_version": "1.4.0",
+      "current_anchor": true,
+      "documented_consumer_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE"
+      ],
+      "evidence_record_ids": [
+        "NEX-IFC-001",
+        "NEX-REV-IFC-001-02"
+      ],
+      "id": "NEX-IFC-TL-001-CURRENT",
+      "independent_wire_evidence": "7B_DOCUMENTED_CONTRACT_NOT_LIVE_TRAFFIC_TEST",
+      "interface_payload_schema": {
+        "201/200 response": {
+          "amount_minor": "integer",
+          "created_at": "RFC3339 UTC timestamp",
+          "currency": "string",
+          "payment_intent_id": "string, immutable",
+          "replayed": "boolean, same key and request fingerprint",
+          "status": "CREATED|PENDING|AUTHORIZED|DECLINED|FAILED"
+        },
+        "GET /v1/payment-intents/{id} response": {
+          "payment_intent_id": "string",
+          "status": "CREATED|PENDING|AUTHORIZED|DECLINED|FAILED",
+          "updated_at": "RFC3339 UTC timestamp"
+        },
+        "POST /v1/payment-intents request": {
+          "amount_minor": "integer >= 1, currency minor units",
+          "currency": "ISO 4217 alpha-3 string",
+          "idempotency_key": "opaque string, unique within merchant operation scope",
+          "merchant_id": "string, authenticated tenant scope",
+          "merchant_order_ref?": "opaque string <= 128 chars"
+        },
+        "errors": {
+          "400": "malformed fields",
+          "401": "invalid identity",
+          "409": "same idempotency key, different normalized payload",
+          "503": "temporarily unavailable; query by stable intent id"
+        }
+      },
+      "migration_or_compatibility_window": {
+        "consumer_requirement": "Required field meanings remain stable; optional field has a transitional absence window.",
+        "end_at": "2026-09-24T09:00:00Z",
+        "start_at": "2026-09-10T09:00:00Z"
+      },
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-PAY",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-001",
+      "protocol": "HTTPS/JSON",
+      "provenance_description": "Exact 7B latest contract version and schema; its documented effective date precedes this 7E observation.",
+      "provider_service_id": "NEX-SVC-PAYMENT_API",
+      "record_type": "CURRENT_CONTRACT_STATE",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-09-10T09:00:00Z",
+      "valid_to_exclusive": null
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "ADDITIVE_FOLLOWUP_PENDING",
+      "changed_fields": [
+        {
+          "field_path": "retry_after_ms?",
+          "future_state": "OPTIONAL_IN_CURRENT_SHAPE",
+          "historical_state": "NOT_DOCUMENTED_IN_OLDER_SHAPE"
+        }
+      ],
+      "compatibility_classification": "OLDER_WIRE_SHAPE_RECONSTRUCTED",
+      "contract_id": "NEX-IFC-002",
+      "contract_revision_reference_id": "NEX-REV-IFC-002-01",
+      "contract_version": "2.2.0",
+      "current_anchor": false,
+      "documented_consumer_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-REFUND_WORKER"
+      ],
+      "evidence_record_ids": [
+        "NEX-IFC-002",
+        "NEX-REV-IFC-002-01"
+      ],
+      "id": "NEX-IFC-TL-002-OLD",
+      "independent_wire_evidence": "RECONSTRUCTED_NOT_CONFIRMED",
+      "migration_or_compatibility_window": {
+        "consumer_requirement": "Tolerate absence of optional field during rolling upgrades.",
+        "end_at": "2026-10-06T09:00:00Z",
+        "start_at": "2026-09-22T09:00:00Z"
+      },
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-PAY",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-002",
+      "protocol": "gRPC/protobuf",
+      "provenance_description": "Earlier optional-field shape retrospectively reconstructed; wire deployment at that date was not independently captured.",
+      "provider_service_id": "NEX-SVC-GATEWAY_ROUTER",
+      "record_type": "HISTORIC_CONTRACT_VERSION",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-09-02T10:00:00Z",
+      "valid_to_exclusive": "2026-09-22T09:00:00Z"
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "ADDITIVE",
+      "changed_fields": [
+        {
+          "compatibility_effect": "Consumers tolerate absence and ignore unknown optional data.",
+          "current_state": "OPTIONAL",
+          "field_path": "retry_after_ms?",
+          "historical_state": "ABSENT_OR_UNDOCUMENTED"
+        }
+      ],
+      "compatibility_classification": "ADDITIVE_OPTIONAL_FIELD_RECONSTRUCTED",
+      "compatibility_evidence_summary": "Preserve numeric protobuf field identifiers; do not reuse removed tags; unknown enum values require safe fallback.",
+      "contract_id": "NEX-IFC-002",
+      "contract_revision_reference_id": "NEX-REV-IFC-002-02",
+      "contract_version": "2.3.0",
+      "current_anchor": true,
+      "documented_consumer_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-REFUND_WORKER"
+      ],
+      "evidence_record_ids": [
+        "NEX-IFC-002",
+        "NEX-REV-IFC-002-02"
+      ],
+      "id": "NEX-IFC-TL-002-CURRENT",
+      "independent_wire_evidence": "7B_DOCUMENTED_CONTRACT_NOT_LIVE_TRAFFIC_TEST",
+      "interface_payload_schema": {
+        "RouteOperationRequest": {
+          "amount_minor": "int64 >=1",
+          "currency": "ISO 4217 string",
+          "kind": "AUTHORIZE|REFUND",
+          "merchant_id": "string",
+          "operation_id": "string, idempotency identity",
+          "payment_intent_id": "string",
+          "refund_request_id?": "required when kind=REFUND",
+          "request_deadline_ms": "int32 bounded"
+        },
+        "RouteOperationResponse": {
+          "normalized_result": "APPROVED|DECLINED|PENDING|RETRYABLE_FAILURE",
+          "provider_category?": "string, normalized category",
+          "provider_reference?": "opaque non-secret external identifier",
+          "retry_after_ms?": "int32, only for retryable response",
+          "route_attempt_id": "string"
+        },
+        "errors": {
+          "DEADLINE_EXCEEDED": "outcome may be indeterminate",
+          "INVALID_ARGUMENT": "bad request",
+          "UNAVAILABLE": "retry according to operation idempotency"
+        },
+        "protobuf service": "nexus.gateway.v2.GatewayRouter/RouteOperation"
+      },
+      "migration_or_compatibility_window": {
+        "consumer_requirement": "Required field meanings remain stable; optional field has a transitional absence window.",
+        "end_at": "2026-10-06T09:00:00Z",
+        "start_at": "2026-09-22T09:00:00Z"
+      },
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-PAY",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-002",
+      "protocol": "gRPC/protobuf",
+      "provenance_description": "Exact 7B latest contract version and schema; its documented effective date precedes this 7E observation.",
+      "provider_service_id": "NEX-SVC-GATEWAY_ROUTER",
+      "record_type": "CURRENT_CONTRACT_STATE",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-09-22T09:00:00Z",
+      "valid_to_exclusive": null
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "DOCUMENTATION_OR_STABLE_INTERFACE",
+      "changed_fields": [],
+      "compatibility_classification": "DOCUMENTED_CURRENT_STABLE",
+      "compatibility_evidence_summary": "At-least-once delivery; worker deduplicates on refund_request_id and tolerates reordering with payment state.",
+      "contract_id": "NEX-IFC-003",
+      "contract_revision_reference_id": "NEX-REV-IFC-003-02",
+      "contract_version": "1.2.0",
+      "current_anchor": true,
+      "documented_consumer_service_ids": [
+        "NEX-SVC-REFUND_WORKER"
+      ],
+      "evidence_record_ids": [
+        "NEX-IFC-003",
+        "NEX-REV-IFC-003-02"
+      ],
+      "id": "NEX-IFC-TL-003-CURRENT",
+      "independent_wire_evidence": "7B_DOCUMENTED_CONTRACT_NOT_LIVE_TRAFFIC_TEST",
+      "interface_payload_schema": {
+        "envelope": {
+          "event_id": "UUID string",
+          "event_type": "refund.requested",
+          "occurred_at": "RFC3339 UTC",
+          "producer_service_id": "NEX-SVC-PAYMENT_API",
+          "schema_version": "1"
+        },
+        "payload": {
+          "amount_minor": "integer >0",
+          "authorization_record_id": "non-secret internal reference",
+          "currency": "ISO 4217",
+          "payment_intent_id": "string",
+          "reason_code": "CUSTOMER_REQUEST|DUPLICATE|OTHER",
+          "refund_request_id": "string, unique and immutable"
+        }
+      },
+      "migration_or_compatibility_window": null,
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-PAY",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-003",
+      "protocol": "NATS",
+      "provenance_description": "Exact 7B latest contract version and schema; its documented effective date precedes this 7E observation.",
+      "provider_service_id": "NEX-SVC-PAYMENT_API",
+      "record_type": "CURRENT_CONTRACT_STATE",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-09-08T09:00:00Z",
+      "valid_to_exclusive": null
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "DOCUMENTATION_OR_STABLE_INTERFACE",
+      "changed_fields": [],
+      "compatibility_classification": "DOCUMENTED_CURRENT_STABLE",
+      "compatibility_evidence_summary": "Consumers must handle duplicate and late events; neither ordering nor exactly-once delivery is guaranteed.",
+      "contract_id": "NEX-IFC-004",
+      "contract_revision_reference_id": "NEX-REV-IFC-004-02",
+      "contract_version": "2.2.0",
+      "current_anchor": true,
+      "documented_consumer_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR"
+      ],
+      "evidence_record_ids": [
+        "NEX-IFC-004",
+        "NEX-REV-IFC-004-02"
+      ],
+      "id": "NEX-IFC-TL-004-CURRENT",
+      "independent_wire_evidence": "7B_DOCUMENTED_CONTRACT_NOT_LIVE_TRAFFIC_TEST",
+      "interface_payload_schema": {
+        "envelope": {
+          "correlation_id": "opaque string",
+          "event_id": "UUID string",
+          "event_type": "payment.intent.created|payment.authorized|payment.declined|payment.failed",
+          "occurred_at": "RFC3339 UTC",
+          "producer_service_id": "NEX-SVC-PAYMENT_API",
+          "schema_version": "2"
+        },
+        "payload": {
+          "amount_minor": "integer",
+          "attempt_number": "integer >= 0",
+          "currency": "ISO 4217",
+          "merchant_id": "string",
+          "payment_intent_id": "string",
+          "status": "CREATED|PENDING|AUTHORIZED|DECLINED|FAILED"
+        }
+      },
+      "migration_or_compatibility_window": null,
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-PAY",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-004",
+      "protocol": "NATS",
+      "provenance_description": "Exact 7B latest contract version and schema; its documented effective date precedes this 7E observation.",
+      "provider_service_id": "NEX-SVC-PAYMENT_API",
+      "record_type": "CURRENT_CONTRACT_STATE",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-09-15T09:00:00Z",
+      "valid_to_exclusive": null
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "ADDITIVE_FOLLOWUP_PENDING",
+      "changed_fields": [
+        {
+          "field_path": "payment_intent_id?",
+          "future_state": "OPTIONAL_IN_CURRENT_SHAPE",
+          "historical_state": "NOT_DOCUMENTED_IN_OLDER_SHAPE"
+        }
+      ],
+      "compatibility_classification": "OLDER_WIRE_SHAPE_RECONSTRUCTED",
+      "contract_id": "NEX-IFC-005",
+      "contract_revision_reference_id": "NEX-REV-IFC-005-01",
+      "contract_version": "2.5.0",
+      "current_anchor": false,
+      "documented_consumer_service_ids": [],
+      "evidence_record_ids": [
+        "NEX-IFC-005",
+        "NEX-REV-IFC-005-01"
+      ],
+      "id": "NEX-IFC-TL-005-OLD",
+      "independent_wire_evidence": "RECONSTRUCTED_NOT_CONFIRMED",
+      "migration_or_compatibility_window": {
+        "consumer_requirement": "Tolerate absence of optional field during rolling upgrades.",
+        "end_at": "2026-10-15T09:00:00Z",
+        "start_at": "2026-10-01T09:00:00Z"
+      },
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-COM",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-005",
+      "protocol": "HTTPS/JSON",
+      "provenance_description": "Earlier optional-field shape retrospectively reconstructed; wire deployment at that date was not independently captured.",
+      "provider_service_id": "NEX-SVC-CHECKOUT_SERVICE",
+      "record_type": "HISTORIC_CONTRACT_VERSION",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-09-02T10:00:00Z",
+      "valid_to_exclusive": "2026-10-01T09:00:00Z"
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "ADDITIVE",
+      "changed_fields": [
+        {
+          "compatibility_effect": "Consumers tolerate absence and ignore unknown optional data.",
+          "current_state": "OPTIONAL",
+          "field_path": "payment_intent_id?",
+          "historical_state": "ABSENT_OR_UNDOCUMENTED"
+        }
+      ],
+      "compatibility_classification": "ADDITIVE_OPTIONAL_FIELD_RECONSTRUCTED",
+      "compatibility_evidence_summary": "Client retries using client_request_id must not create duplicate intents. Unrecognized status values must fail safely.",
+      "contract_id": "NEX-IFC-005",
+      "contract_revision_reference_id": "NEX-REV-IFC-005-02",
+      "contract_version": "2.6.0",
+      "current_anchor": true,
+      "documented_consumer_service_ids": [],
+      "evidence_record_ids": [
+        "NEX-IFC-005",
+        "NEX-REV-IFC-005-02"
+      ],
+      "id": "NEX-IFC-TL-005-CURRENT",
+      "independent_wire_evidence": "7B_DOCUMENTED_CONTRACT_NOT_LIVE_TRAFFIC_TEST",
+      "interface_payload_schema": {
+        "201 response": {
+          "checkout_session_id": "string",
+          "expires_at": "RFC3339 UTC",
+          "status": "OPEN",
+          "total_minor": "integer"
+        },
+        "POST /v2/checkout-sessions request": {
+          "cart_ref": "opaque string",
+          "client_request_id": "opaque retry identity",
+          "currency": "ISO 4217",
+          "merchant_id": "string",
+          "total_minor": "integer >=0"
+        },
+        "POST /v2/checkout-sessions/{id}/confirm response": {
+          "checkout_session_id": "string",
+          "order_id?": "string once created",
+          "payment_intent_id?": "string if initiated",
+          "status": "PENDING_PAYMENT|CONFIRMED|EXPIRED|FAILED"
+        },
+        "errors": {
+          "409": "expired session, conflicting confirmation or invalid transition"
+        }
+      },
+      "migration_or_compatibility_window": {
+        "consumer_requirement": "Required field meanings remain stable; optional field has a transitional absence window.",
+        "end_at": "2026-10-15T09:00:00Z",
+        "start_at": "2026-10-01T09:00:00Z"
+      },
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-COM",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-005",
+      "protocol": "HTTPS/JSON",
+      "provenance_description": "Exact 7B latest contract version and schema; its documented effective date precedes this 7E observation.",
+      "provider_service_id": "NEX-SVC-CHECKOUT_SERVICE",
+      "record_type": "CURRENT_CONTRACT_STATE",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-10-01T09:00:00Z",
+      "valid_to_exclusive": null
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "ADDITIVE_FOLLOWUP_PENDING",
+      "changed_fields": [
+        {
+          "field_path": "reason_code?",
+          "future_state": "OPTIONAL_IN_CURRENT_SHAPE",
+          "historical_state": "NOT_DOCUMENTED_IN_OLDER_SHAPE"
+        }
+      ],
+      "compatibility_classification": "OLDER_WIRE_SHAPE_RECONSTRUCTED",
+      "contract_id": "NEX-IFC-006",
+      "contract_revision_reference_id": "NEX-REV-IFC-006-01",
+      "contract_version": "2.3.0",
+      "current_anchor": false,
+      "documented_consumer_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE"
+      ],
+      "evidence_record_ids": [
+        "NEX-IFC-006",
+        "NEX-REV-IFC-006-01"
+      ],
+      "id": "NEX-IFC-TL-006-OLD",
+      "independent_wire_evidence": "RECONSTRUCTED_NOT_CONFIRMED",
+      "migration_or_compatibility_window": {
+        "consumer_requirement": "Tolerate absence of optional field during rolling upgrades.",
+        "end_at": "2026-10-10T09:00:00Z",
+        "start_at": "2026-09-26T09:00:00Z"
+      },
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-COM",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-006",
+      "protocol": "HTTPS/JSON",
+      "provenance_description": "Earlier optional-field shape retrospectively reconstructed; wire deployment at that date was not independently captured.",
+      "provider_service_id": "NEX-SVC-ORDER_API",
+      "record_type": "HISTORIC_CONTRACT_VERSION",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-09-02T10:00:00Z",
+      "valid_to_exclusive": "2026-09-26T09:00:00Z"
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "ADDITIVE",
+      "changed_fields": [
+        {
+          "compatibility_effect": "Consumers tolerate absence and ignore unknown optional data.",
+          "current_state": "OPTIONAL",
+          "field_path": "reason_code?",
+          "historical_state": "ABSENT_OR_UNDOCUMENTED"
+        }
+      ],
+      "compatibility_classification": "ADDITIVE_OPTIONAL_FIELD_RECONSTRUCTED",
+      "compatibility_evidence_summary": "Order id and revision semantics are stable; new optional attributes cannot change legal existing transitions.",
+      "contract_id": "NEX-IFC-006",
+      "contract_revision_reference_id": "NEX-REV-IFC-006-02",
+      "contract_version": "2.4.0",
+      "current_anchor": true,
+      "documented_consumer_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE"
+      ],
+      "evidence_record_ids": [
+        "NEX-IFC-006",
+        "NEX-REV-IFC-006-02"
+      ],
+      "id": "NEX-IFC-TL-006-CURRENT",
+      "independent_wire_evidence": "7B_DOCUMENTED_CONTRACT_NOT_LIVE_TRAFFIC_TEST",
+      "interface_payload_schema": {
+        "PATCH /v2/orders/{id}/status request": {
+          "expected_revision": "integer, optimistic concurrency",
+          "reason_code?": "string",
+          "transition_to": "allowed next state"
+        },
+        "POST /v2/orders request": {
+          "checkout_session_id": "string",
+          "currency": "ISO 4217",
+          "merchant_id": "string",
+          "order_reference": "stable merchant order key",
+          "payment_intent_id": "string",
+          "total_minor": "integer"
+        },
+        "errors": {
+          "409": "duplicate conflict or invalid state transition"
+        },
+        "response": {
+          "created_at": "RFC3339 UTC",
+          "order_id": "string",
+          "revision": "integer >=1",
+          "status": "CREATED|CONFIRMED|FULFILLING|COMPLETED|CANCELLED"
+        }
+      },
+      "migration_or_compatibility_window": {
+        "consumer_requirement": "Required field meanings remain stable; optional field has a transitional absence window.",
+        "end_at": "2026-10-10T09:00:00Z",
+        "start_at": "2026-09-26T09:00:00Z"
+      },
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-COM",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-006",
+      "protocol": "HTTPS/JSON",
+      "provenance_description": "Exact 7B latest contract version and schema; its documented effective date precedes this 7E observation.",
+      "provider_service_id": "NEX-SVC-ORDER_API",
+      "record_type": "CURRENT_CONTRACT_STATE",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-09-26T09:00:00Z",
+      "valid_to_exclusive": null
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "ADDITIVE_FOLLOWUP_PENDING",
+      "changed_fields": [
+        {
+          "field_path": "payment_intent_id?",
+          "future_state": "OPTIONAL_IN_CURRENT_SHAPE",
+          "historical_state": "NOT_DOCUMENTED_IN_OLDER_SHAPE"
+        }
+      ],
+      "compatibility_classification": "OLDER_WIRE_SHAPE_RECONSTRUCTED",
+      "contract_id": "NEX-IFC-007",
+      "contract_revision_reference_id": "NEX-REV-IFC-007-01",
+      "contract_version": "1.4.0",
+      "current_anchor": false,
+      "documented_consumer_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR"
+      ],
+      "evidence_record_ids": [
+        "NEX-IFC-007",
+        "NEX-REV-IFC-007-01"
+      ],
+      "id": "NEX-IFC-TL-007-OLD",
+      "independent_wire_evidence": "RECONSTRUCTED_NOT_CONFIRMED",
+      "migration_or_compatibility_window": {
+        "consumer_requirement": "Tolerate absence of optional field during rolling upgrades.",
+        "end_at": "2026-10-17T09:00:00Z",
+        "start_at": "2026-10-03T09:00:00Z"
+      },
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-COM",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-007",
+      "protocol": "RabbitMQ",
+      "provenance_description": "Earlier optional-field shape retrospectively reconstructed; wire deployment at that date was not independently captured.",
+      "provider_service_id": "NEX-SVC-ORDER_API",
+      "record_type": "HISTORIC_CONTRACT_VERSION",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-09-02T10:00:00Z",
+      "valid_to_exclusive": "2026-10-03T09:00:00Z"
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "ADDITIVE",
+      "changed_fields": [
+        {
+          "compatibility_effect": "Consumers tolerate absence and ignore unknown optional data.",
+          "current_state": "OPTIONAL",
+          "field_path": "payment_intent_id?",
+          "historical_state": "ABSENT_OR_UNDOCUMENTED"
+        }
+      ],
+      "compatibility_classification": "ADDITIVE_OPTIONAL_FIELD_RECONSTRUCTED",
+      "compatibility_evidence_summary": "Consumer must deduplicate by producer and event_id; revisions provide ordering information for an individual order.",
+      "contract_id": "NEX-IFC-007",
+      "contract_revision_reference_id": "NEX-REV-IFC-007-02",
+      "contract_version": "1.5.0",
+      "current_anchor": true,
+      "documented_consumer_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR"
+      ],
+      "evidence_record_ids": [
+        "NEX-IFC-007",
+        "NEX-REV-IFC-007-02"
+      ],
+      "id": "NEX-IFC-TL-007-CURRENT",
+      "independent_wire_evidence": "7B_DOCUMENTED_CONTRACT_NOT_LIVE_TRAFFIC_TEST",
+      "interface_payload_schema": {
+        "envelope": {
+          "event_id": "UUID string",
+          "event_type": "order.created|order.confirmed|order.cancelled|order.completed",
+          "occurred_at": "RFC3339 UTC",
+          "producer_service_id": "NEX-SVC-ORDER_API",
+          "schema_version": "1"
+        },
+        "payload": {
+          "checkout_session_id": "string",
+          "currency": "ISO 4217",
+          "merchant_id": "string",
+          "order_id": "string",
+          "order_revision": "positive integer",
+          "order_status": "CREATED|CONFIRMED|FULFILLING|COMPLETED|CANCELLED",
+          "payment_intent_id?": "string",
+          "total_minor": "integer"
+        }
+      },
+      "migration_or_compatibility_window": {
+        "consumer_requirement": "Required field meanings remain stable; optional field has a transitional absence window.",
+        "end_at": "2026-10-17T09:00:00Z",
+        "start_at": "2026-10-03T09:00:00Z"
+      },
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-COM",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-007",
+      "protocol": "RabbitMQ",
+      "provenance_description": "Exact 7B latest contract version and schema; its documented effective date precedes this 7E observation.",
+      "provider_service_id": "NEX-SVC-ORDER_API",
+      "record_type": "CURRENT_CONTRACT_STATE",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-10-03T09:00:00Z",
+      "valid_to_exclusive": null
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "DOCUMENTATION_OR_STABLE_INTERFACE",
+      "changed_fields": [],
+      "compatibility_classification": "DOCUMENTED_CURRENT_STABLE",
+      "compatibility_evidence_summary": "Worker may receive duplicate jobs; subscription targets and signing material are looked up in restricted runtime systems.",
+      "contract_id": "NEX-IFC-008",
+      "contract_revision_reference_id": "NEX-REV-IFC-008-02",
+      "contract_version": "1.3.0",
+      "current_anchor": true,
+      "documented_consumer_service_ids": [
+        "NEX-SVC-WEBHOOK_CONSUMER"
+      ],
+      "evidence_record_ids": [
+        "NEX-IFC-008",
+        "NEX-REV-IFC-008-02"
+      ],
+      "id": "NEX-IFC-TL-008-CURRENT",
+      "independent_wire_evidence": "7B_DOCUMENTED_CONTRACT_NOT_LIVE_TRAFFIC_TEST",
+      "interface_payload_schema": {
+        "acknowledgement": {
+          "disposition": "ACCEPTED|RETRY|REJECTED",
+          "job_id": "same stable UUID"
+        },
+        "job": {
+          "attempt": "integer >= 0",
+          "event_id": "stable order event identifier",
+          "job_id": "UUID string",
+          "merchant_id": "string",
+          "notification_type": "ORDER_CREATED|ORDER_CONFIRMED|ORDER_CANCELLED|ORDER_COMPLETED",
+          "order_id": "string",
+          "queued_at": "RFC3339 UTC",
+          "schema_version": "1",
+          "subscription_id": "opaque reference"
+        }
+      },
+      "migration_or_compatibility_window": null,
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-COM",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-008",
+      "protocol": "RabbitMQ",
+      "provenance_description": "Exact 7B latest contract version and schema; its documented effective date precedes this 7E observation.",
+      "provider_service_id": "NEX-SVC-ORDER_API",
+      "record_type": "CURRENT_CONTRACT_STATE",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-09-30T09:00:00Z",
+      "valid_to_exclusive": null
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "DOCUMENTATION_OR_STABLE_INTERFACE",
+      "changed_fields": [],
+      "compatibility_classification": "DOCUMENTED_CURRENT_STABLE",
+      "compatibility_evidence_summary": "Audience and issuer constraints are part of the validation contract; assertion internals are not shared test fixtures.",
+      "contract_id": "NEX-IFC-009",
+      "contract_revision_reference_id": "NEX-REV-IFC-009-02",
+      "contract_version": "2.7.0",
+      "current_anchor": true,
+      "documented_consumer_service_ids": [],
+      "evidence_record_ids": [
+        "NEX-IFC-009",
+        "NEX-REV-IFC-009-02"
+      ],
+      "id": "NEX-IFC-TL-009-CURRENT",
+      "independent_wire_evidence": "7B_DOCUMENTED_CONTRACT_NOT_LIVE_TRAFFIC_TEST",
+      "interface_payload_schema": {
+        "GET /v2/service-principals/{id} response": {
+          "allowed_audiences": "string[]",
+          "display_name": "string",
+          "principal_id": "opaque string",
+          "state": "ACTIVE|SUSPENDED"
+        },
+        "POST /v2/service-assertions request": {
+          "audience": "string",
+          "principal_id": "string",
+          "requested_ttl_seconds": "bounded integer"
+        },
+        "errors": {
+          "403": "principal not authorized for requested audience"
+        },
+        "response": {
+          "assertion_type": "JWT",
+          "expires_at": "RFC3339 UTC",
+          "issued_at": "RFC3339 UTC",
+          "token": "bearer assertion, EXAMPLE OMITTED; restricted live response only"
+        }
+      },
+      "migration_or_compatibility_window": null,
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-ID",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-009",
+      "protocol": "HTTPS/JSON",
+      "provenance_description": "Exact 7B latest contract version and schema; its documented effective date precedes this 7E observation.",
+      "provider_service_id": "NEX-SVC-IDENTITY_API",
+      "record_type": "CURRENT_CONTRACT_STATE",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-09-18T09:00:00Z",
+      "valid_to_exclusive": null
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "ADDITIVE_FOLLOWUP_PENDING",
+      "changed_fields": [
+        {
+          "field_path": "ETag?",
+          "future_state": "OPTIONAL_IN_CURRENT_SHAPE",
+          "historical_state": "NOT_DOCUMENTED_IN_OLDER_SHAPE"
+        }
+      ],
+      "compatibility_classification": "OLDER_WIRE_SHAPE_RECONSTRUCTED",
+      "contract_id": "NEX-IFC-010",
+      "contract_revision_reference_id": "NEX-REV-IFC-010-01",
+      "contract_version": "1.0.0",
+      "current_anchor": false,
+      "documented_consumer_service_ids": [
+        "NEX-SVC-TOKEN_VALIDATOR"
+      ],
+      "evidence_record_ids": [
+        "NEX-IFC-010",
+        "NEX-REV-IFC-010-01"
+      ],
+      "id": "NEX-IFC-TL-010-OLD",
+      "independent_wire_evidence": "RECONSTRUCTED_NOT_CONFIRMED",
+      "migration_or_compatibility_window": {
+        "consumer_requirement": "Tolerate absence of optional field during rolling upgrades.",
+        "end_at": "2026-10-05T09:00:00Z",
+        "start_at": "2026-09-21T09:00:00Z"
+      },
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-ID",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-010",
+      "protocol": "HTTPS/JWKS",
+      "provenance_description": "Earlier optional-field shape retrospectively reconstructed; wire deployment at that date was not independently captured.",
+      "provider_service_id": "NEX-SVC-IDENTITY_API",
+      "record_type": "HISTORIC_CONTRACT_VERSION",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-09-02T10:00:00Z",
+      "valid_to_exclusive": "2026-09-21T09:00:00Z"
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "ADDITIVE",
+      "changed_fields": [
+        {
+          "compatibility_effect": "Consumers tolerate absence and ignore unknown optional data.",
+          "current_state": "OPTIONAL",
+          "field_path": "ETag?",
+          "historical_state": "ABSENT_OR_UNDOCUMENTED"
+        }
+      ],
+      "compatibility_classification": "ADDITIVE_OPTIONAL_FIELD_RECONSTRUCTED",
+      "compatibility_evidence_summary": "Previous public signing key remains advertised through the agreed validation overlap period.",
+      "contract_id": "NEX-IFC-010",
+      "contract_revision_reference_id": "NEX-REV-IFC-010-02",
+      "contract_version": "1.1.0",
+      "current_anchor": true,
+      "documented_consumer_service_ids": [
+        "NEX-SVC-TOKEN_VALIDATOR"
+      ],
+      "evidence_record_ids": [
+        "NEX-IFC-010",
+        "NEX-REV-IFC-010-02"
+      ],
+      "id": "NEX-IFC-TL-010-CURRENT",
+      "independent_wire_evidence": "7B_DOCUMENTED_CONTRACT_NOT_LIVE_TRAFFIC_TEST",
+      "interface_payload_schema": {
+        "GET /.well-known/jwks.json response": {
+          "keys": "array of JWK objects",
+          "keys[].alg": "allowlisted signature algorithm",
+          "keys[].kid": "stable key identifier",
+          "keys[].kty": "RSA|EC",
+          "keys[].public_components": "RFC 7517 public modulus/exponent or EC coordinates only",
+          "keys[].use": "sig"
+        },
+        "http": {
+          "Cache-Control": "bounded max-age",
+          "ETag?": "opaque version validator"
+        }
+      },
+      "migration_or_compatibility_window": {
+        "consumer_requirement": "Required field meanings remain stable; optional field has a transitional absence window.",
+        "end_at": "2026-10-05T09:00:00Z",
+        "start_at": "2026-09-21T09:00:00Z"
+      },
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-ID",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-010",
+      "protocol": "HTTPS/JWKS",
+      "provenance_description": "Exact 7B latest contract version and schema; its documented effective date precedes this 7E observation.",
+      "provider_service_id": "NEX-SVC-IDENTITY_API",
+      "record_type": "CURRENT_CONTRACT_STATE",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-09-21T09:00:00Z",
+      "valid_to_exclusive": null
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "ADDITIVE_FOLLOWUP_PENDING",
+      "changed_fields": [
+        {
+          "field_path": "principal_id?",
+          "future_state": "OPTIONAL_IN_CURRENT_SHAPE",
+          "historical_state": "NOT_DOCUMENTED_IN_OLDER_SHAPE"
+        }
+      ],
+      "compatibility_classification": "OLDER_WIRE_SHAPE_RECONSTRUCTED",
+      "contract_id": "NEX-IFC-011",
+      "contract_revision_reference_id": "NEX-REV-IFC-011-01",
+      "contract_version": "1.8.0",
+      "current_anchor": false,
+      "documented_consumer_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-CHECKOUT_SERVICE"
+      ],
+      "evidence_record_ids": [
+        "NEX-IFC-011",
+        "NEX-REV-IFC-011-01"
+      ],
+      "id": "NEX-IFC-TL-011-OLD",
+      "independent_wire_evidence": "RECONSTRUCTED_NOT_CONFIRMED",
+      "migration_or_compatibility_window": {
+        "consumer_requirement": "Tolerate absence of optional field during rolling upgrades.",
+        "end_at": "2026-10-08T09:00:00Z",
+        "start_at": "2026-09-24T09:00:00Z"
+      },
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-ID",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-011",
+      "protocol": "HTTPS/JSON",
+      "provenance_description": "Earlier optional-field shape retrospectively reconstructed; wire deployment at that date was not independently captured.",
+      "provider_service_id": "NEX-SVC-TOKEN_VALIDATOR",
+      "record_type": "HISTORIC_CONTRACT_VERSION",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-09-02T10:00:00Z",
+      "valid_to_exclusive": "2026-09-24T09:00:00Z"
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "ADDITIVE",
+      "changed_fields": [
+        {
+          "compatibility_effect": "Consumers tolerate absence and ignore unknown optional data.",
+          "current_state": "OPTIONAL",
+          "field_path": "principal_id?",
+          "historical_state": "ABSENT_OR_UNDOCUMENTED"
+        }
+      ],
+      "compatibility_classification": "ADDITIVE_OPTIONAL_FIELD_RECONSTRUCTED",
+      "compatibility_evidence_summary": "All callers treat invalid or unknown results as rejection; a valid result does not grant permission to a business action.",
+      "contract_id": "NEX-IFC-011",
+      "contract_revision_reference_id": "NEX-REV-IFC-011-02",
+      "contract_version": "1.9.0",
+      "current_anchor": true,
+      "documented_consumer_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-CHECKOUT_SERVICE"
+      ],
+      "evidence_record_ids": [
+        "NEX-IFC-011",
+        "NEX-REV-IFC-011-02"
+      ],
+      "id": "NEX-IFC-TL-011-CURRENT",
+      "independent_wire_evidence": "7B_DOCUMENTED_CONTRACT_NOT_LIVE_TRAFFIC_TEST",
+      "interface_payload_schema": {
+        "200 response": {
+          "audiences?": "string[] when valid",
+          "expires_at?": "RFC3339 when valid",
+          "failure_code?": "BAD_SIGNATURE|EXPIRED|WRONG_AUDIENCE|WRONG_ISSUER|UNSUPPORTED_ALGORITHM",
+          "issuer?": "string when valid",
+          "principal_id?": "opaque string when valid",
+          "valid": "boolean"
+        },
+        "POST /v1/validate request": {
+          "assertion": "bearer token, runtime only; no examples or storage in this registry",
+          "expected_audience": "string",
+          "expected_issuer": "string",
+          "max_clock_skew_seconds": "bounded integer"
+        }
+      },
+      "migration_or_compatibility_window": {
+        "consumer_requirement": "Required field meanings remain stable; optional field has a transitional absence window.",
+        "end_at": "2026-10-08T09:00:00Z",
+        "start_at": "2026-09-24T09:00:00Z"
+      },
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-ID",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-011",
+      "protocol": "HTTPS/JSON",
+      "provenance_description": "Exact 7B latest contract version and schema; its documented effective date precedes this 7E observation.",
+      "provider_service_id": "NEX-SVC-TOKEN_VALIDATOR",
+      "record_type": "CURRENT_CONTRACT_STATE",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-09-24T09:00:00Z",
+      "valid_to_exclusive": null
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "DOCUMENTATION_OR_STABLE_INTERFACE",
+      "changed_fields": [],
+      "compatibility_classification": "DOCUMENTED_CURRENT_STABLE",
+      "compatibility_evidence_summary": "Unknown actions default to DENY; new optional context fields cannot weaken existing rules implicitly.",
+      "contract_id": "NEX-IFC-012",
+      "contract_revision_reference_id": "NEX-REV-IFC-012-02",
+      "contract_version": "1.6.0",
+      "current_anchor": true,
+      "documented_consumer_service_ids": [
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-REPORTING_API"
+      ],
+      "evidence_record_ids": [
+        "NEX-IFC-012",
+        "NEX-REV-IFC-012-02"
+      ],
+      "id": "NEX-IFC-TL-012-CURRENT",
+      "independent_wire_evidence": "7B_DOCUMENTED_CONTRACT_NOT_LIVE_TRAFFIC_TEST",
+      "interface_payload_schema": {
+        "200 response": {
+          "decision": "ALLOW|DENY",
+          "decision_id": "UUID",
+          "evaluated_at": "RFC3339 UTC",
+          "policy_revision": "string",
+          "reason_code": "stable broad category; not policy source details"
+        },
+        "POST /v1/decisions request": {
+          "action": "namespaced string e.g. reports.read",
+          "context": "object of approved non-secret attributes",
+          "principal_id": "opaque authenticated identity",
+          "request_id": "UUID",
+          "resource_id": "opaque string",
+          "resource_type": "string"
+        }
+      },
+      "migration_or_compatibility_window": null,
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-ID",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-012",
+      "protocol": "HTTPS/JSON",
+      "provenance_description": "Exact 7B latest contract version and schema; its documented effective date precedes this 7E observation.",
+      "provider_service_id": "NEX-SVC-POLICY_SERVICE",
+      "record_type": "CURRENT_CONTRACT_STATE",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-09-12T09:00:00Z",
+      "valid_to_exclusive": null
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "ADDITIVE_FOLLOWUP_PENDING",
+      "changed_fields": [
+        {
+          "field_path": "currency?",
+          "future_state": "OPTIONAL_IN_CURRENT_SHAPE",
+          "historical_state": "NOT_DOCUMENTED_IN_OLDER_SHAPE"
+        }
+      ],
+      "compatibility_classification": "OLDER_WIRE_SHAPE_RECONSTRUCTED",
+      "contract_id": "NEX-IFC-013",
+      "contract_revision_reference_id": "NEX-REV-IFC-013-01",
+      "contract_version": "2.2.0",
+      "current_anchor": false,
+      "documented_consumer_service_ids": [],
+      "evidence_record_ids": [
+        "NEX-IFC-013",
+        "NEX-REV-IFC-013-01"
+      ],
+      "id": "NEX-IFC-TL-013-OLD",
+      "independent_wire_evidence": "RECONSTRUCTED_NOT_CONFIRMED",
+      "migration_or_compatibility_window": {
+        "consumer_requirement": "Tolerate absence of optional field during rolling upgrades.",
+        "end_at": "2026-10-12T09:00:00Z",
+        "start_at": "2026-09-28T09:00:00Z"
+      },
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-DATA",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-013",
+      "protocol": "HTTPS/JSON",
+      "provenance_description": "Earlier optional-field shape retrospectively reconstructed; wire deployment at that date was not independently captured.",
+      "provider_service_id": "NEX-SVC-REPORTING_API",
+      "record_type": "HISTORIC_CONTRACT_VERSION",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-09-02T10:00:00Z",
+      "valid_to_exclusive": "2026-09-28T09:00:00Z"
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "ADDITIVE",
+      "changed_fields": [
+        {
+          "compatibility_effect": "Consumers tolerate absence and ignore unknown optional data.",
+          "current_state": "OPTIONAL",
+          "field_path": "currency?",
+          "historical_state": "ABSENT_OR_UNDOCUMENTED"
+        }
+      ],
+      "compatibility_classification": "ADDITIVE_OPTIONAL_FIELD_RECONSTRUCTED",
+      "compatibility_evidence_summary": "Data currency and event-completeness indicators stay distinct; callers cannot assume real-time figures.",
+      "contract_id": "NEX-IFC-013",
+      "contract_revision_reference_id": "NEX-REV-IFC-013-02",
+      "contract_version": "2.3.0",
+      "current_anchor": true,
+      "documented_consumer_service_ids": [],
+      "evidence_record_ids": [
+        "NEX-IFC-013",
+        "NEX-REV-IFC-013-02"
+      ],
+      "id": "NEX-IFC-TL-013-CURRENT",
+      "independent_wire_evidence": "7B_DOCUMENTED_CONTRACT_NOT_LIVE_TRAFFIC_TEST",
+      "interface_payload_schema": {
+        "200 response": {
+          "currency": "ISO 4217",
+          "data_as_of": "RFC3339 latest included event time",
+          "generated_at": "RFC3339 UTC",
+          "gross_amount_minor": "integer",
+          "metric_model_version": "metrics-model-v3",
+          "order_count": "integer >=0",
+          "payment_authorized_count": "integer >=0",
+          "window": "{from,to}"
+        },
+        "GET /v2/reports/commerce-summary query": {
+          "currency?": "ISO 4217",
+          "from": "RFC3339 inclusive start",
+          "limit": "integer <= 500",
+          "merchant_scope": "authorized principal scope",
+          "to": "RFC3339 exclusive end"
+        }
+      },
+      "migration_or_compatibility_window": {
+        "consumer_requirement": "Required field meanings remain stable; optional field has a transitional absence window.",
+        "end_at": "2026-10-12T09:00:00Z",
+        "start_at": "2026-09-28T09:00:00Z"
+      },
+      "observed_at": null,
+      "owner_project_id": "NEX-PRJ-DATA",
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-013",
+      "protocol": "HTTPS/JSON",
+      "provenance_description": "Exact 7B latest contract version and schema; its documented effective date precedes this 7E observation.",
+      "provider_service_id": "NEX-SVC-REPORTING_API",
+      "record_type": "CURRENT_CONTRACT_STATE",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-09-28T09:00:00Z",
+      "valid_to_exclusive": null
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "change_kind": "DOCUMENTATION_OR_STABLE_INTERFACE",
+      "changed_fields": [],
+      "compatibility_classification": "DOCUMENTED_CURRENT_STABLE",
+      "compatibility_evidence_summary": "The service identities listed here are declared operational dependents, not proof that these applications make direct HTTP calls at runtime.",
+      "contract_id": "NEX-IFC-014",
+      "contract_revision_reference_id": "NEX-REV-IFC-014-02",
+      "contract_version": "1.5.0",
+      "current_anchor": true,
+      "documented_consumer_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-EVENT_INGESTOR"
+      ],
+      "evidence_record_ids": [
+        "NEX-IFC-014",
+        "NEX-REV-IFC-014-02"
+      ],
+      "id": "NEX-IFC-TL-014-CURRENT",
+      "independent_wire_evidence": "7B_DOCUMENTED_CONTRACT_NOT_LIVE_TRAFFIC_TEST",
+      "interface_payload_schema": {
+        "202 response": {
+          "artifact_digest": "sha256 string",
+          "deployment_job_id": "UUID",
+          "service_id": "string",
+          "status": "QUEUED|VALIDATING|ROLLING_OUT|SUCCEEDED|FAILED|ROLLED_BACK"
+        },
+        "POST /v1/deployment-jobs request": {
+          "approval_reference": "opaque approved review reference",
+          "artifact_digest": "sha256 content digest",
+          "release_revision": "string",
+          "service_id": "one canonical Stage 7A service ID",
+          "target_environment": "DEVELOPMENT|STAGING|PRODUCTION"
+        }
+      },
+      "migration_or_compatibility_window": null,
+      "observed_at": null,
+      "owner_project_id": null,
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-014",
+      "protocol": "HTTPS/JSON",
+      "provenance_description": "Exact 7B latest contract version and schema; its documented effective date precedes this 7E observation.",
+      "provider_service_id": "NEX-SVC-DEPLOYMENT_PLATFORM",
+      "record_type": "CURRENT_CONTRACT_STATE",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-10-23T09:00:00Z",
+      "valid_to_exclusive": null
+    }
+  ],
+  "dataset_name": "NEXUS Technologies — Stage 7E",
+  "dataset_version": "7E-1.0.0",
+  "reference_snapshot": "2026-10-31T23:59:59Z"
+}

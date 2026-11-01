@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "required_capabilities": ["graph.read", "evidence.read"],
+  "compatible_tools": [
+    {"tool_id": "people.find_experts", "version": "1.0.0"},
+    {"tool_id": "graph.entity_lookup", "version": "1.0.0"},
+    {"tool_id": "graph.revision", "version": "1.0.0"},
+    {"tool_id": "evidence.lookup", "version": "1.0.0"}
+  ],
+  "effect": "READ_ONLY",
+  "input_expectations": "A target service/repository/interface entity_id, and optionally a bounded result limit/evidence_limit.",
+  "output_expectations": "Candidates classified FORMAL_OWNER/CONTRIBUTOR/REVIEWER/POTENTIAL_SME from deduplicated, evidence-backed contributions only -- never an opaque expertise score, a fabricated confidence percentage, or an invented ownership/participation claim."
+}

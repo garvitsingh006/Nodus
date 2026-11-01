@@ -1,0 +1,875 @@
+{
+  "dataset_version": "7B-1.0.0",
+  "interface_contracts": [
+    {
+      "id": "NEX-IFC-001",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "source_record_type": "INTERFACE_CONTRACT",
+      "author_employee_id": "NEX-EMP-002",
+      "created_at": "2026-09-02T09:00:00Z",
+      "revised_at": "2026-10-27T13:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "contract_name": "merchant-payments-v1",
+      "contract_version": "1.4.0",
+      "provider_service_id": "NEX-SVC-PAYMENT_API",
+      "known_consumer_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE"
+      ],
+      "protocol": "HTTPS/JSON",
+      "interface_category": "REST_API",
+      "purpose": "Create an idempotent merchant payment intent and retrieve its current state.",
+      "payload_schema": {
+        "POST /v1/payment-intents request": {
+          "merchant_id": "string, authenticated tenant scope",
+          "amount_minor": "integer >= 1, currency minor units",
+          "currency": "ISO 4217 alpha-3 string",
+          "idempotency_key": "opaque string, unique within merchant operation scope",
+          "merchant_order_ref?": "opaque string <= 128 chars"
+        },
+        "201/200 response": {
+          "payment_intent_id": "string, immutable",
+          "status": "CREATED|PENDING|AUTHORIZED|DECLINED|FAILED",
+          "amount_minor": "integer",
+          "currency": "string",
+          "created_at": "RFC3339 UTC timestamp",
+          "replayed": "boolean, same key and request fingerprint"
+        },
+        "GET /v1/payment-intents/{id} response": {
+          "payment_intent_id": "string",
+          "status": "CREATED|PENDING|AUTHORIZED|DECLINED|FAILED",
+          "updated_at": "RFC3339 UTC timestamp"
+        },
+        "errors": {
+          "400": "malformed fields",
+          "401": "invalid identity",
+          "409": "same idempotency key, different normalized payload",
+          "503": "temporarily unavailable; query by stable intent id"
+        }
+      },
+      "compatibility_expectations": "Additive optional fields only; amount units, status meanings and idempotency replay identity remain stable. Consumers ignore unknown response fields.",
+      "versioning_rules": "Breaking required-field or payment-status changes publish merchant-payments-v2 with a dual-support migration period.",
+      "lifecycle_status": "ACTIVE",
+      "owner_employee_id": "NEX-EMP-002",
+      "effective_date": "2026-09-10",
+      "relationship_basis_dependency_ids": [
+        "NEX-DEP-005"
+      ],
+      "relationship_basis": "Stage 7A service pair or, for empty consumer list, published provider interface without an asserted internal consumer.",
+      "document_references": [
+        "NEX-DOC-002",
+        "NEX-DOC-003",
+        "NEX-DOC-008"
+      ],
+      "entity_references": {
+        "service_ids": [
+          "NEX-SVC-PAYMENT_API",
+          "NEX-SVC-CHECKOUT_SERVICE"
+        ],
+        "project_ids": [
+          "NEX-PRJ-PAY"
+        ]
+      }
+    },
+    {
+      "id": "NEX-IFC-002",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "source_record_type": "INTERFACE_CONTRACT",
+      "author_employee_id": "NEX-EMP-002",
+      "created_at": "2026-09-02T09:00:00Z",
+      "revised_at": "2026-10-27T13:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "contract_name": "gateway-routing-v2",
+      "contract_version": "2.3.0",
+      "provider_service_id": "NEX-SVC-GATEWAY_ROUTER",
+      "known_consumer_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-REFUND_WORKER"
+      ],
+      "protocol": "gRPC/protobuf",
+      "interface_category": "INTERNAL_GRPC",
+      "purpose": "Normalize authorization and refund requests across gateway adapters.",
+      "payload_schema": {
+        "protobuf service": "nexus.gateway.v2.GatewayRouter/RouteOperation",
+        "RouteOperationRequest": {
+          "operation_id": "string, idempotency identity",
+          "kind": "AUTHORIZE|REFUND",
+          "merchant_id": "string",
+          "payment_intent_id": "string",
+          "refund_request_id?": "required when kind=REFUND",
+          "amount_minor": "int64 >=1",
+          "currency": "ISO 4217 string",
+          "request_deadline_ms": "int32 bounded"
+        },
+        "RouteOperationResponse": {
+          "route_attempt_id": "string",
+          "normalized_result": "APPROVED|DECLINED|PENDING|RETRYABLE_FAILURE",
+          "provider_reference?": "opaque non-secret external identifier",
+          "provider_category?": "string, normalized category",
+          "retry_after_ms?": "int32, only for retryable response"
+        },
+        "errors": {
+          "INVALID_ARGUMENT": "bad request",
+          "DEADLINE_EXCEEDED": "outcome may be indeterminate",
+          "UNAVAILABLE": "retry according to operation idempotency"
+        }
+      },
+      "compatibility_expectations": "Preserve numeric protobuf field identifiers; do not reuse removed tags; unknown enum values require safe fallback.",
+      "versioning_rules": "Incompatible package or outcome semantics require nexus.gateway.v3 and consumer migration.",
+      "lifecycle_status": "ACTIVE",
+      "owner_employee_id": "NEX-EMP-002",
+      "effective_date": "2026-09-22",
+      "relationship_basis_dependency_ids": [
+        "NEX-DEP-001",
+        "NEX-DEP-004"
+      ],
+      "relationship_basis": "Stage 7A service pair or, for empty consumer list, published provider interface without an asserted internal consumer.",
+      "document_references": [
+        "NEX-DOC-002",
+        "NEX-DOC-008"
+      ],
+      "entity_references": {
+        "service_ids": [
+          "NEX-SVC-GATEWAY_ROUTER",
+          "NEX-SVC-PAYMENT_API",
+          "NEX-SVC-REFUND_WORKER"
+        ],
+        "project_ids": [
+          "NEX-PRJ-PAY"
+        ]
+      }
+    },
+    {
+      "id": "NEX-IFC-003",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "source_record_type": "INTERFACE_CONTRACT",
+      "author_employee_id": "NEX-EMP-002",
+      "created_at": "2026-09-02T09:00:00Z",
+      "revised_at": "2026-10-27T13:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "contract_name": "refund-requests-v1",
+      "contract_version": "1.2.0",
+      "provider_service_id": "NEX-SVC-PAYMENT_API",
+      "known_consumer_service_ids": [
+        "NEX-SVC-REFUND_WORKER"
+      ],
+      "protocol": "NATS",
+      "interface_category": "ASYNC_EVENT",
+      "purpose": "Enqueue an already-authorized refund operation for asynchronous execution.",
+      "payload_schema": {
+        "envelope": {
+          "event_id": "UUID string",
+          "event_type": "refund.requested",
+          "schema_version": "1",
+          "producer_service_id": "NEX-SVC-PAYMENT_API",
+          "occurred_at": "RFC3339 UTC"
+        },
+        "payload": {
+          "refund_request_id": "string, unique and immutable",
+          "payment_intent_id": "string",
+          "amount_minor": "integer >0",
+          "currency": "ISO 4217",
+          "reason_code": "CUSTOMER_REQUEST|DUPLICATE|OTHER",
+          "authorization_record_id": "non-secret internal reference"
+        }
+      },
+      "compatibility_expectations": "At-least-once delivery; worker deduplicates on refund_request_id and tolerates reordering with payment state.",
+      "versioning_rules": "Add optional payload attributes under v1; incompatible amount or identifier changes require v2 event type.",
+      "lifecycle_status": "ACTIVE",
+      "owner_employee_id": "NEX-EMP-002",
+      "effective_date": "2026-09-08",
+      "relationship_basis_dependency_ids": [
+        "NEX-DEP-003"
+      ],
+      "relationship_basis": "Stage 7A service pair or, for empty consumer list, published provider interface without an asserted internal consumer.",
+      "document_references": [
+        "NEX-DOC-002",
+        "NEX-DOC-008"
+      ],
+      "entity_references": {
+        "service_ids": [
+          "NEX-SVC-PAYMENT_API",
+          "NEX-SVC-REFUND_WORKER"
+        ],
+        "project_ids": [
+          "NEX-PRJ-PAY"
+        ]
+      },
+      "stage_7a_direction_discrepancy_note": "Stage 7A NEX-DEP-003 records payment-api -> refund-worker while its prose describes publisher-to-subscriber flow. This contract documents event flow only; it does not invert or repair the canonical dependency edge."
+    },
+    {
+      "id": "NEX-IFC-004",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "source_record_type": "INTERFACE_CONTRACT",
+      "author_employee_id": "NEX-EMP-002",
+      "created_at": "2026-09-02T09:00:00Z",
+      "revised_at": "2026-10-27T13:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "contract_name": "payment-lifecycle-events-v2",
+      "contract_version": "2.2.0",
+      "provider_service_id": "NEX-SVC-PAYMENT_API",
+      "known_consumer_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR"
+      ],
+      "protocol": "NATS",
+      "interface_category": "ASYNC_EVENT",
+      "purpose": "Publish non-sensitive transaction status changes for governed analytics.",
+      "payload_schema": {
+        "envelope": {
+          "event_id": "UUID string",
+          "event_type": "payment.intent.created|payment.authorized|payment.declined|payment.failed",
+          "schema_version": "2",
+          "producer_service_id": "NEX-SVC-PAYMENT_API",
+          "occurred_at": "RFC3339 UTC",
+          "correlation_id": "opaque string"
+        },
+        "payload": {
+          "payment_intent_id": "string",
+          "merchant_id": "string",
+          "amount_minor": "integer",
+          "currency": "ISO 4217",
+          "status": "CREATED|PENDING|AUTHORIZED|DECLINED|FAILED",
+          "attempt_number": "integer >= 0"
+        }
+      },
+      "compatibility_expectations": "Consumers must handle duplicate and late events; neither ordering nor exactly-once delivery is guaranteed.",
+      "versioning_rules": "Breaking status meaning or identifier changes require payment-lifecycle-events-v3; new optional fields may appear in v2.",
+      "lifecycle_status": "ACTIVE",
+      "owner_employee_id": "NEX-EMP-002",
+      "effective_date": "2026-09-15",
+      "relationship_basis_dependency_ids": [
+        "NEX-DEP-011"
+      ],
+      "relationship_basis": "Stage 7A service pair or, for empty consumer list, published provider interface without an asserted internal consumer.",
+      "document_references": [
+        "NEX-DOC-002",
+        "NEX-DOC-005",
+        "NEX-DOC-008"
+      ],
+      "entity_references": {
+        "service_ids": [
+          "NEX-SVC-PAYMENT_API",
+          "NEX-SVC-EVENT_INGESTOR"
+        ],
+        "project_ids": [
+          "NEX-PRJ-PAY"
+        ]
+      }
+    },
+    {
+      "id": "NEX-IFC-005",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "source_record_type": "INTERFACE_CONTRACT",
+      "author_employee_id": "NEX-EMP-004",
+      "created_at": "2026-09-02T09:00:00Z",
+      "revised_at": "2026-10-27T13:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "contract_name": "checkout-v2",
+      "contract_version": "2.6.0",
+      "provider_service_id": "NEX-SVC-CHECKOUT_SERVICE",
+      "known_consumer_service_ids": [],
+      "protocol": "HTTPS/JSON",
+      "interface_category": "REST_API",
+      "purpose": "Create, inspect and confirm merchant checkout sessions.",
+      "payload_schema": {
+        "POST /v2/checkout-sessions request": {
+          "merchant_id": "string",
+          "cart_ref": "opaque string",
+          "total_minor": "integer >=0",
+          "currency": "ISO 4217",
+          "client_request_id": "opaque retry identity"
+        },
+        "201 response": {
+          "checkout_session_id": "string",
+          "expires_at": "RFC3339 UTC",
+          "status": "OPEN",
+          "total_minor": "integer"
+        },
+        "POST /v2/checkout-sessions/{id}/confirm response": {
+          "checkout_session_id": "string",
+          "payment_intent_id?": "string if initiated",
+          "order_id?": "string once created",
+          "status": "PENDING_PAYMENT|CONFIRMED|EXPIRED|FAILED"
+        },
+        "errors": {
+          "409": "expired session, conflicting confirmation or invalid transition"
+        }
+      },
+      "compatibility_expectations": "Client retries using client_request_id must not create duplicate intents. Unrecognized status values must fail safely.",
+      "versioning_rules": "New optional session attributes are additive; required confirmation semantics changes need checkout-v3.",
+      "lifecycle_status": "ACTIVE",
+      "owner_employee_id": "NEX-EMP-004",
+      "effective_date": "2026-10-01",
+      "relationship_basis_dependency_ids": [],
+      "relationship_basis": "Stage 7A service pair or, for empty consumer list, published provider interface without an asserted internal consumer.",
+      "document_references": [
+        "NEX-DOC-003",
+        "NEX-DOC-008"
+      ],
+      "entity_references": {
+        "service_ids": [
+          "NEX-SVC-CHECKOUT_SERVICE"
+        ],
+        "project_ids": [
+          "NEX-PRJ-COM"
+        ]
+      }
+    },
+    {
+      "id": "NEX-IFC-006",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "source_record_type": "INTERFACE_CONTRACT",
+      "author_employee_id": "NEX-EMP-004",
+      "created_at": "2026-09-02T09:00:00Z",
+      "revised_at": "2026-10-27T13:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "contract_name": "orders-v2",
+      "contract_version": "2.4.0",
+      "provider_service_id": "NEX-SVC-ORDER_API",
+      "known_consumer_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE"
+      ],
+      "protocol": "HTTPS/JSON",
+      "interface_category": "INTERNAL_REST",
+      "purpose": "Create and transition durable merchant orders from confirmed checkout context.",
+      "payload_schema": {
+        "POST /v2/orders request": {
+          "merchant_id": "string",
+          "checkout_session_id": "string",
+          "payment_intent_id": "string",
+          "order_reference": "stable merchant order key",
+          "total_minor": "integer",
+          "currency": "ISO 4217"
+        },
+        "response": {
+          "order_id": "string",
+          "status": "CREATED|CONFIRMED|FULFILLING|COMPLETED|CANCELLED",
+          "revision": "integer >=1",
+          "created_at": "RFC3339 UTC"
+        },
+        "PATCH /v2/orders/{id}/status request": {
+          "expected_revision": "integer, optimistic concurrency",
+          "transition_to": "allowed next state",
+          "reason_code?": "string"
+        },
+        "errors": {
+          "409": "duplicate conflict or invalid state transition"
+        }
+      },
+      "compatibility_expectations": "Order id and revision semantics are stable; new optional attributes cannot change legal existing transitions.",
+      "versioning_rules": "State-machine contract break or primary key change requires orders-v3 with dual-read compatibility period.",
+      "lifecycle_status": "ACTIVE",
+      "owner_employee_id": "NEX-EMP-004",
+      "effective_date": "2026-09-26",
+      "relationship_basis_dependency_ids": [
+        "NEX-DEP-006"
+      ],
+      "relationship_basis": "Stage 7A service pair or, for empty consumer list, published provider interface without an asserted internal consumer.",
+      "document_references": [
+        "NEX-DOC-003",
+        "NEX-DOC-008"
+      ],
+      "entity_references": {
+        "service_ids": [
+          "NEX-SVC-ORDER_API",
+          "NEX-SVC-CHECKOUT_SERVICE"
+        ],
+        "project_ids": [
+          "NEX-PRJ-COM"
+        ]
+      }
+    },
+    {
+      "id": "NEX-IFC-007",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "source_record_type": "INTERFACE_CONTRACT",
+      "author_employee_id": "NEX-EMP-004",
+      "created_at": "2026-09-02T09:00:00Z",
+      "revised_at": "2026-10-27T13:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "contract_name": "order-events-v1",
+      "contract_version": "1.5.0",
+      "provider_service_id": "NEX-SVC-ORDER_API",
+      "known_consumer_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR"
+      ],
+      "protocol": "RabbitMQ",
+      "interface_category": "ASYNC_EVENT",
+      "purpose": "Publish order lifecycle changes for reporting and governed downstream processing.",
+      "payload_schema": {
+        "envelope": {
+          "event_id": "UUID string",
+          "event_type": "order.created|order.confirmed|order.cancelled|order.completed",
+          "schema_version": "1",
+          "producer_service_id": "NEX-SVC-ORDER_API",
+          "occurred_at": "RFC3339 UTC"
+        },
+        "payload": {
+          "order_id": "string",
+          "checkout_session_id": "string",
+          "payment_intent_id?": "string",
+          "merchant_id": "string",
+          "order_revision": "positive integer",
+          "order_status": "CREATED|CONFIRMED|FULFILLING|COMPLETED|CANCELLED",
+          "total_minor": "integer",
+          "currency": "ISO 4217"
+        }
+      },
+      "compatibility_expectations": "Consumer must deduplicate by producer and event_id; revisions provide ordering information for an individual order.",
+      "versioning_rules": "Add fields with defaults for v1 consumers; altered status semantics require order-events-v2.",
+      "lifecycle_status": "ACTIVE",
+      "owner_employee_id": "NEX-EMP-004",
+      "effective_date": "2026-10-03",
+      "relationship_basis_dependency_ids": [
+        "NEX-DEP-012"
+      ],
+      "relationship_basis": "Stage 7A service pair or, for empty consumer list, published provider interface without an asserted internal consumer.",
+      "document_references": [
+        "NEX-DOC-003",
+        "NEX-DOC-005",
+        "NEX-DOC-008"
+      ],
+      "entity_references": {
+        "service_ids": [
+          "NEX-SVC-ORDER_API",
+          "NEX-SVC-EVENT_INGESTOR"
+        ],
+        "project_ids": [
+          "NEX-PRJ-COM"
+        ]
+      }
+    },
+    {
+      "id": "NEX-IFC-008",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "source_record_type": "INTERFACE_CONTRACT",
+      "author_employee_id": "NEX-EMP-004",
+      "created_at": "2026-09-02T09:00:00Z",
+      "revised_at": "2026-10-27T13:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "contract_name": "commerce-notification-jobs",
+      "contract_version": "1.3.0",
+      "provider_service_id": "NEX-SVC-ORDER_API",
+      "known_consumer_service_ids": [
+        "NEX-SVC-WEBHOOK_CONSUMER"
+      ],
+      "protocol": "RabbitMQ",
+      "interface_category": "INTERNAL_ASYNC_JOB",
+      "purpose": "Ask webhook-consumer to deliver one merchant-visible order change.",
+      "payload_schema": {
+        "job": {
+          "job_id": "UUID string",
+          "schema_version": "1",
+          "merchant_id": "string",
+          "subscription_id": "opaque reference",
+          "event_id": "stable order event identifier",
+          "order_id": "string",
+          "notification_type": "ORDER_CREATED|ORDER_CONFIRMED|ORDER_CANCELLED|ORDER_COMPLETED",
+          "queued_at": "RFC3339 UTC",
+          "attempt": "integer >= 0"
+        },
+        "acknowledgement": {
+          "disposition": "ACCEPTED|RETRY|REJECTED",
+          "job_id": "same stable UUID"
+        }
+      },
+      "compatibility_expectations": "Worker may receive duplicate jobs; subscription targets and signing material are looked up in restricted runtime systems.",
+      "versioning_rules": "New optional job attributes may be added; incompatible notification payload changes use a versioned job type.",
+      "lifecycle_status": "ACTIVE",
+      "owner_employee_id": "NEX-EMP-004",
+      "effective_date": "2026-09-30",
+      "relationship_basis_dependency_ids": [
+        "NEX-DEP-008"
+      ],
+      "relationship_basis": "Stage 7A service pair or, for empty consumer list, published provider interface without an asserted internal consumer.",
+      "document_references": [
+        "NEX-DOC-003",
+        "NEX-DOC-008"
+      ],
+      "entity_references": {
+        "service_ids": [
+          "NEX-SVC-ORDER_API",
+          "NEX-SVC-WEBHOOK_CONSUMER"
+        ],
+        "project_ids": [
+          "NEX-PRJ-COM"
+        ]
+      },
+      "stage_7a_direction_discrepancy_note": "Stage 7A NEX-DEP-008 records order-api -> webhook-consumer while its prose describes publisher-to-subscriber flow. This is not an automatically corrected dependency edge."
+    },
+    {
+      "id": "NEX-IFC-009",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "source_record_type": "INTERFACE_CONTRACT",
+      "author_employee_id": "NEX-EMP-006",
+      "created_at": "2026-09-02T09:00:00Z",
+      "revised_at": "2026-10-27T13:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "contract_name": "identity-v2",
+      "contract_version": "2.7.0",
+      "provider_service_id": "NEX-SVC-IDENTITY_API",
+      "known_consumer_service_ids": [],
+      "protocol": "HTTPS/JSON",
+      "interface_category": "IDENTITY_REST",
+      "purpose": "Represent service principals and issue bounded service assertions.",
+      "payload_schema": {
+        "GET /v2/service-principals/{id} response": {
+          "principal_id": "opaque string",
+          "state": "ACTIVE|SUSPENDED",
+          "display_name": "string",
+          "allowed_audiences": "string[]"
+        },
+        "POST /v2/service-assertions request": {
+          "principal_id": "string",
+          "audience": "string",
+          "requested_ttl_seconds": "bounded integer"
+        },
+        "response": {
+          "assertion_type": "JWT",
+          "expires_at": "RFC3339 UTC",
+          "issued_at": "RFC3339 UTC",
+          "token": "bearer assertion, EXAMPLE OMITTED; restricted live response only"
+        },
+        "errors": {
+          "403": "principal not authorized for requested audience"
+        }
+      },
+      "compatibility_expectations": "Audience and issuer constraints are part of the validation contract; assertion internals are not shared test fixtures.",
+      "versioning_rules": "Changing issuer semantics or required claims requires identity-v3 and coordinated validator support.",
+      "lifecycle_status": "ACTIVE",
+      "owner_employee_id": "NEX-EMP-006",
+      "effective_date": "2026-09-18",
+      "relationship_basis_dependency_ids": [],
+      "relationship_basis": "Stage 7A service pair or, for empty consumer list, published provider interface without an asserted internal consumer.",
+      "document_references": [
+        "NEX-DOC-004",
+        "NEX-DOC-008"
+      ],
+      "entity_references": {
+        "service_ids": [
+          "NEX-SVC-IDENTITY_API"
+        ],
+        "project_ids": [
+          "NEX-PRJ-ID"
+        ]
+      }
+    },
+    {
+      "id": "NEX-IFC-010",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "source_record_type": "INTERFACE_CONTRACT",
+      "author_employee_id": "NEX-EMP-006",
+      "created_at": "2026-09-02T09:00:00Z",
+      "revised_at": "2026-10-27T13:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "contract_name": "public-jwks",
+      "contract_version": "1.1.0",
+      "provider_service_id": "NEX-SVC-IDENTITY_API",
+      "known_consumer_service_ids": [
+        "NEX-SVC-TOKEN_VALIDATOR"
+      ],
+      "protocol": "HTTPS/JWKS",
+      "interface_category": "PUBLIC_KEY_DISCOVERY",
+      "purpose": "Expose the public key set used to validate current and overlapping service signatures.",
+      "payload_schema": {
+        "GET /.well-known/jwks.json response": {
+          "keys": "array of JWK objects",
+          "keys[].kid": "stable key identifier",
+          "keys[].kty": "RSA|EC",
+          "keys[].alg": "allowlisted signature algorithm",
+          "keys[].use": "sig",
+          "keys[].public_components": "RFC 7517 public modulus/exponent or EC coordinates only"
+        },
+        "http": {
+          "Cache-Control": "bounded max-age",
+          "ETag?": "opaque version validator"
+        }
+      },
+      "compatibility_expectations": "Previous public signing key remains advertised through the agreed validation overlap period.",
+      "versioning_rules": "Key rotation updates the JWKS representation without changing the endpoint identity; algorithm policy breaks require coordinated review.",
+      "lifecycle_status": "ACTIVE",
+      "owner_employee_id": "NEX-EMP-006",
+      "effective_date": "2026-09-21",
+      "relationship_basis_dependency_ids": [
+        "NEX-DEP-010"
+      ],
+      "relationship_basis": "Stage 7A service pair or, for empty consumer list, published provider interface without an asserted internal consumer.",
+      "document_references": [
+        "NEX-DOC-004",
+        "NEX-DOC-008"
+      ],
+      "entity_references": {
+        "service_ids": [
+          "NEX-SVC-IDENTITY_API",
+          "NEX-SVC-TOKEN_VALIDATOR"
+        ],
+        "project_ids": [
+          "NEX-PRJ-ID"
+        ]
+      }
+    },
+    {
+      "id": "NEX-IFC-011",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "source_record_type": "INTERFACE_CONTRACT",
+      "author_employee_id": "NEX-EMP-007",
+      "created_at": "2026-09-02T09:00:00Z",
+      "revised_at": "2026-10-27T13:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "contract_name": "token-validation-v1",
+      "contract_version": "1.9.0",
+      "provider_service_id": "NEX-SVC-TOKEN_VALIDATOR",
+      "known_consumer_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-CHECKOUT_SERVICE"
+      ],
+      "protocol": "HTTPS/JSON",
+      "interface_category": "INTERNAL_REST",
+      "purpose": "Verify signed service assertions at documented protected product boundaries.",
+      "payload_schema": {
+        "POST /v1/validate request": {
+          "assertion": "bearer token, runtime only; no examples or storage in this registry",
+          "expected_audience": "string",
+          "expected_issuer": "string",
+          "max_clock_skew_seconds": "bounded integer"
+        },
+        "200 response": {
+          "valid": "boolean",
+          "principal_id?": "opaque string when valid",
+          "issuer?": "string when valid",
+          "audiences?": "string[] when valid",
+          "expires_at?": "RFC3339 when valid",
+          "failure_code?": "BAD_SIGNATURE|EXPIRED|WRONG_AUDIENCE|WRONG_ISSUER|UNSUPPORTED_ALGORITHM"
+        }
+      },
+      "compatibility_expectations": "All callers treat invalid or unknown results as rejection; a valid result does not grant permission to a business action.",
+      "versioning_rules": "Changing failure meaning, issuer or audience semantics requires token-validation-v2.",
+      "lifecycle_status": "ACTIVE",
+      "owner_employee_id": "NEX-EMP-007",
+      "effective_date": "2026-09-24",
+      "relationship_basis_dependency_ids": [
+        "NEX-DEP-002",
+        "NEX-DEP-007"
+      ],
+      "relationship_basis": "Stage 7A service pair or, for empty consumer list, published provider interface without an asserted internal consumer.",
+      "document_references": [
+        "NEX-DOC-004",
+        "NEX-DOC-008"
+      ],
+      "entity_references": {
+        "service_ids": [
+          "NEX-SVC-TOKEN_VALIDATOR",
+          "NEX-SVC-PAYMENT_API",
+          "NEX-SVC-CHECKOUT_SERVICE"
+        ],
+        "project_ids": [
+          "NEX-PRJ-ID"
+        ]
+      }
+    },
+    {
+      "id": "NEX-IFC-012",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "source_record_type": "INTERFACE_CONTRACT",
+      "author_employee_id": "NEX-EMP-006",
+      "created_at": "2026-09-02T09:00:00Z",
+      "revised_at": "2026-10-27T13:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "contract_name": "authorization-decisions-v1",
+      "contract_version": "1.6.0",
+      "provider_service_id": "NEX-SVC-POLICY_SERVICE",
+      "known_consumer_service_ids": [
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-REPORTING_API"
+      ],
+      "protocol": "HTTPS/JSON",
+      "interface_category": "INTERNAL_REST",
+      "purpose": "Evaluate a single principal/action/resource permission request against a policy revision.",
+      "payload_schema": {
+        "POST /v1/decisions request": {
+          "principal_id": "opaque authenticated identity",
+          "action": "namespaced string e.g. reports.read",
+          "resource_type": "string",
+          "resource_id": "opaque string",
+          "context": "object of approved non-secret attributes",
+          "request_id": "UUID"
+        },
+        "200 response": {
+          "decision": "ALLOW|DENY",
+          "policy_revision": "string",
+          "decision_id": "UUID",
+          "evaluated_at": "RFC3339 UTC",
+          "reason_code": "stable broad category; not policy source details"
+        }
+      },
+      "compatibility_expectations": "Unknown actions default to DENY; new optional context fields cannot weaken existing rules implicitly.",
+      "versioning_rules": "New action families are independently documented; changes to decision semantics require a major contract version.",
+      "lifecycle_status": "ACTIVE",
+      "owner_employee_id": "NEX-EMP-006",
+      "effective_date": "2026-09-12",
+      "relationship_basis_dependency_ids": [
+        "NEX-DEP-009",
+        "NEX-DEP-015"
+      ],
+      "relationship_basis": "Stage 7A service pair or, for empty consumer list, published provider interface without an asserted internal consumer.",
+      "document_references": [
+        "NEX-DOC-004",
+        "NEX-DOC-005",
+        "NEX-DOC-008"
+      ],
+      "entity_references": {
+        "service_ids": [
+          "NEX-SVC-POLICY_SERVICE",
+          "NEX-SVC-IDENTITY_API",
+          "NEX-SVC-REPORTING_API"
+        ],
+        "project_ids": [
+          "NEX-PRJ-ID"
+        ]
+      }
+    },
+    {
+      "id": "NEX-IFC-013",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "source_record_type": "INTERFACE_CONTRACT",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-02T09:00:00Z",
+      "revised_at": "2026-10-27T13:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "contract_name": "reports-v2",
+      "contract_version": "2.3.0",
+      "provider_service_id": "NEX-SVC-REPORTING_API",
+      "known_consumer_service_ids": [],
+      "protocol": "HTTPS/JSON",
+      "interface_category": "REPORTING_REST",
+      "purpose": "Retrieve scoped metric aggregates with an explicit model revision and time window.",
+      "payload_schema": {
+        "GET /v2/reports/commerce-summary query": {
+          "from": "RFC3339 inclusive start",
+          "to": "RFC3339 exclusive end",
+          "currency?": "ISO 4217",
+          "merchant_scope": "authorized principal scope",
+          "limit": "integer <= 500"
+        },
+        "200 response": {
+          "metric_model_version": "metrics-model-v3",
+          "generated_at": "RFC3339 UTC",
+          "window": "{from,to}",
+          "currency": "ISO 4217",
+          "order_count": "integer >=0",
+          "gross_amount_minor": "integer",
+          "payment_authorized_count": "integer >=0",
+          "data_as_of": "RFC3339 latest included event time"
+        }
+      },
+      "compatibility_expectations": "Data currency and event-completeness indicators stay distinct; callers cannot assume real-time figures.",
+      "versioning_rules": "Removing a metric or changing units/window interpretation requires reports-v3; new optional aggregates are additive.",
+      "lifecycle_status": "ACTIVE",
+      "owner_employee_id": "NEX-EMP-009",
+      "effective_date": "2026-09-28",
+      "relationship_basis_dependency_ids": [],
+      "relationship_basis": "Stage 7A service pair or, for empty consumer list, published provider interface without an asserted internal consumer.",
+      "document_references": [
+        "NEX-DOC-005",
+        "NEX-DOC-008"
+      ],
+      "entity_references": {
+        "service_ids": [
+          "NEX-SVC-REPORTING_API"
+        ],
+        "project_ids": [
+          "NEX-PRJ-DATA"
+        ]
+      }
+    },
+    {
+      "id": "NEX-IFC-014",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "source_record_type": "INTERFACE_CONTRACT",
+      "author_employee_id": "NEX-EMP-007",
+      "created_at": "2026-09-02T09:00:00Z",
+      "revised_at": "2026-10-27T13:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "contract_name": "deployment-jobs-v1",
+      "contract_version": "1.5.0",
+      "provider_service_id": "NEX-SVC-DEPLOYMENT_PLATFORM",
+      "known_consumer_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-EVENT_INGESTOR"
+      ],
+      "protocol": "HTTPS/JSON",
+      "interface_category": "PLATFORM_API",
+      "purpose": "Represent reviewed release promotion requests in the shared delivery control plane.",
+      "payload_schema": {
+        "POST /v1/deployment-jobs request": {
+          "service_id": "one canonical Stage 7A service ID",
+          "artifact_digest": "sha256 content digest",
+          "target_environment": "DEVELOPMENT|STAGING|PRODUCTION",
+          "release_revision": "string",
+          "approval_reference": "opaque approved review reference"
+        },
+        "202 response": {
+          "deployment_job_id": "UUID",
+          "status": "QUEUED|VALIDATING|ROLLING_OUT|SUCCEEDED|FAILED|ROLLED_BACK",
+          "service_id": "string",
+          "artifact_digest": "sha256 string"
+        }
+      },
+      "compatibility_expectations": "The service identities listed here are declared operational dependents, not proof that these applications make direct HTTP calls at runtime.",
+      "versioning_rules": "Artifact immutability and status semantics are stable through v1; platform policy changes require separate approval.",
+      "lifecycle_status": "ACTIVE",
+      "owner_employee_id": "NEX-EMP-007",
+      "effective_date": "2026-10-23",
+      "relationship_basis_dependency_ids": [
+        "NEX-DEP-016",
+        "NEX-DEP-017",
+        "NEX-DEP-018",
+        "NEX-DEP-019"
+      ],
+      "relationship_basis": "Stage 7A service pair or, for empty consumer list, published provider interface without an asserted internal consumer.",
+      "document_references": [
+        "NEX-DOC-006",
+        "NEX-DOC-009"
+      ],
+      "entity_references": {
+        "service_ids": [
+          "NEX-SVC-DEPLOYMENT_PLATFORM",
+          "NEX-SVC-PAYMENT_API",
+          "NEX-SVC-CHECKOUT_SERVICE",
+          "NEX-SVC-IDENTITY_API",
+          "NEX-SVC-EVENT_INGESTOR"
+        ],
+        "project_ids": []
+      }
+    }
+  ]
+}

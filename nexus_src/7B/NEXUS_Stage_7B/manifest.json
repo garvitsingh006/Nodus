@@ -1,0 +1,230 @@
+{
+  "dataset_name": "NEXUS Technologies — NODUS Stage 7B Shared Enterprise Knowledge",
+  "dataset_version": "7B-1.0.0",
+  "parent_dataset_version": "7A-1.0.0",
+  "parent_archive_filename": "NEXUS_Stage_7A_7A-1.0.0.zip",
+  "parent_zip_sha256": "2a4d476b98f583ae0fa386d2d350a8ab71548f3f2694305446668c973d63576a",
+  "company_key": "nexus",
+  "reference_date": "2026-10-31",
+  "description": "Four permission-shared selectable sources containing authored enterprise documentation, catalog assertions, contracts, decisions and definitions. No precomputed investigation graph.",
+  "source_ids": [
+    "NEX-SRC-KNOWLEDGE_HUB",
+    "NEX-SRC-SERVICE_CATALOG",
+    "NEX-SRC-INTERFACE_REGISTRY",
+    "NEX-SRC-ARCHITECTURE_DECISIONS"
+  ],
+  "source_access_classifications": {
+    "NEX-SRC-KNOWLEDGE_HUB": "COMPANY_SHARED",
+    "NEX-SRC-SERVICE_CATALOG": "COMPANY_SHARED",
+    "NEX-SRC-INTERFACE_REGISTRY": "COMPANY_SHARED",
+    "NEX-SRC-ARCHITECTURE_DECISIONS": "COMPANY_SHARED"
+  },
+  "eligible_roles": {
+    "ADMIN": "ALLOW via NEX-ENT-001",
+    "DEVELOPER": "ALLOW via NEX-ENT-002",
+    "INTERN": "ALLOW via NEX-ENT-006"
+  },
+  "collection_counts": {
+    "sources": 4,
+    "shared_documents": 10,
+    "service_catalog_records": 14,
+    "interface_contracts": 14,
+    "architecture_decisions": 8,
+    "technical_glossary": 24
+  },
+  "file_inventory": [
+    {
+      "filename": "source_registry.json",
+      "top_level_collection": "sources",
+      "record_count": 4,
+      "sha256": "a823555faae13f00b8ef6c344b9816e32aaad1ca65a214bc59d8d5eb98bf7d52"
+    },
+    {
+      "filename": "shared_documents.json",
+      "top_level_collection": "shared_documents",
+      "record_count": 10,
+      "sha256": "00525ffef7828a8b3f9a3ef76e26ab40277ec043031148aa62cac4c5c847f2c8"
+    },
+    {
+      "filename": "service_catalog_records.json",
+      "top_level_collection": "service_catalog_records",
+      "record_count": 14,
+      "sha256": "a437ef74304938745a49150c11d59c3374684d9db2a9dd329641f19f35083faf"
+    },
+    {
+      "filename": "interface_contracts.json",
+      "top_level_collection": "interface_contracts",
+      "record_count": 14,
+      "sha256": "9c4192fa566e700aca05941587446d497ea16c6e78e0dd331e50614d5b08da99"
+    },
+    {
+      "filename": "architecture_decisions.json",
+      "top_level_collection": "architecture_decisions",
+      "record_count": 8,
+      "sha256": "ce59127deabe3acb7dcd60e388f680b3ba8d8fec5568bbffbabc249caa049c8d"
+    },
+    {
+      "filename": "technical_glossary.json",
+      "top_level_collection": "technical_glossary",
+      "record_count": 24,
+      "sha256": "57e2afe678a69bfd5d8fce80ca22d688de601b8a3f5ef53bf6304c6768d24b89"
+    },
+    {
+      "filename": "manifest.json",
+      "top_level_collection": null,
+      "record_count": 1,
+      "sha256": null,
+      "note": "Self-checksum omitted to avoid a circular manifest hash"
+    }
+  ],
+  "schema_conventions": {
+    "format": "UTF-8 JSON, two-space indentation; named top-level arrays for collection files; manifest is a top-level object",
+    "record_envelope": "All source records expose id, source_id, source_record_type, author_employee_id, created_at, revised_at, revision_number, status, access_classification",
+    "id_format": "NEX-SRC-*, NEX-DOC-*, NEX-CAT-*, NEX-IFC-*, NEX-ADR-*, NEX-TERM-*; all globally unique within Stage 7B",
+    "timestamps": "UTC ISO 8601 timestamps ending Z; decision_date and effective_date are YYYY-MM-DD calendar dates",
+    "optional_values": "Explicit null for Stage 7A platform services without owning_project_id; otherwise typed arrays and fields rather than nested canonical entities",
+    "content_model": "Text/markdown documents; typed field specifications for contracts; documented catalog assertions, not observed runtime events",
+    "source_authority": "Documents are published engineering knowledge, catalog is service-owner declaration, contracts are owner-approved expected interfaces, ADRs are accepted historical decisions"
+  },
+  "foreign_key_conventions": {
+    "parent_entity_ids": "All NEX-PRJ, NEX-TEAM, NEX-EMP, NEX-SVC, NEX-ROLE, NEX-ENT, NEX-SOA and NEX-DEP IDs resolve only against immutable Stage 7A",
+    "same_stage_record_ids": "source_id, referenced_document_ids, referenced_contract_ids, linked_contract_ids, related_source_record_ids resolve to Stage 7B records",
+    "dependency_direction": "Stage 7A source_service_id is consumer/dependent, target_service_id is upstream provider; source order retained verbatim in catalog",
+    "event_publication_discrepancy": "NEX-DEP-003 and NEX-DEP-008 prose describes source publisher -> target subscriber, conflicting with general dependency edge semantics. Neither edge is rewritten. Contract provider/known_consumer roles describe event flow without implying corrected canonical edges.",
+    "graph_boundary": "References and prose represent evidence to ingest; no Neo4j nodes, inferred edges, agent findings or relationship confidence are precomputed"
+  },
+  "required_stage_7a_entity_references": {
+    "company_ids": [
+      "nexus"
+    ],
+    "project_ids": [
+      "NEX-PRJ-COM",
+      "NEX-PRJ-DATA",
+      "NEX-PRJ-ID",
+      "NEX-PRJ-PAY"
+    ],
+    "team_ids": [
+      "NEX-TEAM-COM",
+      "NEX-TEAM-DATA",
+      "NEX-TEAM-ID",
+      "NEX-TEAM-PAY",
+      "NEX-TEAM-PLAT"
+    ],
+    "employee_ids": [
+      "NEX-EMP-001",
+      "NEX-EMP-002",
+      "NEX-EMP-003",
+      "NEX-EMP-004",
+      "NEX-EMP-005",
+      "NEX-EMP-006",
+      "NEX-EMP-007",
+      "NEX-EMP-008",
+      "NEX-EMP-009",
+      "NEX-EMP-010",
+      "NEX-EMP-011",
+      "NEX-EMP-012"
+    ],
+    "service_ids": [
+      "NEX-SVC-CHECKOUT_SERVICE",
+      "NEX-SVC-DEPLOYMENT_PLATFORM",
+      "NEX-SVC-EVENT_INGESTOR",
+      "NEX-SVC-GATEWAY_ROUTER",
+      "NEX-SVC-IDENTITY_API",
+      "NEX-SVC-METRICS_PIPELINE",
+      "NEX-SVC-OBSERVABILITY_PLATFORM",
+      "NEX-SVC-ORDER_API",
+      "NEX-SVC-PAYMENT_API",
+      "NEX-SVC-POLICY_SERVICE",
+      "NEX-SVC-REFUND_WORKER",
+      "NEX-SVC-REPORTING_API",
+      "NEX-SVC-TOKEN_VALIDATOR",
+      "NEX-SVC-WEBHOOK_CONSUMER"
+    ],
+    "role_ids": [
+      "NEX-ROLE-ADMIN",
+      "NEX-ROLE-DEVELOPER",
+      "NEX-ROLE-INTERN"
+    ],
+    "entitlement_ids": [
+      "NEX-ENT-001",
+      "NEX-ENT-002",
+      "NEX-ENT-006"
+    ],
+    "service_owner_assignment_ids": [
+      "NEX-SOA-001",
+      "NEX-SOA-002",
+      "NEX-SOA-003",
+      "NEX-SOA-004",
+      "NEX-SOA-005",
+      "NEX-SOA-006",
+      "NEX-SOA-007",
+      "NEX-SOA-008",
+      "NEX-SOA-009",
+      "NEX-SOA-010",
+      "NEX-SOA-011",
+      "NEX-SOA-012",
+      "NEX-SOA-013",
+      "NEX-SOA-014",
+      "NEX-SOA-015",
+      "NEX-SOA-016",
+      "NEX-SOA-017",
+      "NEX-SOA-018",
+      "NEX-SOA-019",
+      "NEX-SOA-020",
+      "NEX-SOA-021",
+      "NEX-SOA-022",
+      "NEX-SOA-023",
+      "NEX-SOA-024",
+      "NEX-SOA-025",
+      "NEX-SOA-026",
+      "NEX-SOA-027",
+      "NEX-SOA-028"
+    ],
+    "declared_dependency_ids": [
+      "NEX-DEP-001",
+      "NEX-DEP-002",
+      "NEX-DEP-003",
+      "NEX-DEP-004",
+      "NEX-DEP-005",
+      "NEX-DEP-006",
+      "NEX-DEP-007",
+      "NEX-DEP-008",
+      "NEX-DEP-009",
+      "NEX-DEP-010",
+      "NEX-DEP-011",
+      "NEX-DEP-012",
+      "NEX-DEP-013",
+      "NEX-DEP-014",
+      "NEX-DEP-015",
+      "NEX-DEP-016",
+      "NEX-DEP-017",
+      "NEX-DEP-018",
+      "NEX-DEP-019",
+      "NEX-DEP-020",
+      "NEX-DEP-021",
+      "NEX-DEP-022",
+      "NEX-DEP-023"
+    ]
+  },
+  "recommended_future_ingestion_order": [
+    "Load Stage 7A first and validate its canonical IDs and permissions",
+    "Load Stage 7B source_registry.json (selectable source boundaries and ACL)",
+    "Load record identities and content from shared_documents.json, interface_contracts.json, service_catalog_records.json, architecture_decisions.json, technical_glossary.json",
+    "Resolve cross-record links in a deferred second pass because document and contract references can be cyclic",
+    "Store source IDs, revision dates and claim provenance separately from later observed or inferred graph evidence"
+  ],
+  "validation": {
+    "mode": "programmatic",
+    "checks": [
+      "parent SHA-256 verified",
+      "all seven JSON parses and record counts",
+      "all Stage 7A and 7B typed references",
+      "canonical service and owner identity",
+      "23 preserved directed dependency IDs",
+      "contract service pairs",
+      "author/reviewer dates and chronological metadata",
+      "all COMPANY_SHARED classification",
+      "no scenario/agent findings"
+    ]
+  }
+}

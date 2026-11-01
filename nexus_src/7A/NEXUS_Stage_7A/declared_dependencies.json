@@ -1,0 +1,257 @@
+{
+  "declared_dependencies": [
+    {
+      "id": "NEX-DEP-001",
+      "source_service_id": "NEX-SVC-PAYMENT_API",
+      "target_service_id": "NEX-SVC-GATEWAY_ROUTER",
+      "dependency_category": "API_CALL",
+      "interaction_mode": "SYNCHRONOUS",
+      "technical_explanation": "Payment API sends authorized payment operations to the gateway adapter layer.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-002",
+      "source_service_id": "NEX-SVC-PAYMENT_API",
+      "target_service_id": "NEX-SVC-TOKEN_VALIDATOR",
+      "dependency_category": "API_CALL",
+      "interaction_mode": "SYNCHRONOUS",
+      "technical_explanation": "Payment API verifies service bearer tokens at protected API entry points.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-003",
+      "source_service_id": "NEX-SVC-PAYMENT_API",
+      "target_service_id": "NEX-SVC-REFUND_WORKER",
+      "dependency_category": "EVENT_STREAM",
+      "interaction_mode": "ASYNCHRONOUS",
+      "technical_explanation": "Payment API publishes authorized refund jobs that the worker consumes.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-004",
+      "source_service_id": "NEX-SVC-REFUND_WORKER",
+      "target_service_id": "NEX-SVC-GATEWAY_ROUTER",
+      "dependency_category": "API_CALL",
+      "interaction_mode": "SYNCHRONOUS",
+      "technical_explanation": "Refund worker submits refund requests through the common provider adapter layer.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-005",
+      "source_service_id": "NEX-SVC-CHECKOUT_SERVICE",
+      "target_service_id": "NEX-SVC-PAYMENT_API",
+      "dependency_category": "API_CALL",
+      "interaction_mode": "SYNCHRONOUS",
+      "technical_explanation": "Checkout creates and checks merchant payment intents through the Pay API.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-006",
+      "source_service_id": "NEX-SVC-CHECKOUT_SERVICE",
+      "target_service_id": "NEX-SVC-ORDER_API",
+      "dependency_category": "API_CALL",
+      "interaction_mode": "SYNCHRONOUS",
+      "technical_explanation": "Successful checkouts create and confirm orders through the Commerce order API.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-007",
+      "source_service_id": "NEX-SVC-CHECKOUT_SERVICE",
+      "target_service_id": "NEX-SVC-TOKEN_VALIDATOR",
+      "dependency_category": "API_CALL",
+      "interaction_mode": "SYNCHRONOUS",
+      "technical_explanation": "Checkout validates merchant-facing authenticated requests.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-008",
+      "source_service_id": "NEX-SVC-ORDER_API",
+      "target_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+      "dependency_category": "EVENT_STREAM",
+      "interaction_mode": "ASYNCHRONOUS",
+      "technical_explanation": "Order API publishes notification jobs consumed by the webhook delivery service.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-009",
+      "source_service_id": "NEX-SVC-IDENTITY_API",
+      "target_service_id": "NEX-SVC-POLICY_SERVICE",
+      "dependency_category": "API_CALL",
+      "interaction_mode": "SYNCHRONOUS",
+      "technical_explanation": "Identity workflows request policy decisions for protected identity operations.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-010",
+      "source_service_id": "NEX-SVC-TOKEN_VALIDATOR",
+      "target_service_id": "NEX-SVC-IDENTITY_API",
+      "dependency_category": "CONFIG_FETCH",
+      "interaction_mode": "ASYNCHRONOUS",
+      "technical_explanation": "Validator periodically refreshes the published JWKS key set from Identity API.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-011",
+      "source_service_id": "NEX-SVC-EVENT_INGESTOR",
+      "target_service_id": "NEX-SVC-PAYMENT_API",
+      "dependency_category": "EVENT_STREAM",
+      "interaction_mode": "ASYNCHRONOUS",
+      "technical_explanation": "Ingestor consumes versioned payment lifecycle events published by the Pay API.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-012",
+      "source_service_id": "NEX-SVC-EVENT_INGESTOR",
+      "target_service_id": "NEX-SVC-ORDER_API",
+      "dependency_category": "EVENT_STREAM",
+      "interaction_mode": "ASYNCHRONOUS",
+      "technical_explanation": "Ingestor consumes versioned order change events published by the Commerce order API.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-013",
+      "source_service_id": "NEX-SVC-METRICS_PIPELINE",
+      "target_service_id": "NEX-SVC-EVENT_INGESTOR",
+      "dependency_category": "DATASET_READ",
+      "interaction_mode": "ASYNCHRONOUS",
+      "technical_explanation": "Scheduled metrics runs read validated event staging tables maintained by ingestion.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-014",
+      "source_service_id": "NEX-SVC-REPORTING_API",
+      "target_service_id": "NEX-SVC-METRICS_PIPELINE",
+      "dependency_category": "DATASET_READ",
+      "interaction_mode": "SYNCHRONOUS",
+      "technical_explanation": "Reporting API reads the current published metrics models maintained by the pipeline.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-015",
+      "source_service_id": "NEX-SVC-REPORTING_API",
+      "target_service_id": "NEX-SVC-POLICY_SERVICE",
+      "dependency_category": "API_CALL",
+      "interaction_mode": "SYNCHRONOUS",
+      "technical_explanation": "Reporting requests authorization decisions before serving protected reports.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-016",
+      "source_service_id": "NEX-SVC-PAYMENT_API",
+      "target_service_id": "NEX-SVC-DEPLOYMENT_PLATFORM",
+      "dependency_category": "PLATFORM_DEPLOYMENT",
+      "interaction_mode": "OPERATIONAL",
+      "technical_explanation": "Pay API is built, promoted, and rolled out via the shared deployment control plane.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-017",
+      "source_service_id": "NEX-SVC-CHECKOUT_SERVICE",
+      "target_service_id": "NEX-SVC-DEPLOYMENT_PLATFORM",
+      "dependency_category": "PLATFORM_DEPLOYMENT",
+      "interaction_mode": "OPERATIONAL",
+      "technical_explanation": "Commerce checkout releases are deployed using the shared delivery platform.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-018",
+      "source_service_id": "NEX-SVC-IDENTITY_API",
+      "target_service_id": "NEX-SVC-DEPLOYMENT_PLATFORM",
+      "dependency_category": "PLATFORM_DEPLOYMENT",
+      "interaction_mode": "OPERATIONAL",
+      "technical_explanation": "Identity API releases use shared environment promotion and rollout controls.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-019",
+      "source_service_id": "NEX-SVC-EVENT_INGESTOR",
+      "target_service_id": "NEX-SVC-DEPLOYMENT_PLATFORM",
+      "dependency_category": "PLATFORM_DEPLOYMENT",
+      "interaction_mode": "OPERATIONAL",
+      "technical_explanation": "Analytics ingestion workloads use shared deployment promotion.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-020",
+      "source_service_id": "NEX-SVC-PAYMENT_API",
+      "target_service_id": "NEX-SVC-OBSERVABILITY_PLATFORM",
+      "dependency_category": "PLATFORM_TELEMETRY",
+      "interaction_mode": "OPERATIONAL",
+      "technical_explanation": "Pay API sends structured telemetry and service health metrics to the shared platform.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-021",
+      "source_service_id": "NEX-SVC-ORDER_API",
+      "target_service_id": "NEX-SVC-OBSERVABILITY_PLATFORM",
+      "dependency_category": "PLATFORM_TELEMETRY",
+      "interaction_mode": "OPERATIONAL",
+      "technical_explanation": "Commerce order API publishes traces and service indicators to shared observability.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-022",
+      "source_service_id": "NEX-SVC-IDENTITY_API",
+      "target_service_id": "NEX-SVC-OBSERVABILITY_PLATFORM",
+      "dependency_category": "PLATFORM_TELEMETRY",
+      "interaction_mode": "OPERATIONAL",
+      "technical_explanation": "Identity API exports audit-safe health telemetry to shared observability.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    },
+    {
+      "id": "NEX-DEP-023",
+      "source_service_id": "NEX-SVC-METRICS_PIPELINE",
+      "target_service_id": "NEX-SVC-OBSERVABILITY_PLATFORM",
+      "dependency_category": "PLATFORM_TELEMETRY",
+      "interaction_mode": "OPERATIONAL",
+      "technical_explanation": "Metrics jobs publish execution measurements and scheduling health telemetry.",
+      "declared_source": "NEXUS service catalog",
+      "declaration_kind": "SOURCE_DECLARED_ARCHITECTURE",
+      "catalog_revision_date": "2026-10-22"
+    }
+  ]
+}

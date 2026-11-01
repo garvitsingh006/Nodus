@@ -1,0 +1,598 @@
+{
+  "dataset_version": "7B-1.0.0",
+  "technical_glossary": [
+    {
+      "id": "NEX-TERM-001",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Payment intent",
+      "definition": "Business object identifying one requested merchant charge, its currency/amount and a durable status, independent of any individual gateway attempt.",
+      "category": "PAYMENTS",
+      "relevant_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-GATEWAY_ROUTER"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-002",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Transaction routing",
+      "definition": "Selection and execution of a payment or refund operation through a configured provider adapter under normalized outcome rules.",
+      "category": "PAYMENTS",
+      "relevant_service_ids": [
+        "NEX-SVC-GATEWAY_ROUTER",
+        "NEX-SVC-PAYMENT_API"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-003",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Idempotency key",
+      "definition": "Merchant-scoped request identifier that makes retried equivalent intent creation return one existing operation, while conflicting request content is rejected.",
+      "category": "RELIABILITY",
+      "relevant_service_ids": [
+        "NEX-SVC-PAYMENT_API"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-004",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Gateway adapter",
+      "definition": "Provider-specific transport/response integration hidden behind gateway-routing-v2; it does not own the merchant transaction ledger.",
+      "category": "PAYMENTS",
+      "relevant_service_ids": [
+        "NEX-SVC-GATEWAY_ROUTER"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-005",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Refund request",
+      "definition": "Approved instruction, with immutable refund_request_id, to return a bounded amount associated with an existing payment intent.",
+      "category": "PAYMENTS",
+      "relevant_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-REFUND_WORKER"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-006",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Checkout session",
+      "definition": "Expiring Commerce coordination record linking cart context to payment and eventual order identifiers; it is not settled payment evidence.",
+      "category": "COMMERCE",
+      "relevant_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-COM"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-007",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Order lifecycle",
+      "definition": "Defined progression of durable merchant order states managed by order-api, with guarded transitions and a monotonically increasing revision.",
+      "category": "COMMERCE",
+      "relevant_service_ids": [
+        "NEX-SVC-ORDER_API"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-COM"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-008",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Webhook",
+      "definition": "Signed HTTP callback used to notify a merchant integration of a business change, delivered with retries and recipient-side deduplication expectations.",
+      "category": "COMMERCE",
+      "relevant_service_ids": [
+        "NEX-SVC-WEBHOOK_CONSUMER"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-COM"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-009",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Service identity",
+      "definition": "Registered non-human principal whose signed assertion identifies a bounded issuer, audience and validity interval for service requests.",
+      "category": "IDENTITY",
+      "relevant_service_ids": [
+        "NEX-SVC-IDENTITY_API"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-ID"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-010",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Access policy",
+      "definition": "Versioned predicate evaluating a principal, requested action, resource and context to a scoped allow or deny decision.",
+      "category": "IDENTITY",
+      "relevant_service_ids": [
+        "NEX-SVC-POLICY_SERVICE"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-ID"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-011",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Token validation",
+      "definition": "Cryptographic and claim-level verification of a signed assertion's issuer, audience, algorithm, signature and expiry; not equivalent to business authorization.",
+      "category": "IDENTITY",
+      "relevant_service_ids": [
+        "NEX-SVC-TOKEN_VALIDATOR",
+        "NEX-SVC-IDENTITY_API"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-ID"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-012",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "JWKS",
+      "definition": "JSON Web Key Set publishing public verification keys identified by kid, allowing validators to check signed tokens during key rotation overlap.",
+      "category": "IDENTITY",
+      "relevant_service_ids": [
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-TOKEN_VALIDATOR"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-ID"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-013",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Policy decision",
+      "definition": "An allow/deny result for one evaluated action and resource, with decision ID and policy revision, returned by policy-service.",
+      "category": "IDENTITY",
+      "relevant_service_ids": [
+        "NEX-SVC-POLICY_SERVICE",
+        "NEX-SVC-REPORTING_API"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-DATA",
+        "NEX-PRJ-ID"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-014",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Event ingestion",
+      "definition": "Validation, deduplication and durable staging of payment/order messages with explicit producer, schema and occurrence timestamps.",
+      "category": "DATA",
+      "relevant_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-DATA"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-015",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Data pipeline",
+      "definition": "Repeatable Python/SQL transformation of staged events to published metric models, including event-time and quality constraints.",
+      "category": "DATA",
+      "relevant_service_ids": [
+        "NEX-SVC-METRICS_PIPELINE"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-DATA"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-016",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Staged event",
+      "definition": "Version-checked event stored for analytics with separate producer occurred_at and ingestor ingested_at timestamps.",
+      "category": "DATA",
+      "relevant_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-METRICS_PIPELINE"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-DATA"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-017",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Metric model",
+      "definition": "Versioned, governed SQL representation of calculated business measures used by reporting-api instead of reading product transaction stores.",
+      "category": "DATA",
+      "relevant_service_ids": [
+        "NEX-SVC-METRICS_PIPELINE",
+        "NEX-SVC-REPORTING_API"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-DATA"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-018",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Service ownership",
+      "definition": "Named accountability pairing a canonical service with primary and backup employees and an owning engineering team.",
+      "category": "GOVERNANCE",
+      "relevant_service_ids": [
+        "NEX-SVC-GATEWAY_ROUTER",
+        "NEX-SVC-DEPLOYMENT_PLATFORM"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-019",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Deployment artifact",
+      "definition": "Immutable content-addressed build output promoted unchanged between environments and referenced by a sha256 digest.",
+      "category": "PLATFORM",
+      "relevant_service_ids": [
+        "NEX-SVC-DEPLOYMENT_PLATFORM"
+      ],
+      "relevant_project_ids": [],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-020",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Declared dependency",
+      "definition": "Catalog assertion recording source_service_id as consumer/dependent and target_service_id as provider, subject to documented 7A event-flow exceptions.",
+      "category": "ARCHITECTURE",
+      "relevant_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-EVENT_INGESTOR"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-DATA",
+        "NEX-PRJ-PAY"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-021",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "API contract",
+      "definition": "Published versioned request/response or message schema with provider, known consumers, field semantics and compatibility expectations.",
+      "category": "ARCHITECTURE",
+      "relevant_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-CHECKOUT_SERVICE"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-COM",
+        "NEX-PRJ-PAY"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-022",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Consumer contract test",
+      "definition": "Verification of an interface candidate against the published expectations of a named known consumer, scoped to tested versions and conditions.",
+      "category": "ENGINEERING",
+      "relevant_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-PAYMENT_API"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-COM",
+        "NEX-PRJ-PAY"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-023",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Telemetry correlation ID",
+      "definition": "Non-secret identifier propagated through traces or event envelopes so sampled observations can be associated without exposing raw customer payloads.",
+      "category": "PLATFORM",
+      "relevant_service_ids": [
+        "NEX-SVC-OBSERVABILITY_PLATFORM",
+        "NEX-SVC-PAYMENT_API"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    },
+    {
+      "id": "NEX-TERM-024",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "GLOSSARY_TERM",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-09-01T09:00:00Z",
+      "revised_at": "2026-10-25T10:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "term": "Source assertion",
+      "definition": "Claim directly published by an identified enterprise source revision; it is evidence of documentation, not independent runtime verification.",
+      "category": "EVIDENCE",
+      "relevant_service_ids": [
+        "NEX-SVC-ORDER_API",
+        "NEX-SVC-EVENT_INGESTOR"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-COM",
+        "NEX-PRJ-DATA"
+      ],
+      "documentation_references": [
+        "NEX-DOC-010",
+        "NEX-DOC-001"
+      ]
+    }
+  ]
+}

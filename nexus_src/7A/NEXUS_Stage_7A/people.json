@@ -1,0 +1,347 @@
+{
+  "people": [
+    {
+      "id": "NEX-EMP-001",
+      "company_id": "nexus",
+      "full_name": "Leena Vardhan",
+      "email": "leena.vardhan@nexus.example",
+      "job_title": "Director of Technology Governance",
+      "system_role": "ADMIN",
+      "seniority": "DIRECTOR",
+      "employment_status": "ACTIVE",
+      "joined_at": "2018-06-04T09:00:00Z",
+      "primary_team_id": "NEX-TEAM-PLAT",
+      "team_ids": [
+        "NEX-TEAM-PLAT"
+      ],
+      "project_ids": [],
+      "technical_specializations": [
+        "Technology governance",
+        "Resource access approvals",
+        "Auditability"
+      ],
+      "responsibilities": [
+        "Administer company-wide access",
+        "Review and decide access requests",
+        "Approve and issue formal knowledge handoffs",
+        "Coordinate governance policy with engineering leads"
+      ]
+    },
+    {
+      "id": "NEX-EMP-002",
+      "company_id": "nexus",
+      "full_name": "Arav Mehta",
+      "email": "arav.mehta@nexus.example",
+      "job_title": "Staff Payments Engineer",
+      "system_role": "DEVELOPER",
+      "seniority": "STAFF",
+      "employment_status": "ACTIVE",
+      "joined_at": "2019-01-14T09:00:00Z",
+      "primary_team_id": "NEX-TEAM-PAY",
+      "team_ids": [
+        "NEX-TEAM-PAY"
+      ],
+      "project_ids": [
+        "NEX-PRJ-PAY"
+      ],
+      "technical_specializations": [
+        "Go",
+        "Payment orchestration",
+        "PostgreSQL",
+        "Idempotency"
+      ],
+      "responsibilities": [
+        "Lead payments engineering",
+        "Own payment API contracts",
+        "Design gateway routing changes"
+      ]
+    },
+    {
+      "id": "NEX-EMP-003",
+      "company_id": "nexus",
+      "full_name": "Sofia D'Souza",
+      "email": "sofia.dsouza@nexus.example",
+      "job_title": "Senior Backend Engineer, Payments",
+      "system_role": "DEVELOPER",
+      "seniority": "SENIOR",
+      "employment_status": "ACTIVE",
+      "joined_at": "2020-03-02T09:00:00Z",
+      "primary_team_id": "NEX-TEAM-PAY",
+      "team_ids": [
+        "NEX-TEAM-PAY",
+        "NEX-TEAM-PLAT"
+      ],
+      "project_ids": [
+        "NEX-PRJ-PAY"
+      ],
+      "technical_specializations": [
+        "Go",
+        "Refund workflows",
+        "Gateway integration",
+        "CI/CD"
+      ],
+      "responsibilities": [
+        "Own refund execution",
+        "Maintain gateway retry semantics",
+        "Support shared release automation"
+      ]
+    },
+    {
+      "id": "NEX-EMP-004",
+      "company_id": "nexus",
+      "full_name": "Kabir Malhotra",
+      "email": "kabir.malhotra@nexus.example",
+      "job_title": "Staff Commerce Engineer",
+      "system_role": "DEVELOPER",
+      "seniority": "STAFF",
+      "employment_status": "ACTIVE",
+      "joined_at": "2020-06-08T09:00:00Z",
+      "primary_team_id": "NEX-TEAM-COM",
+      "team_ids": [
+        "NEX-TEAM-COM"
+      ],
+      "project_ids": [
+        "NEX-PRJ-COM"
+      ],
+      "technical_specializations": [
+        "PHP",
+        "MySQL",
+        "Distributed checkout",
+        "REST APIs"
+      ],
+      "responsibilities": [
+        "Lead commerce engineering",
+        "Own checkout and order contracts",
+        "Coordinate inventory interactions"
+      ]
+    },
+    {
+      "id": "NEX-EMP-005",
+      "company_id": "nexus",
+      "full_name": "Nisha Fernandes",
+      "email": "nisha.fernandes@nexus.example",
+      "job_title": "Senior Commerce Engineer",
+      "system_role": "DEVELOPER",
+      "seniority": "SENIOR",
+      "employment_status": "ACTIVE",
+      "joined_at": "2021-01-11T09:00:00Z",
+      "primary_team_id": "NEX-TEAM-COM",
+      "team_ids": [
+        "NEX-TEAM-COM"
+      ],
+      "project_ids": [
+        "NEX-PRJ-COM"
+      ],
+      "technical_specializations": [
+        "PHP",
+        "RabbitMQ",
+        "Redis",
+        "Webhook delivery"
+      ],
+      "responsibilities": [
+        "Own webhook processing",
+        "Maintain delivery retry policies",
+        "Review checkout session caching"
+      ]
+    },
+    {
+      "id": "NEX-EMP-006",
+      "company_id": "nexus",
+      "full_name": "Rohan Bhat",
+      "email": "rohan.bhat@nexus.example",
+      "job_title": "Staff Identity Engineer",
+      "system_role": "DEVELOPER",
+      "seniority": "STAFF",
+      "employment_status": "ACTIVE",
+      "joined_at": "2019-09-09T09:00:00Z",
+      "primary_team_id": "NEX-TEAM-ID",
+      "team_ids": [
+        "NEX-TEAM-ID"
+      ],
+      "project_ids": [
+        "NEX-PRJ-ID"
+      ],
+      "technical_specializations": [
+        "Java",
+        "Identity protocols",
+        "Policy engines",
+        "PostgreSQL"
+      ],
+      "responsibilities": [
+        "Lead identity engineering",
+        "Own identity and policy APIs",
+        "Review token contract changes"
+      ]
+    },
+    {
+      "id": "NEX-EMP-007",
+      "company_id": "nexus",
+      "full_name": "Ira Menon",
+      "email": "ira.menon@nexus.example",
+      "job_title": "Senior Identity and Platform Engineer",
+      "system_role": "DEVELOPER",
+      "seniority": "SENIOR",
+      "employment_status": "ACTIVE",
+      "joined_at": "2020-01-13T09:00:00Z",
+      "primary_team_id": "NEX-TEAM-ID",
+      "team_ids": [
+        "NEX-TEAM-ID",
+        "NEX-TEAM-PLAT"
+      ],
+      "project_ids": [
+        "NEX-PRJ-ID"
+      ],
+      "technical_specializations": [
+        "Java",
+        "JWT/JWKS",
+        "Kubernetes",
+        "Deployment automation"
+      ],
+      "responsibilities": [
+        "Maintain token validation",
+        "Lead shared platform operations",
+        "Own deployment platform engineering"
+      ]
+    },
+    {
+      "id": "NEX-EMP-008",
+      "company_id": "nexus",
+      "full_name": "Tara Chatterjee",
+      "email": "tara.chatterjee@nexus.example",
+      "job_title": "Staff Data Engineer",
+      "system_role": "DEVELOPER",
+      "seniority": "STAFF",
+      "employment_status": "ACTIVE",
+      "joined_at": "2021-03-08T09:00:00Z",
+      "primary_team_id": "NEX-TEAM-DATA",
+      "team_ids": [
+        "NEX-TEAM-DATA"
+      ],
+      "project_ids": [
+        "NEX-PRJ-DATA"
+      ],
+      "technical_specializations": [
+        "Python",
+        "Event streaming",
+        "Data quality",
+        "PostgreSQL"
+      ],
+      "responsibilities": [
+        "Lead data engineering",
+        "Own event ingestion contracts",
+        "Set metric data quality standards"
+      ]
+    },
+    {
+      "id": "NEX-EMP-009",
+      "company_id": "nexus",
+      "full_name": "Dev Malik",
+      "email": "dev.malik@nexus.example",
+      "job_title": "Senior Analytics Engineer",
+      "system_role": "DEVELOPER",
+      "seniority": "SENIOR",
+      "employment_status": "ACTIVE",
+      "joined_at": "2022-02-07T09:00:00Z",
+      "primary_team_id": "NEX-TEAM-DATA",
+      "team_ids": [
+        "NEX-TEAM-DATA",
+        "NEX-TEAM-PLAT"
+      ],
+      "project_ids": [
+        "NEX-PRJ-DATA"
+      ],
+      "technical_specializations": [
+        "SQL",
+        "Python",
+        "Reporting systems",
+        "Telemetry"
+      ],
+      "responsibilities": [
+        "Own reporting APIs",
+        "Maintain metrics models",
+        "Support cross-service observability"
+      ]
+    },
+    {
+      "id": "NEX-EMP-010",
+      "company_id": "nexus",
+      "full_name": "Anika Bose",
+      "email": "anika.bose@nexus.example",
+      "job_title": "Commerce Software Engineering Intern",
+      "system_role": "INTERN",
+      "seniority": "INTERN",
+      "employment_status": "ACTIVE",
+      "joined_at": "2026-07-06T09:00:00Z",
+      "primary_team_id": "NEX-TEAM-COM",
+      "team_ids": [
+        "NEX-TEAM-COM"
+      ],
+      "project_ids": [
+        "NEX-PRJ-COM"
+      ],
+      "technical_specializations": [
+        "PHP fundamentals",
+        "API contract tests",
+        "Merchant documentation"
+      ],
+      "responsibilities": [
+        "Maintain non-production commerce API fixtures",
+        "Improve reviewed integration test documentation"
+      ]
+    },
+    {
+      "id": "NEX-EMP-011",
+      "company_id": "nexus",
+      "full_name": "Yusuf Khan",
+      "email": "yusuf.khan@nexus.example",
+      "job_title": "Data Engineering Intern",
+      "system_role": "INTERN",
+      "seniority": "INTERN",
+      "employment_status": "ACTIVE",
+      "joined_at": "2026-07-06T09:00:00Z",
+      "primary_team_id": "NEX-TEAM-DATA",
+      "team_ids": [
+        "NEX-TEAM-DATA"
+      ],
+      "project_ids": [
+        "NEX-PRJ-DATA"
+      ],
+      "technical_specializations": [
+        "Python",
+        "SQL",
+        "Data dictionary validation"
+      ],
+      "responsibilities": [
+        "Review approved synthetic analytics fixtures",
+        "Document reporting field definitions"
+      ]
+    },
+    {
+      "id": "NEX-EMP-012",
+      "company_id": "nexus",
+      "full_name": "Priya Nair",
+      "email": "priya.nair@nexus.example",
+      "job_title": "Platform Operations Intern",
+      "system_role": "INTERN",
+      "seniority": "INTERN",
+      "employment_status": "ACTIVE",
+      "joined_at": "2026-08-03T09:00:00Z",
+      "primary_team_id": "NEX-TEAM-PLAT",
+      "team_ids": [
+        "NEX-TEAM-PLAT"
+      ],
+      "project_ids": [
+        "NEX-PRJ-ID"
+      ],
+      "technical_specializations": [
+        "Sandbox observability",
+        "Documentation",
+        "Service health dashboards"
+      ],
+      "responsibilities": [
+        "Document non-production identity service health panels",
+        "Assist with approved platform runbooks"
+      ]
+    }
+  ]
+}

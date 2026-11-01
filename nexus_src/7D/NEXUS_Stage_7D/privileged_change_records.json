@@ -1,0 +1,817 @@
+{
+  "dataset_version": "7D-1.0.0",
+  "privileged_change_records": [
+    {
+      "id": "NEX-PCH-001",
+      "source_id": "NEX-SRC-PRIVILEGED_CHANGES",
+      "source_authority": "ADMIN_APPROVAL_WITH_SEPARATE_STAGE_7C_EXECUTION_EVIDENCE",
+      "author_or_responsible_employee_id": "NEX-EMP-002",
+      "created_at": "2026-10-08T09:00:00Z",
+      "revised_at": "2026-10-14T09:35:00Z",
+      "status": "VERIFIED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-002",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-PAYMENT_API"
+        ],
+        "project_ids": [
+          "NEX-PRJ-PAY"
+        ],
+        "deployment_ids": [
+          "NEX-DPLY-PAYMENT_API-CURRENT"
+        ],
+        "artifact_ids": [
+          "NEX-ART-PAYMENT_API-CURRENT"
+        ]
+      },
+      "record_content_class": "PRIVILEGED_CHANGES",
+      "change_id": "NEX-PCH-001",
+      "title": "Payment intent idempotency rollout",
+      "description": "Require a pinned merchant-intent artifact and verify safe retry probes.",
+      "affected_service_ids": [
+        "NEX-SVC-PAYMENT_API"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY"
+      ],
+      "requesting_employee_id": "NEX-EMP-002",
+      "approving_admin_employee_id": "NEX-EMP-001",
+      "submitted_at": "2026-10-08T09:00:00Z",
+      "approved_at": "2026-10-10T09:00:00Z",
+      "planned_execution_window": {
+        "start_at": "2026-10-14T08:00:00Z",
+        "end_at": "2026-10-14T11:00:00Z"
+      },
+      "actual_execution": {
+        "executed_at": "2026-10-14T09:00:00Z",
+        "executor_employee_id": "NEX-EMP-002",
+        "execution_source_record_id": "NEX-DPLY-PAYMENT_API-CURRENT",
+        "execution_claim_basis": "STAGE_7C_DEPLOYMENT_RECORD"
+      },
+      "change_classification": "STANDARD_PRODUCTION_RELEASE",
+      "risk_classification": "LOW",
+      "business_justification": "Require a pinned merchant-intent artifact and verify safe retry probes.",
+      "verification_requirements": [
+        "Inspect successful source commit and build tests",
+        "Verify matching immutable artifact and deployment version",
+        "Observe post-deployment smoke test result"
+      ],
+      "rollback_plan": "Revert to the previous immutable payment-api digest and stop new canary waves.",
+      "decision_status": "APPROVED",
+      "lifecycle_state": "VERIFIED",
+      "execution_status": "EXECUTED",
+      "verification_result": "PASSED_LINKED_STAGE_7C_SMOKE",
+      "verified_at": "2026-10-14T09:35:00Z",
+      "linked_deployment_id": "NEX-DPLY-PAYMENT_API-CURRENT",
+      "linked_artifact_id": "NEX-ART-PAYMENT_API-CURRENT",
+      "linked_build_id": "NEX-BLD-PAY-002",
+      "linked_stage_7c_pr_ids": [
+        "NEX-PR-PAY-002"
+      ],
+      "approval_is_execution_evidence": false
+    },
+    {
+      "id": "NEX-PCH-002",
+      "source_id": "NEX-SRC-PRIVILEGED_CHANGES",
+      "source_authority": "ADMIN_APPROVAL_WITH_SEPARATE_STAGE_7C_EXECUTION_EVIDENCE",
+      "author_or_responsible_employee_id": "NEX-EMP-002",
+      "created_at": "2026-09-16T09:00:00Z",
+      "revised_at": "2026-09-22T09:35:00Z",
+      "status": "VERIFIED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-002",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-GATEWAY_ROUTER"
+        ],
+        "project_ids": [
+          "NEX-PRJ-PAY"
+        ],
+        "deployment_ids": [
+          "NEX-DPLY-GATEWAY_ROUTER-CURRENT"
+        ],
+        "artifact_ids": [
+          "NEX-ART-GATEWAY_ROUTER-CURRENT"
+        ]
+      },
+      "record_content_class": "PRIVILEGED_CHANGES",
+      "change_id": "NEX-PCH-002",
+      "title": "Gateway routing timeout normalization",
+      "description": "Promote bounded gRPC timeout categories without changing merchant transaction state.",
+      "affected_service_ids": [
+        "NEX-SVC-GATEWAY_ROUTER"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY"
+      ],
+      "requesting_employee_id": "NEX-EMP-002",
+      "approving_admin_employee_id": "NEX-EMP-001",
+      "submitted_at": "2026-09-16T09:00:00Z",
+      "approved_at": "2026-09-18T09:00:00Z",
+      "planned_execution_window": {
+        "start_at": "2026-09-22T08:00:00Z",
+        "end_at": "2026-09-22T11:00:00Z"
+      },
+      "actual_execution": {
+        "executed_at": "2026-09-22T09:00:00Z",
+        "executor_employee_id": "NEX-EMP-002",
+        "execution_source_record_id": "NEX-DPLY-GATEWAY_ROUTER-CURRENT",
+        "execution_claim_basis": "STAGE_7C_DEPLOYMENT_RECORD"
+      },
+      "change_classification": "STANDARD_PRODUCTION_RELEASE",
+      "risk_classification": "MODERATE",
+      "business_justification": "Promote bounded gRPC timeout categories without changing merchant transaction state.",
+      "verification_requirements": [
+        "Inspect successful source commit and build tests",
+        "Verify matching immutable artifact and deployment version",
+        "Observe post-deployment smoke test result"
+      ],
+      "rollback_plan": "Return to the last gateway-router image and restore preceding route weight settings.",
+      "decision_status": "APPROVED",
+      "lifecycle_state": "VERIFIED",
+      "execution_status": "EXECUTED",
+      "verification_result": "PASSED_LINKED_STAGE_7C_SMOKE",
+      "verified_at": "2026-09-22T09:35:00Z",
+      "linked_deployment_id": "NEX-DPLY-GATEWAY_ROUTER-CURRENT",
+      "linked_artifact_id": "NEX-ART-GATEWAY_ROUTER-CURRENT",
+      "linked_build_id": "NEX-BLD-PAY-003",
+      "linked_stage_7c_pr_ids": [
+        "NEX-PR-PAY-001"
+      ],
+      "approval_is_execution_evidence": false
+    },
+    {
+      "id": "NEX-PCH-003",
+      "source_id": "NEX-SRC-PRIVILEGED_CHANGES",
+      "source_authority": "ADMIN_APPROVAL_WITH_SEPARATE_STAGE_7C_EXECUTION_EVIDENCE",
+      "author_or_responsible_employee_id": "NEX-EMP-003",
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-08T09:35:00Z",
+      "status": "VERIFIED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-003",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-REFUND_WORKER"
+        ],
+        "project_ids": [
+          "NEX-PRJ-PAY"
+        ],
+        "deployment_ids": [
+          "NEX-DPLY-REFUND_WORKER-CURRENT"
+        ],
+        "artifact_ids": [
+          "NEX-ART-REFUND_WORKER-CURRENT"
+        ]
+      },
+      "record_content_class": "PRIVILEGED_CHANGES",
+      "change_id": "NEX-PCH-003",
+      "title": "Refund consumer deduplication release",
+      "description": "Validate stable refund_request_id storage before increasing queue consumer concurrency.",
+      "affected_service_ids": [
+        "NEX-SVC-REFUND_WORKER"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY"
+      ],
+      "requesting_employee_id": "NEX-EMP-003",
+      "approving_admin_employee_id": "NEX-EMP-001",
+      "submitted_at": "2026-10-02T09:00:00Z",
+      "approved_at": "2026-10-04T09:00:00Z",
+      "planned_execution_window": {
+        "start_at": "2026-10-08T08:00:00Z",
+        "end_at": "2026-10-08T11:00:00Z"
+      },
+      "actual_execution": {
+        "executed_at": "2026-10-08T09:00:00Z",
+        "executor_employee_id": "NEX-EMP-003",
+        "execution_source_record_id": "NEX-DPLY-REFUND_WORKER-CURRENT",
+        "execution_claim_basis": "STAGE_7C_DEPLOYMENT_RECORD"
+      },
+      "change_classification": "STANDARD_PRODUCTION_RELEASE",
+      "risk_classification": "MODERATE",
+      "business_justification": "Validate stable refund_request_id storage before increasing queue consumer concurrency.",
+      "verification_requirements": [
+        "Inspect successful source commit and build tests",
+        "Verify matching immutable artifact and deployment version",
+        "Observe post-deployment smoke test result"
+      ],
+      "rollback_plan": "Restore prior worker image and bounded concurrency while preserving durable refund records.",
+      "decision_status": "APPROVED",
+      "lifecycle_state": "VERIFIED",
+      "execution_status": "EXECUTED",
+      "verification_result": "PASSED_LINKED_STAGE_7C_SMOKE",
+      "verified_at": "2026-10-08T09:35:00Z",
+      "linked_deployment_id": "NEX-DPLY-REFUND_WORKER-CURRENT",
+      "linked_artifact_id": "NEX-ART-REFUND_WORKER-CURRENT",
+      "linked_build_id": "NEX-BLD-PAY-004",
+      "linked_stage_7c_pr_ids": [],
+      "approval_is_execution_evidence": false
+    },
+    {
+      "id": "NEX-PCH-004",
+      "source_id": "NEX-SRC-PRIVILEGED_CHANGES",
+      "source_authority": "ADMIN_APPROVAL_WITH_SEPARATE_STAGE_7C_EXECUTION_EVIDENCE",
+      "author_or_responsible_employee_id": "NEX-EMP-004",
+      "created_at": "2026-10-16T09:00:00Z",
+      "revised_at": "2026-10-22T09:35:00Z",
+      "status": "VERIFIED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-004",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-CHECKOUT_SERVICE"
+        ],
+        "project_ids": [
+          "NEX-PRJ-COM"
+        ],
+        "deployment_ids": [
+          "NEX-DPLY-CHECKOUT_SERVICE-CURRENT"
+        ],
+        "artifact_ids": [
+          "NEX-ART-CHECKOUT_SERVICE-CURRENT"
+        ]
+      },
+      "record_content_class": "PRIVILEGED_CHANGES",
+      "change_id": "NEX-PCH-004",
+      "title": "Checkout payment-reference persistence release",
+      "description": "Retain stable intent identifiers across checkout retries and verify response compatibility.",
+      "affected_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-COM"
+      ],
+      "requesting_employee_id": "NEX-EMP-004",
+      "approving_admin_employee_id": "NEX-EMP-001",
+      "submitted_at": "2026-10-16T09:00:00Z",
+      "approved_at": "2026-10-18T09:00:00Z",
+      "planned_execution_window": {
+        "start_at": "2026-10-22T08:00:00Z",
+        "end_at": "2026-10-22T11:00:00Z"
+      },
+      "actual_execution": {
+        "executed_at": "2026-10-22T09:00:00Z",
+        "executor_employee_id": "NEX-EMP-004",
+        "execution_source_record_id": "NEX-DPLY-CHECKOUT_SERVICE-CURRENT",
+        "execution_claim_basis": "STAGE_7C_DEPLOYMENT_RECORD"
+      },
+      "change_classification": "STANDARD_PRODUCTION_RELEASE",
+      "risk_classification": "MODERATE",
+      "business_justification": "Retain stable intent identifiers across checkout retries and verify response compatibility.",
+      "verification_requirements": [
+        "Inspect successful source commit and build tests",
+        "Verify matching immutable artifact and deployment version",
+        "Observe post-deployment smoke test result"
+      ],
+      "rollback_plan": "Stop rollout and revert application image; do not delete persisted checkout state.",
+      "decision_status": "APPROVED",
+      "lifecycle_state": "VERIFIED",
+      "execution_status": "EXECUTED",
+      "verification_result": "PASSED_LINKED_STAGE_7C_SMOKE",
+      "verified_at": "2026-10-22T09:35:00Z",
+      "linked_deployment_id": "NEX-DPLY-CHECKOUT_SERVICE-CURRENT",
+      "linked_artifact_id": "NEX-ART-CHECKOUT_SERVICE-CURRENT",
+      "linked_build_id": "NEX-BLD-COM-002",
+      "linked_stage_7c_pr_ids": [
+        "NEX-PR-COM-002"
+      ],
+      "approval_is_execution_evidence": false
+    },
+    {
+      "id": "NEX-PCH-005",
+      "source_id": "NEX-SRC-PRIVILEGED_CHANGES",
+      "source_authority": "ADMIN_APPROVAL_WITH_SEPARATE_STAGE_7C_EXECUTION_EVIDENCE",
+      "author_or_responsible_employee_id": "NEX-EMP-004",
+      "created_at": "2026-10-13T09:00:00Z",
+      "revised_at": "2026-10-19T09:35:00Z",
+      "status": "VERIFIED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-004",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-ORDER_API"
+        ],
+        "project_ids": [
+          "NEX-PRJ-COM"
+        ],
+        "deployment_ids": [
+          "NEX-DPLY-ORDER_API-CURRENT"
+        ],
+        "artifact_ids": [
+          "NEX-ART-ORDER_API-CURRENT"
+        ]
+      },
+      "record_content_class": "PRIVILEGED_CHANGES",
+      "change_id": "NEX-PCH-005",
+      "title": "Order transition/outbox release authorization",
+      "description": "Validate MySQL transition checks and RabbitMQ outbox correlation with no broker credential change.",
+      "affected_service_ids": [
+        "NEX-SVC-ORDER_API"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-COM"
+      ],
+      "requesting_employee_id": "NEX-EMP-004",
+      "approving_admin_employee_id": "NEX-EMP-001",
+      "submitted_at": "2026-10-13T09:00:00Z",
+      "approved_at": "2026-10-15T09:00:00Z",
+      "planned_execution_window": {
+        "start_at": "2026-10-19T08:00:00Z",
+        "end_at": "2026-10-19T11:00:00Z"
+      },
+      "actual_execution": {
+        "executed_at": "2026-10-19T09:00:00Z",
+        "executor_employee_id": "NEX-EMP-004",
+        "execution_source_record_id": "NEX-DPLY-ORDER_API-CURRENT",
+        "execution_claim_basis": "STAGE_7C_DEPLOYMENT_RECORD"
+      },
+      "change_classification": "STANDARD_PRODUCTION_RELEASE",
+      "risk_classification": "MODERATE",
+      "business_justification": "Validate MySQL transition checks and RabbitMQ outbox correlation with no broker credential change.",
+      "verification_requirements": [
+        "Inspect successful source commit and build tests",
+        "Verify matching immutable artifact and deployment version",
+        "Observe post-deployment smoke test result"
+      ],
+      "rollback_plan": "Restore prior order-api image; replay only durable undelivered outbox entries.",
+      "decision_status": "APPROVED",
+      "lifecycle_state": "VERIFIED",
+      "execution_status": "EXECUTED",
+      "verification_result": "PASSED_LINKED_STAGE_7C_SMOKE",
+      "verified_at": "2026-10-19T09:35:00Z",
+      "linked_deployment_id": "NEX-DPLY-ORDER_API-CURRENT",
+      "linked_artifact_id": "NEX-ART-ORDER_API-CURRENT",
+      "linked_build_id": "NEX-BLD-COM-003",
+      "linked_stage_7c_pr_ids": [],
+      "approval_is_execution_evidence": false
+    },
+    {
+      "id": "NEX-PCH-006",
+      "source_id": "NEX-SRC-PRIVILEGED_CHANGES",
+      "source_authority": "ADMIN_APPROVAL_WITH_SEPARATE_STAGE_7C_EXECUTION_EVIDENCE",
+      "author_or_responsible_employee_id": "NEX-EMP-006",
+      "created_at": "2026-10-07T09:00:00Z",
+      "revised_at": "2026-10-13T09:35:00Z",
+      "status": "VERIFIED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-006",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-IDENTITY_API"
+        ],
+        "project_ids": [
+          "NEX-PRJ-ID"
+        ],
+        "deployment_ids": [
+          "NEX-DPLY-IDENTITY_API-CURRENT"
+        ],
+        "artifact_ids": [
+          "NEX-ART-IDENTITY_API-CURRENT"
+        ]
+      },
+      "record_content_class": "PRIVILEGED_CHANGES",
+      "change_id": "NEX-PCH-006",
+      "title": "Identity session policy-revision rollout",
+      "description": "Verify session claims and policy revision references with canary authentication probes.",
+      "affected_service_ids": [
+        "NEX-SVC-IDENTITY_API"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-ID"
+      ],
+      "requesting_employee_id": "NEX-EMP-006",
+      "approving_admin_employee_id": "NEX-EMP-001",
+      "submitted_at": "2026-10-07T09:00:00Z",
+      "approved_at": "2026-10-09T09:00:00Z",
+      "planned_execution_window": {
+        "start_at": "2026-10-13T08:00:00Z",
+        "end_at": "2026-10-13T11:00:00Z"
+      },
+      "actual_execution": {
+        "executed_at": "2026-10-13T09:00:00Z",
+        "executor_employee_id": "NEX-EMP-006",
+        "execution_source_record_id": "NEX-DPLY-IDENTITY_API-CURRENT",
+        "execution_claim_basis": "STAGE_7C_DEPLOYMENT_RECORD"
+      },
+      "change_classification": "STANDARD_PRODUCTION_RELEASE",
+      "risk_classification": "MODERATE",
+      "business_justification": "Verify session claims and policy revision references with canary authentication probes.",
+      "verification_requirements": [
+        "Inspect successful source commit and build tests",
+        "Verify matching immutable artifact and deployment version",
+        "Observe post-deployment smoke test result"
+      ],
+      "rollback_plan": "Pin previous session issuer image and retain existing signing-key version.",
+      "decision_status": "APPROVED",
+      "lifecycle_state": "VERIFIED",
+      "execution_status": "EXECUTED",
+      "verification_result": "PASSED_LINKED_STAGE_7C_SMOKE",
+      "verified_at": "2026-10-13T09:35:00Z",
+      "linked_deployment_id": "NEX-DPLY-IDENTITY_API-CURRENT",
+      "linked_artifact_id": "NEX-ART-IDENTITY_API-CURRENT",
+      "linked_build_id": "NEX-BLD-ID-002",
+      "linked_stage_7c_pr_ids": [
+        "NEX-PR-ID-002"
+      ],
+      "approval_is_execution_evidence": false
+    },
+    {
+      "id": "NEX-PCH-007",
+      "source_id": "NEX-SRC-PRIVILEGED_CHANGES",
+      "source_authority": "ADMIN_APPROVAL_WITH_SEPARATE_STAGE_7C_EXECUTION_EVIDENCE",
+      "author_or_responsible_employee_id": "NEX-EMP-008",
+      "created_at": "2026-09-28T09:00:00Z",
+      "revised_at": "2026-10-04T09:35:00Z",
+      "status": "VERIFIED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-008",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-EVENT_INGESTOR"
+        ],
+        "project_ids": [
+          "NEX-PRJ-DATA"
+        ],
+        "deployment_ids": [
+          "NEX-DPLY-EVENT_INGESTOR-CURRENT"
+        ],
+        "artifact_ids": [
+          "NEX-ART-EVENT_INGESTOR-CURRENT"
+        ]
+      },
+      "record_content_class": "PRIVILEGED_CHANGES",
+      "change_id": "NEX-PCH-007",
+      "title": "Event ingestion deduplication release",
+      "description": "Check both NATS payment and RabbitMQ order adapters before widening the event worker rollout.",
+      "affected_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-DATA"
+      ],
+      "requesting_employee_id": "NEX-EMP-008",
+      "approving_admin_employee_id": "NEX-EMP-001",
+      "submitted_at": "2026-09-28T09:00:00Z",
+      "approved_at": "2026-09-30T09:00:00Z",
+      "planned_execution_window": {
+        "start_at": "2026-10-04T08:00:00Z",
+        "end_at": "2026-10-04T11:00:00Z"
+      },
+      "actual_execution": {
+        "executed_at": "2026-10-04T09:00:00Z",
+        "executor_employee_id": "NEX-EMP-008",
+        "execution_source_record_id": "NEX-DPLY-EVENT_INGESTOR-CURRENT",
+        "execution_claim_basis": "STAGE_7C_DEPLOYMENT_RECORD"
+      },
+      "change_classification": "STANDARD_PRODUCTION_RELEASE",
+      "risk_classification": "LOW",
+      "business_justification": "Check both NATS payment and RabbitMQ order adapters before widening the event worker rollout.",
+      "verification_requirements": [
+        "Inspect successful source commit and build tests",
+        "Verify matching immutable artifact and deployment version",
+        "Observe post-deployment smoke test result"
+      ],
+      "rollback_plan": "Restore previous consumer image, preserving staging offset and deduplication ledger.",
+      "decision_status": "APPROVED",
+      "lifecycle_state": "VERIFIED",
+      "execution_status": "EXECUTED",
+      "verification_result": "PASSED_LINKED_STAGE_7C_SMOKE",
+      "verified_at": "2026-10-04T09:35:00Z",
+      "linked_deployment_id": "NEX-DPLY-EVENT_INGESTOR-CURRENT",
+      "linked_artifact_id": "NEX-ART-EVENT_INGESTOR-CURRENT",
+      "linked_build_id": "NEX-BLD-DATA-001",
+      "linked_stage_7c_pr_ids": [],
+      "approval_is_execution_evidence": false
+    },
+    {
+      "id": "NEX-PCH-008",
+      "source_id": "NEX-SRC-PRIVILEGED_CHANGES",
+      "source_authority": "ADMIN_APPROVAL_WITH_SEPARATE_STAGE_7C_EXECUTION_EVIDENCE",
+      "author_or_responsible_employee_id": "NEX-EMP-007",
+      "created_at": "2026-10-17T09:00:00Z",
+      "revised_at": "2026-10-23T09:35:00Z",
+      "status": "VERIFIED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-007",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-DEPLOYMENT_PLATFORM"
+        ],
+        "project_ids": [],
+        "deployment_ids": [
+          "NEX-DPLY-DEPLOYMENT_PLATFORM-CURRENT"
+        ],
+        "artifact_ids": [
+          "NEX-ART-DEPLOYMENT_PLATFORM-CURRENT"
+        ]
+      },
+      "record_content_class": "PRIVILEGED_CHANGES",
+      "change_id": "NEX-PCH-008",
+      "title": "Immutable digest gate rollout",
+      "description": "Introduce digest-only rollout policy after chart and rollback rendering checks.",
+      "affected_service_ids": [
+        "NEX-SVC-DEPLOYMENT_PLATFORM"
+      ],
+      "relevant_project_ids": [],
+      "requesting_employee_id": "NEX-EMP-007",
+      "approving_admin_employee_id": "NEX-EMP-001",
+      "submitted_at": "2026-10-17T09:00:00Z",
+      "approved_at": "2026-10-19T09:00:00Z",
+      "planned_execution_window": {
+        "start_at": "2026-10-23T08:00:00Z",
+        "end_at": "2026-10-23T11:00:00Z"
+      },
+      "actual_execution": {
+        "executed_at": "2026-10-23T09:00:00Z",
+        "executor_employee_id": "NEX-EMP-007",
+        "execution_source_record_id": "NEX-DPLY-DEPLOYMENT_PLATFORM-CURRENT",
+        "execution_claim_basis": "STAGE_7C_DEPLOYMENT_RECORD"
+      },
+      "change_classification": "STANDARD_PRODUCTION_RELEASE",
+      "risk_classification": "MODERATE",
+      "business_justification": "Introduce digest-only rollout policy after chart and rollback rendering checks.",
+      "verification_requirements": [
+        "Inspect successful source commit and build tests",
+        "Verify matching immutable artifact and deployment version",
+        "Observe post-deployment smoke test result"
+      ],
+      "rollback_plan": "Reconcile the prior policy revision and continue to promote only pinned images.",
+      "decision_status": "APPROVED",
+      "lifecycle_state": "VERIFIED",
+      "execution_status": "EXECUTED",
+      "verification_result": "PASSED_LINKED_STAGE_7C_SMOKE",
+      "verified_at": "2026-10-23T09:35:00Z",
+      "linked_deployment_id": "NEX-DPLY-DEPLOYMENT_PLATFORM-CURRENT",
+      "linked_artifact_id": "NEX-ART-DEPLOYMENT_PLATFORM-CURRENT",
+      "linked_build_id": "NEX-BLD-PLAT-001",
+      "linked_stage_7c_pr_ids": [
+        "NEX-PR-PLAT-002"
+      ],
+      "approval_is_execution_evidence": false
+    },
+    {
+      "id": "NEX-PCH-009",
+      "source_id": "NEX-SRC-PRIVILEGED_CHANGES",
+      "source_authority": "ADMIN_CHANGE_CONTROL_DECISION_ONLY",
+      "author_or_responsible_employee_id": "NEX-EMP-009",
+      "created_at": "2026-10-28T11:00:00Z",
+      "revised_at": "2026-10-30T16:00:00Z",
+      "status": "SCHEDULED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-009",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-OBSERVABILITY_PLATFORM"
+        ],
+        "project_ids": []
+      },
+      "record_content_class": "PRIVILEGED_CHANGES",
+      "change_id": "NEX-PCH-009",
+      "title": "Review telemetry cardinality retention controls",
+      "description": "Constrain permitted metric labels before reloading collector configuration.",
+      "affected_service_ids": [
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "relevant_project_ids": [],
+      "requesting_employee_id": "NEX-EMP-009",
+      "approving_admin_employee_id": "NEX-EMP-001",
+      "submitted_at": "2026-10-28T11:00:00Z",
+      "approved_at": "2026-10-30T12:00:00Z",
+      "planned_execution_window": {
+        "start_at": "2026-10-31T18:00:00Z",
+        "end_at": "2026-10-31T21:00:00Z"
+      },
+      "actual_execution": null,
+      "change_classification": "PRODUCTION_CONFIG_MAINTENANCE",
+      "risk_classification": "LOW",
+      "business_justification": "Constrain permitted metric labels before reloading collector configuration.",
+      "verification_requirements": [
+        "Require compatible build validation before any deployment",
+        "Verify rollback configuration and resource ownership"
+      ],
+      "rollback_plan": "Restore the preceding collector configuration revision and verify ingestion counts.",
+      "decision_status": "APPROVED",
+      "lifecycle_state": "SCHEDULED",
+      "execution_status": "NOT_EXECUTED",
+      "verification_result": null,
+      "verified_at": null,
+      "linked_deployment_id": null,
+      "linked_artifact_id": null,
+      "linked_build_id": null,
+      "linked_stage_7c_pr_ids": [],
+      "approval_is_execution_evidence": false
+    },
+    {
+      "id": "NEX-PCH-010",
+      "source_id": "NEX-SRC-PRIVILEGED_CHANGES",
+      "source_authority": "ADMIN_CHANGE_CONTROL_DECISION_ONLY",
+      "author_or_responsible_employee_id": "NEX-EMP-006",
+      "created_at": "2026-10-27T11:00:00Z",
+      "revised_at": "2026-10-29T12:00:00Z",
+      "status": "APPROVED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-006",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-POLICY_SERVICE"
+        ],
+        "project_ids": [
+          "NEX-PRJ-ID"
+        ]
+      },
+      "record_content_class": "PRIVILEGED_CHANGES",
+      "change_id": "NEX-PCH-010",
+      "title": "Approve conditional policy-cache memory limit change",
+      "description": "Review bounded cache memory settings pending a compatible service build.",
+      "affected_service_ids": [
+        "NEX-SVC-POLICY_SERVICE"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-ID"
+      ],
+      "requesting_employee_id": "NEX-EMP-006",
+      "approving_admin_employee_id": "NEX-EMP-001",
+      "submitted_at": "2026-10-27T11:00:00Z",
+      "approved_at": "2026-10-29T12:00:00Z",
+      "planned_execution_window": null,
+      "actual_execution": null,
+      "change_classification": "PRODUCTION_CONFIG_MAINTENANCE",
+      "risk_classification": "LOW",
+      "business_justification": "Review bounded cache memory settings pending a compatible service build.",
+      "verification_requirements": [
+        "Require compatible build validation before any deployment",
+        "Verify rollback configuration and resource ownership"
+      ],
+      "rollback_plan": "Reset cache limit to the pinned prior value without deleting policy revisions.",
+      "decision_status": "APPROVED",
+      "lifecycle_state": "APPROVED",
+      "execution_status": "NOT_EXECUTED",
+      "verification_result": null,
+      "verified_at": null,
+      "linked_deployment_id": null,
+      "linked_artifact_id": null,
+      "linked_build_id": null,
+      "linked_stage_7c_pr_ids": [],
+      "approval_is_execution_evidence": false
+    },
+    {
+      "id": "NEX-PCH-011",
+      "source_id": "NEX-SRC-PRIVILEGED_CHANGES",
+      "source_authority": "ADMIN_CHANGE_CONTROL_DECISION_ONLY",
+      "author_or_responsible_employee_id": "NEX-EMP-009",
+      "created_at": "2026-10-24T11:00:00Z",
+      "revised_at": "2026-10-26T15:00:00Z",
+      "status": "CANCELLED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-009",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-METRICS_PIPELINE"
+        ],
+        "project_ids": [
+          "NEX-PRJ-DATA"
+        ]
+      },
+      "record_content_class": "PRIVILEGED_CHANGES",
+      "change_id": "NEX-PCH-011",
+      "title": "Cancel proposed metrics scheduler interval adjustment",
+      "description": "Adjust a nightly schedule only if replay window tests are available.",
+      "affected_service_ids": [
+        "NEX-SVC-METRICS_PIPELINE"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-DATA"
+      ],
+      "requesting_employee_id": "NEX-EMP-009",
+      "approving_admin_employee_id": "NEX-EMP-001",
+      "submitted_at": "2026-10-24T11:00:00Z",
+      "approved_at": "2026-10-25T12:00:00Z",
+      "planned_execution_window": {
+        "start_at": "2026-10-27T18:00:00Z",
+        "end_at": "2026-10-27T21:00:00Z"
+      },
+      "actual_execution": null,
+      "change_classification": "PRODUCTION_CONFIG_MAINTENANCE",
+      "risk_classification": "LOW",
+      "business_justification": "Adjust a nightly schedule only if replay window tests are available.",
+      "verification_requirements": [
+        "Require compatible build validation before any deployment",
+        "Verify rollback configuration and resource ownership"
+      ],
+      "rollback_plan": "No deployment needed: retain existing scheduler interval.",
+      "decision_status": "APPROVED",
+      "lifecycle_state": "CANCELLED",
+      "execution_status": "NOT_EXECUTED",
+      "verification_result": null,
+      "verified_at": null,
+      "linked_deployment_id": null,
+      "linked_artifact_id": null,
+      "linked_build_id": null,
+      "linked_stage_7c_pr_ids": [],
+      "approval_is_execution_evidence": false
+    },
+    {
+      "id": "NEX-PCH-012",
+      "source_id": "NEX-SRC-PRIVILEGED_CHANGES",
+      "source_authority": "ADMIN_CHANGE_CONTROL_DECISION_ONLY",
+      "author_or_responsible_employee_id": "NEX-EMP-007",
+      "created_at": "2026-10-30T11:00:00Z",
+      "revised_at": "2026-10-30T11:00:00Z",
+      "status": "REQUESTED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-007",
+          "NEX-EMP-001"
+        ],
+        "service_ids": [
+          "NEX-SVC-TOKEN_VALIDATOR"
+        ],
+        "project_ids": [
+          "NEX-PRJ-ID"
+        ]
+      },
+      "record_content_class": "PRIVILEGED_CHANGES",
+      "change_id": "NEX-PCH-012",
+      "title": "Request JWKS refresh cache policy review",
+      "description": "Propose future cache behavior testing; no approval and no deploy authorization exists.",
+      "affected_service_ids": [
+        "NEX-SVC-TOKEN_VALIDATOR"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-ID"
+      ],
+      "requesting_employee_id": "NEX-EMP-007",
+      "approving_admin_employee_id": null,
+      "submitted_at": "2026-10-30T11:00:00Z",
+      "approved_at": null,
+      "planned_execution_window": null,
+      "actual_execution": null,
+      "change_classification": "PRODUCTION_CONFIG_MAINTENANCE",
+      "risk_classification": "MODERATE",
+      "business_justification": "Propose future cache behavior testing; no approval and no deploy authorization exists.",
+      "verification_requirements": [
+        "Require compatible build validation before any deployment",
+        "Verify rollback configuration and resource ownership"
+      ],
+      "rollback_plan": "Retain currently deployed token-validator version until signed-off changes exist.",
+      "decision_status": "PENDING",
+      "lifecycle_state": "REQUESTED",
+      "execution_status": "NOT_EXECUTED",
+      "verification_result": null,
+      "verified_at": null,
+      "linked_deployment_id": null,
+      "linked_artifact_id": null,
+      "linked_build_id": null,
+      "linked_stage_7c_pr_ids": [],
+      "approval_is_execution_evidence": false
+    }
+  ]
+}

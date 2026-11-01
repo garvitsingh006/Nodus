@@ -1,0 +1,2768 @@
+{
+  "dataset_version": "7C-1.0.0",
+  "repository_commits": [
+    {
+      "id": "NEX-CMT-PAY-001",
+      "source_id": "NEX-SRC-PAY-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PAY",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-07-15T10:00:00Z",
+      "revised_at": "2026-07-15T10:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-PAY",
+      "commit_hash": "da295bc730d91b08d5dc3bb805ea4714795a0f007aa12b4fd92002614555d960",
+      "author_employee_id": "NEX-EMP-002",
+      "committed_at": "2026-07-15T10:00:00Z",
+      "message": "Set up PAY workspace layout with reproducible build targets",
+      "parent_commit_ids": [],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "go.mod",
+          "change_type": "MODIFIED",
+          "summary": "Pin compiler and test targets; define one deployable artifact per service."
+        },
+        {
+          "path": "tests/integration/go_test.go",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "BUILD_SYSTEM",
+      "technical_change_description": "Pin compiler and test targets; define one deployable artifact per service.",
+      "related_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-GATEWAY_ROUTER",
+        "NEX-SVC-REFUND_WORKER"
+      ],
+      "related_issue_ids": [],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": [
+        {
+          "event_name": "refund-requests-v1",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-REFUND_WORKER",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_dependency_id": "NEX-DEP-003",
+          "canonical_dependency_edge_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        },
+        {
+          "event_name": "payment-lifecycle-events-v2",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-011",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_PAYMENT_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "refund-requests-v1",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-REFUND_WORKER",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_dependency_id": "NEX-DEP-003",
+          "canonical_dependency_edge_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-PAY-002",
+      "source_id": "NEX-SRC-PAY-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PAY",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-08-20T12:00:00Z",
+      "revised_at": "2026-08-20T12:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-PAY",
+      "commit_hash": "a1a10731ba41aa56ee81c657ab4061ca3d2c3c3e7a51527337360f6e8a27690a",
+      "author_employee_id": "NEX-EMP-003",
+      "committed_at": "2026-08-20T12:00:00Z",
+      "message": "Add structured service operation logs and trace propagation for PAY",
+      "parent_commit_ids": [
+        "NEX-CMT-PAY-001"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "services/shared/telemetry/trace_context.txt",
+          "change_type": "MODIFIED",
+          "summary": "Carry request and event correlation IDs without putting credentials or full payloads in logs."
+        },
+        {
+          "path": "tests/integration/trace_context_test.go",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "OBSERVABILITY",
+      "technical_change_description": "Carry request and event correlation IDs without putting credentials or full payloads in logs.",
+      "related_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-GATEWAY_ROUTER",
+        "NEX-SVC-REFUND_WORKER"
+      ],
+      "related_issue_ids": [],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": [
+        {
+          "event_name": "refund-requests-v1",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-REFUND_WORKER",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_dependency_id": "NEX-DEP-003",
+          "canonical_dependency_edge_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        },
+        {
+          "event_name": "payment-lifecycle-events-v2",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-011",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_PAYMENT_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "refund-requests-v1",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-REFUND_WORKER",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_dependency_id": "NEX-DEP-003",
+          "canonical_dependency_edge_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-PAY-003",
+      "source_id": "NEX-SRC-PAY-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PAY",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-09-17T09:00:00Z",
+      "revised_at": "2026-09-17T09:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-PAY",
+      "commit_hash": "c328d32f3082708c7fdf40d71592bed2a571a6c8a6d7635a9f8a6477cd171fdb",
+      "author_employee_id": "NEX-EMP-002",
+      "committed_at": "2026-09-17T09:00:00Z",
+      "message": "Bound gateway adapter timeout and normalize retry categories",
+      "parent_commit_ids": [
+        "NEX-CMT-PAY-002"
+      ],
+      "branch": "release/gateway-router-3.9.0",
+      "changed_files": [
+        {
+          "path": "internal/gateway/route_selector.go",
+          "change_type": "MODIFIED",
+          "summary": "The gRPC adapter returns typed transport outcomes without inventing a completed authorization."
+        },
+        {
+          "path": "tests/contracts/gateway_routing_test.go",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "RELIABILITY",
+      "technical_change_description": "The gRPC adapter returns typed transport outcomes without inventing a completed authorization.",
+      "related_service_ids": [
+        "NEX-SVC-GATEWAY_ROUTER"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PAY-001"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-PAY-001"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "internal/gateway/route_selector.go",
+          "format": "illustrative-signature-change",
+          "before": "process_gateway_router(input) -> untyped_result",
+          "after": "process_gateway_router(validated_input, correlation_id) -> typed_result",
+          "note": "Representative signature only; not a complete executable patch."
+        }
+      ],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-PAY-004",
+      "source_id": "NEX-SRC-PAY-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PAY",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-03T09:00:00Z",
+      "revised_at": "2026-10-03T09:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-PAY",
+      "commit_hash": "f0cd624ecc688ff56eb6765fba9faebde87d5f2eedfbf2af95073d3c7be5814f",
+      "author_employee_id": "NEX-EMP-003",
+      "committed_at": "2026-10-03T09:00:00Z",
+      "message": "Deduplicate authorized refund commands before provider execution",
+      "parent_commit_ids": [
+        "NEX-CMT-PAY-003"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "internal/refund/consumer.go",
+          "change_type": "MODIFIED",
+          "summary": "The NATS handler reserves a refund_request_id before invoking gateway routing and safely acknowledges redelivery."
+        },
+        {
+          "path": "tests/integration/refund_redelivery_test.go",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "FEATURE_IMPROVEMENT",
+      "technical_change_description": "The NATS handler reserves a refund_request_id before invoking gateway routing and safely acknowledges redelivery.",
+      "related_service_ids": [
+        "NEX-SVC-REFUND_WORKER"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PAY-002"
+      ],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": [
+        {
+          "event_name": "refund-requests-v1",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-REFUND_WORKER",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_dependency_id": "NEX-DEP-003",
+          "canonical_dependency_edge_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-PAY-005",
+      "source_id": "NEX-SRC-PAY-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PAY",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-09T09:00:00Z",
+      "revised_at": "2026-10-09T09:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-PAY",
+      "commit_hash": "9f4088e4aee64eebf0532316f15f701a7f11341729e3bc1a3051accf40c4bd2c",
+      "author_employee_id": "NEX-EMP-002",
+      "committed_at": "2026-10-09T09:00:00Z",
+      "message": "Guard merchant idempotency-key replay against payload changes",
+      "parent_commit_ids": [
+        "NEX-CMT-PAY-004"
+      ],
+      "branch": "release/payment-api-4.12.1",
+      "changed_files": [
+        {
+          "path": "internal/payment/intent_handler.go",
+          "change_type": "MODIFIED",
+          "summary": "The request fingerprint is compared inside the intent transaction before a stored response is replayed."
+        },
+        {
+          "path": "tests/integration/intent_idempotency_test.go",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "FEATURE_IMPROVEMENT",
+      "technical_change_description": "The request fingerprint is compared inside the intent transaction before a stored response is replayed.",
+      "related_service_ids": [
+        "NEX-SVC-PAYMENT_API"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PAY-003"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-PAY-002"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "internal/payment/intent_handler.go",
+          "format": "illustrative-signature-change",
+          "before": "process_payment_api(input) -> untyped_result",
+          "after": "process_payment_api(validated_input, correlation_id) -> typed_result",
+          "note": "Representative signature only; not a complete executable patch."
+        }
+      ],
+      "event_delivery_facts": [
+        {
+          "event_name": "refund-requests-v1",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-REFUND_WORKER",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_dependency_id": "NEX-DEP-003",
+          "canonical_dependency_edge_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        },
+        {
+          "event_name": "payment-lifecycle-events-v2",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-011",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_PAYMENT_API",
+          "canonical_edge_semantic_discrepancy": null
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-PAY-006",
+      "source_id": "NEX-SRC-PAY-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PAY",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-24T14:00:00Z",
+      "revised_at": "2026-10-24T14:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-PAY",
+      "commit_hash": "d257eec976aac568aea57911e2ac803bb0bd471dff8050512eaf7b2da686f04e",
+      "author_employee_id": "NEX-EMP-002",
+      "committed_at": "2026-10-24T14:00:00Z",
+      "message": "Separate PAY contract validation from unit test job",
+      "parent_commit_ids": [
+        "NEX-CMT-PAY-005"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": ".github/workflows/verify.yaml",
+          "change_type": "MODIFIED",
+          "summary": "Contract checks run with a pinned provider fixture and report their own independent status."
+        },
+        {
+          "path": "tests/integration/verify_test.go",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "CI_TESTING",
+      "technical_change_description": "Contract checks run with a pinned provider fixture and report their own independent status.",
+      "related_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-GATEWAY_ROUTER",
+        "NEX-SVC-REFUND_WORKER"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PAY-004"
+      ],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": [
+        {
+          "event_name": "refund-requests-v1",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-REFUND_WORKER",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_dependency_id": "NEX-DEP-003",
+          "canonical_dependency_edge_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        },
+        {
+          "event_name": "payment-lifecycle-events-v2",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-011",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_PAYMENT_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "refund-requests-v1",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-REFUND_WORKER",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_dependency_id": "NEX-DEP-003",
+          "canonical_dependency_edge_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-PAY-007",
+      "source_id": "NEX-SRC-PAY-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PAY",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-25T15:00:00Z",
+      "revised_at": "2026-10-25T15:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-PAY",
+      "commit_hash": "fae36ff508592234840b5303d455589d13d567e828770eb41b37d896d1c41279",
+      "author_employee_id": "NEX-EMP-003",
+      "committed_at": "2026-10-25T15:00:00Z",
+      "message": "Record per-service verification summary in PAY release workflow",
+      "parent_commit_ids": [
+        "NEX-CMT-PAY-006"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "tests/integration/README.md",
+          "change_type": "MODIFIED",
+          "summary": "Pipeline attaches a machine-readable validation summary without altering application artifacts."
+        },
+        {
+          "path": "tests/integration/README_test.go",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "CI_TESTING",
+      "technical_change_description": "Pipeline attaches a machine-readable validation summary without altering application artifacts.",
+      "related_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-GATEWAY_ROUTER",
+        "NEX-SVC-REFUND_WORKER"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PAY-004"
+      ],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": [
+        {
+          "event_name": "refund-requests-v1",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-REFUND_WORKER",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_dependency_id": "NEX-DEP-003",
+          "canonical_dependency_edge_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        },
+        {
+          "event_name": "payment-lifecycle-events-v2",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-011",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_PAYMENT_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "refund-requests-v1",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-REFUND_WORKER",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_dependency_id": "NEX-DEP-003",
+          "canonical_dependency_edge_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-PAY-008",
+      "source_id": "NEX-SRC-PAY-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PAY",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-27T16:00:00Z",
+      "revised_at": "2026-10-27T16:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-PAY",
+      "commit_hash": "3f9c64eb5d426d1fb223615d802fd85a0069edc9ef235d5423c89dfe1df3cfb8",
+      "author_employee_id": "NEX-EMP-002",
+      "committed_at": "2026-10-27T16:00:00Z",
+      "message": "Draft: refine gateway timeout classification before rollout",
+      "parent_commit_ids": [
+        "NEX-CMT-PAY-007"
+      ],
+      "branch": "feature/pay-change-review",
+      "changed_files": [
+        {
+          "path": "internal/gateway/adapter_errors.go",
+          "change_type": "MODIFIED",
+          "summary": "Gateway outcome enum changes require payment-api and refund-worker compatibility testing."
+        },
+        {
+          "path": "tests/integration/adapter_errors_test.go",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "PROPOSED_INTERFACE_CHANGE",
+      "technical_change_description": "Gateway outcome enum changes require payment-api and refund-worker compatibility testing.",
+      "related_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-GATEWAY_ROUTER"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PAY-005"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-PAY-003"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "internal/gateway/adapter_errors.go",
+          "format": "illustrative-before-after",
+          "before": "GatewayOutcome{kind, provider_ref}; timeout remains UNKNOWN",
+          "after": "GatewayOutcome{kind, provider_ref, retry_category}; timeout remains UNKNOWN",
+          "note": "Unmerged proposal; do not interpret as production behavior."
+        }
+      ],
+      "event_delivery_facts": [
+        {
+          "event_name": "refund-requests-v1",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-REFUND_WORKER",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_dependency_id": "NEX-DEP-003",
+          "canonical_dependency_edge_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        },
+        {
+          "event_name": "payment-lifecycle-events-v2",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-011",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_PAYMENT_API",
+          "canonical_edge_semantic_discrepancy": null
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-PAY-009",
+      "source_id": "NEX-SRC-PAY-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PAY",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-29T10:00:00Z",
+      "revised_at": "2026-10-29T10:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-PAY",
+      "commit_hash": "864a18332b6a366cd66b31e6adee7869b248621264f8bb09139a7c3640a078ca",
+      "author_employee_id": "NEX-EMP-003",
+      "committed_at": "2026-10-29T10:00:00Z",
+      "message": "Draft: add backwards-compatibility assertions for proposed PAY change",
+      "parent_commit_ids": [
+        "NEX-CMT-PAY-007"
+      ],
+      "branch": "feature/pay-compatibility-review",
+      "changed_files": [
+        {
+          "path": "internal/proposed_pay_compatibility_test.go",
+          "change_type": "MODIFIED",
+          "summary": "Review whether UNKNOWN transport outcomes are retried only by a caller with a stable operation id."
+        },
+        {
+          "path": "tests/integration/proposed_pay_compatibility_test_test.go",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "PROPOSED_TESTING",
+      "technical_change_description": "Review whether UNKNOWN transport outcomes are retried only by a caller with a stable operation id.",
+      "related_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-GATEWAY_ROUTER",
+        "NEX-SVC-REFUND_WORKER"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PAY-006"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-PAY-004"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "internal/proposed_pay_compatibility_test.go",
+          "format": "illustrative-before-after",
+          "before": "Compatibility suite asserts the currently published contract shape",
+          "after": "Compatibility suite asserts both published and proposed contract shapes",
+          "note": "Unmerged proposal; do not interpret as production behavior."
+        }
+      ],
+      "event_delivery_facts": [
+        {
+          "event_name": "refund-requests-v1",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-REFUND_WORKER",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_dependency_id": "NEX-DEP-003",
+          "canonical_dependency_edge_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        },
+        {
+          "event_name": "payment-lifecycle-events-v2",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-011",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_PAYMENT_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "refund-requests-v1",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-REFUND_WORKER",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_dependency_id": "NEX-DEP-003",
+          "canonical_dependency_edge_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-COM-001",
+      "source_id": "NEX-SRC-COM-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-COM",
+      "owner_project_id": "NEX-PRJ-COM",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-07-15T10:00:00Z",
+      "revised_at": "2026-07-15T10:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-COM",
+      "commit_hash": "b149dc3a24dc6e914961d45a1cda6be358e8c5fa70f9ee7d3dd0b67323c1f42c",
+      "author_employee_id": "NEX-EMP-004",
+      "committed_at": "2026-07-15T10:00:00Z",
+      "message": "Set up COM workspace layout with reproducible build targets",
+      "parent_commit_ids": [],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "composer.json",
+          "change_type": "MODIFIED",
+          "summary": "Pin compiler and test targets; define one deployable artifact per service."
+        },
+        {
+          "path": "tests/Integration/ComposerTest.php",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "BUILD_SYSTEM",
+      "technical_change_description": "Pin compiler and test targets; define one deployable artifact per service.",
+      "related_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-ORDER_API",
+        "NEX-SVC-WEBHOOK_CONSUMER"
+      ],
+      "related_issue_ids": [],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": [
+        {
+          "event_name": "commerce-notification-jobs",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_dependency_id": "NEX-DEP-008",
+          "canonical_dependency_edge_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        },
+        {
+          "event_name": "order-events-v1",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-012",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_ORDER_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "commerce-notification-jobs",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_dependency_id": "NEX-DEP-008",
+          "canonical_dependency_edge_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-COM-002",
+      "source_id": "NEX-SRC-COM-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-COM",
+      "owner_project_id": "NEX-PRJ-COM",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-08-20T12:00:00Z",
+      "revised_at": "2026-08-20T12:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-COM",
+      "commit_hash": "abee95ec6599c9286391270bfb91604bbbd3b765de572af11585cf2be4749e75",
+      "author_employee_id": "NEX-EMP-005",
+      "committed_at": "2026-08-20T12:00:00Z",
+      "message": "Add structured service operation logs and trace propagation for COM",
+      "parent_commit_ids": [
+        "NEX-CMT-COM-001"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "apps/shared/telemetry/trace_context.txt",
+          "change_type": "MODIFIED",
+          "summary": "Carry request and event correlation IDs without putting credentials or full payloads in logs."
+        },
+        {
+          "path": "tests/Integration/TraceContextTest.php",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "OBSERVABILITY",
+      "technical_change_description": "Carry request and event correlation IDs without putting credentials or full payloads in logs.",
+      "related_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-ORDER_API",
+        "NEX-SVC-WEBHOOK_CONSUMER"
+      ],
+      "related_issue_ids": [],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": [
+        {
+          "event_name": "commerce-notification-jobs",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_dependency_id": "NEX-DEP-008",
+          "canonical_dependency_edge_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        },
+        {
+          "event_name": "order-events-v1",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-012",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_ORDER_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "commerce-notification-jobs",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_dependency_id": "NEX-DEP-008",
+          "canonical_dependency_edge_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-COM-003",
+      "source_id": "NEX-SRC-COM-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-COM",
+      "owner_project_id": "NEX-PRJ-COM",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-09-25T09:00:00Z",
+      "revised_at": "2026-09-25T09:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-COM",
+      "commit_hash": "2a946ea8f0f7b3ab86701005a50c2c7f3f1c7fb9416db444cecbd209933b5ff1",
+      "author_employee_id": "NEX-EMP-005",
+      "committed_at": "2026-09-25T09:00:00Z",
+      "message": "Bound merchant webhook retries with durable attempt state",
+      "parent_commit_ids": [
+        "NEX-CMT-COM-002"
+      ],
+      "branch": "release/webhook-consumer-3.4.2",
+      "changed_files": [
+        {
+          "path": "src/Webhooks/Delivery/RetryScheduler.php",
+          "change_type": "MODIFIED",
+          "summary": "The worker distinguishes retryable transport failures from terminal HTTP outcomes and retains event_id."
+        },
+        {
+          "path": "tests/Integration/WebhookRetriesTest.php",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "FEATURE_IMPROVEMENT",
+      "technical_change_description": "The worker distinguishes retryable transport failures from terminal HTTP outcomes and retains event_id.",
+      "related_service_ids": [
+        "NEX-SVC-WEBHOOK_CONSUMER"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-COM-001"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-COM-001"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "src/Webhooks/Delivery/RetryScheduler.php",
+          "format": "illustrative-signature-change",
+          "before": "process_webhook_consumer(input) -> untyped_result",
+          "after": "process_webhook_consumer(validated_input, correlation_id) -> typed_result",
+          "note": "Representative signature only; not a complete executable patch."
+        }
+      ],
+      "event_delivery_facts": [
+        {
+          "event_name": "commerce-notification-jobs",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_dependency_id": "NEX-DEP-008",
+          "canonical_dependency_edge_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-COM-004",
+      "source_id": "NEX-SRC-COM-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-COM",
+      "owner_project_id": "NEX-PRJ-COM",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-14T09:00:00Z",
+      "revised_at": "2026-10-14T09:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-COM",
+      "commit_hash": "f2ecbd646c51ae8f06b4eb8e3228266561451672368d58a116a611bdf19a4d64",
+      "author_employee_id": "NEX-EMP-004",
+      "committed_at": "2026-10-14T09:00:00Z",
+      "message": "Enforce valid order transitions and queue immutable events",
+      "parent_commit_ids": [
+        "NEX-CMT-COM-003"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "src/Orders/Application/OrderTransitionService.php",
+          "change_type": "MODIFIED",
+          "summary": "MySQL order state and the outbox row commit together before RabbitMQ delivery."
+        },
+        {
+          "path": "tests/Integration/OrderOutboxTest.php",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "FEATURE_IMPROVEMENT",
+      "technical_change_description": "MySQL order state and the outbox row commit together before RabbitMQ delivery.",
+      "related_service_ids": [
+        "NEX-SVC-ORDER_API"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-COM-002"
+      ],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": [
+        {
+          "event_name": "commerce-notification-jobs",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_dependency_id": "NEX-DEP-008",
+          "canonical_dependency_edge_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        },
+        {
+          "event_name": "order-events-v1",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-012",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_ORDER_API",
+          "canonical_edge_semantic_discrepancy": null
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-COM-005",
+      "source_id": "NEX-SRC-COM-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-COM",
+      "owner_project_id": "NEX-PRJ-COM",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-17T09:00:00Z",
+      "revised_at": "2026-10-17T09:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-COM",
+      "commit_hash": "7e9811e8a83afc3a944af2195769bfbfd670189677008b9883e9e551fe340fb4",
+      "author_employee_id": "NEX-EMP-004",
+      "committed_at": "2026-10-17T09:00:00Z",
+      "message": "Persist payment intent reference before confirming checkout",
+      "parent_commit_ids": [
+        "NEX-CMT-COM-004"
+      ],
+      "branch": "release/checkout-service-5.6.1",
+      "changed_files": [
+        {
+          "path": "src/Checkout/Application/CheckoutCoordinator.php",
+          "change_type": "MODIFIED",
+          "summary": "A checkout retry reuses the persisted payment_intent_id and does not create a second order intent."
+        },
+        {
+          "path": "tests/Integration/CheckoutRetryTest.php",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "FEATURE_IMPROVEMENT",
+      "technical_change_description": "A checkout retry reuses the persisted payment_intent_id and does not create a second order intent.",
+      "related_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-COM-003"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-COM-002"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "src/Checkout/Application/CheckoutCoordinator.php",
+          "format": "illustrative-signature-change",
+          "before": "process_checkout_service(input) -> untyped_result",
+          "after": "process_checkout_service(validated_input, correlation_id) -> typed_result",
+          "note": "Representative signature only; not a complete executable patch."
+        }
+      ],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-COM-006",
+      "source_id": "NEX-SRC-COM-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-COM",
+      "owner_project_id": "NEX-PRJ-COM",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-24T14:00:00Z",
+      "revised_at": "2026-10-24T14:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-COM",
+      "commit_hash": "f830f8a5be2b9c4dcc655186d0d7ec1b1972e83898a11bd29f584a38304d83e7",
+      "author_employee_id": "NEX-EMP-004",
+      "committed_at": "2026-10-24T14:00:00Z",
+      "message": "Separate COM contract validation from unit test job",
+      "parent_commit_ids": [
+        "NEX-CMT-COM-005"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": ".github/workflows/verify.yaml",
+          "change_type": "MODIFIED",
+          "summary": "Contract checks run with a pinned provider fixture and report their own independent status."
+        },
+        {
+          "path": "tests/Integration/VerifyTest.php",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "CI_TESTING",
+      "technical_change_description": "Contract checks run with a pinned provider fixture and report their own independent status.",
+      "related_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-ORDER_API",
+        "NEX-SVC-WEBHOOK_CONSUMER"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-COM-004"
+      ],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": [
+        {
+          "event_name": "commerce-notification-jobs",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_dependency_id": "NEX-DEP-008",
+          "canonical_dependency_edge_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        },
+        {
+          "event_name": "order-events-v1",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-012",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_ORDER_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "commerce-notification-jobs",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_dependency_id": "NEX-DEP-008",
+          "canonical_dependency_edge_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-COM-007",
+      "source_id": "NEX-SRC-COM-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-COM",
+      "owner_project_id": "NEX-PRJ-COM",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-25T15:00:00Z",
+      "revised_at": "2026-10-25T15:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-COM",
+      "commit_hash": "0fdae398a8dd920ee6f34e5c37fd6a17a13d714e51ff8fbd2d7aaf2a6fd0d023",
+      "author_employee_id": "NEX-EMP-005",
+      "committed_at": "2026-10-25T15:00:00Z",
+      "message": "Record per-service verification summary in COM release workflow",
+      "parent_commit_ids": [
+        "NEX-CMT-COM-006"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "tests/integration/README.md",
+          "change_type": "MODIFIED",
+          "summary": "Pipeline attaches a machine-readable validation summary without altering application artifacts."
+        },
+        {
+          "path": "tests/Integration/ReadmeTest.php",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "CI_TESTING",
+      "technical_change_description": "Pipeline attaches a machine-readable validation summary without altering application artifacts.",
+      "related_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-ORDER_API",
+        "NEX-SVC-WEBHOOK_CONSUMER"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-COM-004"
+      ],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": [
+        {
+          "event_name": "commerce-notification-jobs",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_dependency_id": "NEX-DEP-008",
+          "canonical_dependency_edge_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        },
+        {
+          "event_name": "order-events-v1",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-012",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_ORDER_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "commerce-notification-jobs",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_dependency_id": "NEX-DEP-008",
+          "canonical_dependency_edge_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-COM-008",
+      "source_id": "NEX-SRC-COM-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-COM",
+      "owner_project_id": "NEX-PRJ-COM",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-27T16:00:00Z",
+      "revised_at": "2026-10-27T16:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-COM",
+      "commit_hash": "cd2c0b40918e20bd00ea0fa56635b67a2d6e1a845394579f71937e3c7ca36878",
+      "author_employee_id": "NEX-EMP-004",
+      "committed_at": "2026-10-27T16:00:00Z",
+      "message": "Draft: introduce optional checkout fee breakdown in API response",
+      "parent_commit_ids": [
+        "NEX-CMT-COM-007"
+      ],
+      "branch": "feature/com-change-review",
+      "changed_files": [
+        {
+          "path": "src/Checkout/Http/CheckoutPresenter.php",
+          "change_type": "MODIFIED",
+          "summary": "Presenter adds fee_components as an optional nested response field; totals are not recalculated."
+        },
+        {
+          "path": "tests/Integration/CheckoutpresenterTest.php",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "PROPOSED_INTERFACE_CHANGE",
+      "technical_change_description": "Presenter adds fee_components as an optional nested response field; totals are not recalculated.",
+      "related_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-ORDER_API"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-COM-005"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-COM-003"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "src/Checkout/Http/CheckoutPresenter.php",
+          "format": "illustrative-before-after",
+          "before": "CheckoutResponse{order_id, total_minor, currency}",
+          "after": "CheckoutResponse{order_id, total_minor, currency, fee_components?}",
+          "note": "Unmerged proposal; do not interpret as production behavior."
+        }
+      ],
+      "event_delivery_facts": [
+        {
+          "event_name": "commerce-notification-jobs",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_dependency_id": "NEX-DEP-008",
+          "canonical_dependency_edge_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        },
+        {
+          "event_name": "order-events-v1",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-012",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_ORDER_API",
+          "canonical_edge_semantic_discrepancy": null
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-COM-009",
+      "source_id": "NEX-SRC-COM-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-COM",
+      "owner_project_id": "NEX-PRJ-COM",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-29T10:00:00Z",
+      "revised_at": "2026-10-29T10:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-COM",
+      "commit_hash": "1b494e1667f5e975a004b92c18c86c6df5756d3209fe767205764b607344b680",
+      "author_employee_id": "NEX-EMP-005",
+      "committed_at": "2026-10-29T10:00:00Z",
+      "message": "Draft: add backwards-compatibility assertions for proposed COM change",
+      "parent_commit_ids": [
+        "NEX-CMT-COM-007"
+      ],
+      "branch": "feature/com-compatibility-review",
+      "changed_files": [
+        {
+          "path": "tests/Unit/proposed_com_compatibility_test.php",
+          "change_type": "MODIFIED",
+          "summary": "Keep total_minor unchanged and verify old merchant clients ignore the new optional object."
+        },
+        {
+          "path": "tests/Integration/ProposedComCompatibilityTestTest.php",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "PROPOSED_TESTING",
+      "technical_change_description": "Keep total_minor unchanged and verify old merchant clients ignore the new optional object.",
+      "related_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-ORDER_API",
+        "NEX-SVC-WEBHOOK_CONSUMER"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-COM-006"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-COM-004"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "tests/Unit/proposed_com_compatibility_test.php",
+          "format": "illustrative-before-after",
+          "before": "Compatibility suite asserts the currently published contract shape",
+          "after": "Compatibility suite asserts both published and proposed contract shapes",
+          "note": "Unmerged proposal; do not interpret as production behavior."
+        }
+      ],
+      "event_delivery_facts": [
+        {
+          "event_name": "commerce-notification-jobs",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_dependency_id": "NEX-DEP-008",
+          "canonical_dependency_edge_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        },
+        {
+          "event_name": "order-events-v1",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-012",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_ORDER_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "commerce-notification-jobs",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_dependency_id": "NEX-DEP-008",
+          "canonical_dependency_edge_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-ID-001",
+      "source_id": "NEX-SRC-ID-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-ID",
+      "owner_project_id": "NEX-PRJ-ID",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-07-15T10:00:00Z",
+      "revised_at": "2026-07-15T10:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-ID",
+      "commit_hash": "ed8f6b76718d1ca04562bfd1c8a8d2345640625f22b52e8e1724940c9fc52400",
+      "author_employee_id": "NEX-EMP-006",
+      "committed_at": "2026-07-15T10:00:00Z",
+      "message": "Set up ID workspace layout with reproducible build targets",
+      "parent_commit_ids": [],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "settings.gradle.kts",
+          "change_type": "MODIFIED",
+          "summary": "Pin compiler and test targets; define one deployable artifact per service."
+        },
+        {
+          "path": "src/test/java/com/nexus/identity/Settings.GradleTest.java",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "BUILD_SYSTEM",
+      "technical_change_description": "Pin compiler and test targets; define one deployable artifact per service.",
+      "related_service_ids": [
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-TOKEN_VALIDATOR",
+        "NEX-SVC-POLICY_SERVICE"
+      ],
+      "related_issue_ids": [],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-ID-002",
+      "source_id": "NEX-SRC-ID-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-ID",
+      "owner_project_id": "NEX-PRJ-ID",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-08-20T12:00:00Z",
+      "revised_at": "2026-08-20T12:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-ID",
+      "commit_hash": "dfa00b1b04dbe4a90653544374cec654685ffecc13193e63a01c5592116026d3",
+      "author_employee_id": "NEX-EMP-007",
+      "committed_at": "2026-08-20T12:00:00Z",
+      "message": "Add structured service operation logs and trace propagation for ID",
+      "parent_commit_ids": [
+        "NEX-CMT-ID-001"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "services/shared/telemetry/trace_context.txt",
+          "change_type": "MODIFIED",
+          "summary": "Carry request and event correlation IDs without putting credentials or full payloads in logs."
+        },
+        {
+          "path": "src/test/java/com/nexus/identity/TraceContextTest.java",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "OBSERVABILITY",
+      "technical_change_description": "Carry request and event correlation IDs without putting credentials or full payloads in logs.",
+      "related_service_ids": [
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-TOKEN_VALIDATOR",
+        "NEX-SVC-POLICY_SERVICE"
+      ],
+      "related_issue_ids": [],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-ID-003",
+      "source_id": "NEX-SRC-ID-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-ID",
+      "owner_project_id": "NEX-PRJ-ID",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-02T09:00:00Z",
+      "revised_at": "2026-10-02T09:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-ID",
+      "commit_hash": "08341753608a8f79567534e9fc5a70803ac845d59c68ddb5a47b7911dc4ba3ad",
+      "author_employee_id": "NEX-EMP-007",
+      "committed_at": "2026-10-02T09:00:00Z",
+      "message": "Refresh JWKS on unknown key id with a bounded fetch budget",
+      "parent_commit_ids": [
+        "NEX-CMT-ID-002"
+      ],
+      "branch": "release/token-validator-3.2.4",
+      "changed_files": [
+        {
+          "path": "src/main/java/com/nexus/identity/token/JwksRefreshService.java",
+          "change_type": "MODIFIED",
+          "summary": "Validation remains fail-closed and coalesces concurrent refreshes for the same issuer and key id."
+        },
+        {
+          "path": "src/test/java/com/nexus/identity/JwksRefreshTest.java",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "RELIABILITY",
+      "technical_change_description": "Validation remains fail-closed and coalesces concurrent refreshes for the same issuer and key id.",
+      "related_service_ids": [
+        "NEX-SVC-TOKEN_VALIDATOR"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-ID-001"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-ID-001"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "src/main/java/com/nexus/identity/token/JwksRefreshService.java",
+          "format": "illustrative-signature-change",
+          "before": "process_token_validator(input) -> untyped_result",
+          "after": "process_token_validator(validated_input, correlation_id) -> typed_result",
+          "note": "Representative signature only; not a complete executable patch."
+        }
+      ],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-ID-004",
+      "source_id": "NEX-SRC-ID-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-ID",
+      "owner_project_id": "NEX-PRJ-ID",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-06T09:00:00Z",
+      "revised_at": "2026-10-06T09:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-ID",
+      "commit_hash": "7cb3821f7dc29f051b2101fd62a5e7cc2a04368fd1e396af3131d1eefbc3e434",
+      "author_employee_id": "NEX-EMP-006",
+      "committed_at": "2026-10-06T09:00:00Z",
+      "message": "Cache immutable policy snapshots by revision and tenant",
+      "parent_commit_ids": [
+        "NEX-CMT-ID-003"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "src/main/java/com/nexus/identity/policy/DecisionEvaluator.java",
+          "change_type": "MODIFIED",
+          "summary": "The evaluator does not reuse decisions across tenant boundaries or different policy revisions."
+        },
+        {
+          "path": "src/integrationTest/java/com/nexus/identity/PolicyIsolationIT.java",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "FEATURE_IMPROVEMENT",
+      "technical_change_description": "The evaluator does not reuse decisions across tenant boundaries or different policy revisions.",
+      "related_service_ids": [
+        "NEX-SVC-POLICY_SERVICE"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-ID-002"
+      ],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-ID-005",
+      "source_id": "NEX-SRC-ID-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-ID",
+      "owner_project_id": "NEX-PRJ-ID",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-08T09:00:00Z",
+      "revised_at": "2026-10-08T09:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-ID",
+      "commit_hash": "a05eadd1994d7fc3e11b20e9d04a96b966e61ec8caf3b11eadd97444566b628c",
+      "author_employee_id": "NEX-EMP-006",
+      "committed_at": "2026-10-08T09:00:00Z",
+      "message": "Validate session issuance claims against current policy version",
+      "parent_commit_ids": [
+        "NEX-CMT-ID-004"
+      ],
+      "branch": "release/identity-api-4.7.0",
+      "changed_files": [
+        {
+          "path": "src/main/java/com/nexus/identity/api/SessionController.java",
+          "change_type": "MODIFIED",
+          "summary": "Token issuance records the evaluated policy revision before signing and exposes only supported claims."
+        },
+        {
+          "path": "src/integrationTest/java/com/nexus/identity/SessionIssuanceIT.java",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "FEATURE_IMPROVEMENT",
+      "technical_change_description": "Token issuance records the evaluated policy revision before signing and exposes only supported claims.",
+      "related_service_ids": [
+        "NEX-SVC-IDENTITY_API"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-ID-003"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-ID-002"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "src/main/java/com/nexus/identity/api/SessionController.java",
+          "format": "illustrative-signature-change",
+          "before": "process_identity_api(input) -> untyped_result",
+          "after": "process_identity_api(validated_input, correlation_id) -> typed_result",
+          "note": "Representative signature only; not a complete executable patch."
+        }
+      ],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-ID-006",
+      "source_id": "NEX-SRC-ID-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-ID",
+      "owner_project_id": "NEX-PRJ-ID",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-24T14:00:00Z",
+      "revised_at": "2026-10-24T14:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-ID",
+      "commit_hash": "3b2a3b73dafe9f9d21fb647c8fc792ee2a3e86aedbb3801187f08f65c1a67dd1",
+      "author_employee_id": "NEX-EMP-006",
+      "committed_at": "2026-10-24T14:00:00Z",
+      "message": "Separate ID contract validation from unit test job",
+      "parent_commit_ids": [
+        "NEX-CMT-ID-005"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": ".github/workflows/verify.yaml",
+          "change_type": "MODIFIED",
+          "summary": "Contract checks run with a pinned provider fixture and report their own independent status."
+        },
+        {
+          "path": "src/test/java/com/nexus/identity/VerifyTest.java",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "CI_TESTING",
+      "technical_change_description": "Contract checks run with a pinned provider fixture and report their own independent status.",
+      "related_service_ids": [
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-TOKEN_VALIDATOR",
+        "NEX-SVC-POLICY_SERVICE"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-ID-004"
+      ],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-ID-007",
+      "source_id": "NEX-SRC-ID-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-ID",
+      "owner_project_id": "NEX-PRJ-ID",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-25T15:00:00Z",
+      "revised_at": "2026-10-25T15:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-ID",
+      "commit_hash": "9df48532b73dd156a4d606197369e7e172e2230ac4cf352f7635cf29b8926d7b",
+      "author_employee_id": "NEX-EMP-007",
+      "committed_at": "2026-10-25T15:00:00Z",
+      "message": "Record per-service verification summary in ID release workflow",
+      "parent_commit_ids": [
+        "NEX-CMT-ID-006"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "tests/integration/README.md",
+          "change_type": "MODIFIED",
+          "summary": "Pipeline attaches a machine-readable validation summary without altering application artifacts."
+        },
+        {
+          "path": "src/test/java/com/nexus/identity/ReadmeTest.java",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "CI_TESTING",
+      "technical_change_description": "Pipeline attaches a machine-readable validation summary without altering application artifacts.",
+      "related_service_ids": [
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-TOKEN_VALIDATOR",
+        "NEX-SVC-POLICY_SERVICE"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-ID-004"
+      ],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-ID-008",
+      "source_id": "NEX-SRC-ID-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-ID",
+      "owner_project_id": "NEX-PRJ-ID",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-27T16:00:00Z",
+      "revised_at": "2026-10-27T16:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-ID",
+      "commit_hash": "b0e21235c8f178f29098f58c55bd31196b094c57639c3d4f2dcee59e34cc949d",
+      "author_employee_id": "NEX-EMP-006",
+      "committed_at": "2026-10-27T16:00:00Z",
+      "message": "Draft: tune token-validator JWKS stale-key refresh policy",
+      "parent_commit_ids": [
+        "NEX-CMT-ID-007"
+      ],
+      "branch": "feature/id-change-review",
+      "changed_files": [
+        {
+          "path": "src/main/java/com/nexus/identity/token/JwksRefreshService.java",
+          "change_type": "MODIFIED",
+          "summary": "Refresh budget and stale-while-revalidate branches change; no token claim schema change."
+        },
+        {
+          "path": "src/test/java/com/nexus/identity/JwksRefreshTest.java",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "PROPOSED_INTERFACE_CHANGE",
+      "technical_change_description": "Refresh budget and stale-while-revalidate branches change; no token claim schema change.",
+      "related_service_ids": [
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-TOKEN_VALIDATOR"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-ID-005"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-ID-003"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "src/main/java/com/nexus/identity/token/JwksRefreshService.java",
+          "format": "illustrative-before-after",
+          "before": "JWKS unknown kid refresh uses existing issuer cache budget",
+          "after": "JWKS unknown kid refresh coalesces issuer requests within bounded budget",
+          "note": "Unmerged proposal; do not interpret as production behavior."
+        }
+      ],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-ID-009",
+      "source_id": "NEX-SRC-ID-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-ID",
+      "owner_project_id": "NEX-PRJ-ID",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-29T10:00:00Z",
+      "revised_at": "2026-10-29T10:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-ID",
+      "commit_hash": "f032a8115b2f2413878a3e1690ee894ec524b70316fed5926b4e53d0e4636ddf",
+      "author_employee_id": "NEX-EMP-007",
+      "committed_at": "2026-10-29T10:00:00Z",
+      "message": "Draft: add backwards-compatibility assertions for proposed ID change",
+      "parent_commit_ids": [
+        "NEX-CMT-ID-007"
+      ],
+      "branch": "feature/id-compatibility-review",
+      "changed_files": [
+        {
+          "path": "src/test/java/proposed_id_compatibility_test.java",
+          "change_type": "MODIFIED",
+          "summary": "Do not turn a transient JWKS fetch error into acceptance of a token signed by an unknown key."
+        },
+        {
+          "path": "src/test/java/com/nexus/identity/ProposedIdCompatibilityTestTest.java",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "PROPOSED_TESTING",
+      "technical_change_description": "Do not turn a transient JWKS fetch error into acceptance of a token signed by an unknown key.",
+      "related_service_ids": [
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-TOKEN_VALIDATOR",
+        "NEX-SVC-POLICY_SERVICE"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-ID-006"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-ID-004"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "src/test/java/proposed_id_compatibility_test.java",
+          "format": "illustrative-before-after",
+          "before": "Compatibility suite asserts the currently published contract shape",
+          "after": "Compatibility suite asserts both published and proposed contract shapes",
+          "note": "Unmerged proposal; do not interpret as production behavior."
+        }
+      ],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-DATA-001",
+      "source_id": "NEX-SRC-DATA-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-DATA",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-07-15T10:00:00Z",
+      "revised_at": "2026-07-15T10:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-DATA",
+      "commit_hash": "a46c02cba4c033de07ab4c892f5291d6ffb04837cda990886dc2fc2754109e26",
+      "author_employee_id": "NEX-EMP-008",
+      "committed_at": "2026-07-15T10:00:00Z",
+      "message": "Set up DATA workspace layout with reproducible build targets",
+      "parent_commit_ids": [],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "pyproject.toml",
+          "change_type": "MODIFIED",
+          "summary": "Pin compiler and test targets; define one deployable artifact per service."
+        },
+        {
+          "path": "tests/unit/test_pyproject.py",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "BUILD_SYSTEM",
+      "technical_change_description": "Pin compiler and test targets; define one deployable artifact per service.",
+      "related_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-METRICS_PIPELINE",
+        "NEX-SVC-REPORTING_API"
+      ],
+      "related_issue_ids": [],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": [
+        {
+          "event_name": "payment-lifecycle-events-v2",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-011",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_PAYMENT_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "order-events-v1",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-012",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_ORDER_API",
+          "canonical_edge_semantic_discrepancy": null
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-DATA-002",
+      "source_id": "NEX-SRC-DATA-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-DATA",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-08-20T12:00:00Z",
+      "revised_at": "2026-08-20T12:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-DATA",
+      "commit_hash": "5be4a0184265d52b148e711a8f9a6b85f690f968c98d58a7058b81407641ff13",
+      "author_employee_id": "NEX-EMP-009",
+      "committed_at": "2026-08-20T12:00:00Z",
+      "message": "Add structured service operation logs and trace propagation for DATA",
+      "parent_commit_ids": [
+        "NEX-CMT-DATA-001"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "services/shared/telemetry/trace_context.txt",
+          "change_type": "MODIFIED",
+          "summary": "Carry request and event correlation IDs without putting credentials or full payloads in logs."
+        },
+        {
+          "path": "tests/unit/test_trace_context.py",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "OBSERVABILITY",
+      "technical_change_description": "Carry request and event correlation IDs without putting credentials or full payloads in logs.",
+      "related_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-METRICS_PIPELINE",
+        "NEX-SVC-REPORTING_API"
+      ],
+      "related_issue_ids": [],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": [
+        {
+          "event_name": "payment-lifecycle-events-v2",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-011",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_PAYMENT_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "order-events-v1",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-012",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_ORDER_API",
+          "canonical_edge_semantic_discrepancy": null
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-DATA-003",
+      "source_id": "NEX-SRC-DATA-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-DATA",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-09-23T09:00:00Z",
+      "revised_at": "2026-09-23T09:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-DATA",
+      "commit_hash": "3e755499f2f0f210a8eac461af473fbac370b5bd7d7e6c635b0ce47f8ec64c42",
+      "author_employee_id": "NEX-EMP-009",
+      "committed_at": "2026-09-23T09:00:00Z",
+      "message": "Apply authorization scope before resolving report aggregates",
+      "parent_commit_ids": [
+        "NEX-CMT-DATA-002"
+      ],
+      "branch": "release/reporting-api-2.7.2",
+      "changed_files": [
+        {
+          "path": "src/nexus_insights/reporting/queries.py",
+          "change_type": "MODIFIED",
+          "summary": "Policy decisions constrain the query before report pages or export cursors are assembled."
+        },
+        {
+          "path": "tests/contracts/test_report_scope.py",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "FEATURE_IMPROVEMENT",
+      "technical_change_description": "Policy decisions constrain the query before report pages or export cursors are assembled.",
+      "related_service_ids": [
+        "NEX-SVC-REPORTING_API"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-DATA-001"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-DATA-001"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "src/nexus_insights/reporting/queries.py",
+          "format": "illustrative-signature-change",
+          "before": "process_reporting_api(input) -> untyped_result",
+          "after": "process_reporting_api(validated_input, correlation_id) -> typed_result",
+          "note": "Representative signature only; not a complete executable patch."
+        }
+      ],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-DATA-004",
+      "source_id": "NEX-SRC-DATA-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-DATA",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-09-29T09:00:00Z",
+      "revised_at": "2026-09-29T09:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-DATA",
+      "commit_hash": "8d97b5856084b4d6ff1714ad792ee2679855282223308682533e93e9cef355be",
+      "author_employee_id": "NEX-EMP-008",
+      "committed_at": "2026-09-29T09:00:00Z",
+      "message": "Track producer event ids while staging ingestion rows",
+      "parent_commit_ids": [
+        "NEX-CMT-DATA-003"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "src/nexus_insights/ingest/envelope.py",
+          "change_type": "MODIFIED",
+          "summary": "NATS and RabbitMQ adapters store a source envelope with deterministic deduplication keys."
+        },
+        {
+          "path": "tests/integration/test_event_idempotency.py",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "FEATURE_IMPROVEMENT",
+      "technical_change_description": "NATS and RabbitMQ adapters store a source envelope with deterministic deduplication keys.",
+      "related_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-DATA-002"
+      ],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": [
+        {
+          "event_name": "payment-lifecycle-events-v2",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-011",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_PAYMENT_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "order-events-v1",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-012",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_ORDER_API",
+          "canonical_edge_semantic_discrepancy": null
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-DATA-005",
+      "source_id": "NEX-SRC-DATA-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-DATA",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-11T09:00:00Z",
+      "revised_at": "2026-10-11T09:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-DATA",
+      "commit_hash": "d01d79d2c8edc1e30ac48606b9716206f306e3f27aecafe07cf624cdb8c255ff",
+      "author_employee_id": "NEX-EMP-009",
+      "committed_at": "2026-10-11T09:00:00Z",
+      "message": "Add bounded replay window to daily metrics aggregation",
+      "parent_commit_ids": [
+        "NEX-CMT-DATA-004"
+      ],
+      "branch": "release/metrics-pipeline-3.5.0",
+      "changed_files": [
+        {
+          "path": "src/nexus_insights/metrics/rollup.py",
+          "change_type": "MODIFIED",
+          "summary": "The rollup uses staging watermarks and upserts metrics by tenant, date and metric revision."
+        },
+        {
+          "path": "tests/integration/test_rollup_replay.py",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "FEATURE_IMPROVEMENT",
+      "technical_change_description": "The rollup uses staging watermarks and upserts metrics by tenant, date and metric revision.",
+      "related_service_ids": [
+        "NEX-SVC-METRICS_PIPELINE"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-DATA-003"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-DATA-002"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "src/nexus_insights/metrics/rollup.py",
+          "format": "illustrative-signature-change",
+          "before": "process_metrics_pipeline(input) -> untyped_result",
+          "after": "process_metrics_pipeline(validated_input, correlation_id) -> typed_result",
+          "note": "Representative signature only; not a complete executable patch."
+        }
+      ],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-DATA-006",
+      "source_id": "NEX-SRC-DATA-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-DATA",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-24T14:00:00Z",
+      "revised_at": "2026-10-24T14:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-DATA",
+      "commit_hash": "ee0cb2d61bfd3267aff628682029544b45c38e6fc90a7b35bdd62e6596511632",
+      "author_employee_id": "NEX-EMP-008",
+      "committed_at": "2026-10-24T14:00:00Z",
+      "message": "Separate DATA contract validation from unit test job",
+      "parent_commit_ids": [
+        "NEX-CMT-DATA-005"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": ".github/workflows/verify.yaml",
+          "change_type": "MODIFIED",
+          "summary": "Contract checks run with a pinned provider fixture and report their own independent status."
+        },
+        {
+          "path": "tests/unit/test_verify.py",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "CI_TESTING",
+      "technical_change_description": "Contract checks run with a pinned provider fixture and report their own independent status.",
+      "related_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-METRICS_PIPELINE",
+        "NEX-SVC-REPORTING_API"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-DATA-004"
+      ],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": [
+        {
+          "event_name": "payment-lifecycle-events-v2",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-011",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_PAYMENT_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "order-events-v1",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-012",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_ORDER_API",
+          "canonical_edge_semantic_discrepancy": null
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-DATA-007",
+      "source_id": "NEX-SRC-DATA-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-DATA",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-25T15:00:00Z",
+      "revised_at": "2026-10-25T15:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-DATA",
+      "commit_hash": "b3bed8eda99f46a097f78c568aba600c4a6abfd046237fc7f7b9b7621c2b829e",
+      "author_employee_id": "NEX-EMP-009",
+      "committed_at": "2026-10-25T15:00:00Z",
+      "message": "Record per-service verification summary in DATA release workflow",
+      "parent_commit_ids": [
+        "NEX-CMT-DATA-006"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "tests/integration/README.md",
+          "change_type": "MODIFIED",
+          "summary": "Pipeline attaches a machine-readable validation summary without altering application artifacts."
+        },
+        {
+          "path": "tests/unit/test_README.py",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "CI_TESTING",
+      "technical_change_description": "Pipeline attaches a machine-readable validation summary without altering application artifacts.",
+      "related_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-METRICS_PIPELINE",
+        "NEX-SVC-REPORTING_API"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-DATA-004"
+      ],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": [
+        {
+          "event_name": "payment-lifecycle-events-v2",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-011",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_PAYMENT_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "order-events-v1",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-012",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_ORDER_API",
+          "canonical_edge_semantic_discrepancy": null
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-DATA-008",
+      "source_id": "NEX-SRC-DATA-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-DATA",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-27T16:00:00Z",
+      "revised_at": "2026-10-27T16:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-DATA",
+      "commit_hash": "3ec7d89e8a67345d3b5131a13ae44fa4fa60c0b44b39e5bebf67af95d51da1d0",
+      "author_employee_id": "NEX-EMP-008",
+      "committed_at": "2026-10-27T16:00:00Z",
+      "message": "Draft: accept optional source_partition in ingestion envelopes",
+      "parent_commit_ids": [
+        "NEX-CMT-DATA-007"
+      ],
+      "branch": "feature/data-change-review",
+      "changed_files": [
+        {
+          "path": "src/nexus_insights/ingest/envelope.py",
+          "change_type": "MODIFIED",
+          "summary": "Partition is metadata for replay ordering; event_id remains the dedupe key."
+        },
+        {
+          "path": "tests/integration/test_event_idempotency.py",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "PROPOSED_INTERFACE_CHANGE",
+      "technical_change_description": "Partition is metadata for replay ordering; event_id remains the dedupe key.",
+      "related_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-METRICS_PIPELINE"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-DATA-005"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-DATA-003"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "src/nexus_insights/ingest/envelope.py",
+          "format": "illustrative-before-after",
+          "before": "EventEnvelope{event_id, producer_id, payload}",
+          "after": "EventEnvelope{event_id, producer_id, payload, source_partition?}",
+          "note": "Unmerged proposal; do not interpret as production behavior."
+        }
+      ],
+      "event_delivery_facts": [
+        {
+          "event_name": "payment-lifecycle-events-v2",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-011",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_PAYMENT_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "order-events-v1",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-012",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_ORDER_API",
+          "canonical_edge_semantic_discrepancy": null
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-DATA-009",
+      "source_id": "NEX-SRC-DATA-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-DATA",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-29T10:00:00Z",
+      "revised_at": "2026-10-29T10:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-DATA",
+      "commit_hash": "3add4de2e36e2c2d83faaa763cbf0cff4070bb1102a8031ce7ffc806edbccc7e",
+      "author_employee_id": "NEX-EMP-009",
+      "committed_at": "2026-10-29T10:00:00Z",
+      "message": "Draft: add backwards-compatibility assertions for proposed DATA change",
+      "parent_commit_ids": [
+        "NEX-CMT-DATA-007"
+      ],
+      "branch": "feature/data-compatibility-review",
+      "changed_files": [
+        {
+          "path": "tests/unit/proposed_data_compatibility_test.py",
+          "change_type": "MODIFIED",
+          "summary": "Verify compatibility with payment lifecycle payloads and order event adapters independently."
+        },
+        {
+          "path": "tests/unit/test_proposed_data_compatibility_test.py",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "PROPOSED_TESTING",
+      "technical_change_description": "Verify compatibility with payment lifecycle payloads and order event adapters independently.",
+      "related_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-METRICS_PIPELINE",
+        "NEX-SVC-REPORTING_API"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-DATA-006"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-DATA-004"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "tests/unit/proposed_data_compatibility_test.py",
+          "format": "illustrative-before-after",
+          "before": "Compatibility suite asserts the currently published contract shape",
+          "after": "Compatibility suite asserts both published and proposed contract shapes",
+          "note": "Unmerged proposal; do not interpret as production behavior."
+        }
+      ],
+      "event_delivery_facts": [
+        {
+          "event_name": "payment-lifecycle-events-v2",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-011",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_PAYMENT_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "order-events-v1",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-012",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_ORDER_API",
+          "canonical_edge_semantic_discrepancy": null
+        }
+      ]
+    },
+    {
+      "id": "NEX-CMT-PLAT-001",
+      "source_id": "NEX-SRC-PLAT-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-07-15T10:00:00Z",
+      "revised_at": "2026-07-15T10:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-PLAT",
+      "commit_hash": "00578be5e05db71c1a85edddf756dc739e1d9be4537110169051db073bb5e68e",
+      "author_employee_id": "NEX-EMP-007",
+      "committed_at": "2026-07-15T10:00:00Z",
+      "message": "Set up PLAT workspace layout with reproducible build targets",
+      "parent_commit_ids": [],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "charts/Chart.yaml",
+          "change_type": "MODIFIED",
+          "summary": "Pin compiler and test targets; define one deployable artifact per service."
+        },
+        {
+          "path": "tests/policy/test_Chart.py",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "BUILD_SYSTEM",
+      "technical_change_description": "Pin compiler and test targets; define one deployable artifact per service.",
+      "related_service_ids": [
+        "NEX-SVC-DEPLOYMENT_PLATFORM",
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "related_issue_ids": [],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-PLAT-002",
+      "source_id": "NEX-SRC-PLAT-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-08-20T12:00:00Z",
+      "revised_at": "2026-08-20T12:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-PLAT",
+      "commit_hash": "82b63b555fb8c95b458b0241ebccba13b6797b2819157096eb864e888a51ba49",
+      "author_employee_id": "NEX-EMP-009",
+      "committed_at": "2026-08-20T12:00:00Z",
+      "message": "Add structured service operation logs and trace propagation for PLAT",
+      "parent_commit_ids": [
+        "NEX-CMT-PLAT-001"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "otel/collector.yaml",
+          "change_type": "MODIFIED",
+          "summary": "Carry request and event correlation IDs without putting credentials or full payloads in logs."
+        },
+        {
+          "path": "tests/policy/test_collector.py",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "OBSERVABILITY",
+      "technical_change_description": "Carry request and event correlation IDs without putting credentials or full payloads in logs.",
+      "related_service_ids": [
+        "NEX-SVC-DEPLOYMENT_PLATFORM",
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "related_issue_ids": [],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-PLAT-003",
+      "source_id": "NEX-SRC-PLAT-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-15T09:00:00Z",
+      "revised_at": "2026-10-15T09:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-PLAT",
+      "commit_hash": "be294b1b607a1746b64c96a1c2faa6468ae4800cbedb78c1031be4dc2c62665b",
+      "author_employee_id": "NEX-EMP-009",
+      "committed_at": "2026-10-15T09:00:00Z",
+      "message": "Cap telemetry label cardinality at ingestion boundaries",
+      "parent_commit_ids": [
+        "NEX-CMT-PLAT-002"
+      ],
+      "branch": "release/observability-platform-4.2.1",
+      "changed_files": [
+        {
+          "path": "charts/telemetry/values.yaml",
+          "change_type": "MODIFIED",
+          "summary": "The collector removes request identifiers from metric labels while preserving trace correlation."
+        },
+        {
+          "path": "tests/render/test_metric_labels.py",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "FEATURE_IMPROVEMENT",
+      "technical_change_description": "The collector removes request identifiers from metric labels while preserving trace correlation.",
+      "related_service_ids": [
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PLAT-001"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-PLAT-001"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "charts/telemetry/values.yaml",
+          "format": "illustrative-signature-change",
+          "before": "process_observability_platform(input) -> untyped_result",
+          "after": "process_observability_platform(validated_input, correlation_id) -> typed_result",
+          "note": "Representative signature only; not a complete executable patch."
+        }
+      ],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-PLAT-004",
+      "source_id": "NEX-SRC-PLAT-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-18T09:00:00Z",
+      "revised_at": "2026-10-18T09:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-PLAT",
+      "commit_hash": "5d2f06069ac102777da8c82e1352d027662a01b9bfa2c6ba3382b6d5c02b79a8",
+      "author_employee_id": "NEX-EMP-007",
+      "committed_at": "2026-10-18T09:00:00Z",
+      "message": "Require immutable image digest in progressive rollout policy",
+      "parent_commit_ids": [
+        "NEX-CMT-PLAT-003"
+      ],
+      "branch": "release/deployment-platform-4.10.0",
+      "changed_files": [
+        {
+          "path": "clusters/prod/applications/deployment-platform/rollout-policy.yaml",
+          "change_type": "MODIFIED",
+          "summary": "Promotion controllers reject mutable tags and persist per-wave gate outcomes for rollback."
+        },
+        {
+          "path": "tests/policy/test_immutable_digest.py",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "FEATURE_IMPROVEMENT",
+      "technical_change_description": "Promotion controllers reject mutable tags and persist per-wave gate outcomes for rollback.",
+      "related_service_ids": [
+        "NEX-SVC-DEPLOYMENT_PLATFORM"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PLAT-002"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-PLAT-002"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "clusters/prod/applications/deployment-platform/rollout-policy.yaml",
+          "format": "illustrative-signature-change",
+          "before": "process_deployment_platform(input) -> untyped_result",
+          "after": "process_deployment_platform(validated_input, correlation_id) -> typed_result",
+          "note": "Representative signature only; not a complete executable patch."
+        }
+      ],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-PLAT-005",
+      "source_id": "NEX-SRC-PLAT-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-24T09:00:00Z",
+      "revised_at": "2026-10-24T09:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-PLAT",
+      "commit_hash": "c7abc018508471c448327215a986d12a82834bacc1d6da53d8cba723e6a74698",
+      "author_employee_id": "NEX-EMP-009",
+      "committed_at": "2026-10-24T09:00:00Z",
+      "message": "Normalize dashboard ownership annotations in chart templates",
+      "parent_commit_ids": [
+        "NEX-CMT-PLAT-004"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "charts/telemetry/templates/configmap.yaml",
+          "change_type": "MODIFIED",
+          "summary": "Each exported dashboard uses a service owner slug instead of free-form maintainer text."
+        },
+        {
+          "path": "tests/policy/test_configmap.py",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "MAINTENANCE",
+      "technical_change_description": "Each exported dashboard uses a service owner slug instead of free-form maintainer text.",
+      "related_service_ids": [
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PLAT-003"
+      ],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-PLAT-006",
+      "source_id": "NEX-SRC-PLAT-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-25T09:00:00Z",
+      "revised_at": "2026-10-25T09:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-PLAT",
+      "commit_hash": "401a1d0e116ceb1b9acf6c207fb92ddc1207ba993d5462c1427ceb37759ad8c1",
+      "author_employee_id": "NEX-EMP-007",
+      "committed_at": "2026-10-25T09:00:00Z",
+      "message": "Separate PLAT contract validation from unit test job",
+      "parent_commit_ids": [
+        "NEX-CMT-PLAT-005"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": ".github/workflows/verify.yaml",
+          "change_type": "MODIFIED",
+          "summary": "Contract checks run with a pinned provider fixture and report their own independent status."
+        },
+        {
+          "path": "tests/policy/test_verify.py",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "CI_TESTING",
+      "technical_change_description": "Contract checks run with a pinned provider fixture and report their own independent status.",
+      "related_service_ids": [
+        "NEX-SVC-DEPLOYMENT_PLATFORM",
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PLAT-004"
+      ],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-PLAT-007",
+      "source_id": "NEX-SRC-PLAT-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-26T10:00:00Z",
+      "revised_at": "2026-10-26T10:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-PLAT",
+      "commit_hash": "f0839cccbfe6a3ddcf5de998fdf8772acbd993e3f20957210d28975568b4d568",
+      "author_employee_id": "NEX-EMP-009",
+      "committed_at": "2026-10-26T10:00:00Z",
+      "message": "Record per-service verification summary in PLAT release workflow",
+      "parent_commit_ids": [
+        "NEX-CMT-PLAT-006"
+      ],
+      "branch": "main",
+      "changed_files": [
+        {
+          "path": "tests/integration/README.md",
+          "change_type": "MODIFIED",
+          "summary": "Pipeline attaches a machine-readable validation summary without altering application artifacts."
+        },
+        {
+          "path": "tests/policy/test_README.py",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "CI_TESTING",
+      "technical_change_description": "Pipeline attaches a machine-readable validation summary without altering application artifacts.",
+      "related_service_ids": [
+        "NEX-SVC-DEPLOYMENT_PLATFORM",
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PLAT-004"
+      ],
+      "related_pr_ids": [],
+      "representative_diff_hunks": [],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-PLAT-008",
+      "source_id": "NEX-SRC-PLAT-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-27T16:00:00Z",
+      "revised_at": "2026-10-27T16:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-PLAT",
+      "commit_hash": "b0b422c1876fc8fffdf3b9c2e85cb313f3b822037cb3db12c25b92b235733bcf",
+      "author_employee_id": "NEX-EMP-007",
+      "committed_at": "2026-10-27T16:00:00Z",
+      "message": "Draft: prototype a manual approval hold between rollout waves",
+      "parent_commit_ids": [
+        "NEX-CMT-PLAT-007"
+      ],
+      "branch": "feature/plat-change-review",
+      "changed_files": [
+        {
+          "path": "clusters/prod/applications/deployment-platform/rollout-policy.yaml",
+          "change_type": "MODIFIED",
+          "summary": "Policy adds a non-secret gate status; this does not issue formal enterprise handoffs."
+        },
+        {
+          "path": "tests/policy/test_immutable_digest.py",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "PROPOSED_INTERFACE_CHANGE",
+      "technical_change_description": "Policy adds a non-secret gate status; this does not issue formal enterprise handoffs.",
+      "related_service_ids": [
+        "NEX-SVC-DEPLOYMENT_PLATFORM",
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PLAT-005"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-PLAT-003"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "clusters/prod/applications/deployment-platform/rollout-policy.yaml",
+          "format": "illustrative-before-after",
+          "before": "RolloutWave{digest, health_gate, rollback_target}",
+          "after": "RolloutWave{digest, health_gate, manual_hold?, rollback_target}",
+          "note": "Unmerged proposal; do not interpret as production behavior."
+        }
+      ],
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-CMT-PLAT-009",
+      "source_id": "NEX-SRC-PLAT-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-29T10:00:00Z",
+      "revised_at": "2026-10-29T10:00:00Z",
+      "status": "ACTIVE",
+      "repository_id": "NEX-REPO-PLAT",
+      "commit_hash": "270e4e2a8f97d1581f62845ff3c9e19fa637bce36b0eea91ef2f35135ea8b536",
+      "author_employee_id": "NEX-EMP-009",
+      "committed_at": "2026-10-29T10:00:00Z",
+      "message": "Draft: add backwards-compatibility assertions for proposed PLAT change",
+      "parent_commit_ids": [
+        "NEX-CMT-PLAT-007"
+      ],
+      "branch": "feature/plat-compatibility-review",
+      "changed_files": [
+        {
+          "path": "tests/policy/proposed_plat_compatibility_test.yaml",
+          "change_type": "MODIFIED",
+          "summary": "Document how an in-flight deployment returns to its previous immutable revision after a cancelled hold."
+        },
+        {
+          "path": "tests/policy/test_proposed_plat_compatibility_test.py",
+          "change_type": "MODIFIED",
+          "summary": "Extend regression coverage for this change."
+        }
+      ],
+      "change_category": "PROPOSED_TESTING",
+      "technical_change_description": "Document how an in-flight deployment returns to its previous immutable revision after a cancelled hold.",
+      "related_service_ids": [
+        "NEX-SVC-DEPLOYMENT_PLATFORM",
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PLAT-006"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-PLAT-004"
+      ],
+      "representative_diff_hunks": [
+        {
+          "path": "tests/policy/proposed_plat_compatibility_test.yaml",
+          "format": "illustrative-before-after",
+          "before": "Compatibility suite asserts the currently published contract shape",
+          "after": "Compatibility suite asserts both published and proposed contract shapes",
+          "note": "Unmerged proposal; do not interpret as production behavior."
+        }
+      ],
+      "event_delivery_facts": []
+    }
+  ]
+}

@@ -1,0 +1,519 @@
+{
+  "dataset_version": "7C-1.0.0",
+  "repositories": [
+    {
+      "id": "NEX-REPO-PAY",
+      "source_id": "NEX-SRC-PAY-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PAY",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-07-01T09:00:00Z",
+      "revised_at": "2026-07-01T09:00:00Z",
+      "status": "ACTIVE",
+      "name": "nexus-pay-engineering",
+      "repository_purpose": "Payment intent orchestration, gateway routing and refund execution.",
+      "primary_language": "Go",
+      "frameworks_and_libraries": [
+        "net/http",
+        "chi",
+        "pgx",
+        "NATS Go client"
+      ],
+      "default_branch": "main",
+      "branch_conventions": [
+        "feature/<ticket>-<slug>",
+        "release/<service>-<version>",
+        "hotfix/<ticket>-<slug>"
+      ],
+      "related_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-GATEWAY_ROUTER",
+        "NEX-SVC-REFUND_WORKER"
+      ],
+      "directory_structure": [
+        "cmd/",
+        "internal/",
+        "api/proto/",
+        "migrations/",
+        "tests/",
+        ".github/workflows/"
+      ],
+      "package_and_build_metadata_paths": [
+        "go.mod",
+        "go.sum"
+      ],
+      "test_locations": [
+        "internal/",
+        "tests/integration/",
+        "tests/contracts/"
+      ],
+      "deployment_pipeline_id": "NEX-PIPE-PAY",
+      "visibility_classification": "PROJECT_DEVELOPER",
+      "host": "git.nexus.example",
+      "is_synthetic_repository": true,
+      "not_a_complete_runnable_application": true,
+      "pipeline_definition": {
+        "id": "NEX-PIPE-PAY",
+        "source_id": "NEX-SRC-PAY-CI",
+        "workflow_path": ".github/workflows/verify-and-release.yaml",
+        "triggers": [
+          "pull_request:main",
+          "push:main",
+          "workflow_dispatch:release"
+        ],
+        "jobs": [
+          "lint",
+          "unit",
+          "integration",
+          "contract",
+          "immutable-build",
+          "provenance-attestation",
+          "deploy"
+        ],
+        "release_gates": [
+          "required jobs passing",
+          "reviewed merge",
+          "artifact digest pin",
+          "service owner acknowledgement"
+        ],
+        "target_services": [
+          "NEX-SVC-PAYMENT_API",
+          "NEX-SVC-GATEWAY_ROUTER",
+          "NEX-SVC-REFUND_WORKER"
+        ],
+        "deployment_controller": "Shared Argo CD managed by Platform Operations"
+      },
+      "related_shared_document_ids": [
+        "NEX-DOC-001",
+        "NEX-DOC-002",
+        "NEX-DOC-003",
+        "NEX-DOC-004",
+        "NEX-DOC-005",
+        "NEX-DOC-006",
+        "NEX-DOC-007",
+        "NEX-DOC-008",
+        "NEX-DOC-009",
+        "NEX-DOC-010"
+      ],
+      "related_architecture_decision_ids": [
+        "NEX-ADR-001",
+        "NEX-ADR-002",
+        "NEX-ADR-003",
+        "NEX-ADR-004",
+        "NEX-ADR-005",
+        "NEX-ADR-007",
+        "NEX-ADR-008"
+      ]
+    },
+    {
+      "id": "NEX-REPO-COM",
+      "source_id": "NEX-SRC-COM-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-COM",
+      "owner_project_id": "NEX-PRJ-COM",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-07-01T09:00:00Z",
+      "revised_at": "2026-07-01T09:00:00Z",
+      "status": "ACTIVE",
+      "name": "nexus-com-engineering",
+      "repository_purpose": "Checkout, order state and merchant webhook delivery.",
+      "primary_language": "PHP",
+      "frameworks_and_libraries": [
+        "Symfony components",
+        "Doctrine DBAL",
+        "Monolog",
+        "PHPUnit"
+      ],
+      "default_branch": "main",
+      "branch_conventions": [
+        "feature/<ticket>-<slug>",
+        "release/<service>-<version>",
+        "hotfix/<ticket>-<slug>"
+      ],
+      "related_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-ORDER_API",
+        "NEX-SVC-WEBHOOK_CONSUMER"
+      ],
+      "directory_structure": [
+        "apps/",
+        "src/",
+        "config/",
+        "migrations/",
+        "tests/",
+        ".github/workflows/"
+      ],
+      "package_and_build_metadata_paths": [
+        "composer.json",
+        "composer.lock"
+      ],
+      "test_locations": [
+        "tests/Unit/",
+        "tests/Integration/",
+        "tests/Contract/"
+      ],
+      "deployment_pipeline_id": "NEX-PIPE-COM",
+      "visibility_classification": "PROJECT_DEVELOPER",
+      "host": "git.nexus.example",
+      "is_synthetic_repository": true,
+      "not_a_complete_runnable_application": true,
+      "pipeline_definition": {
+        "id": "NEX-PIPE-COM",
+        "source_id": "NEX-SRC-COM-CI",
+        "workflow_path": ".github/workflows/verify-and-release.yaml",
+        "triggers": [
+          "pull_request:main",
+          "push:main",
+          "workflow_dispatch:release"
+        ],
+        "jobs": [
+          "lint",
+          "unit",
+          "integration",
+          "contract",
+          "immutable-build",
+          "provenance-attestation",
+          "deploy"
+        ],
+        "release_gates": [
+          "required jobs passing",
+          "reviewed merge",
+          "artifact digest pin",
+          "service owner acknowledgement"
+        ],
+        "target_services": [
+          "NEX-SVC-CHECKOUT_SERVICE",
+          "NEX-SVC-ORDER_API",
+          "NEX-SVC-WEBHOOK_CONSUMER"
+        ],
+        "deployment_controller": "Shared Argo CD managed by Platform Operations"
+      },
+      "related_shared_document_ids": [
+        "NEX-DOC-001",
+        "NEX-DOC-003",
+        "NEX-DOC-004",
+        "NEX-DOC-005",
+        "NEX-DOC-006",
+        "NEX-DOC-007",
+        "NEX-DOC-008",
+        "NEX-DOC-009",
+        "NEX-DOC-010"
+      ],
+      "related_architecture_decision_ids": [
+        "NEX-ADR-002",
+        "NEX-ADR-003",
+        "NEX-ADR-004",
+        "NEX-ADR-005",
+        "NEX-ADR-007",
+        "NEX-ADR-008"
+      ]
+    },
+    {
+      "id": "NEX-REPO-ID",
+      "source_id": "NEX-SRC-ID-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-ID",
+      "owner_project_id": "NEX-PRJ-ID",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-07-01T09:00:00Z",
+      "revised_at": "2026-07-01T09:00:00Z",
+      "status": "ACTIVE",
+      "name": "nexus-id-engineering",
+      "repository_purpose": "Identity API, public-key validation and policy evaluation.",
+      "primary_language": "Java",
+      "frameworks_and_libraries": [
+        "Spring Boot",
+        "Spring Security",
+        "JUnit 5",
+        "Flyway"
+      ],
+      "default_branch": "main",
+      "branch_conventions": [
+        "feature/<ticket>-<slug>",
+        "release/<service>-<version>",
+        "hotfix/<ticket>-<slug>"
+      ],
+      "related_service_ids": [
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-TOKEN_VALIDATOR",
+        "NEX-SVC-POLICY_SERVICE"
+      ],
+      "directory_structure": [
+        "services/",
+        "src/main/java/",
+        "src/test/java/",
+        "src/integrationTest/java/",
+        "db/migration/"
+      ],
+      "package_and_build_metadata_paths": [
+        "settings.gradle.kts",
+        "build.gradle.kts",
+        "gradle/libs.versions.toml"
+      ],
+      "test_locations": [
+        "src/test/java/",
+        "src/integrationTest/java/"
+      ],
+      "deployment_pipeline_id": "NEX-PIPE-ID",
+      "visibility_classification": "PROJECT_DEVELOPER",
+      "host": "git.nexus.example",
+      "is_synthetic_repository": true,
+      "not_a_complete_runnable_application": true,
+      "pipeline_definition": {
+        "id": "NEX-PIPE-ID",
+        "source_id": "NEX-SRC-ID-CI",
+        "workflow_path": ".github/workflows/verify-and-release.yaml",
+        "triggers": [
+          "pull_request:main",
+          "push:main",
+          "workflow_dispatch:release"
+        ],
+        "jobs": [
+          "lint",
+          "unit",
+          "integration",
+          "contract",
+          "immutable-build",
+          "provenance-attestation",
+          "deploy"
+        ],
+        "release_gates": [
+          "required jobs passing",
+          "reviewed merge",
+          "artifact digest pin",
+          "service owner acknowledgement"
+        ],
+        "target_services": [
+          "NEX-SVC-IDENTITY_API",
+          "NEX-SVC-TOKEN_VALIDATOR",
+          "NEX-SVC-POLICY_SERVICE"
+        ],
+        "deployment_controller": "Shared Argo CD managed by Platform Operations"
+      },
+      "related_shared_document_ids": [
+        "NEX-DOC-001",
+        "NEX-DOC-004",
+        "NEX-DOC-006",
+        "NEX-DOC-007",
+        "NEX-DOC-008",
+        "NEX-DOC-009",
+        "NEX-DOC-010"
+      ],
+      "related_architecture_decision_ids": [
+        "NEX-ADR-002",
+        "NEX-ADR-004",
+        "NEX-ADR-005",
+        "NEX-ADR-007",
+        "NEX-ADR-008"
+      ]
+    },
+    {
+      "id": "NEX-REPO-DATA",
+      "source_id": "NEX-SRC-DATA-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-DATA",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-07-01T09:00:00Z",
+      "revised_at": "2026-07-01T09:00:00Z",
+      "status": "ACTIVE",
+      "name": "nexus-data-engineering",
+      "repository_purpose": "Event ingestion, governed metrics materialization and reporting.",
+      "primary_language": "Python",
+      "frameworks_and_libraries": [
+        "FastAPI",
+        "SQLAlchemy",
+        "nats-py",
+        "pytest"
+      ],
+      "default_branch": "main",
+      "branch_conventions": [
+        "feature/<ticket>-<slug>",
+        "release/<service>-<version>",
+        "hotfix/<ticket>-<slug>"
+      ],
+      "related_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-METRICS_PIPELINE",
+        "NEX-SVC-REPORTING_API"
+      ],
+      "directory_structure": [
+        "services/",
+        "src/nexus_insights/",
+        "sql/",
+        "alembic/",
+        "tests/",
+        ".github/workflows/"
+      ],
+      "package_and_build_metadata_paths": [
+        "pyproject.toml",
+        "uv.lock"
+      ],
+      "test_locations": [
+        "tests/unit/",
+        "tests/integration/",
+        "tests/contracts/"
+      ],
+      "deployment_pipeline_id": "NEX-PIPE-DATA",
+      "visibility_classification": "PROJECT_DEVELOPER",
+      "host": "git.nexus.example",
+      "is_synthetic_repository": true,
+      "not_a_complete_runnable_application": true,
+      "pipeline_definition": {
+        "id": "NEX-PIPE-DATA",
+        "source_id": "NEX-SRC-DATA-CI",
+        "workflow_path": ".github/workflows/verify-and-release.yaml",
+        "triggers": [
+          "pull_request:main",
+          "push:main",
+          "workflow_dispatch:release"
+        ],
+        "jobs": [
+          "lint",
+          "unit",
+          "integration",
+          "contract",
+          "immutable-build",
+          "provenance-attestation",
+          "deploy"
+        ],
+        "release_gates": [
+          "required jobs passing",
+          "reviewed merge",
+          "artifact digest pin",
+          "service owner acknowledgement"
+        ],
+        "target_services": [
+          "NEX-SVC-EVENT_INGESTOR",
+          "NEX-SVC-METRICS_PIPELINE",
+          "NEX-SVC-REPORTING_API"
+        ],
+        "deployment_controller": "Shared Argo CD managed by Platform Operations"
+      },
+      "related_shared_document_ids": [
+        "NEX-DOC-001",
+        "NEX-DOC-004",
+        "NEX-DOC-005",
+        "NEX-DOC-006",
+        "NEX-DOC-007",
+        "NEX-DOC-008",
+        "NEX-DOC-009",
+        "NEX-DOC-010"
+      ],
+      "related_architecture_decision_ids": [
+        "NEX-ADR-003",
+        "NEX-ADR-004",
+        "NEX-ADR-005",
+        "NEX-ADR-006",
+        "NEX-ADR-007",
+        "NEX-ADR-008"
+      ]
+    },
+    {
+      "id": "NEX-REPO-PLAT",
+      "source_id": "NEX-SRC-PLAT-REPO",
+      "source_record_type": "REPO",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-07-01T09:00:00Z",
+      "revised_at": "2026-07-01T09:00:00Z",
+      "status": "ACTIVE",
+      "name": "nexus-plat-engineering",
+      "repository_purpose": "Shared deployment control plane and operational telemetry.",
+      "primary_language": "YAML / Go",
+      "frameworks_and_libraries": [
+        "Kubernetes",
+        "Argo CD",
+        "OpenTelemetry",
+        "Helm"
+      ],
+      "default_branch": "main",
+      "branch_conventions": [
+        "feature/<ticket>-<slug>",
+        "release/<service>-<version>",
+        "hotfix/<ticket>-<slug>"
+      ],
+      "related_service_ids": [
+        "NEX-SVC-DEPLOYMENT_PLATFORM",
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "directory_structure": [
+        "clusters/prod/applications/",
+        "charts/",
+        "otel/",
+        "policies/",
+        "tests/",
+        ".github/workflows/"
+      ],
+      "package_and_build_metadata_paths": [
+        "charts/Chart.yaml",
+        "charts/values.yaml",
+        ".github/workflows/validate.yaml"
+      ],
+      "test_locations": [
+        "tests/policy/",
+        "tests/render/",
+        "tests/smoke/"
+      ],
+      "deployment_pipeline_id": "NEX-PIPE-PLAT",
+      "visibility_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "host": "git.nexus.example",
+      "is_synthetic_repository": true,
+      "not_a_complete_runnable_application": true,
+      "pipeline_definition": {
+        "id": "NEX-PIPE-PLAT",
+        "source_id": "NEX-SRC-PLAT-CI",
+        "workflow_path": ".github/workflows/verify-and-release.yaml",
+        "triggers": [
+          "pull_request:main",
+          "push:main",
+          "workflow_dispatch:release"
+        ],
+        "jobs": [
+          "lint",
+          "unit",
+          "integration",
+          "contract",
+          "immutable-build",
+          "provenance-attestation",
+          "deploy"
+        ],
+        "release_gates": [
+          "required jobs passing",
+          "reviewed merge",
+          "artifact digest pin",
+          "service owner acknowledgement"
+        ],
+        "target_services": [
+          "NEX-SVC-DEPLOYMENT_PLATFORM",
+          "NEX-SVC-OBSERVABILITY_PLATFORM"
+        ],
+        "deployment_controller": "Argo CD"
+      },
+      "related_shared_document_ids": [
+        "NEX-DOC-001",
+        "NEX-DOC-002",
+        "NEX-DOC-003",
+        "NEX-DOC-004",
+        "NEX-DOC-005",
+        "NEX-DOC-006",
+        "NEX-DOC-007",
+        "NEX-DOC-008",
+        "NEX-DOC-009",
+        "NEX-DOC-010"
+      ],
+      "related_architecture_decision_ids": [
+        "NEX-ADR-004",
+        "NEX-ADR-007",
+        "NEX-ADR-008"
+      ]
+    }
+  ]
+}

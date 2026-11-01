@@ -1,0 +1,401 @@
+{
+  "dataset_version": "7D-1.0.0",
+  "access_requests": [
+    {
+      "id": "NEX-ARQ-001",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-002",
+      "created_at": "2026-10-01T10:00:00Z",
+      "revised_at": "2026-10-01T15:00:00Z",
+      "status": "NARROWED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-002"
+        ],
+        "project_ids": [
+          "NEX-PRJ-PAY"
+        ],
+        "source_ids": [
+          "NEX-SRC-PLAT-CI"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "request_id": "NEX-ARQ-001",
+      "requester_employee_id": "NEX-EMP-002",
+      "requested_resource_id": "NEX-SRC-PLAT-CI",
+      "requested_action": "READ_RECORDS",
+      "business_justification": "Verify payment-api release provenance without opening cluster settings.",
+      "project_context_id": "NEX-PRJ-PAY",
+      "requested_duration_days": 11,
+      "submitted_at": "2026-10-01T10:00:00Z",
+      "request_status": "NARROWED",
+      "reviewing_admin_employee_id": "NEX-EMP-001",
+      "decision_reference_id": "NEX-ACD-038",
+      "resulting_grant_id": "NEX-GRANT-038",
+      "technical_recommendation_is_not_approval": true
+    },
+    {
+      "id": "NEX-ARQ-002",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-005",
+      "created_at": "2026-10-09T10:00:00Z",
+      "revised_at": "2026-10-09T15:00:00Z",
+      "status": "APPROVED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-005"
+        ],
+        "project_ids": [
+          "NEX-PRJ-COM"
+        ],
+        "source_ids": [
+          "NEX-SRC-PLAT-CI"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "request_id": "NEX-ARQ-002",
+      "requester_employee_id": "NEX-EMP-005",
+      "requested_resource_id": "NEX-SRC-PLAT-CI",
+      "requested_action": "VIEW_METADATA",
+      "business_justification": "Check webhook-consumer promotion job metadata during Commerce release coordination.",
+      "project_context_id": "NEX-PRJ-COM",
+      "requested_duration_days": 37,
+      "submitted_at": "2026-10-09T10:00:00Z",
+      "request_status": "APPROVED",
+      "reviewing_admin_employee_id": "NEX-EMP-001",
+      "decision_reference_id": "NEX-ACD-039",
+      "resulting_grant_id": "NEX-GRANT-039",
+      "technical_recommendation_is_not_approval": true
+    },
+    {
+      "id": "NEX-ARQ-003",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-007",
+      "created_at": "2026-10-07T10:00:00Z",
+      "revised_at": "2026-10-07T15:00:00Z",
+      "status": "APPROVED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-007"
+        ],
+        "project_ids": [
+          "NEX-PRJ-ID"
+        ],
+        "source_ids": [
+          "NEX-SRC-PLAT-DISCUSS"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "request_id": "NEX-ARQ-003",
+      "requester_employee_id": "NEX-EMP-007",
+      "requested_resource_id": "NEX-SRC-PLAT-DISCUSS",
+      "requested_action": "READ_RECORDS",
+      "business_justification": "Review rollout gate language as an established Platform Operations backup owner.",
+      "project_context_id": "NEX-PRJ-ID",
+      "requested_duration_days": 54,
+      "submitted_at": "2026-10-07T10:00:00Z",
+      "request_status": "APPROVED",
+      "reviewing_admin_employee_id": "NEX-EMP-001",
+      "decision_reference_id": "NEX-ACD-040",
+      "resulting_grant_id": "NEX-GRANT-040",
+      "technical_recommendation_is_not_approval": true
+    },
+    {
+      "id": "NEX-ARQ-004",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-009",
+      "created_at": "2026-10-14T10:00:00Z",
+      "revised_at": "2026-10-14T15:00:00Z",
+      "status": "NARROWED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-009"
+        ],
+        "project_ids": [
+          "NEX-PRJ-DATA"
+        ],
+        "source_ids": [
+          "NEX-SRC-PLAT-REPO"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "request_id": "NEX-ARQ-004",
+      "requester_employee_id": "NEX-EMP-009",
+      "requested_resource_id": "NEX-SRC-PLAT-REPO",
+      "requested_action": "READ_RECORDS",
+      "business_justification": "Inspect deployment manifest names used by operational health views.",
+      "project_context_id": "NEX-PRJ-DATA",
+      "requested_duration_days": 28,
+      "submitted_at": "2026-10-14T10:00:00Z",
+      "request_status": "NARROWED",
+      "reviewing_admin_employee_id": "NEX-EMP-001",
+      "decision_reference_id": "NEX-ACD-041",
+      "resulting_grant_id": "NEX-GRANT-041",
+      "technical_recommendation_is_not_approval": true
+    },
+    {
+      "id": "NEX-ARQ-005",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-003",
+      "created_at": "2026-10-10T10:00:00Z",
+      "revised_at": "2026-10-10T15:00:00Z",
+      "status": "APPROVED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-003"
+        ],
+        "project_ids": [
+          "NEX-PRJ-PAY"
+        ],
+        "source_ids": [
+          "NEX-SRC-PLAT-DISCUSS"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "request_id": "NEX-ARQ-005",
+      "requester_employee_id": "NEX-EMP-003",
+      "requested_resource_id": "NEX-SRC-PLAT-DISCUSS",
+      "requested_action": "READ_RECORDS",
+      "business_justification": "Review shared artifact promotion discussion for a Pay release.",
+      "project_context_id": "NEX-PRJ-PAY",
+      "requested_duration_days": 25,
+      "submitted_at": "2026-10-10T10:00:00Z",
+      "request_status": "APPROVED",
+      "reviewing_admin_employee_id": "NEX-EMP-001",
+      "decision_reference_id": "NEX-ACD-042",
+      "resulting_grant_id": "NEX-GRANT-042",
+      "technical_recommendation_is_not_approval": true
+    },
+    {
+      "id": "NEX-ARQ-006",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-002",
+      "created_at": "2026-10-14T10:00:00Z",
+      "revised_at": "2026-10-14T15:00:00Z",
+      "status": "DENIED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-002"
+        ],
+        "project_ids": [
+          "NEX-PRJ-PAY"
+        ],
+        "source_ids": [
+          "NEX-SRC-ID-REPO"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "request_id": "NEX-ARQ-006",
+      "requester_employee_id": "NEX-EMP-002",
+      "requested_resource_id": "NEX-SRC-ID-REPO",
+      "requested_action": "READ_RECORDS",
+      "business_justification": "Inspect identity implementation while evaluating the payment token-validation interface.",
+      "project_context_id": "NEX-PRJ-PAY",
+      "requested_duration_days": 14,
+      "submitted_at": "2026-10-14T10:00:00Z",
+      "request_status": "DENIED",
+      "reviewing_admin_employee_id": "NEX-EMP-001",
+      "decision_reference_id": "NEX-ACD-043",
+      "resulting_grant_id": null,
+      "technical_recommendation_is_not_approval": true
+    },
+    {
+      "id": "NEX-ARQ-007",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-004",
+      "created_at": "2026-10-16T10:00:00Z",
+      "revised_at": "2026-10-16T15:00:00Z",
+      "status": "DENIED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-004"
+        ],
+        "project_ids": [
+          "NEX-PRJ-COM"
+        ],
+        "source_ids": [
+          "NEX-SRC-PAY-REPO"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "request_id": "NEX-ARQ-007",
+      "requester_employee_id": "NEX-EMP-004",
+      "requested_resource_id": "NEX-SRC-PAY-REPO",
+      "requested_action": "READ_RECORDS",
+      "business_justification": "Inspect payment internals for Commerce checkout compatibility assessment.",
+      "project_context_id": "NEX-PRJ-COM",
+      "requested_duration_days": 21,
+      "submitted_at": "2026-10-16T10:00:00Z",
+      "request_status": "DENIED",
+      "reviewing_admin_employee_id": "NEX-EMP-001",
+      "decision_reference_id": "NEX-ACD-044",
+      "resulting_grant_id": null,
+      "technical_recommendation_is_not_approval": true
+    },
+    {
+      "id": "NEX-ARQ-008",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-006",
+      "created_at": "2026-10-18T10:00:00Z",
+      "revised_at": "2026-10-18T15:00:00Z",
+      "status": "DENIED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-006"
+        ],
+        "project_ids": [
+          "NEX-PRJ-ID"
+        ],
+        "source_ids": [
+          "NEX-SRC-PRIVILEGED_CHANGES"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "request_id": "NEX-ARQ-008",
+      "requester_employee_id": "NEX-EMP-006",
+      "requested_resource_id": "NEX-SRC-PRIVILEGED_CHANGES",
+      "requested_action": "READ_RECORDS",
+      "business_justification": "Check whether an identity deployment approval exists without requiring privileged notes.",
+      "project_context_id": "NEX-PRJ-ID",
+      "requested_duration_days": 7,
+      "submitted_at": "2026-10-18T10:00:00Z",
+      "request_status": "DENIED",
+      "reviewing_admin_employee_id": "NEX-EMP-001",
+      "decision_reference_id": "NEX-ACD-045",
+      "resulting_grant_id": null,
+      "technical_recommendation_is_not_approval": true
+    },
+    {
+      "id": "NEX-ARQ-009",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-008",
+      "created_at": "2026-10-20T10:00:00Z",
+      "revised_at": "2026-10-20T15:00:00Z",
+      "status": "DENIED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-008"
+        ],
+        "project_ids": [
+          "NEX-PRJ-DATA"
+        ],
+        "source_ids": [
+          "NEX-SRC-SECURITY_GOVERNANCE"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "request_id": "NEX-ARQ-009",
+      "requester_employee_id": "NEX-EMP-008",
+      "requested_resource_id": "NEX-SRC-SECURITY_GOVERNANCE",
+      "requested_action": "READ_RECORDS",
+      "business_justification": "Review metrics telemetry controls without requiring confidential security assessments.",
+      "project_context_id": "NEX-PRJ-DATA",
+      "requested_duration_days": 7,
+      "submitted_at": "2026-10-20T10:00:00Z",
+      "request_status": "DENIED",
+      "reviewing_admin_employee_id": "NEX-EMP-001",
+      "decision_reference_id": "NEX-ACD-046",
+      "resulting_grant_id": null,
+      "technical_recommendation_is_not_approval": true
+    },
+    {
+      "id": "NEX-ARQ-010",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-010",
+      "created_at": "2026-10-22T10:00:00Z",
+      "revised_at": "2026-10-22T15:00:00Z",
+      "status": "DENIED",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-010"
+        ],
+        "project_ids": [
+          "NEX-PRJ-COM"
+        ],
+        "source_ids": [
+          "NEX-SRC-COM-REPO"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "request_id": "NEX-ARQ-010",
+      "requester_employee_id": "NEX-EMP-010",
+      "requested_resource_id": "NEX-SRC-COM-REPO",
+      "requested_action": "READ_RECORDS",
+      "business_justification": "Study PHP checkout implementation during an internship documentation assignment.",
+      "project_context_id": "NEX-PRJ-COM",
+      "requested_duration_days": 30,
+      "submitted_at": "2026-10-22T10:00:00Z",
+      "request_status": "DENIED",
+      "reviewing_admin_employee_id": "NEX-EMP-001",
+      "decision_reference_id": "NEX-ACD-047",
+      "resulting_grant_id": null,
+      "technical_recommendation_is_not_approval": true
+    },
+    {
+      "id": "NEX-ARQ-011",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-011",
+      "created_at": "2026-10-29T10:00:00Z",
+      "revised_at": "2026-10-29T10:00:00Z",
+      "status": "PENDING",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-011"
+        ],
+        "project_ids": [
+          "NEX-PRJ-DATA"
+        ],
+        "source_ids": [
+          "NEX-SRC-DATA-DISCUSS"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "request_id": "NEX-ARQ-011",
+      "requester_employee_id": "NEX-EMP-011",
+      "requested_resource_id": "NEX-SRC-DATA-DISCUSS",
+      "requested_action": "READ_RECORDS",
+      "business_justification": "Request an intern-scoped data dictionary discussion contribution; no approval yet.",
+      "project_context_id": "NEX-PRJ-DATA",
+      "requested_duration_days": 14,
+      "submitted_at": "2026-10-29T10:00:00Z",
+      "request_status": "PENDING",
+      "reviewing_admin_employee_id": null,
+      "decision_reference_id": null,
+      "resulting_grant_id": null,
+      "technical_recommendation_is_not_approval": true
+    }
+  ]
+}

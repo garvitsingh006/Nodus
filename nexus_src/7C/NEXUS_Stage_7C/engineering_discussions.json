@@ -1,0 +1,1039 @@
+{
+  "dataset_version": "7C-1.0.0",
+  "engineering_discussions": [
+    {
+      "id": "NEX-THR-PAY-001",
+      "source_id": "NEX-SRC-PAY-DISCUSS",
+      "source_record_type": "DISCUSS",
+      "owner_team_id": "NEX-TEAM-PAY",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-09-21T15:00:00Z",
+      "revised_at": "2026-09-21T17:00:00Z",
+      "status": "ACTIVE",
+      "thread_id": "NEX-THR-PAY-001",
+      "title": "Idempotency key normalization and payment response replay",
+      "discussion_source_id": "NEX-SRC-PAY-DISCUSS",
+      "scope_project_id": "NEX-PRJ-PAY",
+      "scope_team_id": "NEX-TEAM-PAY",
+      "author_employee_ids": [
+        "NEX-EMP-002",
+        "NEX-EMP-003"
+      ],
+      "messages": [
+        {
+          "message_id": "NEX-THR-PAY-001-M1",
+          "author_employee_id": "NEX-EMP-002",
+          "sent_at": "2026-09-21T15:00:00Z",
+          "content": "The payment intent record is authoritative; a gateway transport timeout must not create a second intent during an HTTP retry.",
+          "source_id": "NEX-SRC-PAY-DISCUSS",
+          "owner_team_id": "NEX-TEAM-PAY",
+          "owner_project_id": "NEX-PRJ-PAY",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        },
+        {
+          "message_id": "NEX-THR-PAY-001-M2",
+          "author_employee_id": "NEX-EMP-003",
+          "sent_at": "2026-09-21T15:35:00Z",
+          "content": "Agreed. The replay comparison includes merchant, currency and amount; trace ID stays metadata and never becomes an idempotency key.",
+          "source_id": "NEX-SRC-PAY-DISCUSS",
+          "owner_team_id": "NEX-TEAM-PAY",
+          "owner_project_id": "NEX-PRJ-PAY",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        }
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PAY-001"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-PAY-001"
+      ],
+      "related_service_ids": [
+        "NEX-SVC-GATEWAY_ROUTER"
+      ],
+      "related_contract_ids": [
+        "NEX-IFC-002"
+      ],
+      "contains_admin_only_information": false,
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-THR-PAY-002",
+      "source_id": "NEX-SRC-PAY-DISCUSS",
+      "source_record_type": "DISCUSS",
+      "owner_team_id": "NEX-TEAM-PAY",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-26T11:00:00Z",
+      "revised_at": "2026-10-26T13:00:00Z",
+      "status": "ACTIVE",
+      "thread_id": "NEX-THR-PAY-002",
+      "title": "Separation of gRPC adapter and API contract gates",
+      "discussion_source_id": "NEX-SRC-PAY-DISCUSS",
+      "scope_project_id": "NEX-PRJ-PAY",
+      "scope_team_id": "NEX-TEAM-PAY",
+      "author_employee_ids": [
+        "NEX-EMP-002",
+        "NEX-EMP-003"
+      ],
+      "messages": [
+        {
+          "message_id": "NEX-THR-PAY-002-M1",
+          "author_employee_id": "NEX-EMP-002",
+          "sent_at": "2026-10-26T11:00:00Z",
+          "content": "Our protobuf fixture check catches serializer drift but cannot prove a live provider's timeout behavior. Keep the contract lane separate.",
+          "source_id": "NEX-SRC-PAY-DISCUSS",
+          "owner_team_id": "NEX-TEAM-PAY",
+          "owner_project_id": "NEX-PRJ-PAY",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        },
+        {
+          "message_id": "NEX-THR-PAY-002-M2",
+          "author_employee_id": "NEX-EMP-003",
+          "sent_at": "2026-10-26T11:35:00Z",
+          "content": "We will label the gateway sandbox as untested for this build and keep refund-worker integration replay checks independent.",
+          "source_id": "NEX-SRC-PAY-DISCUSS",
+          "owner_team_id": "NEX-TEAM-PAY",
+          "owner_project_id": "NEX-PRJ-PAY",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        }
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PAY-004"
+      ],
+      "related_pr_ids": [],
+      "related_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-GATEWAY_ROUTER",
+        "NEX-SVC-REFUND_WORKER"
+      ],
+      "related_contract_ids": [],
+      "contains_admin_only_information": false,
+      "event_delivery_facts": [
+        {
+          "event_name": "refund-requests-v1",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-REFUND_WORKER",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_dependency_id": "NEX-DEP-003",
+          "canonical_dependency_edge_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        },
+        {
+          "event_name": "payment-lifecycle-events-v2",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-011",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_PAYMENT_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "refund-requests-v1",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-REFUND_WORKER",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_dependency_id": "NEX-DEP-003",
+          "canonical_dependency_edge_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        }
+      ]
+    },
+    {
+      "id": "NEX-THR-PAY-003",
+      "source_id": "NEX-SRC-PAY-DISCUSS",
+      "source_record_type": "DISCUSS",
+      "owner_team_id": "NEX-TEAM-PAY",
+      "owner_project_id": "NEX-PRJ-PAY",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-29T13:00:00Z",
+      "revised_at": "2026-10-29T15:00:00Z",
+      "status": "ACTIVE",
+      "thread_id": "NEX-THR-PAY-003",
+      "title": "Pre-merge gateway timeout result review",
+      "discussion_source_id": "NEX-SRC-PAY-DISCUSS",
+      "scope_project_id": "NEX-PRJ-PAY",
+      "scope_team_id": "NEX-TEAM-PAY",
+      "author_employee_ids": [
+        "NEX-EMP-002",
+        "NEX-EMP-003"
+      ],
+      "messages": [
+        {
+          "message_id": "NEX-THR-PAY-003-M1",
+          "author_employee_id": "NEX-EMP-002",
+          "sent_at": "2026-10-29T13:00:00Z",
+          "content": "The proposed timeout categories need a stable mapping for existing callers. Unknown does not mean declined or authorized.",
+          "source_id": "NEX-SRC-PAY-DISCUSS",
+          "owner_team_id": "NEX-TEAM-PAY",
+          "owner_project_id": "NEX-PRJ-PAY",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        },
+        {
+          "message_id": "NEX-THR-PAY-003-M2",
+          "author_employee_id": "NEX-EMP-003",
+          "sent_at": "2026-10-29T13:35:00Z",
+          "content": "I've left the branch unmerged while we collect payment-api and refund-worker compatibility evidence.",
+          "source_id": "NEX-SRC-PAY-DISCUSS",
+          "owner_team_id": "NEX-TEAM-PAY",
+          "owner_project_id": "NEX-PRJ-PAY",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        }
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PAY-005"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-PAY-003"
+      ],
+      "related_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-GATEWAY_ROUTER"
+      ],
+      "related_contract_ids": [
+        "NEX-IFC-002"
+      ],
+      "contains_admin_only_information": false,
+      "event_delivery_facts": [
+        {
+          "event_name": "refund-requests-v1",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-REFUND_WORKER",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_dependency_id": "NEX-DEP-003",
+          "canonical_dependency_edge_direction": "PAYMENT_API_TO_REFUND_WORKER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        },
+        {
+          "event_name": "payment-lifecycle-events-v2",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-011",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_PAYMENT_API",
+          "canonical_edge_semantic_discrepancy": null
+        }
+      ]
+    },
+    {
+      "id": "NEX-THR-COM-001",
+      "source_id": "NEX-SRC-COM-DISCUSS",
+      "source_record_type": "DISCUSS",
+      "owner_team_id": "NEX-TEAM-COM",
+      "owner_project_id": "NEX-PRJ-COM",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-09-29T15:00:00Z",
+      "revised_at": "2026-09-29T17:00:00Z",
+      "status": "ACTIVE",
+      "thread_id": "NEX-THR-COM-001",
+      "title": "Order outbox sequencing and notification job acknowledgement",
+      "discussion_source_id": "NEX-SRC-COM-DISCUSS",
+      "scope_project_id": "NEX-PRJ-COM",
+      "scope_team_id": "NEX-TEAM-COM",
+      "author_employee_ids": [
+        "NEX-EMP-004",
+        "NEX-EMP-005"
+      ],
+      "messages": [
+        {
+          "message_id": "NEX-THR-COM-001-M1",
+          "author_employee_id": "NEX-EMP-004",
+          "sent_at": "2026-09-29T15:00:00Z",
+          "content": "Commit the order row and the RabbitMQ outbox entry together; sending a notification must not precede the accepted order transition.",
+          "source_id": "NEX-SRC-COM-DISCUSS",
+          "owner_team_id": "NEX-TEAM-COM",
+          "owner_project_id": "NEX-PRJ-COM",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        },
+        {
+          "message_id": "NEX-THR-COM-001-M2",
+          "author_employee_id": "NEX-EMP-005",
+          "sent_at": "2026-09-29T15:35:00Z",
+          "content": "Worker delivery can still repeat. Its retry state is keyed on job_id, not by an assumption of exactly-once RabbitMQ delivery.",
+          "source_id": "NEX-SRC-COM-DISCUSS",
+          "owner_team_id": "NEX-TEAM-COM",
+          "owner_project_id": "NEX-PRJ-COM",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        }
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-COM-001"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-COM-001"
+      ],
+      "related_service_ids": [
+        "NEX-SVC-WEBHOOK_CONSUMER"
+      ],
+      "related_contract_ids": [
+        "NEX-IFC-008"
+      ],
+      "contains_admin_only_information": false,
+      "event_delivery_facts": [
+        {
+          "event_name": "commerce-notification-jobs",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_dependency_id": "NEX-DEP-008",
+          "canonical_dependency_edge_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        }
+      ]
+    },
+    {
+      "id": "NEX-THR-COM-002",
+      "source_id": "NEX-SRC-COM-DISCUSS",
+      "source_record_type": "DISCUSS",
+      "owner_team_id": "NEX-TEAM-COM",
+      "owner_project_id": "NEX-PRJ-COM",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-26T11:00:00Z",
+      "revised_at": "2026-10-26T13:00:00Z",
+      "status": "ACTIVE",
+      "thread_id": "NEX-THR-COM-002",
+      "title": "Merchant webhook retry test boundaries",
+      "discussion_source_id": "NEX-SRC-COM-DISCUSS",
+      "scope_project_id": "NEX-PRJ-COM",
+      "scope_team_id": "NEX-TEAM-COM",
+      "author_employee_ids": [
+        "NEX-EMP-004",
+        "NEX-EMP-005"
+      ],
+      "messages": [
+        {
+          "message_id": "NEX-THR-COM-002-M1",
+          "author_employee_id": "NEX-EMP-004",
+          "sent_at": "2026-10-26T11:00:00Z",
+          "content": "PHPUnit runs MySQL and Redis locally; signed callbacks to arbitrary merchants aren't exercised in our CI job.",
+          "source_id": "NEX-SRC-COM-DISCUSS",
+          "owner_team_id": "NEX-TEAM-COM",
+          "owner_project_id": "NEX-PRJ-COM",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        },
+        {
+          "message_id": "NEX-THR-COM-002-M2",
+          "author_employee_id": "NEX-EMP-005",
+          "sent_at": "2026-10-26T11:35:00Z",
+          "content": "The release check will keep that limitation visible and test the terminal retry boundary separately.",
+          "source_id": "NEX-SRC-COM-DISCUSS",
+          "owner_team_id": "NEX-TEAM-COM",
+          "owner_project_id": "NEX-PRJ-COM",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        }
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-COM-004"
+      ],
+      "related_pr_ids": [],
+      "related_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-ORDER_API",
+        "NEX-SVC-WEBHOOK_CONSUMER"
+      ],
+      "related_contract_ids": [],
+      "contains_admin_only_information": false,
+      "event_delivery_facts": [
+        {
+          "event_name": "commerce-notification-jobs",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_dependency_id": "NEX-DEP-008",
+          "canonical_dependency_edge_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        },
+        {
+          "event_name": "order-events-v1",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-012",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_ORDER_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "commerce-notification-jobs",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_dependency_id": "NEX-DEP-008",
+          "canonical_dependency_edge_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        }
+      ]
+    },
+    {
+      "id": "NEX-THR-COM-003",
+      "source_id": "NEX-SRC-COM-DISCUSS",
+      "source_record_type": "DISCUSS",
+      "owner_team_id": "NEX-TEAM-COM",
+      "owner_project_id": "NEX-PRJ-COM",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-29T13:00:00Z",
+      "revised_at": "2026-10-29T15:00:00Z",
+      "status": "ACTIVE",
+      "thread_id": "NEX-THR-COM-003",
+      "title": "Optional checkout fee response compatibility",
+      "discussion_source_id": "NEX-SRC-COM-DISCUSS",
+      "scope_project_id": "NEX-PRJ-COM",
+      "scope_team_id": "NEX-TEAM-COM",
+      "author_employee_ids": [
+        "NEX-EMP-004",
+        "NEX-EMP-005"
+      ],
+      "messages": [
+        {
+          "message_id": "NEX-THR-COM-003-M1",
+          "author_employee_id": "NEX-EMP-004",
+          "sent_at": "2026-10-29T13:00:00Z",
+          "content": "We are proposing a nested optional fee breakdown, while total_minor and order_id remain stable in the public response.",
+          "source_id": "NEX-SRC-COM-DISCUSS",
+          "owner_team_id": "NEX-TEAM-COM",
+          "owner_project_id": "NEX-PRJ-COM",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        },
+        {
+          "message_id": "NEX-THR-COM-003-M2",
+          "author_employee_id": "NEX-EMP-005",
+          "sent_at": "2026-10-29T13:35:00Z",
+          "content": "Review requested until old-client deserialization fixtures and cross-service payment amount checks are attached.",
+          "source_id": "NEX-SRC-COM-DISCUSS",
+          "owner_team_id": "NEX-TEAM-COM",
+          "owner_project_id": "NEX-PRJ-COM",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        }
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-COM-005"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-COM-003"
+      ],
+      "related_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-ORDER_API"
+      ],
+      "related_contract_ids": [
+        "NEX-IFC-005"
+      ],
+      "contains_admin_only_information": false,
+      "event_delivery_facts": [
+        {
+          "event_name": "commerce-notification-jobs",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_dependency_id": "NEX-DEP-008",
+          "canonical_dependency_edge_direction": "ORDER_API_TO_WEBHOOK_CONSUMER",
+          "canonical_edge_semantic_discrepancy": "Canonical edge uses consumer-to-provider convention elsewhere; event delivery is publisher-to-subscriber."
+        },
+        {
+          "event_name": "order-events-v1",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-012",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_ORDER_API",
+          "canonical_edge_semantic_discrepancy": null
+        }
+      ]
+    },
+    {
+      "id": "NEX-THR-ID-001",
+      "source_id": "NEX-SRC-ID-DISCUSS",
+      "source_record_type": "DISCUSS",
+      "owner_team_id": "NEX-TEAM-ID",
+      "owner_project_id": "NEX-PRJ-ID",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-06T15:00:00Z",
+      "revised_at": "2026-10-06T17:00:00Z",
+      "status": "ACTIVE",
+      "thread_id": "NEX-THR-ID-001",
+      "title": "Issuer key rotation and validator fetch budget",
+      "discussion_source_id": "NEX-SRC-ID-DISCUSS",
+      "scope_project_id": "NEX-PRJ-ID",
+      "scope_team_id": "NEX-TEAM-ID",
+      "author_employee_ids": [
+        "NEX-EMP-006",
+        "NEX-EMP-007"
+      ],
+      "messages": [
+        {
+          "message_id": "NEX-THR-ID-001-M1",
+          "author_employee_id": "NEX-EMP-006",
+          "sent_at": "2026-10-06T15:00:00Z",
+          "content": "The JWKS endpoint's cache headers must not encourage accepting tokens signed by a key outside the advertised set.",
+          "source_id": "NEX-SRC-ID-DISCUSS",
+          "owner_team_id": "NEX-TEAM-ID",
+          "owner_project_id": "NEX-PRJ-ID",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        },
+        {
+          "message_id": "NEX-THR-ID-001-M2",
+          "author_employee_id": "NEX-EMP-007",
+          "sent_at": "2026-10-06T15:35:00Z",
+          "content": "Unknown kid triggers one bounded refresh. Repeated concurrent failures cannot bypass signature verification.",
+          "source_id": "NEX-SRC-ID-DISCUSS",
+          "owner_team_id": "NEX-TEAM-ID",
+          "owner_project_id": "NEX-PRJ-ID",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        }
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-ID-001"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-ID-001"
+      ],
+      "related_service_ids": [
+        "NEX-SVC-TOKEN_VALIDATOR"
+      ],
+      "related_contract_ids": [
+        "NEX-IFC-010"
+      ],
+      "contains_admin_only_information": false,
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-THR-ID-002",
+      "source_id": "NEX-SRC-ID-DISCUSS",
+      "source_record_type": "DISCUSS",
+      "owner_team_id": "NEX-TEAM-ID",
+      "owner_project_id": "NEX-PRJ-ID",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-26T11:00:00Z",
+      "revised_at": "2026-10-26T13:00:00Z",
+      "status": "ACTIVE",
+      "thread_id": "NEX-THR-ID-002",
+      "title": "Policy snapshot cache invalidation checks",
+      "discussion_source_id": "NEX-SRC-ID-DISCUSS",
+      "scope_project_id": "NEX-PRJ-ID",
+      "scope_team_id": "NEX-TEAM-ID",
+      "author_employee_ids": [
+        "NEX-EMP-006",
+        "NEX-EMP-007"
+      ],
+      "messages": [
+        {
+          "message_id": "NEX-THR-ID-002-M1",
+          "author_employee_id": "NEX-EMP-006",
+          "sent_at": "2026-10-26T11:00:00Z",
+          "content": "Migration tests exercise the new schema on ephemeral PostgreSQL; they do not simulate full-scale policy table cardinality.",
+          "source_id": "NEX-SRC-ID-DISCUSS",
+          "owner_team_id": "NEX-TEAM-ID",
+          "owner_project_id": "NEX-PRJ-ID",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        },
+        {
+          "message_id": "NEX-THR-ID-002-M2",
+          "author_employee_id": "NEX-EMP-007",
+          "sent_at": "2026-10-26T11:35:00Z",
+          "content": "We'll retain that caveat in the build metadata and require revision-aware cache keys for policy rollouts.",
+          "source_id": "NEX-SRC-ID-DISCUSS",
+          "owner_team_id": "NEX-TEAM-ID",
+          "owner_project_id": "NEX-PRJ-ID",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        }
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-ID-004"
+      ],
+      "related_pr_ids": [],
+      "related_service_ids": [
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-TOKEN_VALIDATOR",
+        "NEX-SVC-POLICY_SERVICE"
+      ],
+      "related_contract_ids": [],
+      "contains_admin_only_information": false,
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-THR-ID-003",
+      "source_id": "NEX-SRC-ID-DISCUSS",
+      "source_record_type": "DISCUSS",
+      "owner_team_id": "NEX-TEAM-ID",
+      "owner_project_id": "NEX-PRJ-ID",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-29T13:00:00Z",
+      "revised_at": "2026-10-29T15:00:00Z",
+      "status": "ACTIVE",
+      "thread_id": "NEX-THR-ID-003",
+      "title": "Unknown-key refresh tradeoffs before merge",
+      "discussion_source_id": "NEX-SRC-ID-DISCUSS",
+      "scope_project_id": "NEX-PRJ-ID",
+      "scope_team_id": "NEX-TEAM-ID",
+      "author_employee_ids": [
+        "NEX-EMP-006",
+        "NEX-EMP-007"
+      ],
+      "messages": [
+        {
+          "message_id": "NEX-THR-ID-003-M1",
+          "author_employee_id": "NEX-EMP-006",
+          "sent_at": "2026-10-29T13:00:00Z",
+          "content": "Stale key cache behavior affects clients beyond this repo, but the shared interface registry is the safe discovery layer.",
+          "source_id": "NEX-SRC-ID-DISCUSS",
+          "owner_team_id": "NEX-TEAM-ID",
+          "owner_project_id": "NEX-PRJ-ID",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        },
+        {
+          "message_id": "NEX-THR-ID-003-M2",
+          "author_employee_id": "NEX-EMP-007",
+          "sent_at": "2026-10-29T13:35:00Z",
+          "content": "The proposal remains in review until negative verification cases pass; a reviewer approval is not a rollout gate.",
+          "source_id": "NEX-SRC-ID-DISCUSS",
+          "owner_team_id": "NEX-TEAM-ID",
+          "owner_project_id": "NEX-PRJ-ID",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        }
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-ID-005"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-ID-003"
+      ],
+      "related_service_ids": [
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-TOKEN_VALIDATOR"
+      ],
+      "related_contract_ids": [
+        "NEX-IFC-010"
+      ],
+      "contains_admin_only_information": false,
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-THR-DATA-001",
+      "source_id": "NEX-SRC-DATA-DISCUSS",
+      "source_record_type": "DISCUSS",
+      "owner_team_id": "NEX-TEAM-DATA",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-09-27T15:00:00Z",
+      "revised_at": "2026-09-27T17:00:00Z",
+      "status": "ACTIVE",
+      "thread_id": "NEX-THR-DATA-001",
+      "title": "NATS payment and RabbitMQ order envelopes are distinct",
+      "discussion_source_id": "NEX-SRC-DATA-DISCUSS",
+      "scope_project_id": "NEX-PRJ-DATA",
+      "scope_team_id": "NEX-TEAM-DATA",
+      "author_employee_ids": [
+        "NEX-EMP-008",
+        "NEX-EMP-009"
+      ],
+      "messages": [
+        {
+          "message_id": "NEX-THR-DATA-001-M1",
+          "author_employee_id": "NEX-EMP-008",
+          "sent_at": "2026-09-27T15:00:00Z",
+          "content": "Payment events arrive on NATS; order events come from RabbitMQ. Preserve source transport and producer identity in staging.",
+          "source_id": "NEX-SRC-DATA-DISCUSS",
+          "owner_team_id": "NEX-TEAM-DATA",
+          "owner_project_id": "NEX-PRJ-DATA",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        },
+        {
+          "message_id": "NEX-THR-DATA-001-M2",
+          "author_employee_id": "NEX-EMP-009",
+          "sent_at": "2026-09-27T15:35:00Z",
+          "content": "Deduplicate by producer and event_id, not payload order; publish metrics only after the staging watermark closes.",
+          "source_id": "NEX-SRC-DATA-DISCUSS",
+          "owner_team_id": "NEX-TEAM-DATA",
+          "owner_project_id": "NEX-PRJ-DATA",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        }
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-DATA-001"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-DATA-001"
+      ],
+      "related_service_ids": [
+        "NEX-SVC-REPORTING_API"
+      ],
+      "related_contract_ids": [
+        "NEX-IFC-013"
+      ],
+      "contains_admin_only_information": false,
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-THR-DATA-002",
+      "source_id": "NEX-SRC-DATA-DISCUSS",
+      "source_record_type": "DISCUSS",
+      "owner_team_id": "NEX-TEAM-DATA",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-26T11:00:00Z",
+      "revised_at": "2026-10-26T13:00:00Z",
+      "status": "ACTIVE",
+      "thread_id": "NEX-THR-DATA-002",
+      "title": "Watermark replay checks and metric aggregate verification",
+      "discussion_source_id": "NEX-SRC-DATA-DISCUSS",
+      "scope_project_id": "NEX-PRJ-DATA",
+      "scope_team_id": "NEX-TEAM-DATA",
+      "author_employee_ids": [
+        "NEX-EMP-008",
+        "NEX-EMP-009"
+      ],
+      "messages": [
+        {
+          "message_id": "NEX-THR-DATA-002-M1",
+          "author_employee_id": "NEX-EMP-008",
+          "sent_at": "2026-10-26T11:00:00Z",
+          "content": "Replay tests cover duplicate messages and an interrupted SQL upsert, but not regional broker partition recovery.",
+          "source_id": "NEX-SRC-DATA-DISCUSS",
+          "owner_team_id": "NEX-TEAM-DATA",
+          "owner_project_id": "NEX-PRJ-DATA",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        },
+        {
+          "message_id": "NEX-THR-DATA-002-M2",
+          "author_employee_id": "NEX-EMP-009",
+          "sent_at": "2026-10-26T11:35:00Z",
+          "content": "We'll expose the exact coverage limit and keep the metrics model revision attached to every aggregate.",
+          "source_id": "NEX-SRC-DATA-DISCUSS",
+          "owner_team_id": "NEX-TEAM-DATA",
+          "owner_project_id": "NEX-PRJ-DATA",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        }
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-DATA-004"
+      ],
+      "related_pr_ids": [],
+      "related_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-METRICS_PIPELINE",
+        "NEX-SVC-REPORTING_API"
+      ],
+      "related_contract_ids": [],
+      "contains_admin_only_information": false,
+      "event_delivery_facts": [
+        {
+          "event_name": "payment-lifecycle-events-v2",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-011",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_PAYMENT_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "order-events-v1",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-012",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_ORDER_API",
+          "canonical_edge_semantic_discrepancy": null
+        }
+      ]
+    },
+    {
+      "id": "NEX-THR-DATA-003",
+      "source_id": "NEX-SRC-DATA-DISCUSS",
+      "source_record_type": "DISCUSS",
+      "owner_team_id": "NEX-TEAM-DATA",
+      "owner_project_id": "NEX-PRJ-DATA",
+      "access_classification": "PROJECT_DEVELOPER",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-29T13:00:00Z",
+      "revised_at": "2026-10-29T15:00:00Z",
+      "status": "ACTIVE",
+      "thread_id": "NEX-THR-DATA-003",
+      "title": "Source partition metadata in proposed envelopes",
+      "discussion_source_id": "NEX-SRC-DATA-DISCUSS",
+      "scope_project_id": "NEX-PRJ-DATA",
+      "scope_team_id": "NEX-TEAM-DATA",
+      "author_employee_ids": [
+        "NEX-EMP-008",
+        "NEX-EMP-009"
+      ],
+      "messages": [
+        {
+          "message_id": "NEX-THR-DATA-003-M1",
+          "author_employee_id": "NEX-EMP-008",
+          "sent_at": "2026-10-29T13:00:00Z",
+          "content": "source_partition must stay optional; neither payment publisher nor order publisher should have to ship a new event major.",
+          "source_id": "NEX-SRC-DATA-DISCUSS",
+          "owner_team_id": "NEX-TEAM-DATA",
+          "owner_project_id": "NEX-PRJ-DATA",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        },
+        {
+          "message_id": "NEX-THR-DATA-003-M2",
+          "author_employee_id": "NEX-EMP-009",
+          "sent_at": "2026-10-29T13:35:00Z",
+          "content": "Compatibility tests need both source fixtures before the branch can be merged or deployed.",
+          "source_id": "NEX-SRC-DATA-DISCUSS",
+          "owner_team_id": "NEX-TEAM-DATA",
+          "owner_project_id": "NEX-PRJ-DATA",
+          "access_classification": "PROJECT_DEVELOPER",
+          "requires_explicit_resource_grant": true
+        }
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-DATA-005"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-DATA-003"
+      ],
+      "related_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-METRICS_PIPELINE"
+      ],
+      "related_contract_ids": [
+        "NEX-IFC-004"
+      ],
+      "contains_admin_only_information": false,
+      "event_delivery_facts": [
+        {
+          "event_name": "payment-lifecycle-events-v2",
+          "publisher_service_id": "NEX-SVC-PAYMENT_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "NATS",
+          "delivery_direction": "PAYMENT_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-011",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_PAYMENT_API",
+          "canonical_edge_semantic_discrepancy": null
+        },
+        {
+          "event_name": "order-events-v1",
+          "publisher_service_id": "NEX-SVC-ORDER_API",
+          "subscriber_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "transport": "RabbitMQ",
+          "delivery_direction": "ORDER_API_TO_EVENT_INGESTOR",
+          "canonical_dependency_id": "NEX-DEP-012",
+          "canonical_dependency_edge_direction": "EVENT_INGESTOR_TO_ORDER_API",
+          "canonical_edge_semantic_discrepancy": null
+        }
+      ]
+    },
+    {
+      "id": "NEX-THR-PLAT-001",
+      "source_id": "NEX-SRC-PLAT-DISCUSS",
+      "source_record_type": "DISCUSS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-19T15:00:00Z",
+      "revised_at": "2026-10-19T17:00:00Z",
+      "status": "ACTIVE",
+      "thread_id": "NEX-THR-PLAT-001",
+      "title": "Immutable digest promotion and rollback checkpoints",
+      "discussion_source_id": "NEX-SRC-PLAT-DISCUSS",
+      "scope_project_id": null,
+      "scope_team_id": "NEX-TEAM-PLAT",
+      "author_employee_ids": [
+        "NEX-EMP-007",
+        "NEX-EMP-009"
+      ],
+      "messages": [
+        {
+          "message_id": "NEX-THR-PLAT-001-M1",
+          "author_employee_id": "NEX-EMP-007",
+          "sent_at": "2026-10-19T15:00:00Z",
+          "content": "A mutable image tag would make rollback non-reproducible. Deployment policy must persist the actual sha256 digest per wave.",
+          "source_id": "NEX-SRC-PLAT-DISCUSS",
+          "owner_team_id": "NEX-TEAM-PLAT",
+          "owner_project_id": null,
+          "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+          "requires_explicit_resource_grant": true
+        },
+        {
+          "message_id": "NEX-THR-PLAT-001-M2",
+          "author_employee_id": "NEX-EMP-009",
+          "sent_at": "2026-10-19T15:35:00Z",
+          "content": "Argo CD reconciliation uses immutable identity; approval status and health gates are separate records.",
+          "source_id": "NEX-SRC-PLAT-DISCUSS",
+          "owner_team_id": "NEX-TEAM-PLAT",
+          "owner_project_id": null,
+          "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+          "requires_explicit_resource_grant": true
+        }
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PLAT-001"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-PLAT-001"
+      ],
+      "related_service_ids": [
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "related_contract_ids": [],
+      "contains_admin_only_information": false,
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-THR-PLAT-002",
+      "source_id": "NEX-SRC-PLAT-DISCUSS",
+      "source_record_type": "DISCUSS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-26T11:00:00Z",
+      "revised_at": "2026-10-26T13:00:00Z",
+      "status": "ACTIVE",
+      "thread_id": "NEX-THR-PLAT-002",
+      "title": "Metric label cardinality test scope",
+      "discussion_source_id": "NEX-SRC-PLAT-DISCUSS",
+      "scope_project_id": null,
+      "scope_team_id": "NEX-TEAM-PLAT",
+      "author_employee_ids": [
+        "NEX-EMP-007",
+        "NEX-EMP-009"
+      ],
+      "messages": [
+        {
+          "message_id": "NEX-THR-PLAT-002-M1",
+          "author_employee_id": "NEX-EMP-007",
+          "sent_at": "2026-10-26T11:00:00Z",
+          "content": "A synthetic readiness probe catches missing endpoints, not burst load or observability label explosion.",
+          "source_id": "NEX-SRC-PLAT-DISCUSS",
+          "owner_team_id": "NEX-TEAM-PLAT",
+          "owner_project_id": null,
+          "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+          "requires_explicit_resource_grant": true
+        },
+        {
+          "message_id": "NEX-THR-PLAT-002-M2",
+          "author_employee_id": "NEX-EMP-009",
+          "sent_at": "2026-10-26T11:35:00Z",
+          "content": "We can bound label ingestion and render-test chart settings, while treating load validation as a separate exercise.",
+          "source_id": "NEX-SRC-PLAT-DISCUSS",
+          "owner_team_id": "NEX-TEAM-PLAT",
+          "owner_project_id": null,
+          "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+          "requires_explicit_resource_grant": true
+        }
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PLAT-004"
+      ],
+      "related_pr_ids": [],
+      "related_service_ids": [
+        "NEX-SVC-DEPLOYMENT_PLATFORM",
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "related_contract_ids": [],
+      "contains_admin_only_information": false,
+      "event_delivery_facts": []
+    },
+    {
+      "id": "NEX-THR-PLAT-003",
+      "source_id": "NEX-SRC-PLAT-DISCUSS",
+      "source_record_type": "DISCUSS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+      "requires_explicit_resource_grant": true,
+      "created_at": "2026-10-29T13:00:00Z",
+      "revised_at": "2026-10-29T15:00:00Z",
+      "status": "ACTIVE",
+      "thread_id": "NEX-THR-PLAT-003",
+      "title": "Manual hold semantics for staged rollout",
+      "discussion_source_id": "NEX-SRC-PLAT-DISCUSS",
+      "scope_project_id": null,
+      "scope_team_id": "NEX-TEAM-PLAT",
+      "author_employee_ids": [
+        "NEX-EMP-007",
+        "NEX-EMP-009"
+      ],
+      "messages": [
+        {
+          "message_id": "NEX-THR-PLAT-003-M1",
+          "author_employee_id": "NEX-EMP-007",
+          "sent_at": "2026-10-29T13:00:00Z",
+          "content": "A manual pause is a deploy-controller hold, not an admin-issued handoff or access approval.",
+          "source_id": "NEX-SRC-PLAT-DISCUSS",
+          "owner_team_id": "NEX-TEAM-PLAT",
+          "owner_project_id": null,
+          "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+          "requires_explicit_resource_grant": true
+        },
+        {
+          "message_id": "NEX-THR-PLAT-003-M2",
+          "author_employee_id": "NEX-EMP-009",
+          "sent_at": "2026-10-29T13:35:00Z",
+          "content": "Current review is about cancellation and revert to the preceding digest; the prototype remains unmerged.",
+          "source_id": "NEX-SRC-PLAT-DISCUSS",
+          "owner_team_id": "NEX-TEAM-PLAT",
+          "owner_project_id": null,
+          "access_classification": "CROSS_PROJECT_CONFIDENTIAL",
+          "requires_explicit_resource_grant": true
+        }
+      ],
+      "related_issue_ids": [
+        "NEX-ISS-PLAT-005"
+      ],
+      "related_pr_ids": [
+        "NEX-PR-PLAT-003"
+      ],
+      "related_service_ids": [
+        "NEX-SVC-DEPLOYMENT_PLATFORM",
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "related_contract_ids": [
+        "NEX-IFC-014"
+      ],
+      "contains_admin_only_information": false,
+      "event_delivery_facts": []
+    }
+  ]
+}

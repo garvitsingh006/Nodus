@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "required_capabilities": ["graph.read", "evidence.read"],
+  "compatible_tools": [
+    {"tool_id": "pr.change_impact", "version": "1.0.0"},
+    {"tool_id": "graph.entity_lookup", "version": "1.0.0"},
+    {"tool_id": "graph.revision", "version": "1.0.0"},
+    {"tool_id": "evidence.lookup", "version": "1.0.0"}
+  ],
+  "effect": "READ_ONLY",
+  "input_expectations": "A pull-request entity_id (pr_id), and optionally a bounded max_depth/limit for propagation.",
+  "output_expectations": "Changed resources (declared vs. repository-derived), potentially-affected downstream consumers with relationship path/edge types/evidence, unmapped changed files, and explicit uncertainty -- never a fabricated severity or failure probability."
+}

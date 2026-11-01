@@ -1,0 +1,23 @@
+{
+  "blocker-chain": {
+    "1.0.0": "450c67792017ae794a45868c5f688e5e571ee849c8787fedf812ccfbfb7108e1"
+  },
+  "decision-genealogy": {
+    "1.0.0": "b27b9f187f945dec6507d6bc36111b2bcd2f8d2fb1b5f4efaed61ab634abce2f"
+  },
+  "expert-finder": {
+    "1.0.0": "e286f76ce265278e61cc5f0ea6834009172c40b77571093960c23e2379091509"
+  },
+  "graph-trace": {
+    "1.0.0": "06252b226c05e4332dcd3af3eb887a8ed8229a32d130e0ef00e9878dd2593de0"
+  },
+  "investigate-conflict": {
+    "1.0.0": "fe60e78dd6edfb299aa5ea719a85ab4fb919676a250c65db84246f8802b4049a"
+  },
+  "pr-impact": {
+    "1.0.0": "7365deca1e80cc6fa345060cf9ee5e9da31108522d804895f8205b03b7b7de87"
+  },
+  "verify-evidence": {
+    "1.0.0": "da36511866f01c97647fde482e376d1107e279d90c61afd4cc818021c0955877"
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "collection_name": "evidence_correction_events",
+  "dataset_name": "NEXUS Technologies — Stage 7E",
+  "dataset_version": "7E-1.0.0",
+  "evidence_correction_events": [
+    {
+      "access_classification": "COMPANY_SHARED",
+      "corrected_at": "2026-10-26T12:00:00Z",
+      "corrected_claim": {
+        "path": "content",
+        "value": "NEXUS delivers four independently owned product domains. Pay accepts merchant payment intents and records transaction state; Commerce coordinates checkout and orders; Identity supplies service assertions and policy decisions; Insights transforms published commercial events into governed aggregates. Product boundaries are also storage boundaries: Pay retains transaction state in PostgreSQL, Commerce owns order records in MySQL and short-lived checkout state in Redis, Identity maintains principals and policy data in PostgreSQL, and Insights maintains staging and reporting tables in PostgreSQL. A reader must not assume these databases are one shared transactional store.\n\nThe documented integration approach is a mixture of synchronous request/response and asynchronous exchange. checkout-service calls payment-api to establish payment intent and order-api to record confirmed orders; payment-api delegates gateway selection to gateway-router. token-validator provides verification at the documented Pay and Commerce entry points, and the validator obtains public JWKS keys from identity-api. Data Engineering receives payment lifecycle events over NATS and order lifecycle events over RabbitMQ; its event-ingestor validates versions before metrics-pipeline transforms staged records for reporting-api. Platform Operations manages the deployment-platform and observability-platform, which support selected product services through explicit operational dependencies.\n\nThese are source-declared architectural relationships, not live call traces. Dependency records use a source-service to target-service direction (consumer to upstream provider), except the inherited event-publication wording in NEX-DEP-003 and NEX-DEP-008, which must be read with care. Consult the service catalog for precise edge IDs and the interface registry for contract shapes; do not treat a drawing or prose paragraph as runtime proof. Changes crossing project boundaries require the provider owner and affected consumer owners to review interface compatibility. Ownership may be discovered from Stage 7A service IDs, not guessed from repository names."
+      },
+      "evidence_record_ids": [
+        "NEX-DOC-001",
+        "NEX-REV-DOC-001-01",
+        "NEX-REV-DOC-001-02"
+      ],
+      "id": "NEX-CORR-001",
+      "observed_at": null,
+      "original_claim": {
+        "path": "content",
+        "value": "NEXUS delivers four independently owned product domains. Pay accepts merchant payment intents and records transaction state; Commerce coordinates checkout and orders; Identity supplies service assertions and policy decisions; Insights transforms published commercial events into governed aggregates. Product boundaries are also storage boundaries: Pay retains transaction state in PostgreSQL, Commerce owns order records in MySQL and short-lived checkout state in Redis, Identity maintains principals and policy data in PostgreSQL, and Insights maintains staging and reporting tables in PostgreSQL. A reader must not assume these databases are one shared transactional store. The documented integration approach is a mixture of synchronous request/response and asynchronous exchange. checkout-service calls payment-api to establish payment intent and order-api to record confirmed orders; payment-api delegates gateway selection to gateway-router. token-validator provides verification at the documented Pay and Commerce entry points, and the validator obtains public JWKS keys from identity-api."
+      },
+      "original_claim_preserved": true,
+      "original_claim_quality": "INCOMPLETE",
+      "original_evidence_reference_id": "NEX-REV-DOC-001-01",
+      "owner_project_id": null,
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-DOC-001",
+      "provenance_description": "Later revision clarifies earlier source text but never retroactively changes what was written then.",
+      "reason_for_correction": "Earlier document scoped the systems overview narrowly; the updated overview includes documented integration boundaries.",
+      "record_type": "MINOR_EVIDENCE_CORRECTION",
+      "recorded_at": "2026-10-26T12:00:00Z",
+      "recorded_time_impact": {
+        "corrected_claim_known_from": "2026-10-26T12:00:00Z",
+        "earlier_claim_recorded_no_later_than": "2026-09-21T22:30:00Z"
+      },
+      "responsible_employee_id": "NEX-EMP-007",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "superseded_at": null,
+      "valid_from": "2026-10-26T12:00:00Z",
+      "valid_time_impact": "DOCUMENTATION_ONLY_NO_RETROACTIVE_OPERATIONAL_STATE_CHANGE",
+      "valid_to_exclusive": null
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "corrected_at": "2026-10-27T13:00:00Z",
+      "corrected_claim": {
+        "path": "compatibility_expectations",
+        "value": "At-least-once delivery; worker deduplicates on refund_request_id and tolerates reordering with payment state."
+      },
+      "evidence_record_ids": [
+        "NEX-IFC-003",
+        "NEX-REV-IFC-003-01",
+        "NEX-REV-IFC-003-02"
+      ],
+      "id": "NEX-CORR-002",
+      "observed_at": null,
+      "original_claim": {
+        "path": "compatibility_expectations",
+        "value": "Enqueue an already-authorized refund operation for asynchronous execution. Optional fields should not change existing consumer parsing or required field meanings."
+      },
+      "original_claim_preserved": true,
+      "original_claim_quality": "AMBIGUOUS",
+      "original_evidence_reference_id": "NEX-REV-IFC-003-01",
+      "owner_project_id": null,
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-003",
+      "provenance_description": "Later revision clarifies earlier source text but never retroactively changes what was written then.",
+      "reason_for_correction": "Clarifies at-least-once refund delivery and consumer deduplication without reversing NEX-DEP-003.",
+      "record_type": "MINOR_EVIDENCE_CORRECTION",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "recorded_time_impact": {
+        "corrected_claim_known_from": "2026-10-27T13:00:00Z",
+        "earlier_claim_recorded_no_later_than": "2026-09-29T23:00:00Z"
+      },
+      "responsible_employee_id": "NEX-EMP-002",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-10-27T13:00:00Z",
+      "valid_time_impact": "DOCUMENTATION_ONLY_NO_RETROACTIVE_OPERATIONAL_STATE_CHANGE",
+      "valid_to_exclusive": null
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "corrected_at": "2026-10-27T13:00:00Z",
+      "corrected_claim": {
+        "path": "compatibility_expectations",
+        "value": "Worker may receive duplicate jobs; subscription targets and signing material are looked up in restricted runtime systems."
+      },
+      "evidence_record_ids": [
+        "NEX-IFC-008",
+        "NEX-REV-IFC-008-01",
+        "NEX-REV-IFC-008-02"
+      ],
+      "id": "NEX-CORR-003",
+      "observed_at": null,
+      "original_claim": {
+        "path": "compatibility_expectations",
+        "value": "Ask webhook-consumer to deliver one merchant-visible order change. Optional fields should not change existing consumer parsing or required field meanings."
+      },
+      "original_claim_preserved": true,
+      "original_claim_quality": "AMBIGUOUS",
+      "original_evidence_reference_id": "NEX-REV-IFC-008-01",
+      "owner_project_id": null,
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-IFC-008",
+      "provenance_description": "Later revision clarifies earlier source text but never retroactively changes what was written then.",
+      "reason_for_correction": "Clarifies publisher/worker notification semantics while leaving NEX-DEP-008 untouched.",
+      "record_type": "MINOR_EVIDENCE_CORRECTION",
+      "recorded_at": "2026-10-27T13:00:00Z",
+      "recorded_time_impact": {
+        "corrected_claim_known_from": "2026-10-27T13:00:00Z",
+        "earlier_claim_recorded_no_later_than": "2026-09-29T23:00:00Z"
+      },
+      "responsible_employee_id": "NEX-EMP-004",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "superseded_at": null,
+      "valid_from": "2026-10-27T13:00:00Z",
+      "valid_time_impact": "DOCUMENTATION_ONLY_NO_RETROACTIVE_OPERATIONAL_STATE_CHANGE",
+      "valid_to_exclusive": null
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "corrected_at": "2026-10-27T15:00:00Z",
+      "corrected_claim": {
+        "path": "technical_responsibilities",
+        "value": [
+          "Consume refund-requests-v1 and prevent duplicate execution of one refund operation",
+          "Call gateway-routing-v2 with refund-specific transaction references",
+          "Record final or retryable outcome and emit refund-outcomes-v1"
+        ]
+      },
+      "evidence_record_ids": [
+        "NEX-CAT-003",
+        "NEX-REV-CAT-003-01",
+        "NEX-REV-CAT-003-01"
+      ],
+      "id": "NEX-CORR-004",
+      "observed_at": null,
+      "original_claim": {
+        "path": "technical_responsibilities",
+        "value": [
+          "Consume refund-requests-v1 and prevent duplicate execution of one refund operation"
+        ]
+      },
+      "original_claim_preserved": true,
+      "original_claim_quality": "INCOMPLETE",
+      "original_evidence_reference_id": "NEX-REV-CAT-003-01",
+      "owner_project_id": null,
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-CAT-003",
+      "provenance_description": "Later revision clarifies earlier source text but never retroactively changes what was written then.",
+      "reason_for_correction": "Expanded refund-worker responsibility list during a routine catalog review.",
+      "record_type": "MINOR_EVIDENCE_CORRECTION",
+      "recorded_at": "2026-10-27T15:00:00Z",
+      "recorded_time_impact": {
+        "corrected_claim_known_from": "2026-10-27T15:00:00Z",
+        "earlier_claim_recorded_no_later_than": "2026-10-23T09:00:00Z"
+      },
+      "responsible_employee_id": "NEX-EMP-003",
+      "source_id": "NEX-SRC-SERVICE_CATALOG",
+      "superseded_at": null,
+      "valid_from": "2026-10-27T15:00:00Z",
+      "valid_time_impact": "DOCUMENTATION_ONLY_NO_RETROACTIVE_OPERATIONAL_STATE_CHANGE",
+      "valid_to_exclusive": null
+    },
+    {
+      "access_classification": "COMPANY_SHARED",
+      "corrected_at": "2026-10-25T10:00:00Z",
+      "corrected_claim": {
+        "path": "definition",
+        "value": "Business object identifying one requested merchant charge, its currency/amount and a durable status, independent of any individual gateway attempt."
+      },
+      "evidence_record_ids": [
+        "NEX-TERM-001",
+        "NEX-REV-TERM-001-01",
+        "NEX-REV-TERM-001-01"
+      ],
+      "id": "NEX-CORR-005",
+      "observed_at": null,
+      "original_claim": {
+        "path": "definition",
+        "value": "Business object identifying one requested merchant charge, its currency/amount."
+      },
+      "original_claim_preserved": true,
+      "original_claim_quality": "INCOMPLETE",
+      "original_evidence_reference_id": "NEX-REV-TERM-001-01",
+      "owner_project_id": null,
+      "owner_team_id": "NEX-TEAM-ID",
+      "parent_record_id": "NEX-TERM-001",
+      "provenance_description": "Later revision clarifies earlier source text but never retroactively changes what was written then.",
+      "reason_for_correction": "Tightened payment intent terminology to distinguish durable identity from gateway attempts.",
+      "record_type": "MINOR_EVIDENCE_CORRECTION",
+      "recorded_at": "2026-10-25T10:00:00Z",
+      "recorded_time_impact": {
+        "corrected_claim_known_from": "2026-10-25T10:00:00Z",
+        "earlier_claim_recorded_no_later_than": "2026-09-01T09:00:00Z"
+      },
+      "responsible_employee_id": "NEX-EMP-009",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "superseded_at": null,
+      "valid_from": "2026-10-25T10:00:00Z",
+      "valid_time_impact": "DOCUMENTATION_ONLY_NO_RETROACTIVE_OPERATIONAL_STATE_CHANGE",
+      "valid_to_exclusive": null
+    }
+  ],
+  "reference_snapshot": "2026-10-31T23:59:59Z"
+}

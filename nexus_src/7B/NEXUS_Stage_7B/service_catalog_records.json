@@ -1,0 +1,1572 @@
+{
+  "dataset_version": "7B-1.0.0",
+  "service_catalog_records": [
+    {
+      "id": "NEX-CAT-001",
+      "source_id": "NEX-SRC-SERVICE_CATALOG",
+      "source_record_type": "SERVICE_CATALOG_ENTRY",
+      "author_employee_id": "NEX-EMP-002",
+      "created_at": "2026-10-23T09:00:00Z",
+      "revised_at": "2026-10-27T15:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "service_id": "NEX-SVC-PAYMENT_API",
+      "service_display_name": "payment-api",
+      "service_purpose": "Hold merchant-facing payment intent identity and authoritative transaction lifecycle state.",
+      "business_capability": "Idempotent intent creation and merchant payment status queries.",
+      "technical_responsibilities": [
+        "Normalize merchant payment requests and reject conflicting idempotency-key reuse",
+        "Persist transaction state in PostgreSQL and coordinate gateway authorization via gRPC",
+        "Publish versioned payment lifecycle events and enqueue authorized refund work"
+      ],
+      "ownership_references": {
+        "owning_project_id": "NEX-PRJ-PAY",
+        "owning_team_id": "NEX-TEAM-PAY",
+        "primary_owner_employee_id": "NEX-EMP-002",
+        "backup_owner_employee_id": "NEX-EMP-003",
+        "service_owner_assignment_ids": [
+          "NEX-SOA-001",
+          "NEX-SOA-002"
+        ]
+      },
+      "documented_upstream_dependencies": [
+        {
+          "dependency_id": "NEX-DEP-001",
+          "provider_service_id": "NEX-SVC-GATEWAY_ROUTER",
+          "dependency_category": "API_CALL",
+          "interaction_mode": "SYNCHRONOUS"
+        },
+        {
+          "dependency_id": "NEX-DEP-002",
+          "provider_service_id": "NEX-SVC-TOKEN_VALIDATOR",
+          "dependency_category": "API_CALL",
+          "interaction_mode": "SYNCHRONOUS"
+        },
+        {
+          "dependency_id": "NEX-DEP-003",
+          "provider_service_id": "NEX-SVC-REFUND_WORKER",
+          "dependency_category": "EVENT_STREAM",
+          "interaction_mode": "ASYNCHRONOUS"
+        },
+        {
+          "dependency_id": "NEX-DEP-016",
+          "provider_service_id": "NEX-SVC-DEPLOYMENT_PLATFORM",
+          "dependency_category": "PLATFORM_DEPLOYMENT",
+          "interaction_mode": "OPERATIONAL"
+        },
+        {
+          "dependency_id": "NEX-DEP-020",
+          "provider_service_id": "NEX-SVC-OBSERVABILITY_PLATFORM",
+          "dependency_category": "PLATFORM_TELEMETRY",
+          "interaction_mode": "OPERATIONAL"
+        }
+      ],
+      "documented_downstream_consumers": [
+        {
+          "dependency_id": "NEX-DEP-005",
+          "consumer_service_id": "NEX-SVC-CHECKOUT_SERVICE",
+          "dependency_category": "API_CALL"
+        },
+        {
+          "dependency_id": "NEX-DEP-011",
+          "consumer_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "dependency_category": "EVENT_STREAM"
+        }
+      ],
+      "dependency_semantics": "7A source_service_id -> target_service_id is preserved without inversion; the two publisher-to-consumer prose discrepancies (NEX-DEP-003 and NEX-DEP-008) are not corrected here.",
+      "declared_relationship_status": "SOURCE_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "exposed_interfaces": [
+        {
+          "name": "merchant-payments-v1",
+          "kind": "INBOUND_REST",
+          "protocol": "HTTPS/JSON"
+        },
+        {
+          "name": "payment-lifecycle-events-v2",
+          "kind": "OUTBOUND_EVENTS",
+          "protocol": "NATS"
+        }
+      ],
+      "linked_contract_ids": [
+        "NEX-IFC-001",
+        "NEX-IFC-003",
+        "NEX-IFC-004"
+      ],
+      "produced_events": [
+        "payment-lifecycle-events-v2",
+        "refund-requests-v1"
+      ],
+      "consumed_events": [],
+      "technology_runtime": "Go 1.24 / PostgreSQL 16",
+      "primary_technologies": [
+        "Go 1.24",
+        "PostgreSQL 16"
+      ],
+      "current_service_version_as_declared": "4.12.1",
+      "current_service_version_released_at": "2026-10-14T09:00:00Z",
+      "operational_characteristics": [
+        "Status can remain pending after a gateway timeout; client retry must reuse an intent identity",
+        "Application release version is independent of merchant-payments-v1 contract major",
+        "Business state is never reconstructed from analytics or gateway transport response alone"
+      ],
+      "critical_integration_assumptions": [
+        "gateway-router returns normalized provider result categories, not merchant account state",
+        "token-validator checks bounded token claims at the protected API boundary",
+        "NATS consumers deduplicate payment events using producer identity and event_id"
+      ],
+      "documentation_references": [
+        "NEX-DOC-002",
+        "NEX-DOC-008",
+        "NEX-DOC-009"
+      ],
+      "entity_references": {
+        "project_ids": [
+          "NEX-PRJ-PAY"
+        ],
+        "service_ids": [
+          "NEX-SVC-PAYMENT_API",
+          "NEX-SVC-GATEWAY_ROUTER",
+          "NEX-SVC-TOKEN_VALIDATOR",
+          "NEX-SVC-REFUND_WORKER",
+          "NEX-SVC-DEPLOYMENT_PLATFORM",
+          "NEX-SVC-OBSERVABILITY_PLATFORM",
+          "NEX-SVC-CHECKOUT_SERVICE",
+          "NEX-SVC-EVENT_INGESTOR"
+        ],
+        "team_ids": [
+          "NEX-TEAM-PAY"
+        ],
+        "employee_ids": [
+          "NEX-EMP-002",
+          "NEX-EMP-003"
+        ]
+      }
+    },
+    {
+      "id": "NEX-CAT-002",
+      "source_id": "NEX-SRC-SERVICE_CATALOG",
+      "source_record_type": "SERVICE_CATALOG_ENTRY",
+      "author_employee_id": "NEX-EMP-002",
+      "created_at": "2026-10-23T09:00:00Z",
+      "revised_at": "2026-10-27T15:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "service_id": "NEX-SVC-GATEWAY_ROUTER",
+      "service_display_name": "gateway-router",
+      "service_purpose": "Abstract contracted gateway transports behind stable payment and refund operation semantics.",
+      "business_capability": "Provider selection and normalized processing response across payment partners.",
+      "technical_responsibilities": [
+        "Accept a versioned internal routing request with operation and idempotency context",
+        "Resolve a configured provider and translate partner-specific result codes",
+        "Return a normalized outcome without owning merchant-visible transaction state"
+      ],
+      "ownership_references": {
+        "owning_project_id": "NEX-PRJ-PAY",
+        "owning_team_id": "NEX-TEAM-PAY",
+        "primary_owner_employee_id": "NEX-EMP-002",
+        "backup_owner_employee_id": "NEX-EMP-003",
+        "service_owner_assignment_ids": [
+          "NEX-SOA-003",
+          "NEX-SOA-004"
+        ]
+      },
+      "documented_upstream_dependencies": [],
+      "documented_downstream_consumers": [
+        {
+          "dependency_id": "NEX-DEP-001",
+          "consumer_service_id": "NEX-SVC-PAYMENT_API",
+          "dependency_category": "API_CALL"
+        },
+        {
+          "dependency_id": "NEX-DEP-004",
+          "consumer_service_id": "NEX-SVC-REFUND_WORKER",
+          "dependency_category": "API_CALL"
+        }
+      ],
+      "dependency_semantics": "7A source_service_id -> target_service_id is preserved without inversion; the two publisher-to-consumer prose discrepancies (NEX-DEP-003 and NEX-DEP-008) are not corrected here.",
+      "declared_relationship_status": "SOURCE_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "exposed_interfaces": [
+        {
+          "name": "gateway-routing-v2",
+          "kind": "INBOUND_GRPC",
+          "protocol": "gRPC"
+        },
+        {
+          "name": "provider-adapters",
+          "kind": "OUTBOUND_EXTERNAL_API",
+          "protocol": "HTTPS/JSON"
+        }
+      ],
+      "linked_contract_ids": [
+        "NEX-IFC-002"
+      ],
+      "produced_events": [],
+      "consumed_events": [],
+      "technology_runtime": "Go 1.24 / gRPC",
+      "primary_technologies": [
+        "Go 1.24",
+        "gRPC"
+      ],
+      "current_service_version_as_declared": "3.9.0",
+      "current_service_version_released_at": "2026-09-22T09:00:00Z",
+      "operational_characteristics": [
+        "Remote gateway completion may be unknown at the caller timeout",
+        "Transport deadlines and provider retry guidance must be retained in the normalized result",
+        "Provider adapter details are not shared source data"
+      ],
+      "critical_integration_assumptions": [
+        "Caller preserves provider-agnostic operation identity across retries",
+        "Uncertain provider results are reconciled through transaction state, not assumed declined",
+        "Refund and payment paths share the adapter but retain distinct operation types"
+      ],
+      "documentation_references": [
+        "NEX-DOC-002",
+        "NEX-DOC-007",
+        "NEX-DOC-008"
+      ],
+      "entity_references": {
+        "project_ids": [
+          "NEX-PRJ-PAY"
+        ],
+        "service_ids": [
+          "NEX-SVC-GATEWAY_ROUTER",
+          "NEX-SVC-PAYMENT_API",
+          "NEX-SVC-REFUND_WORKER"
+        ],
+        "team_ids": [
+          "NEX-TEAM-PAY"
+        ],
+        "employee_ids": [
+          "NEX-EMP-002",
+          "NEX-EMP-003"
+        ]
+      }
+    },
+    {
+      "id": "NEX-CAT-003",
+      "source_id": "NEX-SRC-SERVICE_CATALOG",
+      "source_record_type": "SERVICE_CATALOG_ENTRY",
+      "author_employee_id": "NEX-EMP-003",
+      "created_at": "2026-10-23T09:00:00Z",
+      "revised_at": "2026-10-27T15:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "service_id": "NEX-SVC-REFUND_WORKER",
+      "service_display_name": "refund-worker",
+      "service_purpose": "Execute approved refunds asynchronously and account for their eventual provider outcomes.",
+      "business_capability": "Merchant refund execution with deduplication and bounded retry.",
+      "technical_responsibilities": [
+        "Consume refund-requests-v1 and prevent duplicate execution of one refund operation",
+        "Call gateway-routing-v2 with refund-specific transaction references",
+        "Record final or retryable outcome and emit refund-outcomes-v1"
+      ],
+      "ownership_references": {
+        "owning_project_id": "NEX-PRJ-PAY",
+        "owning_team_id": "NEX-TEAM-PAY",
+        "primary_owner_employee_id": "NEX-EMP-003",
+        "backup_owner_employee_id": "NEX-EMP-002",
+        "service_owner_assignment_ids": [
+          "NEX-SOA-005",
+          "NEX-SOA-006"
+        ]
+      },
+      "documented_upstream_dependencies": [
+        {
+          "dependency_id": "NEX-DEP-004",
+          "provider_service_id": "NEX-SVC-GATEWAY_ROUTER",
+          "dependency_category": "API_CALL",
+          "interaction_mode": "SYNCHRONOUS"
+        }
+      ],
+      "documented_downstream_consumers": [
+        {
+          "dependency_id": "NEX-DEP-003",
+          "consumer_service_id": "NEX-SVC-PAYMENT_API",
+          "dependency_category": "EVENT_STREAM"
+        }
+      ],
+      "dependency_semantics": "7A source_service_id -> target_service_id is preserved without inversion; the two publisher-to-consumer prose discrepancies (NEX-DEP-003 and NEX-DEP-008) are not corrected here.",
+      "declared_relationship_status": "SOURCE_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "exposed_interfaces": [
+        {
+          "name": "refund-requests-v1",
+          "kind": "INBOUND_EVENTS",
+          "protocol": "NATS"
+        },
+        {
+          "name": "refund-outcomes-v1",
+          "kind": "OUTBOUND_EVENTS",
+          "protocol": "NATS"
+        }
+      ],
+      "linked_contract_ids": [],
+      "produced_events": [
+        "refund-outcomes-v1"
+      ],
+      "consumed_events": [
+        "refund-requests-v1"
+      ],
+      "technology_runtime": "Go 1.24 / NATS / PostgreSQL",
+      "primary_technologies": [
+        "Go 1.24",
+        "NATS",
+        "PostgreSQL"
+      ],
+      "current_service_version_as_declared": "2.8.3",
+      "current_service_version_released_at": "2026-10-08T09:00:00Z",
+      "operational_characteristics": [
+        "NATS delivery can repeat and is processed using a stable refund_request_id",
+        "An accepted worker job is not proof of a completed gateway refund",
+        "Backoff and terminal status prevent unbounded replay"
+      ],
+      "critical_integration_assumptions": [
+        "payment-api initiates an authorized refund job",
+        "gateway-router preserves refund idempotency in its provider operation",
+        "Stage 7A NEX-DEP-003 event-flow prose conflicts with its consumer-to-provider edge convention; do not flip the canonical edge"
+      ],
+      "documentation_references": [
+        "NEX-DOC-002",
+        "NEX-DOC-008"
+      ],
+      "entity_references": {
+        "project_ids": [
+          "NEX-PRJ-PAY"
+        ],
+        "service_ids": [
+          "NEX-SVC-REFUND_WORKER",
+          "NEX-SVC-GATEWAY_ROUTER",
+          "NEX-SVC-PAYMENT_API"
+        ],
+        "team_ids": [
+          "NEX-TEAM-PAY"
+        ],
+        "employee_ids": [
+          "NEX-EMP-003",
+          "NEX-EMP-002"
+        ]
+      }
+    },
+    {
+      "id": "NEX-CAT-004",
+      "source_id": "NEX-SRC-SERVICE_CATALOG",
+      "source_record_type": "SERVICE_CATALOG_ENTRY",
+      "author_employee_id": "NEX-EMP-004",
+      "created_at": "2026-10-23T09:00:00Z",
+      "revised_at": "2026-10-27T15:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "service_id": "NEX-SVC-CHECKOUT_SERVICE",
+      "service_display_name": "checkout-service",
+      "service_purpose": "Coordinate a shopper's temporary checkout context, payment intent and order confirmation.",
+      "business_capability": "Checkout session creation and confirmation.",
+      "technical_responsibilities": [
+        "Validate merchant request context and maintain expiring Redis checkout sessions",
+        "Create or retrieve payment intents through payment-api",
+        "Invoke order-api to record confirmed orders using stable checkout/order correlations"
+      ],
+      "ownership_references": {
+        "owning_project_id": "NEX-PRJ-COM",
+        "owning_team_id": "NEX-TEAM-COM",
+        "primary_owner_employee_id": "NEX-EMP-004",
+        "backup_owner_employee_id": "NEX-EMP-005",
+        "service_owner_assignment_ids": [
+          "NEX-SOA-007",
+          "NEX-SOA-008"
+        ]
+      },
+      "documented_upstream_dependencies": [
+        {
+          "dependency_id": "NEX-DEP-005",
+          "provider_service_id": "NEX-SVC-PAYMENT_API",
+          "dependency_category": "API_CALL",
+          "interaction_mode": "SYNCHRONOUS"
+        },
+        {
+          "dependency_id": "NEX-DEP-006",
+          "provider_service_id": "NEX-SVC-ORDER_API",
+          "dependency_category": "API_CALL",
+          "interaction_mode": "SYNCHRONOUS"
+        },
+        {
+          "dependency_id": "NEX-DEP-007",
+          "provider_service_id": "NEX-SVC-TOKEN_VALIDATOR",
+          "dependency_category": "API_CALL",
+          "interaction_mode": "SYNCHRONOUS"
+        },
+        {
+          "dependency_id": "NEX-DEP-017",
+          "provider_service_id": "NEX-SVC-DEPLOYMENT_PLATFORM",
+          "dependency_category": "PLATFORM_DEPLOYMENT",
+          "interaction_mode": "OPERATIONAL"
+        }
+      ],
+      "documented_downstream_consumers": [],
+      "dependency_semantics": "7A source_service_id -> target_service_id is preserved without inversion; the two publisher-to-consumer prose discrepancies (NEX-DEP-003 and NEX-DEP-008) are not corrected here.",
+      "declared_relationship_status": "SOURCE_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "exposed_interfaces": [
+        {
+          "name": "checkout-v2",
+          "kind": "INBOUND_REST",
+          "protocol": "HTTPS/JSON"
+        },
+        {
+          "name": "checkout-session-cache",
+          "kind": "STATE_STORE",
+          "protocol": "Redis"
+        }
+      ],
+      "linked_contract_ids": [
+        "NEX-IFC-005"
+      ],
+      "produced_events": [],
+      "consumed_events": [],
+      "technology_runtime": "PHP 8.3 / Redis 7 / REST",
+      "primary_technologies": [
+        "PHP 8.3",
+        "Redis 7",
+        "REST"
+      ],
+      "current_service_version_as_declared": "5.6.1",
+      "current_service_version_released_at": "2026-10-22T09:00:00Z",
+      "operational_characteristics": [
+        "Redis sessions are short-lived coordination state, not the order ledger",
+        "Payment timeout is treated as indeterminate rather than a definitive failure",
+        "Checkout client replay must avoid duplicate payment and order creation"
+      ],
+      "critical_integration_assumptions": [
+        "Order commit is not equivalent to successful payment authorization",
+        "token-validator checks the incoming identity assertion",
+        "Any changed merchant-payments-v1 response must be checked against checkout transitions"
+      ],
+      "documentation_references": [
+        "NEX-DOC-003",
+        "NEX-DOC-008",
+        "NEX-DOC-009"
+      ],
+      "entity_references": {
+        "project_ids": [
+          "NEX-PRJ-COM"
+        ],
+        "service_ids": [
+          "NEX-SVC-CHECKOUT_SERVICE",
+          "NEX-SVC-PAYMENT_API",
+          "NEX-SVC-ORDER_API",
+          "NEX-SVC-TOKEN_VALIDATOR",
+          "NEX-SVC-DEPLOYMENT_PLATFORM"
+        ],
+        "team_ids": [
+          "NEX-TEAM-COM"
+        ],
+        "employee_ids": [
+          "NEX-EMP-004",
+          "NEX-EMP-005"
+        ]
+      }
+    },
+    {
+      "id": "NEX-CAT-005",
+      "source_id": "NEX-SRC-SERVICE_CATALOG",
+      "source_record_type": "SERVICE_CATALOG_ENTRY",
+      "author_employee_id": "NEX-EMP-004",
+      "created_at": "2026-10-23T09:00:00Z",
+      "revised_at": "2026-10-27T15:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "service_id": "NEX-SVC-ORDER_API",
+      "service_display_name": "order-api",
+      "service_purpose": "Maintain persistent commerce order state and publish business lifecycle changes.",
+      "business_capability": "Creation, transition and retrieval of merchant orders.",
+      "technical_responsibilities": [
+        "Validate order transition preconditions before writing MySQL state",
+        "Expose orders-v2 for checkout coordination",
+        "Publish order-events-v1 and commerce-notification-jobs to RabbitMQ"
+      ],
+      "ownership_references": {
+        "owning_project_id": "NEX-PRJ-COM",
+        "owning_team_id": "NEX-TEAM-COM",
+        "primary_owner_employee_id": "NEX-EMP-004",
+        "backup_owner_employee_id": "NEX-EMP-005",
+        "service_owner_assignment_ids": [
+          "NEX-SOA-009",
+          "NEX-SOA-010"
+        ]
+      },
+      "documented_upstream_dependencies": [
+        {
+          "dependency_id": "NEX-DEP-008",
+          "provider_service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+          "dependency_category": "EVENT_STREAM",
+          "interaction_mode": "ASYNCHRONOUS"
+        },
+        {
+          "dependency_id": "NEX-DEP-021",
+          "provider_service_id": "NEX-SVC-OBSERVABILITY_PLATFORM",
+          "dependency_category": "PLATFORM_TELEMETRY",
+          "interaction_mode": "OPERATIONAL"
+        }
+      ],
+      "documented_downstream_consumers": [
+        {
+          "dependency_id": "NEX-DEP-006",
+          "consumer_service_id": "NEX-SVC-CHECKOUT_SERVICE",
+          "dependency_category": "API_CALL"
+        },
+        {
+          "dependency_id": "NEX-DEP-012",
+          "consumer_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "dependency_category": "EVENT_STREAM"
+        }
+      ],
+      "dependency_semantics": "7A source_service_id -> target_service_id is preserved without inversion; the two publisher-to-consumer prose discrepancies (NEX-DEP-003 and NEX-DEP-008) are not corrected here.",
+      "declared_relationship_status": "SOURCE_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "exposed_interfaces": [
+        {
+          "name": "orders-v2",
+          "kind": "INBOUND_REST",
+          "protocol": "HTTPS/JSON"
+        },
+        {
+          "name": "order-events-v1",
+          "kind": "OUTBOUND_EVENTS",
+          "protocol": "RabbitMQ"
+        }
+      ],
+      "linked_contract_ids": [
+        "NEX-IFC-006",
+        "NEX-IFC-007",
+        "NEX-IFC-008"
+      ],
+      "produced_events": [
+        "order-events-v1",
+        "commerce-notification-jobs"
+      ],
+      "consumed_events": [],
+      "technology_runtime": "PHP 8.3 / MySQL 8 / RabbitMQ",
+      "primary_technologies": [
+        "PHP 8.3",
+        "MySQL 8",
+        "RabbitMQ"
+      ],
+      "current_service_version_as_declared": "4.3.0",
+      "current_service_version_released_at": "2026-10-19T09:00:00Z",
+      "operational_characteristics": [
+        "Order state and event publication require retry-safe correlation",
+        "The order identifier remains stable across allowed lifecycle transitions",
+        "Event delivery may be delayed or redelivered after persistence"
+      ],
+      "critical_integration_assumptions": [
+        "checkout-service supplies a stable checkout and payment reference",
+        "event-ingestor processes order change events independently of webhook delivery",
+        "NEX-DEP-008 describes publisher-to-worker event flow contrary to the default 7A dependency convention"
+      ],
+      "documentation_references": [
+        "NEX-DOC-003",
+        "NEX-DOC-005",
+        "NEX-DOC-008"
+      ],
+      "entity_references": {
+        "project_ids": [
+          "NEX-PRJ-COM"
+        ],
+        "service_ids": [
+          "NEX-SVC-ORDER_API",
+          "NEX-SVC-WEBHOOK_CONSUMER",
+          "NEX-SVC-OBSERVABILITY_PLATFORM",
+          "NEX-SVC-CHECKOUT_SERVICE",
+          "NEX-SVC-EVENT_INGESTOR"
+        ],
+        "team_ids": [
+          "NEX-TEAM-COM"
+        ],
+        "employee_ids": [
+          "NEX-EMP-004",
+          "NEX-EMP-005"
+        ]
+      }
+    },
+    {
+      "id": "NEX-CAT-006",
+      "source_id": "NEX-SRC-SERVICE_CATALOG",
+      "source_record_type": "SERVICE_CATALOG_ENTRY",
+      "author_employee_id": "NEX-EMP-005",
+      "created_at": "2026-10-23T09:00:00Z",
+      "revised_at": "2026-10-27T15:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+      "service_display_name": "webhook-consumer",
+      "service_purpose": "Deliver subscribed merchant notifications without blocking order state changes.",
+      "business_capability": "Signed outbound merchant order webhooks with delivery accounting.",
+      "technical_responsibilities": [
+        "Consume commerce-notification-jobs from RabbitMQ",
+        "Serialize merchant-webhooks-v1 and apply an outbound request signature",
+        "Track attempts and schedule retries on transient transport outcomes"
+      ],
+      "ownership_references": {
+        "owning_project_id": "NEX-PRJ-COM",
+        "owning_team_id": "NEX-TEAM-COM",
+        "primary_owner_employee_id": "NEX-EMP-005",
+        "backup_owner_employee_id": "NEX-EMP-004",
+        "service_owner_assignment_ids": [
+          "NEX-SOA-011",
+          "NEX-SOA-012"
+        ]
+      },
+      "documented_upstream_dependencies": [],
+      "documented_downstream_consumers": [
+        {
+          "dependency_id": "NEX-DEP-008",
+          "consumer_service_id": "NEX-SVC-ORDER_API",
+          "dependency_category": "EVENT_STREAM"
+        }
+      ],
+      "dependency_semantics": "7A source_service_id -> target_service_id is preserved without inversion; the two publisher-to-consumer prose discrepancies (NEX-DEP-003 and NEX-DEP-008) are not corrected here.",
+      "declared_relationship_status": "SOURCE_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "exposed_interfaces": [
+        {
+          "name": "commerce-notification-jobs",
+          "kind": "INBOUND_EVENTS",
+          "protocol": "RabbitMQ"
+        },
+        {
+          "name": "merchant-webhooks-v1",
+          "kind": "OUTBOUND_WEBHOOK",
+          "protocol": "HTTPS/JSON"
+        }
+      ],
+      "linked_contract_ids": [],
+      "produced_events": [],
+      "consumed_events": [
+        "commerce-notification-jobs"
+      ],
+      "technology_runtime": "PHP 8.3 / RabbitMQ / Redis",
+      "primary_technologies": [
+        "PHP 8.3",
+        "RabbitMQ",
+        "Redis"
+      ],
+      "current_service_version_as_declared": "3.4.2",
+      "current_service_version_released_at": "2026-09-30T09:00:00Z",
+      "operational_characteristics": [
+        "At-least-once delivery requires receivers to deduplicate by event_id",
+        "Delivery acknowledgement is independent of recipient processing success",
+        "Retry windows are bounded, and merchant callback addresses are not exposed in shared data"
+      ],
+      "critical_integration_assumptions": [
+        "Order publication carries immutable order/event correlation identifiers",
+        "Signing secrets are provided only by restricted secret management, not the catalog",
+        "There is no evidenced direct write access from this worker to order-api"
+      ],
+      "documentation_references": [
+        "NEX-DOC-003",
+        "NEX-DOC-008"
+      ],
+      "entity_references": {
+        "project_ids": [
+          "NEX-PRJ-COM"
+        ],
+        "service_ids": [
+          "NEX-SVC-WEBHOOK_CONSUMER",
+          "NEX-SVC-ORDER_API"
+        ],
+        "team_ids": [
+          "NEX-TEAM-COM"
+        ],
+        "employee_ids": [
+          "NEX-EMP-005",
+          "NEX-EMP-004"
+        ]
+      }
+    },
+    {
+      "id": "NEX-CAT-007",
+      "source_id": "NEX-SRC-SERVICE_CATALOG",
+      "source_record_type": "SERVICE_CATALOG_ENTRY",
+      "author_employee_id": "NEX-EMP-006",
+      "created_at": "2026-10-23T09:00:00Z",
+      "revised_at": "2026-10-27T15:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "service_id": "NEX-SVC-IDENTITY_API",
+      "service_display_name": "identity-api",
+      "service_purpose": "Issue enterprise identity assertions and publish public signing-key material.",
+      "business_capability": "Service principal lifecycle, token issuance and key discovery.",
+      "technical_responsibilities": [
+        "Maintain identity records in PostgreSQL and offer identity-v2",
+        "Issue signed scoped service assertions",
+        "Expose public-jwks with overlapping verification keys during rotation"
+      ],
+      "ownership_references": {
+        "owning_project_id": "NEX-PRJ-ID",
+        "owning_team_id": "NEX-TEAM-ID",
+        "primary_owner_employee_id": "NEX-EMP-006",
+        "backup_owner_employee_id": "NEX-EMP-007",
+        "service_owner_assignment_ids": [
+          "NEX-SOA-013",
+          "NEX-SOA-014"
+        ]
+      },
+      "documented_upstream_dependencies": [
+        {
+          "dependency_id": "NEX-DEP-009",
+          "provider_service_id": "NEX-SVC-POLICY_SERVICE",
+          "dependency_category": "API_CALL",
+          "interaction_mode": "SYNCHRONOUS"
+        },
+        {
+          "dependency_id": "NEX-DEP-018",
+          "provider_service_id": "NEX-SVC-DEPLOYMENT_PLATFORM",
+          "dependency_category": "PLATFORM_DEPLOYMENT",
+          "interaction_mode": "OPERATIONAL"
+        },
+        {
+          "dependency_id": "NEX-DEP-022",
+          "provider_service_id": "NEX-SVC-OBSERVABILITY_PLATFORM",
+          "dependency_category": "PLATFORM_TELEMETRY",
+          "interaction_mode": "OPERATIONAL"
+        }
+      ],
+      "documented_downstream_consumers": [
+        {
+          "dependency_id": "NEX-DEP-010",
+          "consumer_service_id": "NEX-SVC-TOKEN_VALIDATOR",
+          "dependency_category": "CONFIG_FETCH"
+        }
+      ],
+      "dependency_semantics": "7A source_service_id -> target_service_id is preserved without inversion; the two publisher-to-consumer prose discrepancies (NEX-DEP-003 and NEX-DEP-008) are not corrected here.",
+      "declared_relationship_status": "SOURCE_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "exposed_interfaces": [
+        {
+          "name": "identity-v2",
+          "kind": "INBOUND_REST",
+          "protocol": "HTTPS/JSON"
+        },
+        {
+          "name": "public-jwks",
+          "kind": "OUTBOUND_PUBLIC_KEYS",
+          "protocol": "HTTPS/JWKS"
+        }
+      ],
+      "linked_contract_ids": [
+        "NEX-IFC-009",
+        "NEX-IFC-010"
+      ],
+      "produced_events": [],
+      "consumed_events": [],
+      "technology_runtime": "Java 21 / Spring Boot / PostgreSQL 16",
+      "primary_technologies": [
+        "Java 21",
+        "Spring Boot",
+        "PostgreSQL 16"
+      ],
+      "current_service_version_as_declared": "4.7.0",
+      "current_service_version_released_at": "2026-10-13T09:00:00Z",
+      "operational_characteristics": [
+        "Signing key changes need a validator cache overlap window",
+        "Published JWKS contains only public key components",
+        "Protected identity mutations request policy-service decisions"
+      ],
+      "critical_integration_assumptions": [
+        "token-validator validates signed material using explicitly trusted issuer and JWKS",
+        "Identity authentication is not equivalent to authorization for a business resource",
+        "Operational telemetry from Identity omits tokens and personal assertions"
+      ],
+      "documentation_references": [
+        "NEX-DOC-004",
+        "NEX-DOC-008",
+        "NEX-DOC-009"
+      ],
+      "entity_references": {
+        "project_ids": [
+          "NEX-PRJ-ID"
+        ],
+        "service_ids": [
+          "NEX-SVC-IDENTITY_API",
+          "NEX-SVC-POLICY_SERVICE",
+          "NEX-SVC-DEPLOYMENT_PLATFORM",
+          "NEX-SVC-OBSERVABILITY_PLATFORM",
+          "NEX-SVC-TOKEN_VALIDATOR"
+        ],
+        "team_ids": [
+          "NEX-TEAM-ID"
+        ],
+        "employee_ids": [
+          "NEX-EMP-006",
+          "NEX-EMP-007"
+        ]
+      }
+    },
+    {
+      "id": "NEX-CAT-008",
+      "source_id": "NEX-SRC-SERVICE_CATALOG",
+      "source_record_type": "SERVICE_CATALOG_ENTRY",
+      "author_employee_id": "NEX-EMP-007",
+      "created_at": "2026-10-23T09:00:00Z",
+      "revised_at": "2026-10-27T15:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "service_id": "NEX-SVC-TOKEN_VALIDATOR",
+      "service_display_name": "token-validator",
+      "service_purpose": "Provide a common identity assertion verification boundary to product services.",
+      "business_capability": "Signature, issuer, audience and validity checking for protected APIs.",
+      "technical_responsibilities": [
+        "Expose token-validation-v1 with a bounded verification decision",
+        "Cache and periodically refresh identity-api public-jwks",
+        "Apply deterministic clock-skew, algorithm and audience checks"
+      ],
+      "ownership_references": {
+        "owning_project_id": "NEX-PRJ-ID",
+        "owning_team_id": "NEX-TEAM-ID",
+        "primary_owner_employee_id": "NEX-EMP-007",
+        "backup_owner_employee_id": "NEX-EMP-006",
+        "service_owner_assignment_ids": [
+          "NEX-SOA-015",
+          "NEX-SOA-016"
+        ]
+      },
+      "documented_upstream_dependencies": [
+        {
+          "dependency_id": "NEX-DEP-010",
+          "provider_service_id": "NEX-SVC-IDENTITY_API",
+          "dependency_category": "CONFIG_FETCH",
+          "interaction_mode": "ASYNCHRONOUS"
+        }
+      ],
+      "documented_downstream_consumers": [
+        {
+          "dependency_id": "NEX-DEP-002",
+          "consumer_service_id": "NEX-SVC-PAYMENT_API",
+          "dependency_category": "API_CALL"
+        },
+        {
+          "dependency_id": "NEX-DEP-007",
+          "consumer_service_id": "NEX-SVC-CHECKOUT_SERVICE",
+          "dependency_category": "API_CALL"
+        }
+      ],
+      "dependency_semantics": "7A source_service_id -> target_service_id is preserved without inversion; the two publisher-to-consumer prose discrepancies (NEX-DEP-003 and NEX-DEP-008) are not corrected here.",
+      "declared_relationship_status": "SOURCE_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "exposed_interfaces": [
+        {
+          "name": "token-validation-v1",
+          "kind": "INBOUND_REST",
+          "protocol": "HTTPS/JSON"
+        },
+        {
+          "name": "jwks-refresh",
+          "kind": "OUTBOUND_CONFIG_FETCH",
+          "protocol": "HTTPS/JWKS"
+        }
+      ],
+      "linked_contract_ids": [
+        "NEX-IFC-011"
+      ],
+      "produced_events": [],
+      "consumed_events": [],
+      "technology_runtime": "Java 21 / Spring Boot",
+      "primary_technologies": [
+        "Java 21",
+        "Spring Boot"
+      ],
+      "current_service_version_as_declared": "3.2.4",
+      "current_service_version_released_at": "2026-10-07T09:00:00Z",
+      "operational_characteristics": [
+        "JWKS rotation requires old/new key overlap rather than immediate cache invalidation",
+        "An expired or malformed assertion is rejected before product business processing",
+        "Validator should not store raw tokens in shared diagnostic output"
+      ],
+      "critical_integration_assumptions": [
+        "The identity-api issuer and keys remain discoverable",
+        "API callers still perform their business-specific authorization checks",
+        "A validation success is not a policy-service allow decision"
+      ],
+      "documentation_references": [
+        "NEX-DOC-004",
+        "NEX-DOC-008"
+      ],
+      "entity_references": {
+        "project_ids": [
+          "NEX-PRJ-ID"
+        ],
+        "service_ids": [
+          "NEX-SVC-TOKEN_VALIDATOR",
+          "NEX-SVC-IDENTITY_API",
+          "NEX-SVC-PAYMENT_API",
+          "NEX-SVC-CHECKOUT_SERVICE"
+        ],
+        "team_ids": [
+          "NEX-TEAM-ID"
+        ],
+        "employee_ids": [
+          "NEX-EMP-007",
+          "NEX-EMP-006"
+        ]
+      }
+    },
+    {
+      "id": "NEX-CAT-009",
+      "source_id": "NEX-SRC-SERVICE_CATALOG",
+      "source_record_type": "SERVICE_CATALOG_ENTRY",
+      "author_employee_id": "NEX-EMP-006",
+      "created_at": "2026-10-23T09:00:00Z",
+      "revised_at": "2026-10-27T15:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "service_id": "NEX-SVC-POLICY_SERVICE",
+      "service_display_name": "policy-service",
+      "service_purpose": "Return scoped, explainable authorization decisions for an identified action and resource.",
+      "business_capability": "Central policy evaluation for protected identity and reporting functions.",
+      "technical_responsibilities": [
+        "Interpret explicit principal/action/resource inputs",
+        "Evaluate published policy revision and return allow/deny with evaluation ID",
+        "Maintain policy definitions and versions in PostgreSQL"
+      ],
+      "ownership_references": {
+        "owning_project_id": "NEX-PRJ-ID",
+        "owning_team_id": "NEX-TEAM-ID",
+        "primary_owner_employee_id": "NEX-EMP-006",
+        "backup_owner_employee_id": "NEX-EMP-007",
+        "service_owner_assignment_ids": [
+          "NEX-SOA-017",
+          "NEX-SOA-018"
+        ]
+      },
+      "documented_upstream_dependencies": [],
+      "documented_downstream_consumers": [
+        {
+          "dependency_id": "NEX-DEP-009",
+          "consumer_service_id": "NEX-SVC-IDENTITY_API",
+          "dependency_category": "API_CALL"
+        },
+        {
+          "dependency_id": "NEX-DEP-015",
+          "consumer_service_id": "NEX-SVC-REPORTING_API",
+          "dependency_category": "API_CALL"
+        }
+      ],
+      "dependency_semantics": "7A source_service_id -> target_service_id is preserved without inversion; the two publisher-to-consumer prose discrepancies (NEX-DEP-003 and NEX-DEP-008) are not corrected here.",
+      "declared_relationship_status": "SOURCE_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "exposed_interfaces": [
+        {
+          "name": "authorization-decisions-v1",
+          "kind": "INBOUND_REST",
+          "protocol": "HTTPS/JSON"
+        }
+      ],
+      "linked_contract_ids": [
+        "NEX-IFC-012"
+      ],
+      "produced_events": [],
+      "consumed_events": [],
+      "technology_runtime": "Java 21 / Spring Boot / PostgreSQL 16",
+      "primary_technologies": [
+        "Java 21",
+        "Spring Boot",
+        "PostgreSQL 16"
+      ],
+      "current_service_version_as_declared": "2.9.0",
+      "current_service_version_released_at": "2026-10-11T09:00:00Z",
+      "operational_characteristics": [
+        "Default missing policy context to denial for protected functions",
+        "Record the policy revision with the decision outcome",
+        "Ensure callers do not confuse token signature validity with resource authorization"
+      ],
+      "critical_integration_assumptions": [
+        "identity-api and reporting-api provide authenticated and correctly scoped principals",
+        "Decisions are request-context specific",
+        "No company-wide NODUS permissions are established by this service contract"
+      ],
+      "documentation_references": [
+        "NEX-DOC-004",
+        "NEX-DOC-007",
+        "NEX-DOC-008"
+      ],
+      "entity_references": {
+        "project_ids": [
+          "NEX-PRJ-ID"
+        ],
+        "service_ids": [
+          "NEX-SVC-POLICY_SERVICE",
+          "NEX-SVC-IDENTITY_API",
+          "NEX-SVC-REPORTING_API"
+        ],
+        "team_ids": [
+          "NEX-TEAM-ID"
+        ],
+        "employee_ids": [
+          "NEX-EMP-006",
+          "NEX-EMP-007"
+        ]
+      }
+    },
+    {
+      "id": "NEX-CAT-010",
+      "source_id": "NEX-SRC-SERVICE_CATALOG",
+      "source_record_type": "SERVICE_CATALOG_ENTRY",
+      "author_employee_id": "NEX-EMP-008",
+      "created_at": "2026-10-23T09:00:00Z",
+      "revised_at": "2026-10-27T15:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "service_id": "NEX-SVC-EVENT_INGESTOR",
+      "service_display_name": "event-ingestor",
+      "service_purpose": "Validate commercial event contracts before durable analytics staging.",
+      "business_capability": "Payment and order event ingestion into governed analytical storage.",
+      "technical_responsibilities": [
+        "Consume payment-lifecycle-events-v2 from NATS and order-events-v1 from RabbitMQ",
+        "Check schema versions, producer identity and event_id deduplication",
+        "Write staged-events-v1 with separate occurred and ingested timestamps"
+      ],
+      "ownership_references": {
+        "owning_project_id": "NEX-PRJ-DATA",
+        "owning_team_id": "NEX-TEAM-DATA",
+        "primary_owner_employee_id": "NEX-EMP-008",
+        "backup_owner_employee_id": "NEX-EMP-009",
+        "service_owner_assignment_ids": [
+          "NEX-SOA-019",
+          "NEX-SOA-020"
+        ]
+      },
+      "documented_upstream_dependencies": [
+        {
+          "dependency_id": "NEX-DEP-011",
+          "provider_service_id": "NEX-SVC-PAYMENT_API",
+          "dependency_category": "EVENT_STREAM",
+          "interaction_mode": "ASYNCHRONOUS"
+        },
+        {
+          "dependency_id": "NEX-DEP-012",
+          "provider_service_id": "NEX-SVC-ORDER_API",
+          "dependency_category": "EVENT_STREAM",
+          "interaction_mode": "ASYNCHRONOUS"
+        },
+        {
+          "dependency_id": "NEX-DEP-019",
+          "provider_service_id": "NEX-SVC-DEPLOYMENT_PLATFORM",
+          "dependency_category": "PLATFORM_DEPLOYMENT",
+          "interaction_mode": "OPERATIONAL"
+        }
+      ],
+      "documented_downstream_consumers": [
+        {
+          "dependency_id": "NEX-DEP-013",
+          "consumer_service_id": "NEX-SVC-METRICS_PIPELINE",
+          "dependency_category": "DATASET_READ"
+        }
+      ],
+      "dependency_semantics": "7A source_service_id -> target_service_id is preserved without inversion; the two publisher-to-consumer prose discrepancies (NEX-DEP-003 and NEX-DEP-008) are not corrected here.",
+      "declared_relationship_status": "SOURCE_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "exposed_interfaces": [
+        {
+          "name": "payment-events-v2",
+          "kind": "INBOUND_EVENTS",
+          "protocol": "NATS"
+        },
+        {
+          "name": "order-events-v1",
+          "kind": "INBOUND_EVENTS",
+          "protocol": "RabbitMQ"
+        },
+        {
+          "name": "staged-events-v1",
+          "kind": "OUTBOUND_DATASET",
+          "protocol": "PostgreSQL"
+        }
+      ],
+      "linked_contract_ids": [],
+      "produced_events": [],
+      "consumed_events": [
+        "payment-lifecycle-events-v2",
+        "order-events-v1"
+      ],
+      "technology_runtime": "Python 3.12 / NATS / PostgreSQL 16",
+      "primary_technologies": [
+        "Python 3.12",
+        "NATS",
+        "PostgreSQL 16"
+      ],
+      "current_service_version_as_declared": "3.8.1",
+      "current_service_version_released_at": "2026-10-04T09:00:00Z",
+      "operational_characteristics": [
+        "Repeated and out-of-order messages are normal integration conditions",
+        "Unknown contract versions are isolated for review, not silently coerced",
+        "Staging retention and reprocessing must follow published analytics constraints"
+      ],
+      "critical_integration_assumptions": [
+        "Producer business identifiers remain stable",
+        "Amounts arrive in agreed minor currency units",
+        "The stage store is not an authority for pay/order mutation"
+      ],
+      "documentation_references": [
+        "NEX-DOC-005",
+        "NEX-DOC-006",
+        "NEX-DOC-010"
+      ],
+      "entity_references": {
+        "project_ids": [
+          "NEX-PRJ-DATA"
+        ],
+        "service_ids": [
+          "NEX-SVC-EVENT_INGESTOR",
+          "NEX-SVC-PAYMENT_API",
+          "NEX-SVC-ORDER_API",
+          "NEX-SVC-DEPLOYMENT_PLATFORM",
+          "NEX-SVC-METRICS_PIPELINE"
+        ],
+        "team_ids": [
+          "NEX-TEAM-DATA"
+        ],
+        "employee_ids": [
+          "NEX-EMP-008",
+          "NEX-EMP-009"
+        ]
+      }
+    },
+    {
+      "id": "NEX-CAT-011",
+      "source_id": "NEX-SRC-SERVICE_CATALOG",
+      "source_record_type": "SERVICE_CATALOG_ENTRY",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-10-23T09:00:00Z",
+      "revised_at": "2026-10-27T15:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "service_id": "NEX-SVC-METRICS_PIPELINE",
+      "service_display_name": "metrics-pipeline",
+      "service_purpose": "Build versioned metric tables from validated event staging, preserving definitions over time.",
+      "business_capability": "Consistent operational and commercial KPI models.",
+      "technical_responsibilities": [
+        "Read staged-events-v1 in PostgreSQL",
+        "Apply incremental Python/SQL transformations and event-time rules",
+        "Publish metrics-model-v3 with data quality and reconciliation checks"
+      ],
+      "ownership_references": {
+        "owning_project_id": "NEX-PRJ-DATA",
+        "owning_team_id": "NEX-TEAM-DATA",
+        "primary_owner_employee_id": "NEX-EMP-009",
+        "backup_owner_employee_id": "NEX-EMP-008",
+        "service_owner_assignment_ids": [
+          "NEX-SOA-021",
+          "NEX-SOA-022"
+        ]
+      },
+      "documented_upstream_dependencies": [
+        {
+          "dependency_id": "NEX-DEP-013",
+          "provider_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "dependency_category": "DATASET_READ",
+          "interaction_mode": "ASYNCHRONOUS"
+        },
+        {
+          "dependency_id": "NEX-DEP-023",
+          "provider_service_id": "NEX-SVC-OBSERVABILITY_PLATFORM",
+          "dependency_category": "PLATFORM_TELEMETRY",
+          "interaction_mode": "OPERATIONAL"
+        }
+      ],
+      "documented_downstream_consumers": [
+        {
+          "dependency_id": "NEX-DEP-014",
+          "consumer_service_id": "NEX-SVC-REPORTING_API",
+          "dependency_category": "DATASET_READ"
+        }
+      ],
+      "dependency_semantics": "7A source_service_id -> target_service_id is preserved without inversion; the two publisher-to-consumer prose discrepancies (NEX-DEP-003 and NEX-DEP-008) are not corrected here.",
+      "declared_relationship_status": "SOURCE_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "exposed_interfaces": [
+        {
+          "name": "staged-events-v1",
+          "kind": "INBOUND_DATASET",
+          "protocol": "PostgreSQL"
+        },
+        {
+          "name": "metrics-model-v3",
+          "kind": "OUTBOUND_DATASET",
+          "protocol": "PostgreSQL"
+        }
+      ],
+      "linked_contract_ids": [],
+      "produced_events": [],
+      "consumed_events": [],
+      "technology_runtime": "Python 3.12 / SQL / PostgreSQL 16",
+      "primary_technologies": [
+        "Python 3.12",
+        "SQL",
+        "PostgreSQL 16"
+      ],
+      "current_service_version_as_declared": "3.5.0",
+      "current_service_version_released_at": "2026-10-16T09:00:00Z",
+      "operational_characteristics": [
+        "Model refreshes are scheduled and not equivalent to real-time transaction decisions",
+        "Late events may trigger controlled recomputation",
+        "Transformation errors use independent telemetry from the observability platform"
+      ],
+      "critical_integration_assumptions": [
+        "event-ingestor stages version-recognized records",
+        "Event identity and source timestamps survive transformation",
+        "Consumers must pin a compatible metrics model version"
+      ],
+      "documentation_references": [
+        "NEX-DOC-005",
+        "NEX-DOC-006",
+        "NEX-DOC-010"
+      ],
+      "entity_references": {
+        "project_ids": [
+          "NEX-PRJ-DATA"
+        ],
+        "service_ids": [
+          "NEX-SVC-METRICS_PIPELINE",
+          "NEX-SVC-EVENT_INGESTOR",
+          "NEX-SVC-OBSERVABILITY_PLATFORM",
+          "NEX-SVC-REPORTING_API"
+        ],
+        "team_ids": [
+          "NEX-TEAM-DATA"
+        ],
+        "employee_ids": [
+          "NEX-EMP-009",
+          "NEX-EMP-008"
+        ]
+      }
+    },
+    {
+      "id": "NEX-CAT-012",
+      "source_id": "NEX-SRC-SERVICE_CATALOG",
+      "source_record_type": "SERVICE_CATALOG_ENTRY",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-10-23T09:00:00Z",
+      "revised_at": "2026-10-27T15:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "service_id": "NEX-SVC-REPORTING_API",
+      "service_display_name": "reporting-api",
+      "service_purpose": "Serve access-scoped published business aggregates and scheduled summaries.",
+      "business_capability": "Reporting queries for approved merchants, teams and dashboards.",
+      "technical_responsibilities": [
+        "Read metrics-model-v3 through PostgreSQL",
+        "Enforce query range and pagination constraints",
+        "Request authorization-decisions-v1 before returning protected report results"
+      ],
+      "ownership_references": {
+        "owning_project_id": "NEX-PRJ-DATA",
+        "owning_team_id": "NEX-TEAM-DATA",
+        "primary_owner_employee_id": "NEX-EMP-009",
+        "backup_owner_employee_id": "NEX-EMP-008",
+        "service_owner_assignment_ids": [
+          "NEX-SOA-023",
+          "NEX-SOA-024"
+        ]
+      },
+      "documented_upstream_dependencies": [
+        {
+          "dependency_id": "NEX-DEP-014",
+          "provider_service_id": "NEX-SVC-METRICS_PIPELINE",
+          "dependency_category": "DATASET_READ",
+          "interaction_mode": "SYNCHRONOUS"
+        },
+        {
+          "dependency_id": "NEX-DEP-015",
+          "provider_service_id": "NEX-SVC-POLICY_SERVICE",
+          "dependency_category": "API_CALL",
+          "interaction_mode": "SYNCHRONOUS"
+        }
+      ],
+      "documented_downstream_consumers": [],
+      "dependency_semantics": "7A source_service_id -> target_service_id is preserved without inversion; the two publisher-to-consumer prose discrepancies (NEX-DEP-003 and NEX-DEP-008) are not corrected here.",
+      "declared_relationship_status": "SOURCE_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "exposed_interfaces": [
+        {
+          "name": "reports-v2",
+          "kind": "INBOUND_REST",
+          "protocol": "HTTPS/JSON"
+        },
+        {
+          "name": "metrics-model-v3",
+          "kind": "INBOUND_DATASET",
+          "protocol": "PostgreSQL"
+        }
+      ],
+      "linked_contract_ids": [
+        "NEX-IFC-013"
+      ],
+      "produced_events": [],
+      "consumed_events": [],
+      "technology_runtime": "Python 3.12 / FastAPI / PostgreSQL 16",
+      "primary_technologies": [
+        "Python 3.12",
+        "FastAPI",
+        "PostgreSQL 16"
+      ],
+      "current_service_version_as_declared": "2.7.2",
+      "current_service_version_released_at": "2026-09-28T09:00:00Z",
+      "operational_characteristics": [
+        "Published aggregates may lag source event time",
+        "Metrics must report units, calculation window and model revision",
+        "Response redaction occurs before serialization at the API boundary"
+      ],
+      "critical_integration_assumptions": [
+        "policy-service returns a scoped evaluation for the requesting principal",
+        "metrics-pipeline publishes compatible model views",
+        "Report availability is not proof that source event ingestion is complete"
+      ],
+      "documentation_references": [
+        "NEX-DOC-005",
+        "NEX-DOC-008",
+        "NEX-DOC-010"
+      ],
+      "entity_references": {
+        "project_ids": [
+          "NEX-PRJ-DATA"
+        ],
+        "service_ids": [
+          "NEX-SVC-REPORTING_API",
+          "NEX-SVC-METRICS_PIPELINE",
+          "NEX-SVC-POLICY_SERVICE"
+        ],
+        "team_ids": [
+          "NEX-TEAM-DATA"
+        ],
+        "employee_ids": [
+          "NEX-EMP-009",
+          "NEX-EMP-008"
+        ]
+      }
+    },
+    {
+      "id": "NEX-CAT-013",
+      "source_id": "NEX-SRC-SERVICE_CATALOG",
+      "source_record_type": "SERVICE_CATALOG_ENTRY",
+      "author_employee_id": "NEX-EMP-007",
+      "created_at": "2026-10-23T09:00:00Z",
+      "revised_at": "2026-10-27T15:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "service_id": "NEX-SVC-DEPLOYMENT_PLATFORM",
+      "service_display_name": "deployment-platform",
+      "service_purpose": "Promote immutable service build artifacts through shared, governed environments.",
+      "business_capability": "Repeatable company-wide build promotion and rollout orchestration.",
+      "technical_responsibilities": [
+        "Accept deployment-jobs-v1 for an artifact and target environment",
+        "Coordinate GitHub Actions, Argo CD and Kubernetes rollout progression",
+        "Publish deployment-status-v1 with artifact and rollout correlation"
+      ],
+      "ownership_references": {
+        "owning_project_id": null,
+        "owning_team_id": "NEX-TEAM-PLAT",
+        "primary_owner_employee_id": "NEX-EMP-007",
+        "backup_owner_employee_id": "NEX-EMP-003",
+        "service_owner_assignment_ids": [
+          "NEX-SOA-025",
+          "NEX-SOA-026"
+        ]
+      },
+      "documented_upstream_dependencies": [],
+      "documented_downstream_consumers": [
+        {
+          "dependency_id": "NEX-DEP-016",
+          "consumer_service_id": "NEX-SVC-PAYMENT_API",
+          "dependency_category": "PLATFORM_DEPLOYMENT"
+        },
+        {
+          "dependency_id": "NEX-DEP-017",
+          "consumer_service_id": "NEX-SVC-CHECKOUT_SERVICE",
+          "dependency_category": "PLATFORM_DEPLOYMENT"
+        },
+        {
+          "dependency_id": "NEX-DEP-018",
+          "consumer_service_id": "NEX-SVC-IDENTITY_API",
+          "dependency_category": "PLATFORM_DEPLOYMENT"
+        },
+        {
+          "dependency_id": "NEX-DEP-019",
+          "consumer_service_id": "NEX-SVC-EVENT_INGESTOR",
+          "dependency_category": "PLATFORM_DEPLOYMENT"
+        }
+      ],
+      "dependency_semantics": "7A source_service_id -> target_service_id is preserved without inversion; the two publisher-to-consumer prose discrepancies (NEX-DEP-003 and NEX-DEP-008) are not corrected here.",
+      "declared_relationship_status": "SOURCE_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "exposed_interfaces": [
+        {
+          "name": "deployment-jobs-v1",
+          "kind": "INBOUND_PLATFORM_API",
+          "protocol": "HTTPS/JSON"
+        },
+        {
+          "name": "deployment-status-v1",
+          "kind": "OUTBOUND_EVENTS",
+          "protocol": "Webhook"
+        }
+      ],
+      "linked_contract_ids": [
+        "NEX-IFC-014"
+      ],
+      "produced_events": [
+        "deployment-status-v1"
+      ],
+      "consumed_events": [],
+      "technology_runtime": "Kubernetes / Argo CD / GitHub Actions",
+      "primary_technologies": [
+        "Kubernetes",
+        "Argo CD",
+        "GitHub Actions"
+      ],
+      "current_service_version_as_declared": "4.10.0",
+      "current_service_version_released_at": "2026-10-23T09:00:00Z",
+      "operational_characteristics": [
+        "Promotion references an artifact digest rather than rebuilding mutable source",
+        "Deployment success is a rollout outcome, not a proof of service contract safety",
+        "Environment-specific secrets and runner configuration are restricted"
+      ],
+      "critical_integration_assumptions": [
+        "Product owners provide review and testing evidence",
+        "Operational enrollment exists only for the four explicitly declared Stage 7A dependencies",
+        "Rollback eligibility depends on migration and contract compatibility"
+      ],
+      "documentation_references": [
+        "NEX-DOC-006",
+        "NEX-DOC-009"
+      ],
+      "entity_references": {
+        "project_ids": [],
+        "service_ids": [
+          "NEX-SVC-DEPLOYMENT_PLATFORM",
+          "NEX-SVC-PAYMENT_API",
+          "NEX-SVC-CHECKOUT_SERVICE",
+          "NEX-SVC-IDENTITY_API",
+          "NEX-SVC-EVENT_INGESTOR"
+        ],
+        "team_ids": [
+          "NEX-TEAM-PLAT"
+        ],
+        "employee_ids": [
+          "NEX-EMP-007",
+          "NEX-EMP-003"
+        ]
+      }
+    },
+    {
+      "id": "NEX-CAT-014",
+      "source_id": "NEX-SRC-SERVICE_CATALOG",
+      "source_record_type": "SERVICE_CATALOG_ENTRY",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-10-23T09:00:00Z",
+      "revised_at": "2026-10-27T15:00:00Z",
+      "revision_number": 2,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "service_id": "NEX-SVC-OBSERVABILITY_PLATFORM",
+      "service_display_name": "observability-platform",
+      "service_purpose": "Aggregate service health telemetry and provide trace/metric visualization.",
+      "business_capability": "Cross-team monitoring, correlation and alert routing.",
+      "technical_responsibilities": [
+        "Receive OTLP/gRPC from declared instrumented services",
+        "Maintain Prometheus-compatible metrics and Grafana dashboards",
+        "Correlate traces and alert labels with canonical service IDs"
+      ],
+      "ownership_references": {
+        "owning_project_id": null,
+        "owning_team_id": "NEX-TEAM-PLAT",
+        "primary_owner_employee_id": "NEX-EMP-009",
+        "backup_owner_employee_id": "NEX-EMP-007",
+        "service_owner_assignment_ids": [
+          "NEX-SOA-027",
+          "NEX-SOA-028"
+        ]
+      },
+      "documented_upstream_dependencies": [],
+      "documented_downstream_consumers": [
+        {
+          "dependency_id": "NEX-DEP-020",
+          "consumer_service_id": "NEX-SVC-PAYMENT_API",
+          "dependency_category": "PLATFORM_TELEMETRY"
+        },
+        {
+          "dependency_id": "NEX-DEP-021",
+          "consumer_service_id": "NEX-SVC-ORDER_API",
+          "dependency_category": "PLATFORM_TELEMETRY"
+        },
+        {
+          "dependency_id": "NEX-DEP-022",
+          "consumer_service_id": "NEX-SVC-IDENTITY_API",
+          "dependency_category": "PLATFORM_TELEMETRY"
+        },
+        {
+          "dependency_id": "NEX-DEP-023",
+          "consumer_service_id": "NEX-SVC-METRICS_PIPELINE",
+          "dependency_category": "PLATFORM_TELEMETRY"
+        }
+      ],
+      "dependency_semantics": "7A source_service_id -> target_service_id is preserved without inversion; the two publisher-to-consumer prose discrepancies (NEX-DEP-003 and NEX-DEP-008) are not corrected here.",
+      "declared_relationship_status": "SOURCE_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "exposed_interfaces": [
+        {
+          "name": "telemetry-otlp-v1",
+          "kind": "INBOUND_TELEMETRY",
+          "protocol": "OTLP/gRPC"
+        },
+        {
+          "name": "dashboards-v1",
+          "kind": "INBOUND_UI",
+          "protocol": "HTTPS"
+        }
+      ],
+      "linked_contract_ids": [],
+      "produced_events": [],
+      "consumed_events": [],
+      "technology_runtime": "OpenTelemetry / Prometheus / Grafana",
+      "primary_technologies": [
+        "OpenTelemetry",
+        "Prometheus",
+        "Grafana"
+      ],
+      "current_service_version_as_declared": "4.2.1",
+      "current_service_version_released_at": "2026-10-20T09:00:00Z",
+      "operational_characteristics": [
+        "Telemetry is sampled or aggregated and cannot prove every transaction path",
+        "Metrics are scrubbed of customer payloads and bearer assertions",
+        "Monitored service list must not be extrapolated beyond source-declared edges"
+      ],
+      "critical_integration_assumptions": [
+        "Products emit bounded, schema-consistent telemetry labels",
+        "Operational dashboards differ from governed business reports",
+        "Alert ownership follows canonical service owner assignments"
+      ],
+      "documentation_references": [
+        "NEX-DOC-006",
+        "NEX-DOC-007",
+        "NEX-DOC-010"
+      ],
+      "entity_references": {
+        "project_ids": [],
+        "service_ids": [
+          "NEX-SVC-OBSERVABILITY_PLATFORM",
+          "NEX-SVC-PAYMENT_API",
+          "NEX-SVC-ORDER_API",
+          "NEX-SVC-IDENTITY_API",
+          "NEX-SVC-METRICS_PIPELINE"
+        ],
+        "team_ids": [
+          "NEX-TEAM-PLAT"
+        ],
+        "employee_ids": [
+          "NEX-EMP-009",
+          "NEX-EMP-007"
+        ]
+      }
+    }
+  ]
+}

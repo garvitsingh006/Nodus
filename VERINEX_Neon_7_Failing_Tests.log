@@ -1,0 +1,63 @@
+FFFFFFF                                                                  [100%]
+=================================== FAILURES ===================================
+____________ test_01_public_repository_can_be_checked_without_token ____________
+../../test_verinex_neon_acceptance.py:38: in test_01_public_repository_can_be_checked_without_token
+    assert GitHubAdapter(config()).health_check()['ok'], 'Public repo discovery should not require PAT'
+E   AssertionError: Public repo discovery should not require PAT
+E   assert False
+________________ test_02_health_check_rejects_unreachable_host _________________
+../../test_verinex_neon_acceptance.py:46: in test_02_health_check_rejects_unreachable_host
+    assert not GitHubAdapter(config()).health_check()['ok'], 'Health should exercise the remote GitHub API'
+E   AssertionError: Health should exercise the remote GitHub API
+E   assert not True
+___________ test_03_single_repository_fetch_uses_exact_repo_endpoint ___________
+../../test_verinex_neon_acceptance.py:59: in test_03_single_repository_fetch_uses_exact_repo_endpoint
+    assert any(path == '/repos/neondatabase/postgres-sample-dbs' for path, _ in calls), calls
+E   AssertionError: [('/orgs/neondatabase/repos', {'page': 1, 'per_page': 20})]
+E   assert False
+E    +  where False = any(<generator object test_03_single_repository_fetch_uses_exact_repo_endpoint.<locals>.<genexpr> at 0x7f36adc298a0>)
+________ test_04_filtered_pages_do_not_stop_before_matching_repository _________
+../../test_verinex_neon_acceptance.py:71: in test_04_filtered_pages_do_not_stop_before_matching_repository
+    assert page.has_more, 'Raw first page full: next page must not be dropped after post-filtering'
+E   AssertionError: Raw first page full: next page must not be dropped after post-filtering
+E   assert False
+E    +  where False = AdapterPage(records=[], next_cursor='2', has_more=False).has_more
+_______________ test_05_github_sql_file_maps_to_repo_and_dataset _______________
+../../test_verinex_neon_acceptance.py:79: in test_05_github_sql_file_maps_to_repo_and_dataset
+    assert len(normalized.entities) >= 2, 'At least repository and SQL-file/dataset entity expected'
+E   AssertionError: At least repository and SQL-file/dataset entity expected
+E   assert 0 >= 2
+E    +  where 0 = len([])
+E    +    where [] = NormalizedRecord(source_record_id='SRC-1', mapping_rule='github:sql_file', mapping_version='github-map-v1', entities=[...PE:sql_file'], trust_metadata={'trust_class': 'STANDARD', 'authoritative_domains': [], 'mapping_version': 'phase9-v1'}).entities
+_________ test_06_database_connector_health_requires_real_credentials __________
+../../test_verinex_neon_acceptance.py:89: in test_06_database_connector_health_requires_real_credentials
+    assert not DatabaseAdapter(cfg).health_check()['ok'], 'An env-var NAME is not a database connection'
+E   AssertionError: An env-var NAME is not a database connection
+E   assert not True
+________ test_07_sql_table_records_do_not_vanish_into_unmapped_warning _________
+../../test_verinex_neon_acceptance.py:97: in test_07_sql_table_records_do_not_vanish_into_unmapped_warning
+    assert norm.entities, f'Schema discovery record should create canonical entities; warnings={norm.warnings}'
+E   AssertionError: Schema discovery record should create canonical entities; warnings=['UNMAPPED_DATABASE_RECORD_TYPE:table']
+E   assert []
+E    +  where [] = NormalizedRecord(source_record_id='SRC-TBL', mapping_rule='database:table', mapping_version='database-map-v1', entitie..._TYPE:table'], trust_metadata={'trust_class': 'STANDARD', 'authoritative_domains': [], 'mapping_version': 'phase9-v1'}).entities
+=========================== short test summary info ============================
+FAILED ../../test_verinex_neon_acceptance.py::test_01_public_repository_can_be_checked_without_token - AssertionError: Public repo discovery should not require PAT
+assert False
+FAILED ../../test_verinex_neon_acceptance.py::test_02_health_check_rejects_unreachable_host - AssertionError: Health should exercise the remote GitHub API
+assert not True
+FAILED ../../test_verinex_neon_acceptance.py::test_03_single_repository_fetch_uses_exact_repo_endpoint - AssertionError: [('/orgs/neondatabase/repos', {'page': 1, 'per_page': 20})]
+assert False
+ +  where False = any(<generator object test_03_single_repository_fetch_uses_exact_repo_endpoint.<locals>.<genexpr> at 0x7f36adc298a0>)
+FAILED ../../test_verinex_neon_acceptance.py::test_04_filtered_pages_do_not_stop_before_matching_repository - AssertionError: Raw first page full: next page must not be dropped after post-filtering
+assert False
+ +  where False = AdapterPage(records=[], next_cursor='2', has_more=False).has_more
+FAILED ../../test_verinex_neon_acceptance.py::test_05_github_sql_file_maps_to_repo_and_dataset - AssertionError: At least repository and SQL-file/dataset entity expected
+assert 0 >= 2
+ +  where 0 = len([])
+ +    where [] = NormalizedRecord(source_record_id='SRC-1', mapping_rule='github:sql_file', mapping_version='github-map-v1', entities=[...PE:sql_file'], trust_metadata={'trust_class': 'STANDARD', 'authoritative_domains': [], 'mapping_version': 'phase9-v1'}).entities
+FAILED ../../test_verinex_neon_acceptance.py::test_06_database_connector_health_requires_real_credentials - AssertionError: An env-var NAME is not a database connection
+assert not True
+FAILED ../../test_verinex_neon_acceptance.py::test_07_sql_table_records_do_not_vanish_into_unmapped_warning - AssertionError: Schema discovery record should create canonical entities; warnings=['UNMAPPED_DATABASE_RECORD_TYPE:table']
+assert []
+ +  where [] = NormalizedRecord(source_record_id='SRC-TBL', mapping_rule='database:table', mapping_version='database-map-v1', entitie..._TYPE:table'], trust_metadata={'trust_class': 'STANDARD', 'authoritative_domains': [], 'mapping_version': 'phase9-v1'}).entities
+7 failed in 0.09s

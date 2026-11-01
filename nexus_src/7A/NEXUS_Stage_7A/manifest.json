@@ -1,0 +1,167 @@
+{
+  "dataset_name": "NEXUS Technologies — NODUS Stage 7A Company Foundation",
+  "dataset_version": "7A-1.0.0",
+  "reference_date": "2026-10-31",
+  "company_key": "nexus",
+  "description": "Fictional, normal-operating enterprise foundation; no scenario labels or findings.",
+  "entity_counts": {
+    "companies": 1,
+    "projects": 4,
+    "teams": 5,
+    "employees": 12,
+    "services": 14,
+    "roles": 3,
+    "demo_identities": 12,
+    "baseline_entitlements": 10,
+    "team_memberships": 15,
+    "project_assignments": 11,
+    "team_project_responsibilities": 8,
+    "service_project_ownerships": 12,
+    "service_team_ownerships": 14,
+    "service_owner_assignments": 28,
+    "declared_dependencies": 23
+  },
+  "file_inventory": [
+    {
+      "filename": "company.json",
+      "top_level_collections": [
+        "companies"
+      ]
+    },
+    {
+      "filename": "projects.json",
+      "top_level_collections": [
+        "projects"
+      ]
+    },
+    {
+      "filename": "teams.json",
+      "top_level_collections": [
+        "teams"
+      ]
+    },
+    {
+      "filename": "people.json",
+      "top_level_collections": [
+        "people"
+      ]
+    },
+    {
+      "filename": "services.json",
+      "top_level_collections": [
+        "services"
+      ]
+    },
+    {
+      "filename": "memberships.json",
+      "top_level_collections": [
+        "team_memberships",
+        "project_assignments",
+        "team_project_responsibilities",
+        "service_project_ownerships",
+        "service_team_ownerships"
+      ]
+    },
+    {
+      "filename": "service_ownership.json",
+      "top_level_collections": [
+        "service_owner_assignments"
+      ]
+    },
+    {
+      "filename": "declared_dependencies.json",
+      "top_level_collections": [
+        "declared_dependencies"
+      ]
+    },
+    {
+      "filename": "roles_and_demo_identities.json",
+      "top_level_collections": [
+        "roles",
+        "baseline_entitlements",
+        "demo_identities"
+      ]
+    },
+    {
+      "filename": "manifest.json",
+      "top_level_collections": [],
+      "description": "Top-level manifest metadata object rather than an entity collection"
+    }
+  ],
+  "intended_import_order": [
+    "company.json",
+    "projects.json",
+    "teams.json",
+    "people.json",
+    "services.json",
+    "memberships.json",
+    "service_ownership.json",
+    "declared_dependencies.json",
+    "roles_and_demo_identities.json",
+    "manifest.json"
+  ],
+  "schema_conventions": {
+    "format": "UTF-8 JSON",
+    "collection_wrapper": "Named top-level arrays for entity files",
+    "id_format": "Canonical company ID is nexus; all other record IDs have globally unique NEX- prefixes. References use stable IDs, never nested entities.",
+    "timestamps": "UTC ISO 8601 strings with Z; reference_date is an ISO 8601 calendar date",
+    "foreign_keys": "Fields ending in _id or _ids are references except stable record id and company_key",
+    "optional_values": "Use explicit null for absent owning_project_id or effective_to",
+    "relationship_direction": "For declared_dependencies, source_service_id is the dependent/consumer; target_service_id is the provider/upstream requirement. For event feeds, the consuming service depends on the declared event publisher.",
+    "owner_model": "Primary and backup service owners are repeated as IDs for catalog usability and mirrored in normalized service_owner_assignments",
+    "permission_model": "Membership/project assignment establishes eligibility only. Confidential resources require explicit resource grants in later stages. Demo tokens are non-secret selectors, not auth credentials."
+  },
+  "explicit_file_dependencies": {
+    "company.json": [],
+    "projects.json": [
+      "company.json"
+    ],
+    "teams.json": [
+      "company.json",
+      "projects.json",
+      "people.json"
+    ],
+    "people.json": [
+      "company.json",
+      "teams.json",
+      "projects.json"
+    ],
+    "services.json": [
+      "projects.json",
+      "teams.json",
+      "people.json"
+    ],
+    "memberships.json": [
+      "people.json",
+      "teams.json",
+      "projects.json",
+      "services.json"
+    ],
+    "service_ownership.json": [
+      "services.json",
+      "people.json"
+    ],
+    "declared_dependencies.json": [
+      "services.json"
+    ],
+    "roles_and_demo_identities.json": [
+      "people.json"
+    ],
+    "manifest.json": [
+      "company.json",
+      "projects.json",
+      "teams.json",
+      "people.json",
+      "services.json",
+      "memberships.json",
+      "service_ownership.json",
+      "declared_dependencies.json",
+      "roles_and_demo_identities.json"
+    ]
+  },
+  "import_notes": [
+    "Resolve the teams.json and people.json lead/member foreign-key cycle via deferred FK checks or a second relationship pass.",
+    "No database import, migration, schema DDL, NODUS authorization behavior, or agent workflow is provided.",
+    "Source-declared dependencies are catalog claims, not inferred or verified NODUS findings."
+  ]
+}

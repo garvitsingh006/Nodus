@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "required_capabilities": ["graph.read", "evidence.read"],
+  "compatible_tools": [
+    {"tool_id": "graph.revision", "version": "1.0.0"},
+    {"tool_id": "graph.entity_lookup", "version": "1.0.0"},
+    {"tool_id": "evidence.lookup", "version": "1.0.0"},
+    {"tool_id": "evidence.verify", "version": "1.0.0"},
+    {"tool_id": "evidence.conflicts", "version": "1.0.0"},
+    {"tool_id": "source.coverage", "version": "1.0.0"}
+  ],
+  "effect": "READ_ONLY",
+  "input_expectations": "entity_id identifying the graph entity whose claims should be verified.",
+  "output_expectations": "A verification outcome (SUPPORTED/UNSUPPORTED/CONFLICTING/INCOMPLETE/INACCESSIBLE) with evidence references, graph revision, and stated limitations."
+}

@@ -1,0 +1,119 @@
+{
+  "projects": [
+    {
+      "id": "NEX-PRJ-PAY",
+      "company_id": "nexus",
+      "code": "PAY",
+      "name": "NEXUS Pay",
+      "purpose": "Merchant payment orchestration with reliable authorization, gateway selection, and refunds.",
+      "business_responsibilities": [
+        "Accept merchant payment intents",
+        "Route transactions to contracted payment gateways",
+        "Track transaction outcomes",
+        "Coordinate refunds and retries"
+      ],
+      "technical_responsibilities": [
+        "Maintain Go API contracts and idempotency controls",
+        "Own PostgreSQL transaction state",
+        "Publish versioned payment events",
+        "Maintain gateway integration adapters"
+      ],
+      "primary_technology_stack": [
+        "Go",
+        "PostgreSQL",
+        "gRPC",
+        "REST",
+        "NATS"
+      ],
+      "owning_team_id": "NEX-TEAM-PAY",
+      "lifecycle_status": "ACTIVE",
+      "created_at": "2019-01-07T09:00:00Z"
+    },
+    {
+      "id": "NEX-PRJ-COM",
+      "company_id": "nexus",
+      "code": "COM",
+      "name": "NEXUS Commerce",
+      "purpose": "Composable merchant commerce APIs for checkout, order lifecycle, inventory coordination, and outbound webhooks.",
+      "business_responsibilities": [
+        "Manage checkout sessions",
+        "Create and update orders",
+        "Coordinate inventory reservations",
+        "Deliver merchant event notifications"
+      ],
+      "technical_responsibilities": [
+        "Maintain PHP APIs",
+        "Own MySQL order records",
+        "Use Redis for short-lived checkout state",
+        "Publish order events and webhook jobs"
+      ],
+      "primary_technology_stack": [
+        "PHP 8",
+        "MySQL",
+        "Redis",
+        "RabbitMQ",
+        "REST"
+      ],
+      "owning_team_id": "NEX-TEAM-COM",
+      "lifecycle_status": "ACTIVE",
+      "created_at": "2020-06-01T09:00:00Z"
+    },
+    {
+      "id": "NEX-PRJ-ID",
+      "company_id": "nexus",
+      "code": "ID",
+      "name": "NEXUS Identity",
+      "purpose": "Shared identity control plane for staff-facing and service-to-service authentication and access policy decisions.",
+      "business_responsibilities": [
+        "Authenticate enterprise clients",
+        "Issue and validate service identity material",
+        "Provide policy evaluation to internal products"
+      ],
+      "technical_responsibilities": [
+        "Maintain Java identity APIs",
+        "Own PostgreSQL identity and policy records",
+        "Rotate signed token keys",
+        "Publish stable policy decision contracts"
+      ],
+      "primary_technology_stack": [
+        "Java 21",
+        "Spring Boot",
+        "PostgreSQL",
+        "JWT/JWKS",
+        "REST"
+      ],
+      "owning_team_id": "NEX-TEAM-ID",
+      "lifecycle_status": "ACTIVE",
+      "created_at": "2019-09-02T09:00:00Z"
+    },
+    {
+      "id": "NEX-PRJ-DATA",
+      "company_id": "nexus",
+      "code": "DATA",
+      "name": "NEXUS Insights",
+      "purpose": "Operational and commercial analytics from governed payment and order event streams.",
+      "business_responsibilities": [
+        "Ingest payment and order event feeds",
+        "Provide transaction and commerce metrics",
+        "Generate scheduled enterprise reports",
+        "Support operational dashboards"
+      ],
+      "technical_responsibilities": [
+        "Maintain Python ingestion jobs",
+        "Own transformed PostgreSQL reporting models",
+        "Apply retention and schema checks",
+        "Serve reporting APIs"
+      ],
+      "primary_technology_stack": [
+        "Python 3.12",
+        "PostgreSQL",
+        "SQL",
+        "NATS",
+        "FastAPI"
+      ],
+      "owning_team_id": "NEX-TEAM-DATA",
+      "lifecycle_status": "ACTIVE",
+      "created_at": "2021-03-01T09:00:00Z"
+    }
+  ]
+}

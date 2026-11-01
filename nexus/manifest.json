@@ -1,0 +1,324 @@
+{
+  "classification_inheritance_rules": {
+    "administrative_sources": "Four 7D sources remain ADMINISTRATIVE_RECORDS, readable only by ADMIN",
+    "derived_answers": "Do not disclose restricted source metadata, relationships or content to unauthorized users even when linked through shared evidence",
+    "handoff": "ADMIN-only, no generated handoffs; narrow disclosure is not full source access",
+    "record_access_classification": "Inherited unchanged from source_id; evaluate historical grant scope and time independently",
+    "shared_flow_level": "High-level business data categories only; detailed restricted payloads not duplicated",
+    "source_registry": "Exactly 28 existing 7B/7C/7D sources"
+  },
+  "collection_record_counts": {
+    "access_entitlement_timeline": 42,
+    "component_version_timeline": 26,
+    "configuration_change_events": 24,
+    "contract_compatibility_timeline": 22,
+    "data_flow_evolution": 11,
+    "dependency_lifecycle_timeline": 27,
+    "deployment_state_intervals": 17,
+    "evidence_correction_events": 5,
+    "record_revision_transitions": 102,
+    "service_ownership_timeline": 39
+  },
+  "dataset_name": "NEXUS Technologies — Stage 7E: Historical Evidence, Temporal Relationships, and Change Evolution",
+  "dataset_version": "7E-1.0.0",
+  "file_inventory": [
+    {
+      "byte_count": 198997,
+      "collection": "record_revision_transitions",
+      "path": "record_revision_transitions.json",
+      "record_count": 102,
+      "sha256": "05891d3548e354145f7497e75ca0c9e5ec24053477bd8d9d6c9f3f90f0e85a87"
+    },
+    {
+      "byte_count": 43309,
+      "collection": "service_ownership_timeline",
+      "path": "service_ownership_timeline.json",
+      "record_count": 39,
+      "sha256": "96f35c3830e61410a2b83cfef727471c0ec24f6f9499be3f5a6842d5bd59baf5"
+    },
+    {
+      "byte_count": 36188,
+      "collection": "dependency_lifecycle_timeline",
+      "path": "dependency_lifecycle_timeline.json",
+      "record_count": 27,
+      "sha256": "955ee7a9ecb34575ce4cd3035f376443100d9c7be4e7c101737e327051ed7119"
+    },
+    {
+      "byte_count": 49545,
+      "collection": "contract_compatibility_timeline",
+      "path": "contract_compatibility_timeline.json",
+      "record_count": 22,
+      "sha256": "4f840e7593fcd52eb2d7cb8b66a7f8f583f240fa65ea904d2edb9e271fff3eb7"
+    },
+    {
+      "byte_count": 42270,
+      "collection": "configuration_change_events",
+      "path": "configuration_change_events.json",
+      "record_count": 24,
+      "sha256": "46ae2686ded361e97067c473d7f6f3e80f6ac0e3407d39c1b929072524eb3482"
+    },
+    {
+      "byte_count": 31105,
+      "collection": "deployment_state_intervals",
+      "path": "deployment_state_intervals.json",
+      "record_count": 17,
+      "sha256": "592c7eff80946b25b47ba43296f1fa63dfffd1236d9b73439e4a48925437edd5"
+    },
+    {
+      "byte_count": 168939,
+      "collection": "component_version_timeline",
+      "path": "component_version_timeline.json",
+      "record_count": 26,
+      "sha256": "5ad779b3c59c7193acf88f2b3afb15627d996bde7de0106192c041e750b87eae"
+    },
+    {
+      "byte_count": 18254,
+      "collection": "data_flow_evolution",
+      "path": "data_flow_evolution.json",
+      "record_count": 11,
+      "sha256": "c21be63e5e663479ee3fe4971d837e867c5714196d57afda8e3805eee56022b1"
+    },
+    {
+      "byte_count": 72439,
+      "collection": "access_entitlement_timeline",
+      "path": "access_entitlement_timeline.json",
+      "record_count": 42,
+      "sha256": "3de85534dd58c0f3cb880948e1234c9896ad96d203320557809cfbf577ec6367"
+    },
+    {
+      "byte_count": 12372,
+      "collection": "evidence_correction_events",
+      "path": "evidence_correction_events.json",
+      "record_count": 5,
+      "sha256": "79fb861ea06413e6dab03c717d1b51b230341544bd01866241e8805babc534b5"
+    },
+    {
+      "collection": "manifest",
+      "path": "manifest.json",
+      "record_count": 1,
+      "self_checksum_reason": "A JSON document cannot embed its own SHA-256 without an impossible self-reference; actual manifest digest is reported in the ZIP comment and delivery record.",
+      "sha256": null
+    }
+  ],
+  "id_namespace_conventions": {
+    "parent_reference_ids": "Existing NEX-* IDs are preserved; no 7A–7D IDs or records replaced.",
+    "stage7e": "NEX-REV-*, NEX-OWN-TL-*, NEX-OWN-HIST-*, NEX-OWN-CONTACT-*, NEX-DEP-TL-*, NEX-DEP-HIST-*, NEX-IFC-TL-*, NEX-CFG-*, NEX-DPLY-TL-*, NEX-CMP-*, NEX-FLOW-*, NEX-ACL-TL-*, NEX-CORR-*"
+  },
+  "known_parent_exceptions": [
+    {
+      "dependency_id": "NEX-DEP-003",
+      "rule": "Preserve 7A source/target exactly even if publisher direction differs"
+    },
+    {
+      "dependency_id": "NEX-DEP-008",
+      "rule": "Preserve 7A source/target exactly even if publisher direction differs"
+    }
+  ],
+  "limitations_and_unresolved_assumptions": [
+    "Pre-7C deployment periods are UNKNOWN; no production release was invented to bridge them.",
+    "Earlier 7B field wording, eight ownership responsibilities, four retired interactions, eight prior contract optional-field shapes, and twelve prior dependency versions are explicitly synthetic retrospective reconstructions, not independently confirmed production logs.",
+    "Config values are fictional non-secret Stage 7E manifest observations attributed to actual release windows; 7C did not itself include configuration manifests. Old config values are estimates when flagged.",
+    "Historical component versions lack an independent earlier lockfile, so historical artifacts are not evidence that those exact packages were deployed.",
+    "Eleven flow records identify documented relationships, not captured traffic payloads or a precomputed impact graph.",
+    "The manifest's own actual SHA-256 is carried in the ZIP comment and final delivery rather than recursively embedded within itself."
+  ],
+  "parent_archives": [
+    {
+      "file_name": "NEXUS_Stage_7A_7A-1.0.0(2).zip",
+      "sha256": "2a4d476b98f583ae0fa386d2d350a8ab71548f3f2694305446668c973d63576a",
+      "stage": "7A",
+      "verified_byte_for_byte_sha256": true
+    },
+    {
+      "file_name": "NEXUS_Stage_7B_7B-1.0.0(1).zip",
+      "sha256": "54e63c3b7a893290974879f132f568f120328410c6e47a026656f411491a1a6f",
+      "stage": "7B",
+      "verified_byte_for_byte_sha256": true
+    },
+    {
+      "file_name": "NEXUS_Stage_7C_7C-1.0.0.zip",
+      "sha256": "ff572fe56970cdcaa0e6cc3350405bc41ef0cb3d6a03a3926e55da18e9cbbab5",
+      "stage": "7C",
+      "verified_byte_for_byte_sha256": true
+    },
+    {
+      "file_name": "NEXUS_Stage_7D_7D-1.0.0.zip",
+      "sha256": "58ea2ac71601c505a39aeccbbff68ad97b8b6ffc48e1bb0de7927cbdb2724e4f",
+      "stage": "7D",
+      "verified_byte_for_byte_sha256": true
+    }
+  ],
+  "provenance_requirements": {
+    "anchors": "Original Stage 7A–7D IDs and hashes form immutable authoritative baseline",
+    "evidence_record_ids": "Refer to original evidence IDs or 7E revision/correction evidence IDs",
+    "historical_reconstruction": "Retrospective, synthetic, and independent operational verification levels explicitly labeled",
+    "supported_deployed_state": "Requires Stage 7C successful deployment; build or artifact does not imply deployment"
+  },
+  "reference_snapshot": "2026-10-31T23:59:59Z",
+  "supporting_non_grant_request_states_count": 6,
+  "temporal_conventions": {
+    "future_expiry": "Planned grant boundary, never interpreted as completed expiry after snapshot",
+    "interval": "[valid_from, valid_to_exclusive)",
+    "null_upper_bound": "Current state or unknown end; see type-specific status",
+    "observed_at": "Direct observation time where supported; not always the effective time",
+    "recorded_at": "First evidence captured within the selected existing source",
+    "superseded_at": "When a recorded statement was subsequently replaced; it may be null even when its historical valid period ended",
+    "timezone": "UTC ISO 8601, trailing Z",
+    "unknown_before_first_evidence": "No prior deployed version is inferred from build, commit, or artifact alone",
+    "valid_from": "Earliest supported effective time, sometimes retrospectively claimed"
+  },
+  "total_temporal_evidence_records": 315,
+  "validation": {
+    "checks_executed": [
+      {
+        "check": "Expected complete collection cardinalities",
+        "result": "PASS"
+      },
+      {
+        "check": "7E IDs globally unique and distinct from parent IDs",
+        "result": "PASS"
+      },
+      {
+        "check": "All provenance and evidence record IDs resolve",
+        "result": "PASS"
+      },
+      {
+        "check": "All parent_record_id references resolve",
+        "result": "PASS"
+      },
+      {
+        "check": "Every row uses one of the 28 existing sources and inherits classification",
+        "result": "PASS"
+      },
+      {
+        "check": "Project and team identifiers exist",
+        "result": "PASS"
+      },
+      {
+        "check": "All recorded timestamps are after their source was created and before snapshot",
+        "result": "PASS"
+      },
+      {
+        "check": "Valid-time intervals and recorded-time supersessions are well ordered",
+        "result": "PASS"
+      },
+      {
+        "check": "No completed observation or revision occurs after snapshot",
+        "result": "PASS"
+      },
+      {
+        "check": "Retrospective histories distinguish earlier truth from later recording",
+        "result": "PASS"
+      },
+      {
+        "check": "102 ordered 7B revision transitions close all 74 exact parent fields",
+        "result": "PASS"
+      },
+      {
+        "check": "28 exact current 7A primary/backup owner assignments",
+        "result": "PASS"
+      },
+      {
+        "check": "No historical employee assigned before joining or service release",
+        "result": "PASS"
+      },
+      {
+        "check": "No conflicting overlapping primary ownership intervals",
+        "result": "PASS"
+      },
+      {
+        "check": "Temporary release contacts never become accountable owners",
+        "result": "PASS"
+      },
+      {
+        "check": "23 exact 7A dependencies plus four distinct retired interactions",
+        "result": "PASS"
+      },
+      {
+        "check": "Directional-semantic exceptions retained exactly",
+        "result": "PASS"
+      },
+      {
+        "check": "14 exact 7B current contract version/schema anchors plus eight older shapes",
+        "result": "PASS"
+      },
+      {
+        "check": "Contract compatibility claims include explicit evidence not version-only assumptions",
+        "result": "PASS"
+      },
+      {
+        "check": "17 successful 7C deployments projected without extra deployments",
+        "result": "PASS"
+      },
+      {
+        "check": "Deployment intervals nonoverlapping, unknown prehistory, 14 latest match 7A",
+        "result": "PASS"
+      },
+      {
+        "check": "14 complete 7C component inventories match exact package, runtime and base image values",
+        "result": "PASS"
+      },
+      {
+        "check": "Historical components do not claim unsupported package deployment proof",
+        "result": "PASS"
+      },
+      {
+        "check": "24 non-secret config records cover all 14 services, with five unmerged proposals",
+        "result": "PASS"
+      },
+      {
+        "check": "Config privileged approval is only claimed when linked to a real 7D change",
+        "result": "PASS"
+      },
+      {
+        "check": "11 flows use existing dependencies and preserve their canonical direction",
+        "result": "PASS"
+      },
+      {
+        "check": "42 exact 7D grant principals, scopes, resources, actions and statuses",
+        "result": "PASS"
+      },
+      {
+        "check": "40 active, one expired, one revoked; denied/pending never grants",
+        "result": "PASS"
+      },
+      {
+        "check": "Four administrative source policies retained, admin histories never shared",
+        "result": "PASS"
+      },
+      {
+        "check": "Five correction events preserve original claims and cross-referenced revisions",
+        "result": "PASS"
+      },
+      {
+        "check": "Three as-of checkpoints have no conflicting deployed, owner, config, or grants",
+        "result": "PASS"
+      }
+    ],
+    "earlier_as_of_checkpoints": [
+      {
+        "as_of": "2026-09-25T12:00:00Z",
+        "effective_config_key_count": 1,
+        "effective_grant_count": 37,
+        "known_deployed_service_count": 3,
+        "known_primary_owner_count": 14
+      },
+      {
+        "as_of": "2026-10-15T12:00:00Z",
+        "effective_config_key_count": 10,
+        "effective_grant_count": 40,
+        "known_deployed_service_count": 10,
+        "known_primary_owner_count": 14
+      },
+      {
+        "as_of": "2026-10-31T23:59:59Z",
+        "effective_config_key_count": 16,
+        "effective_grant_count": 40,
+        "known_deployed_service_count": 14,
+        "known_primary_owner_count": 14
+      }
+    ],
+    "json_parse_and_zip_integrity": "Verified after packaging",
+    "status": "PASS"
+  }
+}

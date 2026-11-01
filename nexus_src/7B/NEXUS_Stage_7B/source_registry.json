@@ -1,0 +1,125 @@
+{
+  "dataset_version": "7B-1.0.0",
+  "sources": [
+    {
+      "id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "SOURCE",
+      "author_employee_id": "NEX-EMP-007",
+      "created_at": "2026-08-10T09:00:00Z",
+      "revised_at": "2026-10-27T15:00:00Z",
+      "revision_number": 3,
+      "status": "ACTIVE",
+      "access_classification": "COMPANY_SHARED",
+      "name": "NEXUS Knowledge Hub",
+      "description": "Cross-project product architecture, engineering conventions, ownership, change and evidence practices.",
+      "source_type": "DOCUMENT_KNOWLEDGE_BASE",
+      "authority_level": "ENGINEERING_NORMATIVE_GUIDANCE",
+      "authority_scope": "Published engineering documentation; a statement is source evidence, not independent verification of runtime behavior.",
+      "company_key": "nexus",
+      "owner_employee_id": "NEX-EMP-007",
+      "revision_label": "2026-10 shared release",
+      "selection_mode": "INDEPENDENT_SELECTABLE_SOURCE",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER",
+        "NEX-ROLE-INTERN"
+      ],
+      "baseline_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-002",
+        "NEX-ENT-006"
+      ]
+    },
+    {
+      "id": "NEX-SRC-SERVICE_CATALOG",
+      "source_id": "NEX-SRC-SERVICE_CATALOG",
+      "source_record_type": "SOURCE",
+      "author_employee_id": "NEX-EMP-007",
+      "created_at": "2026-08-10T09:00:00Z",
+      "revised_at": "2026-10-27T15:00:00Z",
+      "revision_number": 3,
+      "status": "ACTIVE",
+      "access_classification": "COMPANY_SHARED",
+      "name": "NEXUS Service Catalog",
+      "description": "Fourteen documented services with canonical ownership and source-declared service interactions.",
+      "source_type": "SERVICE_CATALOG",
+      "authority_level": "SERVICE_OWNER_DECLARATION",
+      "authority_scope": "Published engineering documentation; a statement is source evidence, not independent verification of runtime behavior.",
+      "company_key": "nexus",
+      "owner_employee_id": "NEX-EMP-007",
+      "revision_label": "2026-10 shared release",
+      "selection_mode": "INDEPENDENT_SELECTABLE_SOURCE",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER",
+        "NEX-ROLE-INTERN"
+      ],
+      "baseline_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-002",
+        "NEX-ENT-006"
+      ]
+    },
+    {
+      "id": "NEX-SRC-INTERFACE_REGISTRY",
+      "source_id": "NEX-SRC-INTERFACE_REGISTRY",
+      "source_record_type": "SOURCE",
+      "author_employee_id": "NEX-EMP-006",
+      "created_at": "2026-08-10T09:00:00Z",
+      "revised_at": "2026-10-27T15:00:00Z",
+      "revision_number": 3,
+      "status": "ACTIVE",
+      "access_classification": "COMPANY_SHARED",
+      "name": "NEXUS Interface Registry",
+      "description": "Selected versioned APIs, event formats and shared interface expectations.",
+      "source_type": "VERSIONED_CONTRACT_REGISTRY",
+      "authority_level": "CONTRACT_OWNER_APPROVED",
+      "authority_scope": "Published engineering documentation; a statement is source evidence, not independent verification of runtime behavior.",
+      "company_key": "nexus",
+      "owner_employee_id": "NEX-EMP-006",
+      "revision_label": "2026-10 shared release",
+      "selection_mode": "INDEPENDENT_SELECTABLE_SOURCE",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER",
+        "NEX-ROLE-INTERN"
+      ],
+      "baseline_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-002",
+        "NEX-ENT-006"
+      ]
+    },
+    {
+      "id": "NEX-SRC-ARCHITECTURE_DECISIONS",
+      "source_id": "NEX-SRC-ARCHITECTURE_DECISIONS",
+      "source_record_type": "SOURCE",
+      "author_employee_id": "NEX-EMP-001",
+      "created_at": "2026-08-10T09:00:00Z",
+      "revised_at": "2026-10-27T15:00:00Z",
+      "revision_number": 3,
+      "status": "ACTIVE",
+      "access_classification": "COMPANY_SHARED",
+      "name": "NEXUS Architecture Decisions",
+      "description": "Accepted historical engineering choices, alternatives and their documented trade-offs.",
+      "source_type": "ENGINEERING_DECISION_REGISTER",
+      "authority_level": "APPROVED_DECISION_RECORD",
+      "authority_scope": "Published engineering documentation; a statement is source evidence, not independent verification of runtime behavior.",
+      "company_key": "nexus",
+      "owner_employee_id": "NEX-EMP-001",
+      "revision_label": "2026-10 shared release",
+      "selection_mode": "INDEPENDENT_SELECTABLE_SOURCE",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN",
+        "NEX-ROLE-DEVELOPER",
+        "NEX-ROLE-INTERN"
+      ],
+      "baseline_entitlement_ids": [
+        "NEX-ENT-001",
+        "NEX-ENT-002",
+        "NEX-ENT-006"
+      ]
+    }
+  ]
+}

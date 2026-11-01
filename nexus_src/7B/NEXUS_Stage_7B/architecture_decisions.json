@@ -1,0 +1,456 @@
+{
+  "dataset_version": "7B-1.0.0",
+  "architecture_decisions": [
+    {
+      "id": "NEX-ADR-001",
+      "source_id": "NEX-SRC-ARCHITECTURE_DECISIONS",
+      "source_record_type": "ARCHITECTURE_DECISION",
+      "author_employee_id": "NEX-EMP-002",
+      "created_at": "2026-08-19T09:00:00Z",
+      "revised_at": "2026-10-24T16:00:00Z",
+      "revision_number": 2,
+      "status": "APPROVED",
+      "access_classification": "COMPANY_SHARED",
+      "title": "Require merchant-scoped idempotent payment-intent creation",
+      "decision_status": "ACCEPTED",
+      "decision_date": "2020-05-11",
+      "decision_author_employee_id": "NEX-EMP-002",
+      "approver_or_reviewer_employee_id": "NEX-EMP-003",
+      "context": "Merchant API calls cross unreliable client networks and may return an unknown result after provider acceptance. An automatically retried creation request can otherwise represent a second charge.",
+      "technical_problem": "Define how retries identify a previously submitted intent without requiring the merchant to inspect gateway-specific behavior.",
+      "alternatives_considered": [
+        {
+          "option": "Allow every POST to create a new intent and require client-side reconciliation",
+          "disposition": "NOT_SELECTED"
+        },
+        {
+          "option": "Deduplicate by a fuzzy match on merchant, amount and timestamp",
+          "disposition": "NOT_SELECTED"
+        },
+        {
+          "option": "Use a merchant-scoped idempotency key bound to a normalized request fingerprint",
+          "disposition": "SELECTED"
+        }
+      ],
+      "selected_decision": "The merchant-payments-v1 creation contract accepts a stable idempotency key. payment-api persists a key-to-intent association and returns the established intent for equivalent retries, while conflicting reuse returns a business conflict. gateway-router receives its own stable operation ID for safe retries.",
+      "rationale": "A merchant-provided identifier is deterministic and can be tested across network loss. Fuzzy matching risks merging legitimate purchases, and relying entirely on clients would leave the payment boundary unsafe.",
+      "expected_consequences": [
+        "Idempotency records need bounded retention and explicit conflict behavior",
+        "Status inquiries must distinguish pending outcomes from decline",
+        "Gateway timeouts remain operationally indeterminate until reconciled"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY"
+      ],
+      "relevant_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-GATEWAY_ROUTER"
+      ],
+      "related_source_record_ids": [
+        "NEX-IFC-001",
+        "NEX-IFC-002",
+        "NEX-DOC-002"
+      ],
+      "historical_decision_vs_publication": "decision_date is the historical decision effective date; created_at/revised_at date this Stage 7B published source record."
+    },
+    {
+      "id": "NEX-ADR-002",
+      "source_id": "NEX-SRC-ARCHITECTURE_DECISIONS",
+      "source_record_type": "ARCHITECTURE_DECISION",
+      "author_employee_id": "NEX-EMP-006",
+      "created_at": "2026-08-19T09:00:00Z",
+      "revised_at": "2026-10-24T16:00:00Z",
+      "revision_number": 2,
+      "status": "APPROVED",
+      "access_classification": "COMPANY_SHARED",
+      "title": "Separate public-key verification from business authorization",
+      "decision_status": "ACCEPTED",
+      "decision_date": "2020-07-20",
+      "decision_author_employee_id": "NEX-EMP-006",
+      "approver_or_reviewer_employee_id": "NEX-EMP-007",
+      "context": "Several product APIs need consistent verification of issuer, audience, expiry and signature when service identities rotate their signing keys.",
+      "technical_problem": "Avoid embedding divergent token parsing and key refresh rules independently inside product code while preserving product-specific access checks.",
+      "alternatives_considered": [
+        {
+          "option": "Each product downloads and validates public keys independently",
+          "disposition": "NOT_SELECTED"
+        },
+        {
+          "option": "Every product calls identity-api for each request",
+          "disposition": "NOT_SELECTED"
+        },
+        {
+          "option": "Offer a shared token-validator with cached public JWKS key discovery",
+          "disposition": "SELECTED"
+        }
+      ],
+      "selected_decision": "identity-api remains the issuer and public-jwks publisher. token-validator exposes a bounded verification decision using issuer/audience and an overlap-aware key cache; payment-api and checkout-service call the validator at documented protected boundaries.",
+      "rationale": "A validator service standardizes cryptographic verification, avoids synchronous dependence on the issuer for every request and makes rotation rules reviewable in one interface.",
+      "expected_consequences": [
+        "Validator availability and cache lifetime become shared concerns",
+        "A valid token does not authorize every merchant or report operation",
+        "Identity changes must be tested against current validator behavior"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-ID",
+        "NEX-PRJ-PAY",
+        "NEX-PRJ-COM"
+      ],
+      "relevant_service_ids": [
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-TOKEN_VALIDATOR",
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-CHECKOUT_SERVICE"
+      ],
+      "related_source_record_ids": [
+        "NEX-IFC-010",
+        "NEX-IFC-011",
+        "NEX-DOC-004"
+      ],
+      "historical_decision_vs_publication": "decision_date is the historical decision effective date; created_at/revised_at date this Stage 7B published source record."
+    },
+    {
+      "id": "NEX-ADR-003",
+      "source_id": "NEX-SRC-ARCHITECTURE_DECISIONS",
+      "source_record_type": "ARCHITECTURE_DECISION",
+      "author_employee_id": "NEX-EMP-008",
+      "created_at": "2026-08-19T09:00:00Z",
+      "revised_at": "2026-10-24T16:00:00Z",
+      "revision_number": 2,
+      "status": "APPROVED",
+      "access_classification": "COMPANY_SHARED",
+      "title": "Publish payment and order lifecycle changes asynchronously",
+      "decision_status": "ACCEPTED",
+      "decision_date": "2021-11-08",
+      "decision_author_employee_id": "NEX-EMP-008",
+      "approver_or_reviewer_employee_id": "NEX-EMP-004",
+      "context": "Reporting needs business state transitions from Pay and Commerce without adding synchronous analytics persistence to critical payment or checkout paths.",
+      "technical_problem": "Make downstream consumers resilient to delays and replay while leaving the transactional stores as state authorities.",
+      "alternatives_considered": [
+        {
+          "option": "Polling payment and order databases across project boundaries",
+          "disposition": "NOT_SELECTED"
+        },
+        {
+          "option": "Writing directly to the analytics database during API requests",
+          "disposition": "NOT_SELECTED"
+        },
+        {
+          "option": "Publishing versioned domain events to an asynchronous transport",
+          "disposition": "SELECTED"
+        }
+      ],
+      "selected_decision": "Pay publishes payment-lifecycle-events-v2 via NATS and Commerce publishes order-events-v1 via RabbitMQ. event-ingestor validates, deduplicates and stages messages; order notification work remains a separate Commerce delivery path.",
+      "rationale": "Event publication isolates analytical throughput from payment authorization latency and avoids cross-domain database coupling. Existing product transports stay specific to their deployed workloads rather than imposing a wholesale messaging migration.",
+      "expected_consequences": [
+        "Consumers tolerate at-least-once delivery, duplicates and reordering",
+        "Event schemas need major-version change rules and producer ownership",
+        "Analytics completeness is bounded by delayed or missing deliveries"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY",
+        "NEX-PRJ-COM",
+        "NEX-PRJ-DATA"
+      ],
+      "relevant_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-ORDER_API",
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-WEBHOOK_CONSUMER"
+      ],
+      "related_source_record_ids": [
+        "NEX-IFC-004",
+        "NEX-IFC-007",
+        "NEX-DOC-005"
+      ],
+      "historical_decision_vs_publication": "decision_date is the historical decision effective date; created_at/revised_at date this Stage 7B published source record."
+    },
+    {
+      "id": "NEX-ADR-004",
+      "source_id": "NEX-SRC-ARCHITECTURE_DECISIONS",
+      "source_record_type": "ARCHITECTURE_DECISION",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-08-19T09:00:00Z",
+      "revised_at": "2026-10-24T16:00:00Z",
+      "revision_number": 2,
+      "status": "APPROVED",
+      "access_classification": "COMPANY_SHARED",
+      "title": "Provide a common observability platform, keep product accountability",
+      "decision_status": "ACCEPTED",
+      "decision_date": "2022-04-11",
+      "decision_author_employee_id": "NEX-EMP-009",
+      "approver_or_reviewer_employee_id": "NEX-EMP-007",
+      "context": "Product teams had disjoint instrumentation formats and service health indicators, making cross-service correlation difficult during routine operations.",
+      "technical_problem": "Establish a common telemetry ingestion and dashboard vocabulary without shifting product incident accountability to the platform.",
+      "alternatives_considered": [
+        {
+          "option": "Separate monitoring stacks for each team",
+          "disposition": "NOT_SELECTED"
+        },
+        {
+          "option": "A single central team also owns every product's alerts",
+          "disposition": "NOT_SELECTED"
+        },
+        {
+          "option": "Shared OTLP, Prometheus and Grafana ingestion with product-owned signals",
+          "disposition": "SELECTED"
+        }
+      ],
+      "selected_decision": "Platform Operations maintains observability-platform, while product services emit common service IDs, trace correlations and bounded metrics labels. The canonical service owner retains responsibility for meaning, threshold review and response to service signals.",
+      "rationale": "Common transport reduces instrumentation translation and enables cross-boundary tracing; separating platform health from business-service ownership keeps diagnosis accountable.",
+      "expected_consequences": [
+        "Instrumented edges must be explicitly documented and cannot be assumed for all fourteen services",
+        "Telemetry must omit secrets and customer payloads",
+        "Sampled traces do not establish complete execution history"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY",
+        "NEX-PRJ-COM",
+        "NEX-PRJ-ID",
+        "NEX-PRJ-DATA"
+      ],
+      "relevant_service_ids": [
+        "NEX-SVC-OBSERVABILITY_PLATFORM",
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-ORDER_API",
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-METRICS_PIPELINE"
+      ],
+      "related_source_record_ids": [
+        "NEX-DOC-006",
+        "NEX-DOC-007"
+      ],
+      "historical_decision_vs_publication": "decision_date is the historical decision effective date; created_at/revised_at date this Stage 7B published source record."
+    },
+    {
+      "id": "NEX-ADR-005",
+      "source_id": "NEX-SRC-ARCHITECTURE_DECISIONS",
+      "source_record_type": "ARCHITECTURE_DECISION",
+      "author_employee_id": "NEX-EMP-006",
+      "created_at": "2026-08-19T09:00:00Z",
+      "revised_at": "2026-10-24T16:00:00Z",
+      "revision_number": 2,
+      "status": "APPROVED",
+      "access_classification": "COMPANY_SHARED",
+      "title": "Version interfaces independently of service release numbers",
+      "decision_status": "ACCEPTED",
+      "decision_date": "2022-08-22",
+      "decision_author_employee_id": "NEX-EMP-006",
+      "approver_or_reviewer_employee_id": "NEX-EMP-004",
+      "context": "Multiple clients and message consumers move through deployment schedules independently. A patch release of a service need not change its public payload, while a field meaning may break an old consumer even when code compiles.",
+      "technical_problem": "Make compatibility explicit and auditable across REST, gRPC and event boundaries.",
+      "alternatives_considered": [
+        {
+          "option": "Require coordinated same-day deployment of every dependent service",
+          "disposition": "NOT_SELECTED"
+        },
+        {
+          "option": "Tie exposed contract version to each service semver",
+          "disposition": "NOT_SELECTED"
+        },
+        {
+          "option": "Use stable contract identities with explicit major versions and effective dates",
+          "disposition": "SELECTED"
+        }
+      ],
+      "selected_decision": "Maintain an Interface Registry that separates service version from interface version. Compatible optional fields may be additive within a major; changing required fields, amount units, enum semantics or idempotency guarantees requires a new major with a migration window.",
+      "rationale": "Consumers can pin a published contract while providers deploy independently. Explicit versions support meaningful contract tests and historical interpretation of evidence.",
+      "expected_consequences": [
+        "Providers must maintain overlapping versions during migration",
+        "Consumer inventory remains a source claim subject to verification",
+        "Unknown enum handling and event duplication need test coverage"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY",
+        "NEX-PRJ-COM",
+        "NEX-PRJ-ID",
+        "NEX-PRJ-DATA"
+      ],
+      "relevant_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-ORDER_API"
+      ],
+      "related_source_record_ids": [
+        "NEX-DOC-008",
+        "NEX-IFC-001",
+        "NEX-IFC-007"
+      ],
+      "historical_decision_vs_publication": "decision_date is the historical decision effective date; created_at/revised_at date this Stage 7B published source record."
+    },
+    {
+      "id": "NEX-ADR-006",
+      "source_id": "NEX-SRC-ARCHITECTURE_DECISIONS",
+      "source_record_type": "ARCHITECTURE_DECISION",
+      "author_employee_id": "NEX-EMP-008",
+      "created_at": "2026-08-19T09:00:00Z",
+      "revised_at": "2026-10-24T16:00:00Z",
+      "revision_number": 2,
+      "status": "APPROVED",
+      "access_classification": "COMPANY_SHARED",
+      "title": "Stage analytics events before publishing governed metrics models",
+      "decision_status": "ACCEPTED",
+      "decision_date": "2023-02-13",
+      "decision_author_employee_id": "NEX-EMP-008",
+      "approver_or_reviewer_employee_id": "NEX-EMP-009",
+      "context": "Late and repeated payment/order events do not map directly to trustworthy financial and commerce reporting tables; source event time and ingestion time have different meaning.",
+      "technical_problem": "Keep raw contract validation distinct from business metric transformation and expose model revisions to downstream reports.",
+      "alternatives_considered": [
+        {
+          "option": "Allow reporting-api to read events directly from NATS and RabbitMQ",
+          "disposition": "NOT_SELECTED"
+        },
+        {
+          "option": "Transform each delivery immediately into final report tables",
+          "disposition": "NOT_SELECTED"
+        },
+        {
+          "option": "Validate and stage, then run versioned incremental metric models",
+          "disposition": "SELECTED"
+        }
+      ],
+      "selected_decision": "event-ingestor validates schema and writes staged-events-v1, preserving producer and ingestion timestamps. metrics-pipeline produces versioned metrics-model-v3 with reconciliation and late-event policies. reporting-api serves the published aggregate model and applies scoped policy decisions.",
+      "rationale": "Separating acceptance, transformation and serving allows reprocessing of late data without making read APIs depend on transport delivery time or primary transactional databases.",
+      "expected_consequences": [
+        "Staging adds storage and lifecycle management",
+        "Metric backfills require documented windows and reconciliation",
+        "Report responses need a data_as_of boundary rather than a claim of real-time completeness"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-DATA",
+        "NEX-PRJ-PAY",
+        "NEX-PRJ-COM"
+      ],
+      "relevant_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-METRICS_PIPELINE",
+        "NEX-SVC-REPORTING_API"
+      ],
+      "related_source_record_ids": [
+        "NEX-DOC-005",
+        "NEX-IFC-004",
+        "NEX-IFC-007",
+        "NEX-IFC-013"
+      ],
+      "historical_decision_vs_publication": "decision_date is the historical decision effective date; created_at/revised_at date this Stage 7B published source record."
+    },
+    {
+      "id": "NEX-ADR-007",
+      "source_id": "NEX-SRC-ARCHITECTURE_DECISIONS",
+      "source_record_type": "ARCHITECTURE_DECISION",
+      "author_employee_id": "NEX-EMP-007",
+      "created_at": "2026-08-19T09:00:00Z",
+      "revised_at": "2026-10-24T16:00:00Z",
+      "revision_number": 2,
+      "status": "APPROVED",
+      "access_classification": "COMPANY_SHARED",
+      "title": "Promote immutable artifacts through shared delivery infrastructure",
+      "decision_status": "ACCEPTED",
+      "decision_date": "2023-10-16",
+      "decision_author_employee_id": "NEX-EMP-007",
+      "approver_or_reviewer_employee_id": "NEX-EMP-003",
+      "context": "Product teams need a repeatable release identity across staging and production, while environment-specific deployment policy must remain centrally governed.",
+      "technical_problem": "Avoid situations where a rebuilt artifact changes between reviews and rollout or a product team bypasses environment controls.",
+      "alternatives_considered": [
+        {
+          "option": "Manual per-environment deployment instructions",
+          "disposition": "NOT_SELECTED"
+        },
+        {
+          "option": "Rebuild from the source branch at each environment",
+          "disposition": "NOT_SELECTED"
+        },
+        {
+          "option": "Build once and promote a content-addressed artifact through GitHub Actions, Argo CD and Kubernetes",
+          "disposition": "SELECTED"
+        }
+      ],
+      "selected_decision": "Use deployment-platform to promote a reviewed artifact digest with an explicit environment target and status correlation. Product owners retain semantics and migration accountability; Platform Operations maintains the rollout mechanism.",
+      "rationale": "An immutable artifact connects test evidence to the promoted binary, and a common control plane gives consistent environment gates without re-implementing them per service.",
+      "expected_consequences": [
+        "A successful rollout must not be confused with correct service behavior",
+        "Incompatible schema migration can constrain rollback",
+        "Production details and approval records remain outside company-shared sources"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY",
+        "NEX-PRJ-COM",
+        "NEX-PRJ-ID",
+        "NEX-PRJ-DATA"
+      ],
+      "relevant_service_ids": [
+        "NEX-SVC-DEPLOYMENT_PLATFORM",
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-EVENT_INGESTOR"
+      ],
+      "related_source_record_ids": [
+        "NEX-DOC-006",
+        "NEX-DOC-009",
+        "NEX-IFC-014"
+      ],
+      "historical_decision_vs_publication": "decision_date is the historical decision effective date; created_at/revised_at date this Stage 7B published source record."
+    },
+    {
+      "id": "NEX-ADR-008",
+      "source_id": "NEX-SRC-ARCHITECTURE_DECISIONS",
+      "source_record_type": "ARCHITECTURE_DECISION",
+      "author_employee_id": "NEX-EMP-001",
+      "created_at": "2026-08-19T09:00:00Z",
+      "revised_at": "2026-10-24T16:00:00Z",
+      "revision_number": 2,
+      "status": "APPROVED",
+      "access_classification": "COMPANY_SHARED",
+      "title": "Assign named service primaries and backups for cross-team changes",
+      "decision_status": "ACCEPTED",
+      "decision_date": "2024-04-08",
+      "decision_author_employee_id": "NEX-EMP-001",
+      "approver_or_reviewer_employee_id": "NEX-EMP-007",
+      "context": "Cross-project dependencies and shared platforms complicate determining who reviews a change or keeps a service running when the primary engineer is unavailable.",
+      "technical_problem": "Provide clear ownership while preserving the difference between product accountability, platform support and governance authority.",
+      "alternatives_considered": [
+        {
+          "option": "Infer ownership solely from team membership",
+          "disposition": "NOT_SELECTED"
+        },
+        {
+          "option": "Assign all cross-team dependencies to Platform Operations",
+          "disposition": "NOT_SELECTED"
+        },
+        {
+          "option": "Publish primary/backup service assignments and require affected owner reviews",
+          "disposition": "SELECTED"
+        }
+      ],
+      "selected_decision": "Each canonical service has a primary and backup employee, anchored in owner assignments and a owning team; the two shared platforms have no owning product project. A change crosses to documented consumer owners for contract review, while admin-only governance actions remain distinct.",
+      "rationale": "Named contacts make service-level review and escalation actionable, avoid treating shared platform operators as business approvers, and permit historical ownership reconstruction from dated assignments.",
+      "expected_consequences": [
+        "Owners and assignments need revision discipline",
+        "Service coverage is not inferred from an individual's secondary team",
+        "Shared documentation grants read access only; it does not grant formal handoff authority"
+      ],
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY",
+        "NEX-PRJ-COM",
+        "NEX-PRJ-ID",
+        "NEX-PRJ-DATA"
+      ],
+      "relevant_service_ids": [
+        "NEX-SVC-GATEWAY_ROUTER",
+        "NEX-SVC-ORDER_API",
+        "NEX-SVC-POLICY_SERVICE",
+        "NEX-SVC-REPORTING_API",
+        "NEX-SVC-DEPLOYMENT_PLATFORM",
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "related_source_record_ids": [
+        "NEX-DOC-007",
+        "NEX-DOC-009"
+      ],
+      "historical_decision_vs_publication": "decision_date is the historical decision effective date; created_at/revised_at date this Stage 7B published source record."
+    }
+  ]
+}

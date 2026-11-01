@@ -1,0 +1,151 @@
+{
+  "CHUNK-37656396CCEE6360D614": {
+    "artifact_id": "ART-12010D9523EBE5C491BF209A",
+    "content_hash": "c428a310847a090de2c28d49cd7f8afccb101a36d093635d9173145d4ca31f46",
+    "data_source_id": "DS-ING-TELEMETRY",
+    "document_id": "CHUNK-37656396CCEE6360D614",
+    "document_type": "CHUNK",
+    "entity_ids": [
+      "E-ING-C22C0230AD354866",
+      "EVT-ING-3AC3D9DF554750C2",
+      "INC-001",
+      "SYS-PRICING-DB"
+    ],
+    "metadata": {
+      "artifact_uri": "file:///C:/Users/Aditya/AppData/Local/Temp/pytest-of-Aditya/pytest-23/test_phase9_api_sync_run_repor0/artifacts/northstar/telemetry/12/12010d9523ebe5c491bf209a8e52ad6c72b46565e753024d475ea45ce79567f7/payload.bin",
+      "char_end": 46,
+      "char_start": 0,
+      "chunking_version": "phase10-chunk-v1",
+      "heading": "",
+      "parent_document_id": "ART-12010D9523EBE5C491BF209A",
+      "sequence": 0
+    },
+    "observed_at": "2026-10-16T14:08:30+05:30",
+    "source_record_id": "SRCREC-ING-9C71669F4843EF4E4C16",
+    "tenant_id": "northstar",
+    "text": "2026-10-16T14:08:30+05:30 cpu=91% retries=high",
+    "valid_from": null,
+    "valid_until": null
+  },
+  "SRCREC-ING-2D4C4CCBBA64FDF82BA9": {
+    "artifact_id": null,
+    "content_hash": "b927d680a881989978581a00de886d01b8bf247d169e2a524e46f0c5f4deb583",
+    "data_source_id": "SRC-FDBC4E2B64802D5126",
+    "document_id": "SRCREC-ING-2D4C4CCBBA64FDF82BA9",
+    "document_type": "SOURCE_RECORD",
+    "entity_ids": [
+      "SYS-EXT-FA12ED86684852B7"
+    ],
+    "metadata": {
+      "record_type": "repository",
+      "source_kind": "github"
+    },
+    "observed_at": "2026-10-16T13:45:00+05:30",
+    "source_record_id": "SRCREC-ING-2D4C4CCBBA64FDF82BA9",
+    "tenant_id": "northstar",
+    "text": "{'name': 'pricing-service', 'full_name': 'northstar/pricing-service', 'system_name': 'Pricing API'}",
+    "valid_from": "2026-10-16T13:45:00+05:30",
+    "valid_until": null
+  },
+  "SRCREC-ING-9C71669F4843EF4E4C16": {
+    "artifact_id": null,
+    "content_hash": "2a41317bd718baa856a309f1ea646e138af22b884c4dd3e126e8e5a7bf6b6a28",
+    "data_source_id": "DS-ING-TELEMETRY",
+    "document_id": "SRCREC-ING-9C71669F4843EF4E4C16",
+    "document_type": "SOURCE_RECORD",
+    "entity_ids": [
+      "E-ING-C22C0230AD354866",
+      "EVT-ING-3AC3D9DF554750C2",
+      "EVT-ING-3AC3D9DF554750C2",
+      "INC-001",
+      "INC-001",
+      "SYS-PRICING-DB",
+      "SYS-PRICING-DB"
+    ],
+    "metadata": {
+      "record_type": "metric",
+      "source_kind": "telemetry"
+    },
+    "observed_at": "2026-10-16T14:08:30+05:30",
+    "source_record_id": "SRCREC-ING-9C71669F4843EF4E4C16",
+    "tenant_id": "northstar",
+    "text": "{'metric': 'pricing_db_cpu', 'name': 'Pricing DB CPU increased', 'system': 'Pricing Database', 'system_canonical_id': 'SYS-PRICING-DB', 'value': 0.91, 'unit': 'ratio', 'confidence': 0.99, 'incident_canonical_id': 'INC-001', 'incident_name': 'Pricing checkout errors'}",
+    "valid_from": "2026-10-16T14:08:30+05:30",
+    "valid_until": null
+  },
+  "SRCREC-ING-A01DF890F4020DF2F8D2": {
+    "artifact_id": null,
+    "content_hash": "a2be8fb1bb81d3828cfc545e60d9f92a11b38757097f12785303e2453f8afeef",
+    "data_source_id": "DS-ING-TELEMETRY",
+    "document_id": "SRCREC-ING-A01DF890F4020DF2F8D2",
+    "document_type": "SOURCE_RECORD",
+    "entity_ids": [
+      "E-ING-B034537D8E5E7C1F",
+      "EVT-ING-FA5CDF7EEE300CB6",
+      "EVT-ING-FA5CDF7EEE300CB6",
+      "INC-001",
+      "INC-001",
+      "SYS-CHECKOUT",
+      "SYS-CHECKOUT"
+    ],
+    "metadata": {
+      "record_type": "metric",
+      "source_kind": "telemetry"
+    },
+    "observed_at": "2026-10-16T14:08:14+05:30",
+    "source_record_id": "SRCREC-ING-A01DF890F4020DF2F8D2",
+    "tenant_id": "northstar",
+    "text": "{'metric': 'pricing_api_5xx_rate', 'name': 'Checkout 5xx rate increased', 'system': 'Checkout', 'system_canonical_id': 'SYS-CHECKOUT', 'value': 0.18, 'unit': 'ratio', 'confidence': 0.99, 'incident_canonical_id': 'INC-001', 'incident_name': 'Pricing checkout errors'}",
+    "valid_from": "2026-10-16T14:08:14+05:30",
+    "valid_until": null
+  },
+  "SRCREC-ING-B3D4EDF618D16A0FC123": {
+    "artifact_id": null,
+    "content_hash": "4b8bbb03a91fb7c695e72f2d34fdc00c44d05c7a15718509cc40b08150c7e8fa",
+    "data_source_id": "SRC-FDBC4E2B64802D5126",
+    "document_id": "SRCREC-ING-B3D4EDF618D16A0FC123",
+    "document_type": "SOURCE_RECORD",
+    "entity_ids": [
+      "PERSON-EXT-05BE58F1472D4614"
+    ],
+    "metadata": {
+      "record_type": "user",
+      "source_kind": "github"
+    },
+    "observed_at": "2026-10-16T13:40:00+05:30",
+    "source_record_id": "SRCREC-ING-B3D4EDF618D16A0FC123",
+    "tenant_id": "northstar",
+    "text": "{'email': 'neha.verma@northstar.example', 'display_name': 'Neha Verma', 'login': 'neha-verma'}",
+    "valid_from": "2026-10-16T13:40:00+05:30",
+    "valid_until": null
+  },
+  "SRCREC-ING-F7807F5788F31C419E04": {
+    "artifact_id": null,
+    "content_hash": "3ed6ccd3d7beabf5240d4514a8d4500bf2c708f17f22b9ab18f53fe5c82b4a19",
+    "data_source_id": "SRC-FDBC4E2B64802D5126",
+    "document_id": "SRCREC-ING-F7807F5788F31C419E04",
+    "document_type": "SOURCE_RECORD",
+    "entity_ids": [
+      "CHG-ING-799FBCBEA03435C6",
+      "CHG-ING-799FBCBEA03435C6",
+      "MIG-203",
+      "MIG-203",
+      "PERSON-EXT-05BE58F1472D4614",
+      "PERSON-EXT-16CA7F13100414EC",
+      "SYS-PRICING-API",
+      "SYS-PRICING-API",
+      "SYS-PRICING-DB",
+      "SYS-PRICING-DB"
+    ],
+    "metadata": {
+      "record_type": "pull_request",
+      "source_kind": "github"
+    },
+    "observed_at": "2026-10-16T14:03:00+05:30",
+    "source_record_id": "SRCREC-ING-F7807F5788F31C419E04",
+    "tenant_id": "northstar",
+    "text": "{'title': 'Add region_scope migration', 'number': 842, 'repository': 'pricing-service', 'system_name': 'Pricing API', 'system_canonical_id': 'SYS-PRICING-API', 'author': {'name': 'Neha Verma', 'email': 'neha.verma@northstar.example', 'login': 'neha-verma'}, 'reviewers': [{'name': 'Arjun Mehta', 'email': 'arjun@northstar.example', 'login': 'arjun'}], 'migration_key': 'MIG-203', 'migration_name': 'discount_rules region_scope NOT NULL migration', 'migration_canonical_id': 'MIG-203', 'database_system': 'Pricing Database', 'database_canonical_id': 'SYS-PRICING-DB', 'created_at': '2026-10-16T13:50:00+05:30', 'merged_at': '2026-10-16T14:03:00+05:30', 'changed_files': ['db/migrations/203_region_scope.sql']}",
+    "valid_from": "2026-10-16T14:03:00+05:30",
+    "valid_until": null
+  }
+}

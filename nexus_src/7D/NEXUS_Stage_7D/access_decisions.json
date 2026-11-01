@@ -1,0 +1,2053 @@
+{
+  "dataset_version": "7D-1.0.0",
+  "access_decisions": [
+    {
+      "id": "NEX-ACD-001",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:01:00Z",
+      "revised_at": "2026-07-08T08:01:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PAY-CI"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-001",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-001",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:01:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-PAY engineering assignment and restricted NEX-SRC-PAY-CI source.",
+      "decision_resource_id": "NEX-SRC-PAY-CI",
+      "authorized_resource_id": "NEX-SRC-PAY-CI",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:03:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-001",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-002",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:02:00Z",
+      "revised_at": "2026-07-08T08:02:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PAY-DISCUSS"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-002",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-002",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:02:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-PAY engineering assignment and restricted NEX-SRC-PAY-DISCUSS source.",
+      "decision_resource_id": "NEX-SRC-PAY-DISCUSS",
+      "authorized_resource_id": "NEX-SRC-PAY-DISCUSS",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:04:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-002",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-003",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:03:00Z",
+      "revised_at": "2026-07-08T08:03:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PAY-ISSUES"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-003",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-003",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:03:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-PAY engineering assignment and restricted NEX-SRC-PAY-ISSUES source.",
+      "decision_resource_id": "NEX-SRC-PAY-ISSUES",
+      "authorized_resource_id": "NEX-SRC-PAY-ISSUES",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:05:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-003",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-004",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:04:00Z",
+      "revised_at": "2026-07-08T08:04:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PAY-REPO"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-004",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-004",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:04:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-PAY engineering assignment and restricted NEX-SRC-PAY-REPO source.",
+      "decision_resource_id": "NEX-SRC-PAY-REPO",
+      "authorized_resource_id": "NEX-SRC-PAY-REPO",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:06:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-004",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-005",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:05:00Z",
+      "revised_at": "2026-07-08T08:05:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PAY-CI"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-005",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-005",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:05:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-PAY engineering assignment and restricted NEX-SRC-PAY-CI source.",
+      "decision_resource_id": "NEX-SRC-PAY-CI",
+      "authorized_resource_id": "NEX-SRC-PAY-CI",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:07:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-005",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-006",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:06:00Z",
+      "revised_at": "2026-07-08T08:06:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PAY-DISCUSS"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-006",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-006",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:06:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-PAY engineering assignment and restricted NEX-SRC-PAY-DISCUSS source.",
+      "decision_resource_id": "NEX-SRC-PAY-DISCUSS",
+      "authorized_resource_id": "NEX-SRC-PAY-DISCUSS",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:08:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-006",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-007",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:07:00Z",
+      "revised_at": "2026-07-08T08:07:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PAY-ISSUES"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-007",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-007",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:07:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-PAY engineering assignment and restricted NEX-SRC-PAY-ISSUES source.",
+      "decision_resource_id": "NEX-SRC-PAY-ISSUES",
+      "authorized_resource_id": "NEX-SRC-PAY-ISSUES",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:09:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-007",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-008",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:08:00Z",
+      "revised_at": "2026-07-08T08:08:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PAY-REPO"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-008",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-008",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:08:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-PAY engineering assignment and restricted NEX-SRC-PAY-REPO source.",
+      "decision_resource_id": "NEX-SRC-PAY-REPO",
+      "authorized_resource_id": "NEX-SRC-PAY-REPO",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:10:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-008",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-009",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:09:00Z",
+      "revised_at": "2026-07-08T08:09:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-COM-CI"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-009",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-009",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:09:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-COM engineering assignment and restricted NEX-SRC-COM-CI source.",
+      "decision_resource_id": "NEX-SRC-COM-CI",
+      "authorized_resource_id": "NEX-SRC-COM-CI",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:11:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-009",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-010",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:10:00Z",
+      "revised_at": "2026-07-08T08:10:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-COM-DISCUSS"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-010",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-010",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:10:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-COM engineering assignment and restricted NEX-SRC-COM-DISCUSS source.",
+      "decision_resource_id": "NEX-SRC-COM-DISCUSS",
+      "authorized_resource_id": "NEX-SRC-COM-DISCUSS",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:12:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-010",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-011",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:11:00Z",
+      "revised_at": "2026-07-08T08:11:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-COM-ISSUES"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-011",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-011",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:11:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-COM engineering assignment and restricted NEX-SRC-COM-ISSUES source.",
+      "decision_resource_id": "NEX-SRC-COM-ISSUES",
+      "authorized_resource_id": "NEX-SRC-COM-ISSUES",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:13:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-011",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-012",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:12:00Z",
+      "revised_at": "2026-07-08T08:12:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-COM-REPO"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-012",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-012",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:12:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-COM engineering assignment and restricted NEX-SRC-COM-REPO source.",
+      "decision_resource_id": "NEX-SRC-COM-REPO",
+      "authorized_resource_id": "NEX-SRC-COM-REPO",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:14:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-012",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-013",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:13:00Z",
+      "revised_at": "2026-07-08T08:13:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-COM-CI"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-013",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-013",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:13:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-COM engineering assignment and restricted NEX-SRC-COM-CI source.",
+      "decision_resource_id": "NEX-SRC-COM-CI",
+      "authorized_resource_id": "NEX-SRC-COM-CI",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:15:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-013",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-014",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:14:00Z",
+      "revised_at": "2026-07-08T08:14:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-COM-DISCUSS"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-014",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-014",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:14:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-COM engineering assignment and restricted NEX-SRC-COM-DISCUSS source.",
+      "decision_resource_id": "NEX-SRC-COM-DISCUSS",
+      "authorized_resource_id": "NEX-SRC-COM-DISCUSS",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:16:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-014",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-015",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:15:00Z",
+      "revised_at": "2026-07-08T08:15:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-COM-ISSUES"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-015",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-015",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:15:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-COM engineering assignment and restricted NEX-SRC-COM-ISSUES source.",
+      "decision_resource_id": "NEX-SRC-COM-ISSUES",
+      "authorized_resource_id": "NEX-SRC-COM-ISSUES",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:17:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-015",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-016",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:16:00Z",
+      "revised_at": "2026-07-08T08:16:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-COM-REPO"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-016",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-016",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:16:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-COM engineering assignment and restricted NEX-SRC-COM-REPO source.",
+      "decision_resource_id": "NEX-SRC-COM-REPO",
+      "authorized_resource_id": "NEX-SRC-COM-REPO",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:18:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-016",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-017",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:17:00Z",
+      "revised_at": "2026-07-08T08:17:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-ID-CI"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-017",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-017",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:17:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-ID engineering assignment and restricted NEX-SRC-ID-CI source.",
+      "decision_resource_id": "NEX-SRC-ID-CI",
+      "authorized_resource_id": "NEX-SRC-ID-CI",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:19:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-017",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-018",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:18:00Z",
+      "revised_at": "2026-07-08T08:18:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-ID-DISCUSS"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-018",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-018",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:18:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-ID engineering assignment and restricted NEX-SRC-ID-DISCUSS source.",
+      "decision_resource_id": "NEX-SRC-ID-DISCUSS",
+      "authorized_resource_id": "NEX-SRC-ID-DISCUSS",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:20:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-018",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-019",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:19:00Z",
+      "revised_at": "2026-07-08T08:19:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-ID-ISSUES"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-019",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-019",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:19:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-ID engineering assignment and restricted NEX-SRC-ID-ISSUES source.",
+      "decision_resource_id": "NEX-SRC-ID-ISSUES",
+      "authorized_resource_id": "NEX-SRC-ID-ISSUES",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:21:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-019",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-020",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:20:00Z",
+      "revised_at": "2026-07-08T08:20:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-ID-REPO"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-020",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-020",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:20:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-ID engineering assignment and restricted NEX-SRC-ID-REPO source.",
+      "decision_resource_id": "NEX-SRC-ID-REPO",
+      "authorized_resource_id": "NEX-SRC-ID-REPO",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:22:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-020",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-021",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:21:00Z",
+      "revised_at": "2026-07-08T08:21:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-ID-CI"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-021",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-021",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:21:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-ID engineering assignment and restricted NEX-SRC-ID-CI source.",
+      "decision_resource_id": "NEX-SRC-ID-CI",
+      "authorized_resource_id": "NEX-SRC-ID-CI",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:23:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-021",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-022",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:22:00Z",
+      "revised_at": "2026-07-08T08:22:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-ID-DISCUSS"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-022",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-022",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:22:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-ID engineering assignment and restricted NEX-SRC-ID-DISCUSS source.",
+      "decision_resource_id": "NEX-SRC-ID-DISCUSS",
+      "authorized_resource_id": "NEX-SRC-ID-DISCUSS",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:24:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-022",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-023",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:23:00Z",
+      "revised_at": "2026-07-08T08:23:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-ID-ISSUES"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-023",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-023",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:23:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-ID engineering assignment and restricted NEX-SRC-ID-ISSUES source.",
+      "decision_resource_id": "NEX-SRC-ID-ISSUES",
+      "authorized_resource_id": "NEX-SRC-ID-ISSUES",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:25:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-023",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-024",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:24:00Z",
+      "revised_at": "2026-07-08T08:24:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-ID-REPO"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-024",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-024",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:24:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-ID engineering assignment and restricted NEX-SRC-ID-REPO source.",
+      "decision_resource_id": "NEX-SRC-ID-REPO",
+      "authorized_resource_id": "NEX-SRC-ID-REPO",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:26:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-024",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-025",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:25:00Z",
+      "revised_at": "2026-07-08T08:25:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-DATA-CI"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-025",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-025",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:25:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-DATA engineering assignment and restricted NEX-SRC-DATA-CI source.",
+      "decision_resource_id": "NEX-SRC-DATA-CI",
+      "authorized_resource_id": "NEX-SRC-DATA-CI",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:27:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-025",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-026",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:26:00Z",
+      "revised_at": "2026-07-08T08:26:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-DATA-DISCUSS"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-026",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-026",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:26:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-DATA engineering assignment and restricted NEX-SRC-DATA-DISCUSS source.",
+      "decision_resource_id": "NEX-SRC-DATA-DISCUSS",
+      "authorized_resource_id": "NEX-SRC-DATA-DISCUSS",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:28:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-026",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-027",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:27:00Z",
+      "revised_at": "2026-07-08T08:27:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-DATA-ISSUES"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-027",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-027",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:27:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-DATA engineering assignment and restricted NEX-SRC-DATA-ISSUES source.",
+      "decision_resource_id": "NEX-SRC-DATA-ISSUES",
+      "authorized_resource_id": "NEX-SRC-DATA-ISSUES",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:29:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-027",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-028",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:28:00Z",
+      "revised_at": "2026-07-08T08:28:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-DATA-REPO"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-028",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-028",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:28:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-DATA engineering assignment and restricted NEX-SRC-DATA-REPO source.",
+      "decision_resource_id": "NEX-SRC-DATA-REPO",
+      "authorized_resource_id": "NEX-SRC-DATA-REPO",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:30:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-028",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-029",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:29:00Z",
+      "revised_at": "2026-07-08T08:29:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-DATA-CI"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-029",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-029",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:29:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-DATA engineering assignment and restricted NEX-SRC-DATA-CI source.",
+      "decision_resource_id": "NEX-SRC-DATA-CI",
+      "authorized_resource_id": "NEX-SRC-DATA-CI",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:31:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-029",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-030",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:30:00Z",
+      "revised_at": "2026-07-08T08:30:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-DATA-DISCUSS"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-030",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-030",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:30:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-DATA engineering assignment and restricted NEX-SRC-DATA-DISCUSS source.",
+      "decision_resource_id": "NEX-SRC-DATA-DISCUSS",
+      "authorized_resource_id": "NEX-SRC-DATA-DISCUSS",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:32:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-030",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-031",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:31:00Z",
+      "revised_at": "2026-07-08T08:31:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-DATA-ISSUES"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-031",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-031",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:31:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-DATA engineering assignment and restricted NEX-SRC-DATA-ISSUES source.",
+      "decision_resource_id": "NEX-SRC-DATA-ISSUES",
+      "authorized_resource_id": "NEX-SRC-DATA-ISSUES",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:33:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-031",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-032",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-08T08:32:00Z",
+      "revised_at": "2026-07-08T08:32:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-DATA-REPO"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-032",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-032",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-08T08:32:00Z",
+      "reason": "Onboarding grant for verified NEX-PRJ-DATA engineering assignment and restricted NEX-SRC-DATA-REPO source.",
+      "decision_resource_id": "NEX-SRC-DATA-REPO",
+      "authorized_resource_id": "NEX-SRC-DATA-REPO",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-08T08:34:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Assigned project remains active",
+        "No implicit access to another project source"
+      ],
+      "resulting_grant_id": "NEX-GRANT-032",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-033",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-09T08:33:00Z",
+      "revised_at": "2026-07-09T08:33:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PLAT-CI"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-033",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-033",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-09T08:33:00Z",
+      "reason": "Read rollout result metadata while supporting Pay release automation.",
+      "decision_resource_id": "NEX-SRC-PLAT-CI",
+      "authorized_resource_id": "NEX-SRC-PLAT-CI",
+      "approved_actions": [
+        "VIEW_METADATA"
+      ],
+      "validity": {
+        "valid_from": "2026-07-09T08:35:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Secondary Platform Operations membership remains active",
+        "Specific source only"
+      ],
+      "resulting_grant_id": "NEX-GRANT-033",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-034",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-09T08:34:00Z",
+      "revised_at": "2026-07-09T08:34:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PLAT-REPO"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-034",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-034",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-09T08:34:00Z",
+      "reason": "Maintain deployment templates as named platform backup owner.",
+      "decision_resource_id": "NEX-SRC-PLAT-REPO",
+      "authorized_resource_id": "NEX-SRC-PLAT-REPO",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-09T08:36:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Secondary Platform Operations membership remains active",
+        "Specific source only"
+      ],
+      "resulting_grant_id": "NEX-GRANT-034",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-035",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-09T08:35:00Z",
+      "revised_at": "2026-07-09T08:35:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PLAT-CI"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-035",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-035",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-09T08:35:00Z",
+      "reason": "Diagnose immutable-digest promotions as deployment-platform primary owner.",
+      "decision_resource_id": "NEX-SRC-PLAT-CI",
+      "authorized_resource_id": "NEX-SRC-PLAT-CI",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-09T08:37:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Secondary Platform Operations membership remains active",
+        "Specific source only"
+      ],
+      "resulting_grant_id": "NEX-GRANT-035",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-036",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-09T08:36:00Z",
+      "revised_at": "2026-07-09T08:36:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PLAT-CI"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-036",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-036",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-09T08:36:00Z",
+      "reason": "Read telemetry build health without operational configuration payloads.",
+      "decision_resource_id": "NEX-SRC-PLAT-CI",
+      "authorized_resource_id": "NEX-SRC-PLAT-CI",
+      "approved_actions": [
+        "VIEW_METADATA"
+      ],
+      "validity": {
+        "valid_from": "2026-07-09T08:38:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Secondary Platform Operations membership remains active",
+        "Specific source only"
+      ],
+      "resulting_grant_id": "NEX-GRANT-036",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-037",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-09T08:37:00Z",
+      "revised_at": "2026-07-09T08:37:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PLAT-DISCUSS"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-037",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-037",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-07-09T08:37:00Z",
+      "reason": "Participate in observability platform engineering review.",
+      "decision_resource_id": "NEX-SRC-PLAT-DISCUSS",
+      "authorized_resource_id": "NEX-SRC-PLAT-DISCUSS",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-07-09T08:39:00Z",
+        "valid_until": null
+      },
+      "conditions": [
+        "Secondary Platform Operations membership remains active",
+        "Specific source only"
+      ],
+      "resulting_grant_id": "NEX-GRANT-037",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-038",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-01T15:00:00Z",
+      "revised_at": "2026-10-01T15:00:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PLAT-CI"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-038",
+      "request_id": "NEX-ARQ-001",
+      "grant_reference_id": "NEX-GRANT-038",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "NARROWED",
+      "decided_at": "2026-10-01T15:00:00Z",
+      "reason": "Admin approved only source metadata, not full records, for a bounded coordination purpose.",
+      "decision_resource_id": "NEX-SRC-PLAT-CI",
+      "authorized_resource_id": "NEX-SRC-PLAT-CI",
+      "approved_actions": [
+        "VIEW_METADATA"
+      ],
+      "validity": {
+        "valid_from": "2026-10-03T09:00:00Z",
+        "valid_until": "2026-10-12T09:00:00Z"
+      },
+      "conditions": [
+        "Only requested source ID",
+        "No onward delegation",
+        "Enforce expiry/revocation on read"
+      ],
+      "resulting_grant_id": "NEX-GRANT-038",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-039",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-09T15:00:00Z",
+      "revised_at": "2026-10-09T15:00:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PLAT-CI"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-039",
+      "request_id": "NEX-ARQ-002",
+      "grant_reference_id": "NEX-GRANT-039",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-10-09T15:00:00Z",
+      "reason": "Admin confirmed a specific operational responsibility and a time limit for the requested action.",
+      "decision_resource_id": "NEX-SRC-PLAT-CI",
+      "authorized_resource_id": "NEX-SRC-PLAT-CI",
+      "approved_actions": [
+        "VIEW_METADATA"
+      ],
+      "validity": {
+        "valid_from": "2026-10-11T09:00:00Z",
+        "valid_until": "2026-11-16T09:00:00Z"
+      },
+      "conditions": [
+        "Only requested source ID",
+        "No onward delegation",
+        "Enforce expiry/revocation on read"
+      ],
+      "resulting_grant_id": "NEX-GRANT-039",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-040",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-07T15:00:00Z",
+      "revised_at": "2026-10-07T15:00:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PLAT-DISCUSS"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-040",
+      "request_id": "NEX-ARQ-003",
+      "grant_reference_id": "NEX-GRANT-040",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-10-07T15:00:00Z",
+      "reason": "Admin confirmed a specific operational responsibility and a time limit for the requested action.",
+      "decision_resource_id": "NEX-SRC-PLAT-DISCUSS",
+      "authorized_resource_id": "NEX-SRC-PLAT-DISCUSS",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-10-09T09:00:00Z",
+        "valid_until": "2026-12-02T09:00:00Z"
+      },
+      "conditions": [
+        "Only requested source ID",
+        "No onward delegation",
+        "Enforce expiry/revocation on read"
+      ],
+      "resulting_grant_id": "NEX-GRANT-040",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-041",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-14T15:00:00Z",
+      "revised_at": "2026-10-14T15:00:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PLAT-REPO"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-041",
+      "request_id": "NEX-ARQ-004",
+      "grant_reference_id": "NEX-GRANT-041",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "NARROWED",
+      "decided_at": "2026-10-14T15:00:00Z",
+      "reason": "Admin approved only source metadata, not full records, for a bounded coordination purpose.",
+      "decision_resource_id": "NEX-SRC-PLAT-REPO",
+      "authorized_resource_id": "NEX-SRC-PLAT-REPO",
+      "approved_actions": [
+        "VIEW_METADATA"
+      ],
+      "validity": {
+        "valid_from": "2026-10-16T09:00:00Z",
+        "valid_until": "2026-11-13T09:00:00Z"
+      },
+      "conditions": [
+        "Only requested source ID",
+        "No onward delegation",
+        "Enforce expiry/revocation on read"
+      ],
+      "resulting_grant_id": "NEX-GRANT-041",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-042",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-10T15:00:00Z",
+      "revised_at": "2026-10-10T15:00:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PLAT-DISCUSS"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-042",
+      "request_id": "NEX-ARQ-005",
+      "grant_reference_id": "NEX-GRANT-042",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "APPROVED",
+      "decided_at": "2026-10-10T15:00:00Z",
+      "reason": "Admin confirmed a specific operational responsibility and a time limit for the requested action.",
+      "decision_resource_id": "NEX-SRC-PLAT-DISCUSS",
+      "authorized_resource_id": "NEX-SRC-PLAT-DISCUSS",
+      "approved_actions": [
+        "READ_RECORDS"
+      ],
+      "validity": {
+        "valid_from": "2026-10-12T09:00:00Z",
+        "valid_until": "2026-11-06T09:00:00Z"
+      },
+      "conditions": [
+        "Only requested source ID",
+        "No onward delegation",
+        "Enforce expiry/revocation on read"
+      ],
+      "resulting_grant_id": "NEX-GRANT-042",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-043",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-14T15:00:00Z",
+      "revised_at": "2026-10-14T15:00:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-ID-REPO"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-043",
+      "request_id": "NEX-ARQ-006",
+      "grant_reference_id": null,
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "DENIED",
+      "decided_at": "2026-10-14T15:00:00Z",
+      "reason": "Source-access rule prohibits this direct read; a technical reason alone cannot override the role or project boundary.",
+      "decision_resource_id": "NEX-SRC-ID-REPO",
+      "authorized_resource_id": null,
+      "approved_actions": [],
+      "validity": {
+        "valid_from": null,
+        "valid_until": null
+      },
+      "conditions": [
+        "No direct source access granted",
+        "Shared contracts or separately approved disclosure remain available"
+      ],
+      "resulting_grant_id": null,
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-044",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-16T15:00:00Z",
+      "revised_at": "2026-10-16T15:00:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PAY-REPO"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-044",
+      "request_id": "NEX-ARQ-007",
+      "grant_reference_id": null,
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "DENIED",
+      "decided_at": "2026-10-16T15:00:00Z",
+      "reason": "Source-access rule prohibits this direct read; a technical reason alone cannot override the role or project boundary.",
+      "decision_resource_id": "NEX-SRC-PAY-REPO",
+      "authorized_resource_id": null,
+      "approved_actions": [],
+      "validity": {
+        "valid_from": null,
+        "valid_until": null
+      },
+      "conditions": [
+        "No direct source access granted",
+        "Shared contracts or separately approved disclosure remain available"
+      ],
+      "resulting_grant_id": null,
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-045",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-18T15:00:00Z",
+      "revised_at": "2026-10-18T15:00:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PRIVILEGED_CHANGES"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-045",
+      "request_id": "NEX-ARQ-008",
+      "grant_reference_id": null,
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "DENIED",
+      "decided_at": "2026-10-18T15:00:00Z",
+      "reason": "Source-access rule prohibits this direct read; a technical reason alone cannot override the role or project boundary.",
+      "decision_resource_id": "NEX-SRC-PRIVILEGED_CHANGES",
+      "authorized_resource_id": null,
+      "approved_actions": [],
+      "validity": {
+        "valid_from": null,
+        "valid_until": null
+      },
+      "conditions": [
+        "No direct source access granted",
+        "Shared contracts or separately approved disclosure remain available"
+      ],
+      "resulting_grant_id": null,
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-046",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-20T15:00:00Z",
+      "revised_at": "2026-10-20T15:00:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-SECURITY_GOVERNANCE"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-046",
+      "request_id": "NEX-ARQ-009",
+      "grant_reference_id": null,
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "DENIED",
+      "decided_at": "2026-10-20T15:00:00Z",
+      "reason": "Source-access rule prohibits this direct read; a technical reason alone cannot override the role or project boundary.",
+      "decision_resource_id": "NEX-SRC-SECURITY_GOVERNANCE",
+      "authorized_resource_id": null,
+      "approved_actions": [],
+      "validity": {
+        "valid_from": null,
+        "valid_until": null
+      },
+      "conditions": [
+        "No direct source access granted",
+        "Shared contracts or separately approved disclosure remain available"
+      ],
+      "resulting_grant_id": null,
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-047",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-22T15:00:00Z",
+      "revised_at": "2026-10-22T15:00:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-COM-REPO"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-047",
+      "request_id": "NEX-ARQ-010",
+      "grant_reference_id": null,
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "DENIED",
+      "decided_at": "2026-10-22T15:00:00Z",
+      "reason": "Source-access rule prohibits this direct read; a technical reason alone cannot override the role or project boundary.",
+      "decision_resource_id": "NEX-SRC-COM-REPO",
+      "authorized_resource_id": null,
+      "approved_actions": [],
+      "validity": {
+        "valid_from": null,
+        "valid_until": null
+      },
+      "conditions": [
+        "No direct source access granted",
+        "Shared contracts or separately approved disclosure remain available"
+      ],
+      "resulting_grant_id": null,
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-048",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-12T10:00:00Z",
+      "revised_at": "2026-10-12T10:00:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PLAT-CI"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-048",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-038",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "CONFIRM_EXPIRATION",
+      "decided_at": "2026-10-12T10:00:00Z",
+      "reason": "The approved grant period ended without a renewal decision.",
+      "decision_resource_id": "NEX-SRC-PLAT-CI",
+      "authorized_resource_id": "NEX-SRC-PLAT-CI",
+      "approved_actions": [],
+      "validity": {
+        "valid_from": null,
+        "valid_until": "2026-10-12T09:00:00Z"
+      },
+      "conditions": [
+        "No extension authorized"
+      ],
+      "resulting_grant_id": "NEX-GRANT-038",
+      "source_recommendation_reference": null
+    },
+    {
+      "id": "NEX-ACD-049",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-10-24T13:00:00Z",
+      "revised_at": "2026-10-24T13:00:00Z",
+      "status": "FINAL",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ],
+        "resource_ids": [
+          "NEX-SRC-PLAT-DISCUSS"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "decision_id": "NEX-ACD-049",
+      "request_id": null,
+      "grant_reference_id": "NEX-GRANT-042",
+      "deciding_admin_employee_id": "NEX-EMP-001",
+      "decision_type": "REVOKED",
+      "decided_at": "2026-10-24T13:00:00Z",
+      "reason": "Coordination task completed, so the narrow Platform discussion grant is withdrawn.",
+      "decision_resource_id": "NEX-SRC-PLAT-DISCUSS",
+      "authorized_resource_id": "NEX-SRC-PLAT-DISCUSS",
+      "approved_actions": [],
+      "validity": {
+        "valid_from": null,
+        "valid_until": null
+      },
+      "conditions": [
+        "Revocation applies only to this grant",
+        "Past audit records retained"
+      ],
+      "resulting_grant_id": "NEX-GRANT-042",
+      "source_recommendation_reference": null
+    }
+  ]
+}

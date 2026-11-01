@@ -1,0 +1,8 @@
+CREATE TABLE public.parent (
+ id integer PRIMARY KEY
+);
+CREATE TABLE public.child (
+ id integer PRIMARY KEY,
+ parent_id integer
+);
+ALTER TABLE public.child ADD CONSTRAINT child_parent_fk FOREIGN KEY (parent_id) REFERENCES public.parent(id);

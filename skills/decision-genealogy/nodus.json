@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "required_capabilities": ["graph.read", "evidence.read"],
+  "compatible_tools": [
+    {"tool_id": "decision.genealogy", "version": "1.0.0"},
+    {"tool_id": "graph.entity_lookup", "version": "1.0.0"},
+    {"tool_id": "graph.revision", "version": "1.0.0"},
+    {"tool_id": "evidence.lookup", "version": "1.0.0"}
+  ],
+  "effect": "READ_ONLY",
+  "input_expectations": "An architecture decision entity_id (decision_id), and optionally a bounded max_depth/limit for the genealogy chain.",
+  "output_expectations": "Documented rationale/alternatives/context when available, evidence-backed related resources, and explicit predecessor/successor SUPERSEDES links -- never a fabricated approval history, motivation or supersession relationship."
+}

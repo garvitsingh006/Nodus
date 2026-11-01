@@ -1,0 +1,285 @@
+{
+  "roles": [
+    {
+      "id": "NEX-ROLE-ADMIN",
+      "role_code": "ADMIN",
+      "display_name": "Company administrator",
+      "description": "Company-wide access governor and sole formal handoff issuer.",
+      "capabilities": {
+        "investigate": true,
+        "generate_report": true,
+        "request_access": true,
+        "review_access_requests": true,
+        "approve_access_request": true,
+        "narrow_access_grant": true,
+        "deny_access_request": true,
+        "expire_access_grant": true,
+        "revoke_access_grant": true,
+        "issue_handoff": true
+      },
+      "resource_scope_policy": "COMPANY_WIDE"
+    },
+    {
+      "id": "NEX-ROLE-DEVELOPER",
+      "role_code": "DEVELOPER",
+      "display_name": "Project engineer",
+      "description": "Works on assigned product systems with explicit resource-level authorization.",
+      "capabilities": {
+        "investigate": true,
+        "generate_report": true,
+        "request_access": true,
+        "review_access_requests": false,
+        "approve_access_request": false,
+        "narrow_access_grant": false,
+        "deny_access_request": false,
+        "expire_access_grant": false,
+        "revoke_access_grant": false,
+        "issue_handoff": false
+      },
+      "resource_scope_policy": "ASSIGNED_PROJECT_AND_EXPLICIT_GRANT"
+    },
+    {
+      "id": "NEX-ROLE-INTERN",
+      "role_code": "INTERN",
+      "display_name": "Restricted engineering intern",
+      "description": "Uses shared and explicitly approved intern resources for limited investigations.",
+      "capabilities": {
+        "investigate": true,
+        "generate_report": false,
+        "request_access": true,
+        "review_access_requests": false,
+        "approve_access_request": false,
+        "narrow_access_grant": false,
+        "deny_access_request": false,
+        "expire_access_grant": false,
+        "revoke_access_grant": false,
+        "issue_handoff": false
+      },
+      "resource_scope_policy": "SHARED_AND_EXPLICIT_INTERN_GRANT"
+    }
+  ],
+  "baseline_entitlements": [
+    {
+      "id": "NEX-ENT-001",
+      "role_id": "NEX-ROLE-ADMIN",
+      "resource_class": "ALL_COMPANY_RESOURCES",
+      "baseline_decision": "ALLOW",
+      "scope": "COMPANY",
+      "assigned_project_required": false,
+      "explicit_resource_grant_required": false,
+      "rationale": "Company-wide access; admin role still subject to activity logging."
+    },
+    {
+      "id": "NEX-ENT-002",
+      "role_id": "NEX-ROLE-DEVELOPER",
+      "resource_class": "COMPANY_SHARED",
+      "baseline_decision": "ALLOW",
+      "scope": "COMPANY",
+      "assigned_project_required": false,
+      "explicit_resource_grant_required": false,
+      "rationale": "Shared information is visible to all active developers."
+    },
+    {
+      "id": "NEX-ENT-003",
+      "role_id": "NEX-ROLE-DEVELOPER",
+      "resource_class": "PROJECT_DEVELOPER",
+      "baseline_decision": "REQUIRES_EXPLICIT_GRANT",
+      "scope": "ASSIGNED_PROJECT",
+      "assigned_project_required": true,
+      "explicit_resource_grant_required": true,
+      "rationale": "Project assignment establishes eligibility, not direct resource access."
+    },
+    {
+      "id": "NEX-ENT-004",
+      "role_id": "NEX-ROLE-DEVELOPER",
+      "resource_class": "CROSS_PROJECT_CONFIDENTIAL",
+      "baseline_decision": "REQUIRES_ADMIN_APPROVED_GRANT",
+      "scope": "SPECIFIC_RESOURCE",
+      "assigned_project_required": false,
+      "explicit_resource_grant_required": true,
+      "rationale": "Other projects' confidential engineering resources are private by default."
+    },
+    {
+      "id": "NEX-ENT-005",
+      "role_id": "NEX-ROLE-DEVELOPER",
+      "resource_class": "PRODUCTION_CONFIGURATION",
+      "baseline_decision": "REQUIRES_ADMIN_APPROVED_GRANT",
+      "scope": "SPECIFIC_RESOURCE",
+      "assigned_project_required": true,
+      "explicit_resource_grant_required": true,
+      "rationale": "Production configuration access requires separate approval."
+    },
+    {
+      "id": "NEX-ENT-006",
+      "role_id": "NEX-ROLE-INTERN",
+      "resource_class": "COMPANY_SHARED",
+      "baseline_decision": "ALLOW",
+      "scope": "COMPANY",
+      "assigned_project_required": false,
+      "explicit_resource_grant_required": false,
+      "rationale": "Company-wide shared materials are visible to active interns."
+    },
+    {
+      "id": "NEX-ENT-007",
+      "role_id": "NEX-ROLE-INTERN",
+      "resource_class": "PROJECT_INTERN",
+      "baseline_decision": "REQUIRES_EXPLICIT_GRANT",
+      "scope": "ASSIGNED_PROJECT",
+      "assigned_project_required": true,
+      "explicit_resource_grant_required": true,
+      "rationale": "Intern project data is accessible only after an appropriate resource grant."
+    },
+    {
+      "id": "NEX-ENT-008",
+      "role_id": "NEX-ROLE-INTERN",
+      "resource_class": "SOURCE_CODE",
+      "baseline_decision": "DENY_BY_DEFAULT",
+      "scope": "SPECIFIC_RESOURCE",
+      "assigned_project_required": true,
+      "explicit_resource_grant_required": true,
+      "rationale": "Intern project assignment never implicitly grants repository access."
+    },
+    {
+      "id": "NEX-ENT-009",
+      "role_id": "NEX-ROLE-INTERN",
+      "resource_class": "PRODUCTION_CONFIGURATION",
+      "baseline_decision": "DENY_BY_DEFAULT",
+      "scope": "SPECIFIC_RESOURCE",
+      "assigned_project_required": true,
+      "explicit_resource_grant_required": true,
+      "rationale": "Interns receive no baseline production configuration permission."
+    },
+    {
+      "id": "NEX-ENT-010",
+      "role_id": "NEX-ROLE-INTERN",
+      "resource_class": "ADMINISTRATIVE_RECORDS",
+      "baseline_decision": "DENY_BY_DEFAULT",
+      "scope": "SPECIFIC_RESOURCE",
+      "assigned_project_required": false,
+      "explicit_resource_grant_required": true,
+      "rationale": "Administrative records remain restricted from the intern baseline."
+    }
+  ],
+  "demo_identities": [
+    {
+      "id": "NEX-DEMO-001",
+      "employee_id": "NEX-EMP-001",
+      "role_id": "NEX-ROLE-ADMIN",
+      "demo_token": "4",
+      "demo_only": true,
+      "credential_classification": "NON_SECRET_DEMO_SELECTOR",
+      "production_authentication_eligible": false,
+      "notes": "Deterministic demonstration identity; not a secure authentication secret."
+    },
+    {
+      "id": "NEX-DEMO-002",
+      "employee_id": "NEX-EMP-002",
+      "role_id": "NEX-ROLE-DEVELOPER",
+      "demo_token": "D02",
+      "demo_only": true,
+      "credential_classification": "NON_SECRET_DEMO_SELECTOR",
+      "production_authentication_eligible": false,
+      "notes": "Deterministic demonstration identity; not a secure authentication secret."
+    },
+    {
+      "id": "NEX-DEMO-003",
+      "employee_id": "NEX-EMP-003",
+      "role_id": "NEX-ROLE-DEVELOPER",
+      "demo_token": "D03",
+      "demo_only": true,
+      "credential_classification": "NON_SECRET_DEMO_SELECTOR",
+      "production_authentication_eligible": false,
+      "notes": "Deterministic demonstration identity; not a secure authentication secret."
+    },
+    {
+      "id": "NEX-DEMO-004",
+      "employee_id": "NEX-EMP-004",
+      "role_id": "NEX-ROLE-DEVELOPER",
+      "demo_token": "D04",
+      "demo_only": true,
+      "credential_classification": "NON_SECRET_DEMO_SELECTOR",
+      "production_authentication_eligible": false,
+      "notes": "Deterministic demonstration identity; not a secure authentication secret."
+    },
+    {
+      "id": "NEX-DEMO-005",
+      "employee_id": "NEX-EMP-005",
+      "role_id": "NEX-ROLE-DEVELOPER",
+      "demo_token": "D05",
+      "demo_only": true,
+      "credential_classification": "NON_SECRET_DEMO_SELECTOR",
+      "production_authentication_eligible": false,
+      "notes": "Deterministic demonstration identity; not a secure authentication secret."
+    },
+    {
+      "id": "NEX-DEMO-006",
+      "employee_id": "NEX-EMP-006",
+      "role_id": "NEX-ROLE-DEVELOPER",
+      "demo_token": "D06",
+      "demo_only": true,
+      "credential_classification": "NON_SECRET_DEMO_SELECTOR",
+      "production_authentication_eligible": false,
+      "notes": "Deterministic demonstration identity; not a secure authentication secret."
+    },
+    {
+      "id": "NEX-DEMO-007",
+      "employee_id": "NEX-EMP-007",
+      "role_id": "NEX-ROLE-DEVELOPER",
+      "demo_token": "D07",
+      "demo_only": true,
+      "credential_classification": "NON_SECRET_DEMO_SELECTOR",
+      "production_authentication_eligible": false,
+      "notes": "Deterministic demonstration identity; not a secure authentication secret."
+    },
+    {
+      "id": "NEX-DEMO-008",
+      "employee_id": "NEX-EMP-008",
+      "role_id": "NEX-ROLE-DEVELOPER",
+      "demo_token": "D08",
+      "demo_only": true,
+      "credential_classification": "NON_SECRET_DEMO_SELECTOR",
+      "production_authentication_eligible": false,
+      "notes": "Deterministic demonstration identity; not a secure authentication secret."
+    },
+    {
+      "id": "NEX-DEMO-009",
+      "employee_id": "NEX-EMP-009",
+      "role_id": "NEX-ROLE-DEVELOPER",
+      "demo_token": "D09",
+      "demo_only": true,
+      "credential_classification": "NON_SECRET_DEMO_SELECTOR",
+      "production_authentication_eligible": false,
+      "notes": "Deterministic demonstration identity; not a secure authentication secret."
+    },
+    {
+      "id": "NEX-DEMO-010",
+      "employee_id": "NEX-EMP-010",
+      "role_id": "NEX-ROLE-INTERN",
+      "demo_token": "I10",
+      "demo_only": true,
+      "credential_classification": "NON_SECRET_DEMO_SELECTOR",
+      "production_authentication_eligible": false,
+      "notes": "Deterministic demonstration identity; not a secure authentication secret."
+    },
+    {
+      "id": "NEX-DEMO-011",
+      "employee_id": "NEX-EMP-011",
+      "role_id": "NEX-ROLE-INTERN",
+      "demo_token": "I11",
+      "demo_only": true,
+      "credential_classification": "NON_SECRET_DEMO_SELECTOR",
+      "production_authentication_eligible": false,
+      "notes": "Deterministic demonstration identity; not a secure authentication secret."
+    },
+    {
+      "id": "NEX-DEMO-012",
+      "employee_id": "NEX-EMP-012",
+      "role_id": "NEX-ROLE-INTERN",
+      "demo_token": "I12",
+      "demo_only": true,
+      "credential_classification": "NON_SECRET_DEMO_SELECTOR",
+      "production_authentication_eligible": false,
+      "notes": "Deterministic demonstration identity; not a secure authentication secret."
+    }
+  ]
+}

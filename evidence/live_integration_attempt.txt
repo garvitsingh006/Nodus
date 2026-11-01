@@ -1,0 +1,7 @@
+ssss                                                                     [100%]
+=========================== short test summary info ============================
+SKIPPED [1] backend/tests/test_phase6_integration.py:183: FalkorDB integration instance is unavailable at localhost:6379: FalkorDB Python client is not installed. Run: pip install -r requirements.txt
+SKIPPED [1] backend/tests/test_phase6_integration.py:194: FalkorDB integration instance is unavailable at localhost:6379: FalkorDB Python client is not installed. Run: pip install -r requirements.txt
+SKIPPED [1] backend/tests/test_phase6_integration.py:204: FalkorDB integration instance is unavailable at localhost:6379: FalkorDB Python client is not installed. Run: pip install -r requirements.txt
+SKIPPED [1] backend/tests/test_phase6_integration.py:216: FalkorDB integration instance is unavailable at localhost:6379: FalkorDB Python client is not installed. Run: pip install -r requirements.txt
+4 skipped, 39 deselected in 0.05s

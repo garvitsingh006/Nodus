@@ -1,0 +1,44 @@
+FFFFFFF                                                                  [100%]
+=================================== FAILURES ===================================
+_ test_valid_multi_agent_handoff_retains_exact_context_across_service_instances _
+backend/tests/test_coordination_handoff_context.py:124: in test_valid_multi_agent_handoff_retains_exact_context_across_service_instances
+    for item in board["accepted_handoff_context"]
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'accepted_handoff_context'
+_______ test_wrong_task_finding_cannot_be_laundered_into_a_valid_handoff _______
+backend/tests/test_coordination_handoff_context.py:132: in test_wrong_task_finding_cannot_be_laundered_into_a_valid_handoff
+    assert not validation["valid"]
+E   assert not True
+__________ test_unrelated_evidence_cannot_validate_a_correct_finding ___________
+backend/tests/test_coordination_handoff_context.py:142: in test_unrelated_evidence_cannot_validate_a_correct_finding
+    assert not validation["valid"]
+E   assert not True
+_______________ test_sender_cannot_impersonate_source_task_owner _______________
+backend/tests/test_coordination_handoff_context.py:148: in test_sender_cannot_impersonate_source_task_owner
+    with pytest.raises(ValueError, match="owner"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'ValueError'>
+________________ test_rejected_handoff_cannot_be_later_accepted ________________
+backend/tests/test_coordination_handoff_context.py:155: in test_rejected_handoff_cannot_be_later_accepted
+    with pytest.raises(ValueError, match="PENDING"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'ValueError'>
+___________________ test_accepted_handoff_cannot_be_rejected ___________________
+backend/tests/test_coordination_handoff_context.py:162: in test_accepted_handoff_cannot_be_rejected
+    with pytest.raises(ValueError, match="PENDING"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'ValueError'>
+_____________ test_pending_handoff_not_exposed_as_accepted_context _____________
+backend/tests/test_coordination_handoff_context.py:170: in test_pending_handoff_not_exposed_as_accepted_context
+    assert board["accepted_handoff_context"] == []
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'accepted_handoff_context'
+=========================== short test summary info ============================
+FAILED backend/tests/test_coordination_handoff_context.py::test_valid_multi_agent_handoff_retains_exact_context_across_service_instances - KeyError: 'accepted_handoff_context'
+FAILED backend/tests/test_coordination_handoff_context.py::test_wrong_task_finding_cannot_be_laundered_into_a_valid_handoff - assert not True
+FAILED backend/tests/test_coordination_handoff_context.py::test_unrelated_evidence_cannot_validate_a_correct_finding - assert not True
+FAILED backend/tests/test_coordination_handoff_context.py::test_sender_cannot_impersonate_source_task_owner - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED backend/tests/test_coordination_handoff_context.py::test_rejected_handoff_cannot_be_later_accepted - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED backend/tests/test_coordination_handoff_context.py::test_accepted_handoff_cannot_be_rejected - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED backend/tests/test_coordination_handoff_context.py::test_pending_handoff_not_exposed_as_accepted_context - KeyError: 'accepted_handoff_context'
+7 failed in 0.16s

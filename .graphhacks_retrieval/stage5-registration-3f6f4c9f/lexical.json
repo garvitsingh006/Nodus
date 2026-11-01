@@ -1,0 +1,61 @@
+{
+  "SRCREC-ING-AF500C9A264842EFD693": {
+    "artifact_id": null,
+    "content_hash": "10ab137be7af206134406f41b207942aa2515260c3f305cc39a2cbb743e788a3",
+    "data_source_id": "SRC-2985D934699D23B2B5",
+    "document_id": "SRCREC-ING-AF500C9A264842EFD693",
+    "document_type": "SOURCE_RECORD",
+    "entity_ids": [
+      "DOC-GITHUB-SQL-569BA704ACCD7B095FD3CCB1",
+      "DOC-GITHUB-SQL-569BA704ACCD7B095FD3CCB1",
+      "SQL-COLUMN-375F420BFE255A40CE18B1C1",
+      "SQL-COLUMN-375F420BFE255A40CE18B1C1",
+      "SQL-COLUMN-8532E926EB86147E13E2DE92",
+      "SQL-COLUMN-8532E926EB86147E13E2DE92",
+      "SQL-COLUMN-F336FE75981D7BB29E4A3C16",
+      "SQL-COLUMN-F336FE75981D7BB29E4A3C16",
+      "SQL-CONSTRAINT-30B3AEB356B71652EDD160AA",
+      "SQL-CONSTRAINT-30B3AEB356B71652EDD160AA",
+      "SQL-CONSTRAINT-7A503AA95A20B632755CD28C",
+      "SQL-CONSTRAINT-7A503AA95A20B632755CD28C",
+      "SQL-CONSTRAINT-7AF2AED04094B1AC5EE95133",
+      "SQL-CONSTRAINT-7AF2AED04094B1AC5EE95133",
+      "SQL-TABLE-0CBAB29E958049AD11C96665",
+      "SQL-TABLE-0CBAB29E958049AD11C96665",
+      "SQL-TABLE-0CBAB29E958049AD11C96665",
+      "SQL-TABLE-551BE7EFFE7B7DBF82DF3CDD",
+      "SQL-TABLE-551BE7EFFE7B7DBF82DF3CDD",
+      "SYS-GITHUB-7F2E1BD9D11070B8B63A0715"
+    ],
+    "metadata": {
+      "record_type": "sql_file",
+      "source_kind": "github"
+    },
+    "observed_at": null,
+    "source_record_id": "SRCREC-ING-AF500C9A264842EFD693",
+    "tenant_id": "stage5-registration-3f6f4c9f",
+    "text": "{'path': 'dvdrental.sql', 'blob_sha': 'c2420658d983c2d8316eb951e301cf6d7d14cece', 'size': 241, 'repository': 'neondatabase/postgres-sample-dbs', 'branch': None, 'ref': 'b54cb67534bf20775803b181b7a1c6f573422161', 'commit_sha': 'b54cb67534bf20775803b181b7a1c6f573422161', 'html_url': 'https://github.com/neondatabase/postgres-sample-dbs/blob/b54cb67534bf20775803b181b7a1c6f573422161/dvdrental.sql', 'sha256': 'cf0cb42aa5e6159450038e3f44748df549eab937bf8a51e12ba0bd8156896a3e'}",
+    "valid_from": null,
+    "valid_until": null
+  },
+  "SRCREC-ING-E077B747DDEBBFBB98C2": {
+    "artifact_id": null,
+    "content_hash": "0a123a23a4e45cb4a94bdacf7b22b8d0afb9d1539a7402d8db89b180a8d068b7",
+    "data_source_id": "SRC-2985D934699D23B2B5",
+    "document_id": "SRCREC-ING-E077B747DDEBBFBB98C2",
+    "document_type": "SOURCE_RECORD",
+    "entity_ids": [
+      "SYS-GITHUB-7F2E1BD9D11070B8B63A0715"
+    ],
+    "metadata": {
+      "record_type": "repository",
+      "source_kind": "github"
+    },
+    "observed_at": null,
+    "source_record_id": "SRCREC-ING-E077B747DDEBBFBB98C2",
+    "tenant_id": "stage5-registration-3f6f4c9f",
+    "text": "{'name': 'postgres-sample-dbs', 'full_name': 'neondatabase/postgres-sample-dbs', 'html_url': 'https://github.com/neondatabase/postgres-sample-dbs', 'owner': 'neondatabase', 'language': None, 'default_branch': 'main', 'branch': None, 'ref': 'b54cb67534bf20775803b181b7a1c6f573422161', 'commit_sha': 'b54cb67534bf20775803b181b7a1c6f573422161', 'tree_sha': 'cccccccccccccccccccccccccccccccccccccccc'}",
+    "valid_from": null,
+    "valid_until": null
+  }
+}

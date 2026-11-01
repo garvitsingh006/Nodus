@@ -1,0 +1,256 @@
+{
+  "service_owner_assignments": [
+    {
+      "id": "NEX-SOA-001",
+      "service_id": "NEX-SVC-PAYMENT_API",
+      "employee_id": "NEX-EMP-002",
+      "owner_role": "PRIMARY",
+      "accountability": "Technical delivery and operational ownership",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-002",
+      "service_id": "NEX-SVC-PAYMENT_API",
+      "employee_id": "NEX-EMP-003",
+      "owner_role": "BACKUP",
+      "accountability": "Continuity, review, and incident coverage",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-003",
+      "service_id": "NEX-SVC-GATEWAY_ROUTER",
+      "employee_id": "NEX-EMP-002",
+      "owner_role": "PRIMARY",
+      "accountability": "Technical delivery and operational ownership",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-004",
+      "service_id": "NEX-SVC-GATEWAY_ROUTER",
+      "employee_id": "NEX-EMP-003",
+      "owner_role": "BACKUP",
+      "accountability": "Continuity, review, and incident coverage",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-005",
+      "service_id": "NEX-SVC-REFUND_WORKER",
+      "employee_id": "NEX-EMP-003",
+      "owner_role": "PRIMARY",
+      "accountability": "Technical delivery and operational ownership",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-006",
+      "service_id": "NEX-SVC-REFUND_WORKER",
+      "employee_id": "NEX-EMP-002",
+      "owner_role": "BACKUP",
+      "accountability": "Continuity, review, and incident coverage",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-007",
+      "service_id": "NEX-SVC-CHECKOUT_SERVICE",
+      "employee_id": "NEX-EMP-004",
+      "owner_role": "PRIMARY",
+      "accountability": "Technical delivery and operational ownership",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-008",
+      "service_id": "NEX-SVC-CHECKOUT_SERVICE",
+      "employee_id": "NEX-EMP-005",
+      "owner_role": "BACKUP",
+      "accountability": "Continuity, review, and incident coverage",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-009",
+      "service_id": "NEX-SVC-ORDER_API",
+      "employee_id": "NEX-EMP-004",
+      "owner_role": "PRIMARY",
+      "accountability": "Technical delivery and operational ownership",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-010",
+      "service_id": "NEX-SVC-ORDER_API",
+      "employee_id": "NEX-EMP-005",
+      "owner_role": "BACKUP",
+      "accountability": "Continuity, review, and incident coverage",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-011",
+      "service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+      "employee_id": "NEX-EMP-005",
+      "owner_role": "PRIMARY",
+      "accountability": "Technical delivery and operational ownership",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-012",
+      "service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+      "employee_id": "NEX-EMP-004",
+      "owner_role": "BACKUP",
+      "accountability": "Continuity, review, and incident coverage",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-013",
+      "service_id": "NEX-SVC-IDENTITY_API",
+      "employee_id": "NEX-EMP-006",
+      "owner_role": "PRIMARY",
+      "accountability": "Technical delivery and operational ownership",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-014",
+      "service_id": "NEX-SVC-IDENTITY_API",
+      "employee_id": "NEX-EMP-007",
+      "owner_role": "BACKUP",
+      "accountability": "Continuity, review, and incident coverage",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-015",
+      "service_id": "NEX-SVC-TOKEN_VALIDATOR",
+      "employee_id": "NEX-EMP-007",
+      "owner_role": "PRIMARY",
+      "accountability": "Technical delivery and operational ownership",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-016",
+      "service_id": "NEX-SVC-TOKEN_VALIDATOR",
+      "employee_id": "NEX-EMP-006",
+      "owner_role": "BACKUP",
+      "accountability": "Continuity, review, and incident coverage",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-017",
+      "service_id": "NEX-SVC-POLICY_SERVICE",
+      "employee_id": "NEX-EMP-006",
+      "owner_role": "PRIMARY",
+      "accountability": "Technical delivery and operational ownership",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-018",
+      "service_id": "NEX-SVC-POLICY_SERVICE",
+      "employee_id": "NEX-EMP-007",
+      "owner_role": "BACKUP",
+      "accountability": "Continuity, review, and incident coverage",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-019",
+      "service_id": "NEX-SVC-EVENT_INGESTOR",
+      "employee_id": "NEX-EMP-008",
+      "owner_role": "PRIMARY",
+      "accountability": "Technical delivery and operational ownership",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-020",
+      "service_id": "NEX-SVC-EVENT_INGESTOR",
+      "employee_id": "NEX-EMP-009",
+      "owner_role": "BACKUP",
+      "accountability": "Continuity, review, and incident coverage",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-021",
+      "service_id": "NEX-SVC-METRICS_PIPELINE",
+      "employee_id": "NEX-EMP-009",
+      "owner_role": "PRIMARY",
+      "accountability": "Technical delivery and operational ownership",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-022",
+      "service_id": "NEX-SVC-METRICS_PIPELINE",
+      "employee_id": "NEX-EMP-008",
+      "owner_role": "BACKUP",
+      "accountability": "Continuity, review, and incident coverage",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-023",
+      "service_id": "NEX-SVC-REPORTING_API",
+      "employee_id": "NEX-EMP-009",
+      "owner_role": "PRIMARY",
+      "accountability": "Technical delivery and operational ownership",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-024",
+      "service_id": "NEX-SVC-REPORTING_API",
+      "employee_id": "NEX-EMP-008",
+      "owner_role": "BACKUP",
+      "accountability": "Continuity, review, and incident coverage",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-025",
+      "service_id": "NEX-SVC-DEPLOYMENT_PLATFORM",
+      "employee_id": "NEX-EMP-007",
+      "owner_role": "PRIMARY",
+      "accountability": "Technical delivery and operational ownership",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-026",
+      "service_id": "NEX-SVC-DEPLOYMENT_PLATFORM",
+      "employee_id": "NEX-EMP-003",
+      "owner_role": "BACKUP",
+      "accountability": "Continuity, review, and incident coverage",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-027",
+      "service_id": "NEX-SVC-OBSERVABILITY_PLATFORM",
+      "employee_id": "NEX-EMP-009",
+      "owner_role": "PRIMARY",
+      "accountability": "Technical delivery and operational ownership",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-SOA-028",
+      "service_id": "NEX-SVC-OBSERVABILITY_PLATFORM",
+      "employee_id": "NEX-EMP-007",
+      "owner_role": "BACKUP",
+      "accountability": "Continuity, review, and incident coverage",
+      "effective_from": "2026-01-05T09:00:00Z",
+      "effective_to": null
+    }
+  ]
+}

@@ -1,0 +1,440 @@
+{
+  "team_memberships": [
+    {
+      "id": "NEX-TM-001",
+      "employee_id": "NEX-EMP-001",
+      "team_id": "NEX-TEAM-PLAT",
+      "membership_type": "PRIMARY",
+      "effective_from": "2018-10-01T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TM-002",
+      "employee_id": "NEX-EMP-002",
+      "team_id": "NEX-TEAM-PAY",
+      "membership_type": "PRIMARY",
+      "effective_from": "2019-01-14T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TM-003",
+      "employee_id": "NEX-EMP-003",
+      "team_id": "NEX-TEAM-PAY",
+      "membership_type": "PRIMARY",
+      "effective_from": "2020-03-02T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TM-004",
+      "employee_id": "NEX-EMP-003",
+      "team_id": "NEX-TEAM-PLAT",
+      "membership_type": "SECONDARY",
+      "effective_from": "2023-04-03T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TM-005",
+      "employee_id": "NEX-EMP-004",
+      "team_id": "NEX-TEAM-COM",
+      "membership_type": "PRIMARY",
+      "effective_from": "2020-06-08T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TM-006",
+      "employee_id": "NEX-EMP-005",
+      "team_id": "NEX-TEAM-COM",
+      "membership_type": "PRIMARY",
+      "effective_from": "2021-01-11T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TM-007",
+      "employee_id": "NEX-EMP-006",
+      "team_id": "NEX-TEAM-ID",
+      "membership_type": "PRIMARY",
+      "effective_from": "2019-09-09T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TM-008",
+      "employee_id": "NEX-EMP-007",
+      "team_id": "NEX-TEAM-ID",
+      "membership_type": "PRIMARY",
+      "effective_from": "2020-01-13T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TM-009",
+      "employee_id": "NEX-EMP-007",
+      "team_id": "NEX-TEAM-PLAT",
+      "membership_type": "SECONDARY",
+      "effective_from": "2022-03-01T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TM-010",
+      "employee_id": "NEX-EMP-008",
+      "team_id": "NEX-TEAM-DATA",
+      "membership_type": "PRIMARY",
+      "effective_from": "2021-03-08T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TM-011",
+      "employee_id": "NEX-EMP-009",
+      "team_id": "NEX-TEAM-DATA",
+      "membership_type": "PRIMARY",
+      "effective_from": "2022-02-07T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TM-012",
+      "employee_id": "NEX-EMP-009",
+      "team_id": "NEX-TEAM-PLAT",
+      "membership_type": "SECONDARY",
+      "effective_from": "2023-10-02T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TM-013",
+      "employee_id": "NEX-EMP-010",
+      "team_id": "NEX-TEAM-COM",
+      "membership_type": "PRIMARY",
+      "effective_from": "2026-07-06T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TM-014",
+      "employee_id": "NEX-EMP-011",
+      "team_id": "NEX-TEAM-DATA",
+      "membership_type": "PRIMARY",
+      "effective_from": "2026-07-06T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TM-015",
+      "employee_id": "NEX-EMP-012",
+      "team_id": "NEX-TEAM-PLAT",
+      "membership_type": "PRIMARY",
+      "effective_from": "2026-08-03T09:00:00Z",
+      "effective_to": null
+    }
+  ],
+  "project_assignments": [
+    {
+      "id": "NEX-PA-001",
+      "employee_id": "NEX-EMP-002",
+      "project_id": "NEX-PRJ-PAY",
+      "assignment_type": "PRIMARY_ENGINEERING",
+      "effective_from": "2019-01-14T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-PA-002",
+      "employee_id": "NEX-EMP-003",
+      "project_id": "NEX-PRJ-PAY",
+      "assignment_type": "PRIMARY_ENGINEERING",
+      "effective_from": "2020-03-02T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-PA-003",
+      "employee_id": "NEX-EMP-004",
+      "project_id": "NEX-PRJ-COM",
+      "assignment_type": "PRIMARY_ENGINEERING",
+      "effective_from": "2020-06-08T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-PA-004",
+      "employee_id": "NEX-EMP-005",
+      "project_id": "NEX-PRJ-COM",
+      "assignment_type": "PRIMARY_ENGINEERING",
+      "effective_from": "2021-01-11T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-PA-005",
+      "employee_id": "NEX-EMP-006",
+      "project_id": "NEX-PRJ-ID",
+      "assignment_type": "PRIMARY_ENGINEERING",
+      "effective_from": "2019-09-09T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-PA-006",
+      "employee_id": "NEX-EMP-007",
+      "project_id": "NEX-PRJ-ID",
+      "assignment_type": "PRIMARY_ENGINEERING",
+      "effective_from": "2020-01-13T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-PA-007",
+      "employee_id": "NEX-EMP-008",
+      "project_id": "NEX-PRJ-DATA",
+      "assignment_type": "PRIMARY_ENGINEERING",
+      "effective_from": "2021-03-08T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-PA-008",
+      "employee_id": "NEX-EMP-009",
+      "project_id": "NEX-PRJ-DATA",
+      "assignment_type": "PRIMARY_ENGINEERING",
+      "effective_from": "2022-02-07T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-PA-009",
+      "employee_id": "NEX-EMP-010",
+      "project_id": "NEX-PRJ-COM",
+      "assignment_type": "INTERNSHIP",
+      "effective_from": "2026-07-06T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-PA-010",
+      "employee_id": "NEX-EMP-011",
+      "project_id": "NEX-PRJ-DATA",
+      "assignment_type": "INTERNSHIP",
+      "effective_from": "2026-07-06T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-PA-011",
+      "employee_id": "NEX-EMP-012",
+      "project_id": "NEX-PRJ-ID",
+      "assignment_type": "INTERNSHIP",
+      "effective_from": "2026-08-03T09:00:00Z",
+      "effective_to": null
+    }
+  ],
+  "team_project_responsibilities": [
+    {
+      "id": "NEX-TPR-001",
+      "team_id": "NEX-TEAM-PAY",
+      "project_id": "NEX-PRJ-PAY",
+      "responsibility_type": "PRODUCT_OWNER",
+      "effective_from": "2019-01-07T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TPR-002",
+      "team_id": "NEX-TEAM-COM",
+      "project_id": "NEX-PRJ-COM",
+      "responsibility_type": "PRODUCT_OWNER",
+      "effective_from": "2020-06-01T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TPR-003",
+      "team_id": "NEX-TEAM-ID",
+      "project_id": "NEX-PRJ-ID",
+      "responsibility_type": "PRODUCT_OWNER",
+      "effective_from": "2019-09-02T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TPR-004",
+      "team_id": "NEX-TEAM-DATA",
+      "project_id": "NEX-PRJ-DATA",
+      "responsibility_type": "PRODUCT_OWNER",
+      "effective_from": "2021-03-01T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TPR-005",
+      "team_id": "NEX-TEAM-PLAT",
+      "project_id": "NEX-PRJ-PAY",
+      "responsibility_type": "SHARED_PLATFORM_SUPPORT",
+      "effective_from": "2019-01-07T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TPR-006",
+      "team_id": "NEX-TEAM-PLAT",
+      "project_id": "NEX-PRJ-COM",
+      "responsibility_type": "SHARED_PLATFORM_SUPPORT",
+      "effective_from": "2020-06-01T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TPR-007",
+      "team_id": "NEX-TEAM-PLAT",
+      "project_id": "NEX-PRJ-ID",
+      "responsibility_type": "SHARED_PLATFORM_SUPPORT",
+      "effective_from": "2019-09-02T09:00:00Z",
+      "effective_to": null
+    },
+    {
+      "id": "NEX-TPR-008",
+      "team_id": "NEX-TEAM-PLAT",
+      "project_id": "NEX-PRJ-DATA",
+      "responsibility_type": "SHARED_PLATFORM_SUPPORT",
+      "effective_from": "2021-03-01T09:00:00Z",
+      "effective_to": null
+    }
+  ],
+  "service_project_ownerships": [
+    {
+      "id": "NEX-SPO-001",
+      "service_id": "NEX-SVC-PAYMENT_API",
+      "project_id": "NEX-PRJ-PAY",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-SPO-002",
+      "service_id": "NEX-SVC-GATEWAY_ROUTER",
+      "project_id": "NEX-PRJ-PAY",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-SPO-003",
+      "service_id": "NEX-SVC-REFUND_WORKER",
+      "project_id": "NEX-PRJ-PAY",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-SPO-004",
+      "service_id": "NEX-SVC-CHECKOUT_SERVICE",
+      "project_id": "NEX-PRJ-COM",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-SPO-005",
+      "service_id": "NEX-SVC-ORDER_API",
+      "project_id": "NEX-PRJ-COM",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-SPO-006",
+      "service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+      "project_id": "NEX-PRJ-COM",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-SPO-007",
+      "service_id": "NEX-SVC-IDENTITY_API",
+      "project_id": "NEX-PRJ-ID",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-SPO-008",
+      "service_id": "NEX-SVC-TOKEN_VALIDATOR",
+      "project_id": "NEX-PRJ-ID",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-SPO-009",
+      "service_id": "NEX-SVC-POLICY_SERVICE",
+      "project_id": "NEX-PRJ-ID",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-SPO-010",
+      "service_id": "NEX-SVC-EVENT_INGESTOR",
+      "project_id": "NEX-PRJ-DATA",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-SPO-011",
+      "service_id": "NEX-SVC-METRICS_PIPELINE",
+      "project_id": "NEX-PRJ-DATA",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-SPO-012",
+      "service_id": "NEX-SVC-REPORTING_API",
+      "project_id": "NEX-PRJ-DATA",
+      "ownership_type": "PRIMARY"
+    }
+  ],
+  "service_team_ownerships": [
+    {
+      "id": "NEX-STO-001",
+      "service_id": "NEX-SVC-PAYMENT_API",
+      "team_id": "NEX-TEAM-PAY",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-STO-002",
+      "service_id": "NEX-SVC-GATEWAY_ROUTER",
+      "team_id": "NEX-TEAM-PAY",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-STO-003",
+      "service_id": "NEX-SVC-REFUND_WORKER",
+      "team_id": "NEX-TEAM-PAY",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-STO-004",
+      "service_id": "NEX-SVC-CHECKOUT_SERVICE",
+      "team_id": "NEX-TEAM-COM",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-STO-005",
+      "service_id": "NEX-SVC-ORDER_API",
+      "team_id": "NEX-TEAM-COM",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-STO-006",
+      "service_id": "NEX-SVC-WEBHOOK_CONSUMER",
+      "team_id": "NEX-TEAM-COM",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-STO-007",
+      "service_id": "NEX-SVC-IDENTITY_API",
+      "team_id": "NEX-TEAM-ID",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-STO-008",
+      "service_id": "NEX-SVC-TOKEN_VALIDATOR",
+      "team_id": "NEX-TEAM-ID",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-STO-009",
+      "service_id": "NEX-SVC-POLICY_SERVICE",
+      "team_id": "NEX-TEAM-ID",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-STO-010",
+      "service_id": "NEX-SVC-EVENT_INGESTOR",
+      "team_id": "NEX-TEAM-DATA",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-STO-011",
+      "service_id": "NEX-SVC-METRICS_PIPELINE",
+      "team_id": "NEX-TEAM-DATA",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-STO-012",
+      "service_id": "NEX-SVC-REPORTING_API",
+      "team_id": "NEX-TEAM-DATA",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-STO-013",
+      "service_id": "NEX-SVC-DEPLOYMENT_PLATFORM",
+      "team_id": "NEX-TEAM-PLAT",
+      "ownership_type": "PRIMARY"
+    },
+    {
+      "id": "NEX-STO-014",
+      "service_id": "NEX-SVC-OBSERVABILITY_PLATFORM",
+      "team_id": "NEX-TEAM-PLAT",
+      "ownership_type": "PRIMARY"
+    }
+  ]
+}

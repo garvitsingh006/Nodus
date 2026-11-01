@@ -1,0 +1,105 @@
+{
+  "dataset_version": "7D-1.0.0",
+  "administrative_source_registry": [
+    {
+      "id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "name": "NEXUS Access Governance",
+      "description": "Administrative permission decisions, grants, requests and access-policy records.",
+      "source_type": "ACCESS_GOVERNANCE",
+      "owner_employee_id": "NEX-EMP-001",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "authority_classification": "AUTHORITATIVE_ADMIN_CONTROL_RECORD",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "resource_class": "ADMINISTRATIVE_RECORDS",
+      "created_at": "2026-07-01T09:00:00Z",
+      "revised_at": "2026-10-30T16:00:00Z",
+      "status": "ACTIVE",
+      "resource_scope": "COMPANY_ADMIN_ONLY",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN"
+      ],
+      "required_entitlement_id": "NEX-ENT-001",
+      "default_access_decision": "DENY_UNLESS_ADMIN",
+      "explicit_admin_only_policy": true,
+      "direct_developer_grants_permitted": false,
+      "disclosure_is_not_source_access": true
+    },
+    {
+      "id": "NEX-SRC-PRIVILEGED_CHANGES",
+      "source_id": "NEX-SRC-PRIVILEGED_CHANGES",
+      "name": "NEXUS Privileged Change Register",
+      "description": "Restricted approvals and verification metadata for production configuration change.",
+      "source_type": "PRIVILEGED_CHANGE_REGISTER",
+      "owner_employee_id": "NEX-EMP-001",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "authority_classification": "AUTHORITATIVE_ADMIN_CONTROL_RECORD",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "resource_class": "ADMINISTRATIVE_RECORDS",
+      "created_at": "2026-07-01T09:00:00Z",
+      "revised_at": "2026-10-30T16:00:00Z",
+      "status": "ACTIVE",
+      "resource_scope": "COMPANY_ADMIN_ONLY",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN"
+      ],
+      "required_entitlement_id": "NEX-ENT-001",
+      "default_access_decision": "DENY_UNLESS_ADMIN",
+      "explicit_admin_only_policy": true,
+      "direct_developer_grants_permitted": false,
+      "disclosure_is_not_source_access": true
+    },
+    {
+      "id": "NEX-SRC-VENDOR_GOVERNANCE",
+      "source_id": "NEX-SRC-VENDOR_GOVERNANCE",
+      "name": "NEXUS Vendor Governance",
+      "description": "Supplier obligations, validity and commercial coordination records.",
+      "source_type": "VENDOR_GOVERNANCE",
+      "owner_employee_id": "NEX-EMP-001",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "authority_classification": "AUTHORITATIVE_ADMIN_CONTROL_RECORD",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "resource_class": "ADMINISTRATIVE_RECORDS",
+      "created_at": "2026-07-01T09:00:00Z",
+      "revised_at": "2026-10-30T16:00:00Z",
+      "status": "ACTIVE",
+      "resource_scope": "COMPANY_ADMIN_ONLY",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN"
+      ],
+      "required_entitlement_id": "NEX-ENT-001",
+      "default_access_decision": "DENY_UNLESS_ADMIN",
+      "explicit_admin_only_policy": true,
+      "direct_developer_grants_permitted": false,
+      "disclosure_is_not_source_access": true
+    },
+    {
+      "id": "NEX-SRC-SECURITY_GOVERNANCE",
+      "source_id": "NEX-SRC-SECURITY_GOVERNANCE",
+      "name": "NEXUS Security Governance",
+      "description": "Administrative control reviews, exceptions and accepted residual risks.",
+      "source_type": "SECURITY_GOVERNANCE",
+      "owner_employee_id": "NEX-EMP-001",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "owner_project_id": null,
+      "authority_classification": "AUTHORITATIVE_ADMIN_CONTROL_RECORD",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "resource_class": "ADMINISTRATIVE_RECORDS",
+      "created_at": "2026-07-01T09:00:00Z",
+      "revised_at": "2026-10-30T16:00:00Z",
+      "status": "ACTIVE",
+      "resource_scope": "COMPANY_ADMIN_ONLY",
+      "eligible_role_ids": [
+        "NEX-ROLE-ADMIN"
+      ],
+      "required_entitlement_id": "NEX-ENT-001",
+      "default_access_decision": "DENY_UNLESS_ADMIN",
+      "explicit_admin_only_policy": true,
+      "direct_developer_grants_permitted": false,
+      "disclosure_is_not_source_access": true
+    }
+  ]
+}

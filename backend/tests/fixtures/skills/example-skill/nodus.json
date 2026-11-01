@@ -1,0 +1,8 @@
+{
+  "version": "1.0.0",
+  "required_capabilities": ["graph.read"],
+  "compatible_tools": [{"tool_id": "graph.entity_lookup", "version": "1.0.0"}],
+  "effect": "READ_ONLY",
+  "input_expectations": "An entity_id to look up.",
+  "output_expectations": "A short natural-language summary of the entity."
+}

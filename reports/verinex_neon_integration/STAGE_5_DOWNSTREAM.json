@@ -1,0 +1,50 @@
+{
+  "status": "DOWNSTREAM_ONLY",
+  "graph": "verinex_neon_stage5_downstream_c3b8a163",
+  "tenant": "neon-stage5-c3b8a163",
+  "source_id": "SRC-NEON-STAGE5-C3B8A163",
+  "artifact_sha256": "fa73f75e117e7f2af010ba7542b224d76897a17ac4972be257513c86ad4da12a",
+  "git_blob_sha": "5fe9c6fee0ba073362952964edd04a6527c24aee",
+  "commit": "b54cb67534bf20775803b181b7a1c6f573422161",
+  "runs": [
+    {
+      "run_id": "INGRUN-516383235DE18F5A376A",
+      "status": "SUCCEEDED",
+      "fetched": 2,
+      "normalized": 2,
+      "written": 2,
+      "quarantined": 0,
+      "failed": 0,
+      "artifacts": 1,
+      "warnings": []
+    },
+    {
+      "run_id": "INGRUN-C103DEB15C24DBE61DBE",
+      "status": "SUCCEEDED",
+      "fetched": 2,
+      "normalized": 2,
+      "written": 2,
+      "quarantined": 0,
+      "failed": 0,
+      "artifacts": 1,
+      "warnings": []
+    }
+  ],
+  "table_count": 15,
+  "foreign_key_count": 18,
+  "path": [
+    "public.payment",
+    "public.rental",
+    "public.inventory",
+    "public.film"
+  ],
+  "path_constraints": [
+    "payment_rental_id_fkey",
+    "rental_inventory_id_fkey",
+    "inventory_film_id_fkey"
+  ],
+  "payment_columns": 6,
+  "payment_constraints": 4,
+  "source_ingestion_status": "SUCCESS",
+  "source_credential_configured": false
+}

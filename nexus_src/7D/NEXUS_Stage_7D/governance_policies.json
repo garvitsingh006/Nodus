@@ -1,0 +1,174 @@
+{
+  "dataset_version": "7D-1.0.0",
+  "governance_policies": [
+    {
+      "id": "NEX-GPOL-001",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-02T12:00:00Z",
+      "revised_at": "2026-07-02T12:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "policy_id": "NEX-GPOL-001",
+      "policy_name": "EXPLICIT_SOURCE_GRANT",
+      "policy_statement": "Only a baseline entitlement or current admin-issued resource grant permits a source read.",
+      "authorized_issuer_role_id": "NEX-ROLE-ADMIN",
+      "required_review_conditions": [
+        "Validate employee role and active employment",
+        "Validate exact resource ID and assigned project if applicable",
+        "Evaluate grant validity and revocation at read time",
+        "Treat absence of grant as deny"
+      ],
+      "recipient_access_restriction": "Recipients must be checked for source-level or disclosure-only eligibility.",
+      "evidence_provenance_requirement": "Retain original source and record IDs with timestamps.",
+      "versioning_requirement": "Immutable versioned content, timestamp and approving admin binding.",
+      "audit_requirement": "Decision and state transition must refer to a durable audit event.",
+      "revocation_or_supersession": "Revoke current effect; preserve historical decision and issued versions.",
+      "formal_handoff_only": false,
+      "handoff_execution_records_generated": false
+    },
+    {
+      "id": "NEX-GPOL-002",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-02T12:00:00Z",
+      "revised_at": "2026-07-02T12:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "policy_id": "NEX-GPOL-002",
+      "policy_name": "ADMIN_DECISION_AUTHORITY",
+      "policy_statement": "Only ADMIN may approve, narrow, deny, expire or revoke restricted-source grants.",
+      "authorized_issuer_role_id": "NEX-ROLE-ADMIN",
+      "required_review_conditions": [
+        "Project lead recommendations have no decision authority",
+        "Audit each issuance, revision and revocation",
+        "Intern grants for code or admin sources remain denied"
+      ],
+      "recipient_access_restriction": "Recipients must be checked for source-level or disclosure-only eligibility.",
+      "evidence_provenance_requirement": "Retain original source and record IDs with timestamps.",
+      "versioning_requirement": "Immutable versioned content, timestamp and approving admin binding.",
+      "audit_requirement": "Decision and state transition must refer to a durable audit event.",
+      "revocation_or_supersession": "Revoke current effect; preserve historical decision and issued versions.",
+      "formal_handoff_only": false,
+      "handoff_execution_records_generated": false
+    },
+    {
+      "id": "NEX-GPOL-003",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-02T12:00:00Z",
+      "revised_at": "2026-07-02T12:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "policy_id": "NEX-GPOL-003",
+      "policy_name": "PRIVILEGED_CHANGE_CONTROL",
+      "policy_statement": "Production change approvals are distinct from observed deployment outcomes.",
+      "authorized_issuer_role_id": "NEX-ROLE-ADMIN",
+      "required_review_conditions": [
+        "Require the approving admin identity and bounded execution window",
+        "Retain rollback and verification plan",
+        "Mark verified only when separate execution evidence exists"
+      ],
+      "recipient_access_restriction": "Recipients must be checked for source-level or disclosure-only eligibility.",
+      "evidence_provenance_requirement": "Retain original source and record IDs with timestamps.",
+      "versioning_requirement": "Immutable versioned content, timestamp and approving admin binding.",
+      "audit_requirement": "Decision and state transition must refer to a durable audit event.",
+      "revocation_or_supersession": "Revoke current effect; preserve historical decision and issued versions.",
+      "formal_handoff_only": false,
+      "handoff_execution_records_generated": false
+    },
+    {
+      "id": "NEX-GPOL-004",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-02T12:00:00Z",
+      "revised_at": "2026-07-02T12:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "policy_id": "NEX-GPOL-004",
+      "policy_name": "FIELD_LIMITED_DISCLOSURE",
+      "policy_statement": "An admin may release named fields to a named recipient without granting admin-source access.",
+      "authorized_issuer_role_id": "NEX-ROLE-ADMIN",
+      "required_review_conditions": [
+        "Allowlisted fields only; redact listed sensitive fields",
+        "Constrain to one objective and validity period",
+        "Preserve original source and record provenance",
+        "Invalidate on expiry or revocation"
+      ],
+      "recipient_access_restriction": "Recipients must be checked for source-level or disclosure-only eligibility.",
+      "evidence_provenance_requirement": "Retain original source and record IDs with timestamps.",
+      "versioning_requirement": "Immutable versioned content, timestamp and approving admin binding.",
+      "audit_requirement": "Decision and state transition must refer to a durable audit event.",
+      "revocation_or_supersession": "Revoke current effect; preserve historical decision and issued versions.",
+      "formal_handoff_only": false,
+      "handoff_execution_records_generated": false
+    },
+    {
+      "id": "NEX-GPOL-005",
+      "source_id": "NEX-SRC-ACCESS_GOVERNANCE",
+      "source_authority": "SOURCE_RECORDED_ADMINISTRATIVE_FACT",
+      "author_or_responsible_employee_id": "NEX-EMP-001",
+      "created_at": "2026-07-02T12:00:00Z",
+      "revised_at": "2026-07-02T12:00:00Z",
+      "status": "ACTIVE",
+      "access_classification": "ADMINISTRATIVE_RECORDS",
+      "owner_team_id": "NEX-TEAM-PLAT",
+      "entity_references": {
+        "employee_ids": [
+          "NEX-EMP-001"
+        ]
+      },
+      "record_content_class": "ACCESS_GOVERNANCE",
+      "policy_id": "NEX-GPOL-005",
+      "policy_name": "FORMAL_HANDOFF_AUTHORITY",
+      "policy_statement": "Only ADMIN may formally approve and issue an evidence-backed handoff.",
+      "authorized_issuer_role_id": "NEX-ROLE-ADMIN",
+      "required_review_conditions": [
+        "Issuer role must equal NEX-ROLE-ADMIN",
+        "Review evidence provenance and recipient authorization",
+        "Pin handoff content version and its reviewed sources",
+        "Write immutable issuance audit evidence",
+        "Revocation or supersession never rewrites prior issuance history"
+      ],
+      "recipient_access_restriction": "Recipients must be checked for source-level or disclosure-only eligibility.",
+      "evidence_provenance_requirement": "Retain original source and record IDs with timestamps.",
+      "versioning_requirement": "Immutable versioned content, timestamp and approving admin binding.",
+      "audit_requirement": "Decision and state transition must refer to a durable audit event.",
+      "revocation_or_supersession": "Revoke current effect; preserve historical decision and issued versions.",
+      "formal_handoff_only": true,
+      "handoff_execution_records_generated": false
+    }
+  ]
+}

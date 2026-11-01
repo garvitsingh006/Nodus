@@ -1,0 +1,385 @@
+{
+  "dataset_version": "7B-1.0.0",
+  "shared_documents": [
+    {
+      "id": "NEX-DOC-001",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "SHARED_DOCUMENT",
+      "author_employee_id": "NEX-EMP-007",
+      "created_at": "2026-08-18T09:00:00Z",
+      "revised_at": "2026-10-26T12:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "title": "NEXUS engineering systems overview",
+      "document_type": "ENGINEERING_OVERVIEW",
+      "reviewer_employee_id": "NEX-EMP-001",
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY",
+        "NEX-PRJ-COM",
+        "NEX-PRJ-ID",
+        "NEX-PRJ-DATA"
+      ],
+      "relevant_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-DEPLOYMENT_PLATFORM",
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "referenced_document_ids": [
+        "NEX-DOC-002",
+        "NEX-DOC-003",
+        "NEX-DOC-004",
+        "NEX-DOC-005",
+        "NEX-DOC-006",
+        "NEX-DOC-007"
+      ],
+      "referenced_contract_ids": [],
+      "content_format": "text/markdown",
+      "content": "NEXUS delivers four independently owned product domains. Pay accepts merchant payment intents and records transaction state; Commerce coordinates checkout and orders; Identity supplies service assertions and policy decisions; Insights transforms published commercial events into governed aggregates. Product boundaries are also storage boundaries: Pay retains transaction state in PostgreSQL, Commerce owns order records in MySQL and short-lived checkout state in Redis, Identity maintains principals and policy data in PostgreSQL, and Insights maintains staging and reporting tables in PostgreSQL. A reader must not assume these databases are one shared transactional store.\n\nThe documented integration approach is a mixture of synchronous request/response and asynchronous exchange. checkout-service calls payment-api to establish payment intent and order-api to record confirmed orders; payment-api delegates gateway selection to gateway-router. token-validator provides verification at the documented Pay and Commerce entry points, and the validator obtains public JWKS keys from identity-api. Data Engineering receives payment lifecycle events over NATS and order lifecycle events over RabbitMQ; its event-ingestor validates versions before metrics-pipeline transforms staged records for reporting-api. Platform Operations manages the deployment-platform and observability-platform, which support selected product services through explicit operational dependencies.\n\nThese are source-declared architectural relationships, not live call traces. Dependency records use a source-service to target-service direction (consumer to upstream provider), except the inherited event-publication wording in NEX-DEP-003 and NEX-DEP-008, which must be read with care. Consult the service catalog for precise edge IDs and the interface registry for contract shapes; do not treat a drawing or prose paragraph as runtime proof. Changes crossing project boundaries require the provider owner and affected consumer owners to review interface compatibility. Ownership may be discovered from Stage 7A service IDs, not guessed from repository names."
+    },
+    {
+      "id": "NEX-DOC-002",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "SHARED_DOCUMENT",
+      "author_employee_id": "NEX-EMP-002",
+      "created_at": "2026-08-18T09:00:00Z",
+      "revised_at": "2026-10-26T12:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "title": "NEXUS Pay architecture and payment lifecycle",
+      "document_type": "PRODUCT_ARCHITECTURE",
+      "reviewer_employee_id": "NEX-EMP-003",
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY"
+      ],
+      "relevant_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-GATEWAY_ROUTER",
+        "NEX-SVC-REFUND_WORKER",
+        "NEX-SVC-TOKEN_VALIDATOR",
+        "NEX-SVC-EVENT_INGESTOR"
+      ],
+      "referenced_document_ids": [
+        "NEX-DOC-001",
+        "NEX-DOC-008",
+        "NEX-DOC-009"
+      ],
+      "referenced_contract_ids": [
+        "NEX-IFC-001",
+        "NEX-IFC-002",
+        "NEX-IFC-003",
+        "NEX-IFC-004"
+      ],
+      "content_format": "text/markdown",
+      "content": "payment-api is the stable merchant-facing boundary for payment intent creation and transaction status. An intent names a merchant-scoped operation, amount in minor currency units, currency, and idempotency key. The Go service writes an authoritative transaction state and returns the same intent identity for a repeated equivalent request under the documented idempotency window. The endpoint must reject reuse of one key with a different normalized request fingerprint; a network retry is not permission to charge again. Merchant clients should query status after a response timeout instead of inferring that a gateway request failed.\n\ngateway-router implements the Go/gRPC gateway-routing-v2 interface. It applies configured routing policy to a supported gateway, shields payment-api from provider-specific transport details, and normalizes responses into accepted, declined, pending or retryable technical categories. The router does not own merchant-visible intent state. The provider-adapters surface is an external integration boundary; its configured credentials and routing weights do not belong in this shared document. refund-worker consumes authorized refund jobs published by payment-api over NATS, applies retry safeguards, and invokes the same gateway-router adapter boundary. Refund outcome events are separate from initial payment authorization events so that a refund result cannot be mistaken for a new payment.\n\npayment-api publishes versioned payment-lifecycle-events-v2 for Insights. These messages carry durable identifiers, event time, state and schema version but exclude payment instrument details. event-ingestor is the documented consumer, and analytics must treat the feed as potentially duplicated or delayed. At protected API boundaries payment-api uses token-validator; public signing key management remains with Identity. Before editing payment-api, engineers review merchant-payments-v1 compatibility, routing-v2 behavior, refund job semantics, consumers of payment-lifecycle-events-v2, and idempotency regression tests. A service release number such as 4.12.1 is distinct from an externally exposed contract version such as v1."
+    },
+    {
+      "id": "NEX-DOC-003",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "SHARED_DOCUMENT",
+      "author_employee_id": "NEX-EMP-004",
+      "created_at": "2026-08-18T09:00:00Z",
+      "revised_at": "2026-10-26T12:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "title": "NEXUS Commerce checkout, orders and notifications",
+      "document_type": "PRODUCT_ARCHITECTURE",
+      "reviewer_employee_id": "NEX-EMP-005",
+      "relevant_project_ids": [
+        "NEX-PRJ-COM",
+        "NEX-PRJ-PAY"
+      ],
+      "relevant_service_ids": [
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-ORDER_API",
+        "NEX-SVC-WEBHOOK_CONSUMER",
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-TOKEN_VALIDATOR",
+        "NEX-SVC-EVENT_INGESTOR"
+      ],
+      "referenced_document_ids": [
+        "NEX-DOC-001",
+        "NEX-DOC-002",
+        "NEX-DOC-008"
+      ],
+      "referenced_contract_ids": [
+        "NEX-IFC-005",
+        "NEX-IFC-006",
+        "NEX-IFC-007",
+        "NEX-IFC-008"
+      ],
+      "content_format": "text/markdown",
+      "content": "checkout-service presents checkout-v2 and coordinates a merchant's short-lived checkout session. PHP 8.3 handlers use Redis 7 for session expiration and repeated client reads, while retaining stable business identifiers in the handoff to payment-api and order-api. A checkout session is not a settled payment or a committed order. When a shopper confirms, checkout-service creates or retrieves a payment intent through merchant-payments-v1, then confirms the resulting order through orders-v2 according to the documented payment state. Retry handling reuses the same merchant operation identifiers; a timeout can leave a payment pending, so checkout must not create a second intent solely because one call lacks a response.\n\norder-api is the MySQL 8 authority for merchant order state: it validates legal transitions and preserves an order's relationship to the originating checkout and payment references. It emits order-events-v1 via RabbitMQ on meaningful lifecycle changes. webhook-consumer is the delivery worker that receives commerce-notification-jobs, prepares signed merchant-webhooks-v1, retries transient delivery failure with bounded backoff and records non-sensitive delivery outcomes. Webhook acknowledgement means an external recipient accepted transport, not that it applied the business change exactly once. Recipients must deduplicate on stable event identifiers. A commerce event published by order-api is also consumed by event-ingestor for governed reporting, while webhook delivery is an operational side effect.\n\nProtected checkout calls use token-validator before business processing. This validation does not replace order-level merchant authorization or the eventual policy review. Shared source documentation describes interface fields and the operational shape only; order row samples, signed webhook secrets and merchant callbacks reside outside COMPANY_SHARED. Contract changes should review checkout-v2, orders-v2 and order-events-v1 together, and check the Pay API request model where checkout crosses the product boundary."
+    },
+    {
+      "id": "NEX-DOC-004",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "SHARED_DOCUMENT",
+      "author_employee_id": "NEX-EMP-006",
+      "created_at": "2026-08-18T09:00:00Z",
+      "revised_at": "2026-10-26T12:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "title": "NEXUS Identity: verification and policy boundaries",
+      "document_type": "PRODUCT_ARCHITECTURE",
+      "reviewer_employee_id": "NEX-EMP-007",
+      "relevant_project_ids": [
+        "NEX-PRJ-ID",
+        "NEX-PRJ-PAY",
+        "NEX-PRJ-COM",
+        "NEX-PRJ-DATA"
+      ],
+      "relevant_service_ids": [
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-TOKEN_VALIDATOR",
+        "NEX-SVC-POLICY_SERVICE",
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-REPORTING_API"
+      ],
+      "referenced_document_ids": [
+        "NEX-DOC-001",
+        "NEX-DOC-008",
+        "NEX-DOC-009"
+      ],
+      "referenced_contract_ids": [
+        "NEX-IFC-009",
+        "NEX-IFC-010",
+        "NEX-IFC-011",
+        "NEX-IFC-012"
+      ],
+      "content_format": "text/markdown",
+      "content": "identity-api maintains service principals and the documented identity-v2 surface. It issues signed assertions and publishes the public portion of signing keys through public-jwks. Its PostgreSQL backing store is the identity source of truth; consumers must not reconstruct principal state from observed token claims. token-validator performs detached verification for documented product API boundaries: it checks expected issuer, audience, signature algorithm, expiry and clock skew, and refreshes the key set from identity-api. Key identifiers permit overlapping rotation periods; a temporarily cached public key is not itself proof of revocation state.\n\npolicy-service answers scoped authorization-decisions-v1 requests using an explicit principal, action, resource and policy context. The answer is an allow/deny decision with policy revision and evaluation identifier; it is not a token issuer. identity-api is a declared caller for protected identity operations, and reporting-api consults policy-service before exposing protected report views. Service authentication and application permission checks are separate: a correctly signed token only establishes bounded identity claims, not rights to all merchant operations. NODUS' own resource-level access rules must never be inferred from this internal identity architecture document.\n\nThe service inventory declares payment-api and checkout-service as consumers of token-validator, and token-validator as a consumer of identity-api's published JWKS. Engineers updating identity-api must account for key discovery cadence, verification compatibility, policy-service integration, and the explicitly listed upstream consumers. Avoid sharing token values or signing material in documentation. Change proposals should identify audience, issuer, algorithm, key overlap and error-code behavior, with test evidence for both existing and candidate validator versions."
+    },
+    {
+      "id": "NEX-DOC-005",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "SHARED_DOCUMENT",
+      "author_employee_id": "NEX-EMP-008",
+      "created_at": "2026-08-18T09:00:00Z",
+      "revised_at": "2026-10-26T12:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "title": "NEXUS Insights event-to-report architecture",
+      "document_type": "PRODUCT_ARCHITECTURE",
+      "reviewer_employee_id": "NEX-EMP-009",
+      "relevant_project_ids": [
+        "NEX-PRJ-DATA",
+        "NEX-PRJ-PAY",
+        "NEX-PRJ-COM"
+      ],
+      "relevant_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-METRICS_PIPELINE",
+        "NEX-SVC-REPORTING_API",
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-ORDER_API",
+        "NEX-SVC-POLICY_SERVICE"
+      ],
+      "referenced_document_ids": [
+        "NEX-DOC-002",
+        "NEX-DOC-003",
+        "NEX-DOC-008",
+        "NEX-DOC-010"
+      ],
+      "referenced_contract_ids": [
+        "NEX-IFC-004",
+        "NEX-IFC-007",
+        "NEX-IFC-013"
+      ],
+      "content_format": "text/markdown",
+      "content": "Insights is a reporting product, not a second write authority for payments or orders. event-ingestor subscribes to payment-lifecycle-events-v2 on NATS and to order-events-v1 on RabbitMQ. Each record is checked for contract version, required fields, event identity, expected producer and time semantics before staging in PostgreSQL. The ingestor retains ingestion timestamps separately from producer timestamps and deduplicates repeated deliveries using producer-scoped event keys. A late arrival remains eligible for a permitted recomputation window; arrival order must not be treated as business occurrence order.\n\nmetrics-pipeline reads staged-events-v1 and produces metrics-model-v3 with incremental Python/SQL transformations. Its dimensional joins use stable payment, order and merchant-scoped identifiers where available, and do not synthesize a global transaction from every order event. Quality checks cover unknown schema versions, invalid enum transitions, event-time gaps, duplicate rates, currency unit consistency and reconciliation counts. Data correction is performed through approved pipeline backfill procedures, not by mutating the Pay or Commerce systems of record. PostgreSQL model versions are publishable artifacts that reporting-api can select independently of ingestion workers.\n\nreporting-api is a FastAPI read boundary over published aggregates. Before a protected report is returned, it requests a scoped authorization decision from policy-service; filtered result sets may be narrower than the full metrics table. Published metric definitions and time-window assumptions are part of the API contract. Operational dashboards from observability-platform answer service health questions; business performance dashboards from reporting-api answer governed transaction and order questions. Those two forms of telemetry should not be conflated. Producers own event meanings, Data Engineering owns transformation definitions and error accounting, and reporting-api owns response-level compatibility."
+    },
+    {
+      "id": "NEX-DOC-006",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "SHARED_DOCUMENT",
+      "author_employee_id": "NEX-EMP-007",
+      "created_at": "2026-08-18T09:00:00Z",
+      "revised_at": "2026-10-26T12:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "title": "Shared deployment and observability architecture",
+      "document_type": "PLATFORM_ARCHITECTURE",
+      "reviewer_employee_id": "NEX-EMP-009",
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY",
+        "NEX-PRJ-COM",
+        "NEX-PRJ-ID",
+        "NEX-PRJ-DATA"
+      ],
+      "relevant_service_ids": [
+        "NEX-SVC-DEPLOYMENT_PLATFORM",
+        "NEX-SVC-OBSERVABILITY_PLATFORM",
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-ORDER_API",
+        "NEX-SVC-METRICS_PIPELINE"
+      ],
+      "referenced_document_ids": [
+        "NEX-DOC-001",
+        "NEX-DOC-009",
+        "NEX-DOC-010"
+      ],
+      "referenced_contract_ids": [
+        "NEX-IFC-014"
+      ],
+      "content_format": "text/markdown",
+      "content": "deployment-platform is a shared delivery control plane built from GitHub Actions, Argo CD and Kubernetes. Product teams build artifacts and attest to their input revision; the platform promotes a specific artifact identity through development, staging and production with environment-specific approval gates. The shared deployment-jobs-v1 interface represents an approved rollout request, not a free-form remote command. Deployment status is reported via deployment-status-v1 callbacks and should be correlated with the artifact digest and service ID. The Stage 7A dependency inventory explicitly documents operational usage by payment-api, checkout-service, identity-api and event-ingestor; other services are not to be automatically assigned new catalog edges without source revision.\n\nobservability-platform receives OTLP/gRPC metrics and traces, processes Prometheus indicators and exposes Grafana dashboards. Stage 7A declares telemetry edges for payment-api, order-api, identity-api and metrics-pipeline. Product traces use request or event correlation identifiers; metrics deliberately exclude merchant secrets, raw tokens and personal payment fields. An absence of a declared Stage 7A telemetry edge is not proof that a service has no monitoring. Teams should inspect current instrumentation evidence before claiming coverage.\n\nPlatform Operations owns delivery mechanics and shared telemetry availability; product teams remain accountable for their service behavior, contract changes and rollbacks. When a release touches an interface, the owning team supplies a compatibility plan and downstream coordination even though the shared platform executes the rollout. Staging should exercise candidate artifacts against provider/consumer contract tests. A passing rollout controller only establishes deployment execution; business correctness and consumer safety require their own evidence."
+    },
+    {
+      "id": "NEX-DOC-007",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "SHARED_DOCUMENT",
+      "author_employee_id": "NEX-EMP-001",
+      "created_at": "2026-08-18T09:00:00Z",
+      "revised_at": "2026-10-26T12:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "title": "Service ownership, review and escalation conventions",
+      "document_type": "ENGINEERING_POLICY",
+      "reviewer_employee_id": "NEX-EMP-007",
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY",
+        "NEX-PRJ-COM",
+        "NEX-PRJ-ID",
+        "NEX-PRJ-DATA"
+      ],
+      "relevant_service_ids": [
+        "NEX-SVC-GATEWAY_ROUTER",
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-POLICY_SERVICE",
+        "NEX-SVC-REPORTING_API",
+        "NEX-SVC-DEPLOYMENT_PLATFORM"
+      ],
+      "referenced_document_ids": [
+        "NEX-DOC-001",
+        "NEX-DOC-009",
+        "NEX-DOC-010"
+      ],
+      "referenced_contract_ids": [],
+      "content_format": "text/markdown",
+      "content": "Every NEXUS service has one primary and one backup engineering owner in the canonical 7A ownership assignments. Project-aligned ownership normally follows Payments Engineering, Commerce Engineering, Identity Engineering or Data Engineering; the deployment and observability platforms are owned by Platform Operations with no owning product project. The primary owner makes interface and operational decisions for the service; the backup is an active review and continuity contact, not a substitute company administrator. An employee being on a secondary team does not transfer ownership of every service in that team.\n\nA proposed change starts with the owning service's primary contact. If the change alters an exposed request field, event payload, status mapping, timeout expectation or operational dependency, the proposer identifies existing consumers from the source inventory and requests their review. The receiving team's owner documents whether compatibility is preserved, whether dual-read/dual-write behavior is needed, and which acceptance checks cover rollback. For a boundary shared by several teams, the source owner coordinates discussions; unresolved cross-team scheduling or risk is escalated to the relevant team leads. Platform Operations coordinates deployment windows and monitoring readiness, but does not approve a product's business semantics.\n\nShared service catalogs are evidence of what has been declared at their revision date. They do not guarantee that live traffic or on-call rosters have stayed unchanged. Ownership disputes should be resolved against canonical 7A service owner assignments and dated source edits, then approved as new source revisions. Formal company handoffs are a separate admin-only governance action and are not created or granted by this document. Access to COMPANY_SHARED engineering guidance does not authorize access to a repository, secret or production console."
+    },
+    {
+      "id": "NEX-DOC-008",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "SHARED_DOCUMENT",
+      "author_employee_id": "NEX-EMP-006",
+      "created_at": "2026-08-18T09:00:00Z",
+      "revised_at": "2026-10-26T12:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "title": "API and asynchronous contract compatibility policy",
+      "document_type": "ENGINEERING_STANDARD",
+      "reviewer_employee_id": "NEX-EMP-002",
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY",
+        "NEX-PRJ-COM",
+        "NEX-PRJ-ID",
+        "NEX-PRJ-DATA"
+      ],
+      "relevant_service_ids": [
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-ORDER_API",
+        "NEX-SVC-TOKEN_VALIDATOR"
+      ],
+      "referenced_document_ids": [
+        "NEX-DOC-002",
+        "NEX-DOC-003",
+        "NEX-DOC-004",
+        "NEX-DOC-005"
+      ],
+      "referenced_contract_ids": [],
+      "content_format": "text/markdown",
+      "content": "An external contract has an identity, a major version and explicit field semantics independent of the application's release version. REST routes publish their major in the path or documented contract name; gRPC services publish package-level major versions; events carry a schema_version in their envelope. Compatible additions are optional request fields with documented defaults, additive response fields that consumers must ignore if unknown, and optional event attributes that older consumers can skip. Removing a required field, changing amount units, altering an enum's established meaning or narrowing an idempotency guarantee requires a new major contract and a migration window.\n\nFor REST, callers distinguish invalid input, rejected authorization, business conflicts and transient provider errors. Retried POST requests need stable idempotency keys where defined. For gRPC, deadline and retry classifications are part of the contract even when transport APIs technically compile. For async events, producers provide a unique event_id, occurred_at, producer ID and schema_version, while consumers deduplicate and tolerate reordering. A newly introduced event status must be made safe for older consumers through an explicit fallback policy or a new major version; naive exhaustive enum handling is not compatible.\n\nBefore promotion, a provider runs consumer contract tests for every declared direct user of that interface, including data consumers that read an event stream or published dataset. Both old and new versions remain discoverable during a negotiated cutover; an interface is not retired on the same day that a successor is first released. Policy changes do not overwrite the past: record effective dates, lifecycle status and distinct revisions. Stage 7A contains source-declared relations, including two inverted event-edge descriptions, so a contract's producer/consumer semantics must be read separately from raw graph edge direction."
+    },
+    {
+      "id": "NEX-DOC-009",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "SHARED_DOCUMENT",
+      "author_employee_id": "NEX-EMP-007",
+      "created_at": "2026-08-18T09:00:00Z",
+      "revised_at": "2026-10-26T12:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "title": "Deployment change review and evidence gates",
+      "document_type": "CHANGE_MANAGEMENT_POLICY",
+      "reviewer_employee_id": "NEX-EMP-004",
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY",
+        "NEX-PRJ-COM",
+        "NEX-PRJ-ID",
+        "NEX-PRJ-DATA"
+      ],
+      "relevant_service_ids": [
+        "NEX-SVC-DEPLOYMENT_PLATFORM",
+        "NEX-SVC-OBSERVABILITY_PLATFORM",
+        "NEX-SVC-PAYMENT_API",
+        "NEX-SVC-CHECKOUT_SERVICE",
+        "NEX-SVC-ORDER_API",
+        "NEX-SVC-IDENTITY_API",
+        "NEX-SVC-EVENT_INGESTOR"
+      ],
+      "referenced_document_ids": [
+        "NEX-DOC-006",
+        "NEX-DOC-007",
+        "NEX-DOC-008",
+        "NEX-DOC-010"
+      ],
+      "referenced_contract_ids": [],
+      "content_format": "text/markdown",
+      "content": "A release review identifies its service, target version, artifact digest, change category and environments, then enumerates the declared provider dependencies and known consumers that may be affected. It separates code-only changes from data migrations, protocol changes and event schema changes. An engineer records whether the change touches identity validation, payment idempotency, checkout/order coordination, event deliveries, report definitions or operational instrumentation. The last known catalog revision is a starting input, not an assertion that every dependency is still active.\n\nThe proposer supplies reproducible non-production tests, contract comparisons, rollback prerequisites and a bounded rollout plan. For changes to payment-api's merchant contract, checkout-service and the versioned event consumer are reviewed for independent safety; for changes to identity-api, the JWKS refresh behavior and protected API boundaries are considered. The deployment-platform controls artifact promotion; the product owner signs off on expected semantics, while Platform Operations checks readiness and monitoring. A completed deployment status cannot establish business correctness without post-release signals.\n\nEvidence must distinguish design assertions from observations. A catalog entry establishes documented ownership, a contract record establishes published expectations, a test run establishes behavior only for its tested artifact and environment, and telemetry establishes sampled operational signals within a stated window. When evidence disagrees, capture exact source IDs, revisions and collection times; do not rewrite historical records to force agreement. Roll back or pause based on actual checks and approved procedures, not a prewritten incident narrative. No privileged deployment target, secret or emergency procedure belongs in this shared policy."
+    },
+    {
+      "id": "NEX-DOC-010",
+      "source_id": "NEX-SRC-KNOWLEDGE_HUB",
+      "source_record_type": "SHARED_DOCUMENT",
+      "author_employee_id": "NEX-EMP-009",
+      "created_at": "2026-08-18T09:00:00Z",
+      "revised_at": "2026-10-26T12:00:00Z",
+      "revision_number": 3,
+      "status": "PUBLISHED",
+      "access_classification": "COMPANY_SHARED",
+      "title": "Engineering documentation, provenance and evidence standards",
+      "document_type": "DOCUMENTATION_STANDARD",
+      "reviewer_employee_id": "NEX-EMP-001",
+      "relevant_project_ids": [
+        "NEX-PRJ-PAY",
+        "NEX-PRJ-COM",
+        "NEX-PRJ-ID",
+        "NEX-PRJ-DATA"
+      ],
+      "relevant_service_ids": [
+        "NEX-SVC-EVENT_INGESTOR",
+        "NEX-SVC-METRICS_PIPELINE",
+        "NEX-SVC-REPORTING_API",
+        "NEX-SVC-OBSERVABILITY_PLATFORM"
+      ],
+      "referenced_document_ids": [
+        "NEX-DOC-007",
+        "NEX-DOC-008",
+        "NEX-DOC-009"
+      ],
+      "referenced_contract_ids": [],
+      "content_format": "text/markdown",
+      "content": "A shared engineering source record carries a globally stable ID, source ID, source record type, accountable author, UTC creation/revision timestamps, revision number, status and access classification. References point to stable Stage 7A project, service, team and employee IDs rather than copying entire entities. The publication revision is not necessarily the date a technical decision originally took effect. Material corrections increment the revision, preserve the original effective date if unchanged, and state which contract or architecture assertion changed; a renamed heading must not silently change the referenced service.\n\nEvery architectural claim should identify its provenance class. The Service Catalog is a documented owner assertion. The Interface Registry records accepted expected behavior, including payload versions and named known consumers. An architecture decision explains the rationale that existed when the decision was made. A trace, verification run or deployment record, when available from restricted systems, is a separate observation with its own timestamp and collection scope. NODUS must not present a shared source assertion as an independently verified live topology; the eventual report should make source-to-claim traceability inspectable.\n\nState facts with domain semantics: minor-unit currencies, business-event versus ingest timestamps, order state transitions, policy scope, and whether an endpoint is synchronous or asynchronous. If evidence is missing, label the unknown; do not fill it from plausible architecture patterns. Team reviewers should ensure that new documents reveal no merchant personal data, credentials, signed tokens, privileged config, private investigation material or confidential release detail. COMPANY_SHARED means approved active admins, developers and interns may read these published records; it does not imply authority to alter platform state, issue handoffs or obtain project-private source code."
+    }
+  ]
+}
