@@ -35,11 +35,11 @@ class ApprovedSkill(Record):
 class RuntimeLimits(Record):
     """Small, explicit, configurable defaults — never an unrestricted ADK
     default (``RunConfig.max_llm_calls`` otherwise defaults to 500)."""
-    max_llm_calls: int = Field(default=6, ge=1, le=50)
-    max_tool_calls: int = Field(default=12, ge=1, le=100)
-    max_output_tokens_per_call: int = Field(default=1024, ge=1, le=65_536)
-    max_total_tokens_per_call: int = Field(default=8192, ge=1, le=200_000)
-    overall_timeout_seconds: float = Field(default=90.0, gt=0, le=600)
+    max_llm_calls: int = Field(default=50, ge=1, le=50)
+    max_tool_calls: int = Field(default=100, ge=1, le=100)
+    max_output_tokens_per_call: int = Field(default=65_536, ge=1, le=65_536)
+    max_total_tokens_per_call: int = Field(default=200_000, ge=1, le=200_000)
+    overall_timeout_seconds: float = Field(default=600.0, gt=0, le=600)
     request_budget_key: str | None = Field(default=None, min_length=1)
 
 

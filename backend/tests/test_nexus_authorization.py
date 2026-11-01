@@ -12,9 +12,13 @@ from __future__ import annotations
 import inspect
 
 import pytest
+from fastapi.testclient import TestClient
 
+from backend.app.main import app
+from backend.app.governance.demo_tokens import DEMO_TOKEN_ALIASES
 from backend.app.governance.identity import (
-    isolated_demo_mode_enabled, refresh_principal_source_ids, resolve_demo_principal,
+    NEXUS_TENANT_ID, isolated_demo_mode_enabled, nexus_identity_summary, refresh_principal_source_ids,
+    resolve_demo_principal,
 )
 from backend.tests.nexus_live import (
     NEXUS_WORKSPACE_ID, admin_principal, developer_principal, intern_principal,
@@ -75,6 +79,57 @@ def test_intern_denied_project_developer_source(nexus_pg, nexus_neo4j, intern_pr
 
 def test_demo_token_fails_when_demo_mode_disabled(nexus_pg):
     assert resolve(" 4".strip(), nexus_pg, demo_mode_enabled=False) is None
+
+
+@pytest.mark.parametrize("alias,seed_token", sorted(DEMO_TOKEN_ALIASES.items()))
+def test_readable_demo_alias_uses_same_current_grants(nexus_pg, alias, seed_token):
+    """Aliases never manufacture a role, project or additional source access."""
+    resolved = resolve(alias, nexus_pg)
+    canonical = resolve(seed_token, nexus_pg)
+    assert canonical is not None, f"Missing imported identity for {seed_token}"
+    assert resolved == canonical
+    alias_summary = nexus_identity_summary(alias, nexus_pg, demo_mode_enabled=True)
+    seeded_summary = nexus_identity_summary(seed_token, nexus_pg, demo_mode_enabled=True)
+    assert alias_summary is not None
+    assert alias_summary == seeded_summary
+    assert resolve(alias, nexus_pg, demo_mode_enabled=False) is None
+
+
+@pytest.mark.parametrize("alias,seed_token", [("4", "4"), *sorted(DEMO_TOKEN_ALIASES.items())])
+def test_demo_tokens_work_through_real_bearer_session_routes(nexus_pg, monkeypatch, alias, seed_token):
+    """Exercise the HTTP dependency and both UI session contracts without running lifespan."""
+    monkeypatch.setenv("GRAPH_HACKS_NEXUS_DEMO_MODE", "true")
+    monkeypatch.setenv("GRAPH_HACKS_API_PRINCIPALS_JSON", "{}")
+    monkeypatch.setattr(app.state, "governance_store", nexus_pg, raising=False)
+    client = TestClient(app)
+    for route in ("/api/v1/session", "/api/v1/nexus/session"):
+        alias_response = client.get(route, headers={"Authorization": f"Bearer {alias}"})
+        seeded_response = client.get(route, headers={"Authorization": f"Bearer {seed_token}"})
+        assert alias_response.status_code == 200, alias_response.text
+        assert alias_response.json() == seeded_response.json()
+
+
+def test_http_demo_tokens_rejected_when_disabled_or_unknown(nexus_pg, monkeypatch):
+    monkeypatch.setenv("GRAPH_HACKS_API_PRINCIPALS_JSON", "{}")
+    monkeypatch.setattr(app.state, "governance_store", nexus_pg, raising=False)
+    client = TestClient(app)
+    monkeypatch.setenv("GRAPH_HACKS_NEXUS_DEMO_MODE", "false")
+    for token in ("4", "dev-02-pay"):
+        assert client.get("/api/v1/session", headers={"Authorization": f"Bearer {token}"}).status_code == 401
+    monkeypatch.setenv("GRAPH_HACKS_NEXUS_DEMO_MODE", "true")
+    for token in ("unknown", "dev-10-A1", "dev-02-pay-extra"):
+        assert client.get("/api/v1/session", headers={"Authorization": f"Bearer {token}"}).status_code == 401
+
+
+def test_demo_resolver_rejects_wrong_tenant_or_workspace(nexus_pg):
+    assert resolve_demo_principal(
+        "dev-02-pay", nexus_pg, tenant_id="other-tenant", workspace_id=NEXUS_WORKSPACE_ID,
+        demo_mode_enabled=True,
+    ) is None
+    assert resolve_demo_principal(
+        "dev-02-pay", nexus_pg, tenant_id=NEXUS_TENANT_ID, workspace_id="other-workspace",
+        demo_mode_enabled=True,
+    ) is None
 
 
 def test_isolated_demo_mode_enabled_reads_env(monkeypatch):

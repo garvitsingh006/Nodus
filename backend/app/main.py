@@ -22,7 +22,7 @@ from backend.app.governance.access_requests import (
     list_pending_requests, list_requests_for_employee, revoke_grant,
 )
 from backend.app.governance.identity import (
-    NEXUS_TENANT_ID, authorized_source_ids_for, isolated_demo_mode_enabled,
+    NEXUS_TENANT_ID, NEXUS_WORKSPACE_ID, authorized_source_ids_for, isolated_demo_mode_enabled,
     nexus_identity_summary, principal_authorizes_action, resolve_demo_principal,
 )
 from backend.app.governance.store import GovernanceStore
@@ -38,12 +38,8 @@ from backend.app.tools import register_all_tools
 from backend.app.tools.executor import ToolExecutor
 from backend.app.tools.registry import ToolDependencies, ToolRegistry
 
-# NEXUS_TENANT_ID lives in backend.app.governance.identity (shared with the
-# backend.app.tools/* modules). principal_from_token has no per-request
-# workspace context of its own, so the workspace half of the pair is a
-# deliberate, documented constant here rather than threaded through the
-# whole auth dependency chain.
-NEXUS_WORKSPACE_ID = "nexus-workspace"
+# Both NEXUS deployment identifiers are fixed in governance.identity.
+# principal_from_token never accepts a request-supplied tenant or workspace.
 
 
 def principal_from_token(token: str, governance_store: GovernanceStore | None = None) -> Principal | None:

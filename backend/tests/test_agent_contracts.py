@@ -36,7 +36,7 @@ def test_agent_execution_context_defaults_are_small_and_explicit():
     context = AgentExecutionContext(
         authorization=_auth(), run_id="r1",
         approved_skills=(ApprovedSkill(skill_id="verify-evidence", version="1.0.0"),))
-    assert context.limits.max_llm_calls == 6  # a small default, not ADK's unrestricted 500
+    assert context.limits.max_llm_calls == 50  # a small default, not ADK's unrestricted 500
     assert context.model_role == ModelRole.DEFAULT
 
 

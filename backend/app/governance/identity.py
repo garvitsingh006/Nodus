@@ -12,6 +12,7 @@ from __future__ import annotations
 import os
 from datetime import datetime, timezone
 
+from backend.app.governance.demo_tokens import canonical_demo_token
 from backend.app.governance.store import GovernanceStore
 from backend.app.security import AuthorizationContext, Permission, Principal
 
@@ -21,6 +22,7 @@ from backend.app.security import AuthorizationContext, Permission, Principal
 # its own GraphRepository, so every read path — HTTP API and agent-tool
 # execution alike — applies the same source-scoping decision.
 NEXUS_TENANT_ID = "nexus-tenant"
+NEXUS_WORKSPACE_ID = "nexus-workspace"
 
 ROLE_PERMISSIONS: dict[str, frozenset[Permission]] = {
     "ADMIN": frozenset({Permission.ADMIN}),
@@ -58,7 +60,7 @@ def isolated_demo_mode_enabled() -> bool:
 def _demo_identity_row(token: str, store: GovernanceStore) -> dict | None:
     rows = store.read(
         "SELECT demo_identity_id, employee_id, role_id FROM nexus_demo_identities WHERE demo_token=%s",
-        (token,))
+        (canonical_demo_token(token),))
     return rows[0] if rows else None
 
 
@@ -215,7 +217,10 @@ def _effective_source_ids(role_code: str, employee_id: str, store: GovernanceSto
 
 def resolve_demo_principal(token: str, store: GovernanceStore, *, tenant_id: str, workspace_id: str,
                            demo_mode_enabled: bool) -> Principal | None:
-    if not demo_mode_enabled:
+    # Demo identities have a fixed deployment scope. Never stamp a valid
+    # NEXUS employee into another tenant: that would bypass the NEXUS-specific
+    # source restriction in authorized_source_ids_for().
+    if not demo_mode_enabled or tenant_id != NEXUS_TENANT_ID or workspace_id != NEXUS_WORKSPACE_ID:
         return None
     identity = _demo_identity_row(token, store)
     if identity is None:
